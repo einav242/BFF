@@ -2,30 +2,151 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:id="@+id/BFF"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:addStatesFromChildren="false"
+    android:alwaysDrawnWithCache="false"
+    android:animateLayoutChanges="false"
+    android:background="#DF87A5"
+    android:backgroundTint="#EAAEC2"
+    android:backgroundTintMode="src_in"
+    android:clickable="false"
+    android:visibility="visible"
+    tools:context=".MainActivity"
+    tools:visibility="visible">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Hello World!"
+        android:layout_marginStart="170dp"
+        android:layout_marginEnd="184dp"
+        android:layout_marginBottom="560dp"
+        android:text="@string/bff_dog_cat"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="208dp"
+        android:onClick="onBtnClick"
+        android:text="@string/button1"
+        android:textColor="#F8BBD0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTxt3"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="79dp"
+        android:layout_marginEnd="107dp"
+        android:layout_marginBottom="181dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/first_name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textColorHint="#615E61"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMessage" />
+
+    <EditText
+        android:id="@+id/edtTxt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="107dp"
+        android:layout_marginBottom="120dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/last_name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColorHint="#615E61"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+
+    <EditText
+        android:id="@+id/editTxt3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="107dp"
+        android:layout_marginBottom="-5dp"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColorHint="#615E61"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxt2"
+        app:layout_constraintVertical_bias="0.0"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="6dp"
+        android:text="@string/first_name1"
+        android:textColor="#5D4037"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.65" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="3dp"
+        android:text="@string/last_name1"
+        android:textColor="#5D4037"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="103dp"
+        android:text="@string/email1"
+        android:textColor="#5D4037"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="89dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="56dp"
-        android:text="@string/button"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

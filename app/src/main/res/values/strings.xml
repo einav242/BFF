@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">BFF</string>
     <string name="button">Button</string>
+    <string name="bff_dog_cat"><![CDATA[BFF dog&cat]]></string>
+    <string name="button1">Button</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name1">First Name</string>
+    <string name="last_name1">Last Name</string>
+    <string name="email1">Email</string>
+    <string name="email">Email</string>
 </resources>
