@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         EditText edtTxtName = findViewById(R.id.editTextName);
         txtFirstName.setText(edtTxtName.getText().toString());
 
-        TextView txtLastName = findViewById(R.id.textView3);
+        TextView txtLastName = findViewById(R.id.LineDontTach);
         EditText edtTxtName2 = findViewById(R.id.edtTxt2);
         txtLastName.setText(edtTxtName2.getText().toString());
 
