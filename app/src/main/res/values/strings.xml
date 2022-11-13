@@ -17,4 +17,7 @@
     <string name="user_name">User Name</string>
     <string name="line">_____________________________________________________</string>
     <string name="create_a_new_account">Create a new account</string>
+    <string name="animal">Animal</string>
+    <string name="business_owner">business owner</string>
+    <string name="choose_visit_type">Choose Visit Type:</string>
 </resources>
