@@ -9,4 +9,12 @@
     <string name="last_name1">Last Name</string>
     <string name="email1">Email</string>
     <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sing_in">Sing in</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="todo">TODO</string>
+    <string name="todo2">TODO</string>
+    <string name="user_name">User Name</string>
+    <string name="line">_____________________________________________________</string>
+    <string name="create_a_new_account">Create a new account</string>
 </resources>

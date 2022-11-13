@@ -35,9 +35,8 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onBtnClick"
-        android:text="Sing in"
-        android:textColor="#131515"
+        android:text="@string/sing_in"
+        android:textColor="#F8BBD0"
         app:iconTint="#7A3E3E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,20 +44,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtTxt2"
         app:layout_constraintVertical_bias="0.098"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints,TextContrastCheck" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forgot Password?"
-        android:textColor="#0B0A0A"
+        android:text="@string/forgot_password"
+        android:textColor="#F8BBD0"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.079" />
+        app:layout_constraintVertical_bias="0.079"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editTextName"
@@ -66,14 +66,14 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
-        android:hint="User Name"
+        android:hint="@string/user_name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColor="@color/black"
         android:textColorHint="#615E61"
         app:layout_constraintBottom_toTopOf="@+id/edtTxt2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -85,7 +85,7 @@
         android:layout_marginEnd="107dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColorHint="#615E61"
@@ -105,7 +105,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:srcCompat="@drawable/doc" />
+        app:srcCompat="@drawable/doc"
+        android:contentDescription="@string/todo" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -117,17 +118,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtMessage"
         app:layout_constraintVertical_bias="0.757"
-        app:srcCompat="@drawable/profile" />
+        app:srcCompat="@drawable/profile"
+        android:contentDescription="@string/todo2" />
 
     <TextView
         android:id="@+id/LineDontTach"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="46dp"
-        android:text="____________________________________________________________"
+        android:text="@string/line"
+        android:textColor="#5D4037"
         app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
@@ -136,7 +139,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#1CF10D"
-        android:text="Create a new account"
+        android:text="@string/create_a_new_account"
         android:textColor="@color/black"
         app:iconTint="#45D828"
         app:layout_constraintBottom_toBottomOf="parent"
