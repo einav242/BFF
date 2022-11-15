@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "126648597174",
+    "project_id": "bff-a2663",
+    "storage_bucket": "bff-a2663.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126648597174:android:c0dc785b7fa5801ba64417",
+        "android_client_info": {
+          "package_name": "com.example.bff"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126648597174-c8s6t4avh622gcbsck10bpfsagarlhof.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPiKjDyqIfLdBK9an9s-4eY453X4juojU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126648597174-c8s6t4avh622gcbsck10bpfsagarlhof.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
