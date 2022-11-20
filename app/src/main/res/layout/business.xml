@@ -13,7 +13,7 @@
         android:layout_marginTop="48dp"
         android:layout_marginEnd="150dp"
         android:layout_marginBottom="743dp"
-        android:text="@string/business_name"
+        android:text="Business Name"
         android:textAlignment="center"
         android:textColor="@color/teal_700"
         android:textSize="34sp"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/business"
-        android:contentDescription="@string/profile" />
+        android:contentDescription="profile" />
 
     <ImageButton
         android:id="@+id/plus1"
@@ -54,7 +54,6 @@
         android:minWidth="48dp"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.517"
@@ -76,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/delete"
-        android:contentDescription="@string/deldte" />
+        android:contentDescription="delete" />
 
     <TextView
         android:id="@+id/textView2"
@@ -86,7 +85,7 @@
         android:layout_marginTop="1dp"
         android:layout_marginEnd="156dp"
         android:layout_marginBottom="539dp"
-        android:text="@string/remove_client"
+        android:text="Remove client"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -108,7 +107,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:srcCompat="@drawable/client"
-        android:contentDescription="@string/client" />
+        android:contentDescription="Client" />
 
     <TextView
         android:id="@+id/textView3"
@@ -119,7 +118,7 @@
         android:layout_marginEnd="99dp"
         android:layout_marginBottom="357dp"
         android:lineSpacingExtra="24sp"
-        android:text="@string/view_existing_client"
+        android:text="View existing client"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -136,7 +135,7 @@
         android:layout_marginStart="119dp"
         android:layout_marginEnd="156dp"
         android:layout_marginBottom="188dp"
-        android:contentDescription="@string/add_client"
+        android:contentDescription="Add client"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

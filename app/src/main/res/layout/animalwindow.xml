@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/hello_animal"
+        android:text="Hello Animal"
         android:textColor="#DD67BB"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/animal_photo"
-        android:contentDescription="@string/anima" />
+        />
 
     <ImageButton
         android:id="@+id/plus1"
@@ -56,7 +56,7 @@
         android:layout_marginStart="31dp"
         android:layout_marginTop="77dp"
         android:layout_marginBottom="522dp"
-        android:contentDescription="@string/dog_walk"
+        android:contentDescription="dog_walk"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtMessage"
@@ -70,7 +70,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="328dp"
         android:layout_marginBottom="493dp"
-        android:text="@string/text_dog_walker"
+        android:text="Dog walker"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -87,7 +87,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="195dp"
         android:layout_marginBottom="497dp"
-        android:text="@string/txt_lost"
+        android:text="Lost"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -108,7 +108,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:srcCompat="@drawable/vet"
-        android:contentDescription="@string/vet" />
+        android:contentDescription="vet" />
 
     <TextView
         android:id="@+id/textView8"
@@ -117,7 +117,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginEnd="277dp"
         android:layout_marginBottom="292dp"
-        android:text="@string/txt_Veterinarians"
+        android:text="Veterinarians"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -138,7 +138,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageButton11"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:srcCompat="@drawable/edit"
-        android:contentDescription="@string/edit" />
+        android:contentDescription="edit" />
 
     <TextView
         android:id="@+id/textView9"
@@ -148,7 +148,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="123dp"
         android:layout_marginBottom="301dp"
-        android:text="@string/txt_edit"
+        android:text="Edit"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -166,7 +166,7 @@
         android:layout_marginTop="39dp"
         android:layout_marginEnd="34dp"
         android:layout_marginBottom="120dp"
-        android:contentDescription="@string/information"
+        android:contentDescription="Information"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.931"
@@ -183,7 +183,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="80dp"
-        android:text="@string/txt_information"
+        android:text="Information"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -205,7 +205,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:srcCompat="@drawable/hairdresser"
-        android:contentDescription="@string/hairdresser" />
+        android:contentDescription="Hairdresser" />
 
     <TextView
         android:id="@+id/textView11"
@@ -215,7 +215,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="146dp"
         android:layout_marginBottom="93dp"
-        android:text="@string/txt_hairdresser"
+        android:text="Hairdresser"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -236,7 +236,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageButton10"
         app:layout_constraintTop_toBottomOf="@+id/plus1"
         app:srcCompat="@drawable/sad_dog"
-        android:contentDescription="@string/sadDog" />
+        android:contentDescription="sadDog" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
