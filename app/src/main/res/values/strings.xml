@@ -30,4 +30,13 @@
     <string name="password_singup">Password</string>
     <string name="email_singup">Email</string>
     <string name="full_name_singup">Full name</string>
+    <string name="type_of_business">Type Of Business</string>
+    <string name="street_number">Street Number</string>
+    <string name="street">Street</string>
+    <string name="city">City</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="id">ID</string>
+    <string name="edit_photo">Edit Photo</string>
+    <string name="business_name">Business Name</string>
+    <string name="email_BO">Email</string>
 </resources>

@@ -38,14 +38,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.14"
-        />
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/register_BO_EditPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
-        android:hint="Edit Photo"
+        android:hint="@string/edit_photo"
         android:textColor="#617587"
         android:textColorHint="#757575"
         android:textSize="17sp"
@@ -74,7 +74,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_BO_image"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintVertical_bias="0.13"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/register_BO_BusinessName"
@@ -83,7 +84,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Business Name"
+        android:hint="@string/business_name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -94,7 +95,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_BO_fullName"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintVertical_bias="0.01"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/register_BO_Email"
@@ -103,7 +105,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/email_BO"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -114,7 +116,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_BO_BusinessName"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintVertical_bias="0.01"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/register_BO_Password"
@@ -134,7 +137,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/register_BO_Email"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintVertical_bias="0.01"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/register_BO_ID"
@@ -143,7 +147,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="ID"
+        android:hint="@string/id"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -154,7 +158,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_BO_Password"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintVertical_bias="0.01"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/register_BO_PhoneNumber"
@@ -163,7 +168,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Phone Number"
+        android:hint="@string/phone_number"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -175,7 +180,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_BO_ID"
         app:layout_constraintVertical_bias="0.01"
-        />
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/register_BO_City"
@@ -184,7 +189,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="City"
+        android:hint="@string/city"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -196,7 +201,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_BO_PhoneNumber"
         app:layout_constraintVertical_bias="0.01"
-        />
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/register_BO_Street"
@@ -205,7 +210,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Street"
+        android:hint="@string/street"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -217,7 +222,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_BO_City"
         app:layout_constraintVertical_bias="0.01"
-        />
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/register_BO_StreetNum"
@@ -226,7 +231,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Street Number"
+        android:hint="@string/street_number"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -238,7 +243,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_BO_Street"
         app:layout_constraintVertical_bias="0.01"
-        />
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/register_BO_TypeOfBusiness"
@@ -247,7 +252,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Type Of Business"
+        android:hint="@string/type_of_business"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -259,7 +264,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_BO_StreetNum"
         app:layout_constraintVertical_bias="0.01"
-        />
+        android:autofillHints="" />
 
 
     <Button
