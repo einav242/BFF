@@ -15,17 +15,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-//    public void onBtnClick(View view){
-//        TextView txtFirstName = findViewById(R.id.textView2);
-//        EditText edtTxtName = findViewById(R.id.editTextName);
-//        txtFirstName.setText(edtTxtName.getText().toString());
-//
-//        TextView txtLastName = findViewById(R.id.LineDontTach);
-//        EditText edtTxtName2 = findViewById(R.id.edtTxt2);
-//        txtLastName.setText(edtTxtName2.getText().toString());
-//
-//        TextView txtEmail = findViewById(R.id.textView4);
-//        EditText edtTxtName3 = findViewById(R.id.editTxt3);
-//        txtEmail.setText(edtTxtName3.getText().toString());
-//    }
+    public void sing_in(View view)
+    {
+        setContentView(R.layout.animalwindow);
+    }
+
+    public void sing_up(View view)
+    {
+        setContentView(R.layout.activity_register);
+    }
+
+    public void forget_password(View view)
+    {
+        setContentView(R.layout.forget_password);
+    }
 }
