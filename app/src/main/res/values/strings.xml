@@ -22,4 +22,12 @@
     <string name="choose_visit_type">Choose Visit Type:</string>
     <string name="by_einav_benito_bar_goldman_niv_motilsky">By : Einav Benito , Bar Goldman , Niv Motilsky</string>
     <string name="logo">TODO</string>
+    <string name="sing_up_n">Sing Up n</string>
+    <string name="sing_up" />
+    <string name="sign_up">Sign Up</string>
+    <string name="already_account_login_here">Already Account? Login Here</string>
+    <string name="register">Register</string>
+    <string name="password_singup">Password</string>
+    <string name="email_singup">Email</string>
+    <string name="full_name_singup">Full name</string>
 </resources>
