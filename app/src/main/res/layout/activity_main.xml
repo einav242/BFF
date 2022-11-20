@@ -72,7 +72,7 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:background="@drawable/butten"
         android:text="@string/sing_in"
         android:textColor="#F8BBD0"
         app:iconTint="#7A3E3E"
@@ -89,6 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/forgot_password"
+        android:background="@drawable/butten"
         android:textColor="#F8BBD0"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,14 +103,14 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="128dp"
-        android:background="#1CF10D"
+        android:layout_marginBottom="196dp"
+        android:background="@drawable/butten"
         android:text="@string/create_a_new_account"
-        android:textColor="@color/black"
+        android:textColor="#F8BBD0"
         app:iconTint="#69CD56"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
