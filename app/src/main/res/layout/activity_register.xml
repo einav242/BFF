@@ -150,6 +150,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
+        android:clickable="false"
         android:hint="@string/already_account_login_here"
         android:textColor="#617587"
         android:textColorHint="#757575"

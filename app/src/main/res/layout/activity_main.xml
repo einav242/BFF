@@ -81,22 +81,22 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtTxt2"
-        app:layout_constraintVertical_bias="0.259"
+        app:layout_constraintVertical_bias="0.055"
         tools:ignore="MissingConstraints,TextContrastCheck" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#EAAEC2"
         android:text="@string/forgot_password"
-        android:background="@drawable/butten"
-        android:textColor="#F8BBD0"
+        android:textColor="@color/purple_700"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.123"
+        app:layout_constraintVertical_bias="0.54"
         tools:ignore="TextContrastCheck" />
 
     <Button
@@ -104,9 +104,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="196dp"
-        android:background="@drawable/butten"
+        android:backgroundTint="#EAAEC2"
         android:text="@string/create_a_new_account"
-        android:textColor="#F8BBD0"
+        android:textColor="@color/purple_700"
         app:iconTint="#69CD56"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
