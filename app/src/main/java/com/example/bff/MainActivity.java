@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,6 +36,22 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.animal:
+                if (checked)
+                    // Pirates are the best
+                    break;
+            case R.id.business:
+                if (checked)
+                    // Ninjas rule
+                    break;
+        }
     }
 }
 
