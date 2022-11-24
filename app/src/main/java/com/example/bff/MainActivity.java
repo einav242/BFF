@@ -6,14 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private Button signup;
     private Button login;
+    private boolean animal_permit=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +31,19 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+
+                startActivity(new Intent(MainActivity.this, businessActivity.class));
                 finish();
+//                if(MainActivity.this.animal_permit==false)
+//                {
+//                    startActivity(new Intent(MainActivity.this, animalActivity.class));
+//                    finish();
+//                }
+//                else
+//                {
+//                    startActivity(new Intent(MainActivity.this, businessActivity.class));
+//                    finish();
+//                }
             }
         });
     }
@@ -45,11 +55,11 @@ public class MainActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.animal:
                 if (checked)
-                    // Pirates are the best
+                    this.animal_permit=true;
                     break;
             case R.id.business:
                 if (checked)
-                    // Ninjas rule
+                    this.animal_permit=false;
                     break;
         }
     }

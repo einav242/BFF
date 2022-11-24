@@ -44,7 +44,7 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColor="@color/black"
-        android:textColorHint="#615E61"
+        android:textColorHint="#424242"
         app:layout_constraintBottom_toTopOf="@+id/edtTxt2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -61,7 +61,7 @@
         android:hint="@string/password"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textColorHint="#615E61"
+        android:textColorHint="#424242"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
@@ -190,14 +190,16 @@
             android:id="@+id/animal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="75dp"
+            android:paddingEnd="75dp"
+            android:paddingStart="0dp"
             android:text="@string/animal"
             app:layout_constraintBottom_toTopOf="@+id/editTextName"
             app:layout_constraintEnd_toStartOf="@+id/business"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView4"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            android:onClick="onRadioButtonClicked"/>
 
         <RadioButton
             android:id="@+id/business"
@@ -205,10 +207,10 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="44dp"
             android:layout_marginBottom="4dp"
-            android:paddingRight="10dp"
             android:text="@string/business_owner"
             app:layout_constraintBottom_toTopOf="@+id/editTextName"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="onRadioButtonClicked"/>
 
     </RadioGroup>
 
