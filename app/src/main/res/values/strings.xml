@@ -38,4 +38,6 @@
     <string name="continue2">Continue</string>
     <string name="continue1">continue</string>
     <string name="enter_you_email">Enter you email</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="send_email">Send Email</string>
 </resources>

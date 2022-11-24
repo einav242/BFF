@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         forget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("hi");
                 startActivity(new Intent(MainActivity.this , forget_password.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
             }
         });
