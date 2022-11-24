@@ -101,17 +101,33 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="358dp"
+        android:layout_height="57dp"
         android:layout_marginBottom="196dp"
         android:backgroundTint="#EAAEC2"
-        android:text="@string/create_a_new_account"
+        android:text="@string/create_a_new_account_for_your_animal"
         android:textColor="@color/purple_700"
         app:iconTint="#69CD56"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="358dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="136dp"
+        android:backgroundTint="#EAAEC2"
+        android:text="@string/create_a_new_account_for_your_business"
+        android:textColor="@color/purple_700"
+        app:iconTint="#69CD56"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -207,36 +223,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="44dp"
             android:layout_marginBottom="4dp"
+            android:onClick="onRadioButtonClicked"
             android:text="@string/business_owner"
             app:layout_constraintBottom_toTopOf="@+id/editTextName"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:onClick="onRadioButtonClicked"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </RadioGroup>
-
-
-    <!--        <RadioButton-->
-<!--            android:id="@+id/radioButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/animal"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/editTextName"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/radioButton3"-->
-<!--            app:layout_constraintHorizontal_bias="0.503"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/imageView4"-->
-<!--            app:layout_constraintVertical_bias="1.0" />-->
-
-<!--        <RadioButton-->
-<!--            android:id="@+id/radioButton3"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="44dp"-->
-<!--            android:layout_marginBottom="4dp"-->
-<!--            android:text="@string/business_owner"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/editTextName"-->
-<!--            app:layout_constraintEnd_toEndOf="parent" />-->
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

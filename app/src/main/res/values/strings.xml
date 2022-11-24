@@ -30,4 +30,12 @@
     <string name="password_singup">Password</string>
     <string name="email_singup">Email</string>
     <string name="full_name_singup">Full name</string>
+    <string name="create_a_new_account_for_your_animal">create a new account for your animal</string>
+    <string name="create_a_new_account_for_your_business">create a new account for your business</string>
+    <string name="remember_password">Remember Password!</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="login">Login</string>
+    <string name="continue2">Continue</string>
+    <string name="continue1">continue</string>
+    <string name="enter_you_email">Enter you email</string>
 </resources>

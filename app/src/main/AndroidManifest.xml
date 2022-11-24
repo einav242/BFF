@@ -33,7 +33,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".SingUpActivity"
+            android:name=".businessActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -41,6 +41,13 @@
         </activity>
         <activity
             android:name=".animalActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".forget_password"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

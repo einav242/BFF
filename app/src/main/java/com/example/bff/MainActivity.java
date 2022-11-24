@@ -10,40 +10,54 @@ import android.widget.RadioButton;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    private Button signup;
+    private Button singupAnimal;
     private Button login;
-    private boolean animal_permit=true;
+    private Button singupBusiness;
+    private Button forget;
+    String permit="empty";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        signup = findViewById(R.id.button3);
+        singupAnimal = findViewById(R.id.button3);
         login = findViewById(R.id.button2);
+        singupBusiness = findViewById(R.id.button4);
+        forget = findViewById(R.id.button);
 
 
-        signup.setOnClickListener(new View.OnClickListener() {
+        singupAnimal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this , Register.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            }
+        });
+        singupBusiness.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this , register_BusinessOwner.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            }
+        });
+        forget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this , forget_password.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
             }
         });
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(MainActivity.this, businessActivity.class));
-                finish();
-//                if(MainActivity.this.animal_permit==false)
-//                {
-//                    startActivity(new Intent(MainActivity.this, animalActivity.class));
-//                    finish();
-//                }
-//                else
-//                {
-//                    startActivity(new Intent(MainActivity.this, businessActivity.class));
-//                    finish();
-//                }
+                if(MainActivity.this.permit=="animal")
+                {
+                    startActivity(new Intent(MainActivity.this, animalActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                    finish();
+                }
+                else if(MainActivity.this.permit=="business")
+                {
+                    startActivity(new Intent(MainActivity.this, businessActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                    finish();
+                }
             }
         });
     }
@@ -55,26 +69,12 @@ public class MainActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.animal:
                 if (checked)
-                    this.animal_permit=true;
+                    this.permit="animal";
                     break;
             case R.id.business:
                 if (checked)
-                    this.animal_permit=false;
+                    this.permit="business";
                     break;
         }
     }
 }
-
-//    public void onBtnClick(View view){
-//        TextView txtFirstName = findViewById(R.id.textView2);
-//        EditText edtTxtName = findViewById(R.id.editTextName);
-//        txtFirstName.setText(edtTxtName.getText().toString());
-//
-//        TextView txtLastName = findViewById(R.id.LineDontTach);
-//        EditText edtTxtName2 = findViewById(R.id.edtTxt2);
-//        txtLastName.setText(edtTxtName2.getText().toString());
-//
-//        TextView txtEmail = findViewById(R.id.textView4);
-//        EditText edtTxtName3 = findViewById(R.id.editTxt3);
-//        txtEmail.setText(edtTxtName3.getText().toString());
-//    }
