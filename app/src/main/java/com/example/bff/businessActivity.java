@@ -6,24 +6,48 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class businessActivity extends AppCompatActivity {
-    EditText name, email, age;
-    Button insert, view, delete;
-    DBHelper DB;
+    private ImageButton view;
+    private ImageButton delete;
+    private ImageButton insert;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.business_window);
+        view = findViewById(R.id.imageButton5);
+        delete = findViewById(R.id.imageButton4);
+        insert = findViewById(R.id.imageButton3);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(businessActivity.this, Userlist.class));
+            }
+        });
+        insert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(businessActivity.this, addUser.class));
+            }
+        });
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(businessActivity.this, deleteUser.class));
+            }
+        });
+
+
+
     }
 
 //        name = findViewById(R.id.name);
 //        email= findViewById(R.id.email);
 //        age = findViewById(R.id.age);
-//        insert = findViewById(R.id.btnInsert);
-//        view = findViewById(R.id.btnView);
-//        delete = findViewById(R.id.btnDelete);
+
 //
 //        DB = new DBHelper(this);
 //

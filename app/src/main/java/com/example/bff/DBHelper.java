@@ -24,13 +24,13 @@ public class DBHelper extends SQLiteOpenHelper {
         DB.execSQL("drop Table if exists Userdetails");
     }
 
-    public Boolean insertuserdata(String name, String email, String age)
+    public Boolean insertuserdata(String name, String email, String id)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
         contentValues.put("email", email);
-        contentValues.put("age", age);
+        contentValues.put("id", id);
         long result = DB.insert("Userdetails", null, contentValues);
         if(result==-1)
         {
