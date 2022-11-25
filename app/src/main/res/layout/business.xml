@@ -3,159 +3,189 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    >
+
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="263dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="155dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="743dp"
-        android:text="Business Name"
-        android:textAlignment="center"
-        android:textColor="@color/teal_700"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="117dp"
-        android:layout_height="93dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="689dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/business"
-        android:contentDescription="profile" />
-
-    <ImageButton
-        android:id="@+id/plus1"
+        android:id="@+id/txtMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="348dp"
-        android:layout_marginTop="-630dp"
-        android:layout_marginEnd="-160dp"
-        android:background="#EDE9E9"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="@string/animal"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="32dp"
+        android:text="hellow business"
+        android:textColor="#EA84A7"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/information1"
+        android:textColor="#EA84A7"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageButton8"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="134dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="250dp"
+        android:text="add client"
+        android:textColor="#EA84A7"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="67dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="27dp"
+        android:text="@string/edit1"
+        android:textColor="#EA84A7"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:text="@string/business_search"
+        android:textColor="#EA84A7"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="240dp"
+        android:layout_marginBottom="460dp"
+        android:contentDescription="@string/image1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/pretty_button" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="460dp"
+        android:contentDescription="@string/button2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/pretty_button" />
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        android:layout_width="125dp"
+        android:layout_height="125sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="10dp"
+        android:contentDescription="@string/shop"
+        app:layout_constraintEnd_toEndOf="@+id/imageView11"
+        app:layout_constraintTop_toTopOf="@+id/imageView11"
+        app:srcCompat="@drawable/dogshop" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="240dp"
+        android:layout_marginBottom="230dp"
+        android:contentDescription="@string/button3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/pretty_button" />
+
+    <ImageButton
+        android:id="@+id/imageButton8"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/edit"
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:srcCompat="@drawable/edit" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="230dp"
+        android:contentDescription="@string/button4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/pretty_button" />
+
+    <ImageButton
+        android:id="@+id/imageButton10"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="10dp"
+        android:contentDescription="@string/information"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:srcCompat="@drawable/information" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="28dp"
+        android:contentDescription="@string/button5"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.517"
-        app:srcCompat="@android:drawable/ic_input_add"
-        app:tint="#131010" />
+        app:srcCompat="@drawable/pretty_button2" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="73dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="14dp"
+        android:contentDescription="@string/business_owner"
+        app:layout_constraintEnd_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toTopOf="@+id/imageView9"
+        app:srcCompat="@drawable/add_bimage" />
 
     <ImageButton
         android:id="@+id/imageButton3"
-        android:layout_width="118dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="51dp"
-        android:layout_marginEnd="262dp"
-        android:layout_marginBottom="559dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/delete"
-        android:contentDescription="delete" />
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="hello_business"
+        app:layout_constraintStart_toStartOf="@+id/imageView8"
+        app:layout_constraintTop_toTopOf="@+id/imageView8"
+        app:srcCompat="@drawable/add_client_buisness" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginBottom="539dp"
-        android:text="Remove client"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageButton
-        android:id="@+id/button4"
-        android:layout_width="145dp"
-        android:layout_height="124dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginBottom="377dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:srcCompat="@drawable/client"
-        android:contentDescription="Client" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="317dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="99dp"
-        android:layout_marginBottom="357dp"
-        android:lineSpacingExtra="24sp"
-        android:text="View existing client"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.216"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="136dp"
-        android:layout_height="134dp"
-        android:layout_marginStart="119dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginBottom="188dp"
-        android:contentDescription="Add client"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/add_client" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="151dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="198dp"
-        android:layout_marginBottom="127dp"
-        android:text="Add client"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
