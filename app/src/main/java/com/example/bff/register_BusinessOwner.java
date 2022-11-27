@@ -91,18 +91,21 @@ public class register_BusinessOwner extends AppCompatActivity {
                 String txtType = type.getText().toString();
 
                 if (TextUtils.isEmpty(txtUsername) || TextUtils.isEmpty(txtName)
-                        || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword) || TextUtils.isEmpty(txtId)){
+                        || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword) || TextUtils.isEmpty(txtId)
+                || TextUtils.isEmpty(txtPhone) || TextUtils.isEmpty(txtCity) || TextUtils.isEmpty(txtStreet)
+                || TextUtils.isEmpty(txtHouseNumber) || TextUtils.isEmpty(txtType)){
                     Toast.makeText(register_BusinessOwner.this, "Empty credentials!", Toast.LENGTH_SHORT).show();
                 } else if (txtPassword.length() < 6){
                     Toast.makeText(register_BusinessOwner.this, "Password too short!", Toast.LENGTH_SHORT).show();
                 } else {
-                    registerUser(txtUsername , txtName , txtEmail , txtPassword);
+                    registerUser(txtUsername , txtName , txtEmail , txtPassword, txtId, txtPhone, txtCity, txtStreet, txtHouseNumber, txtType);
                 }
             }
         });
     }
 
-    private void registerUser(final String username, final String name, final String email, String password) {
+    private void registerUser(final String username, final String name, final String email, String password ,String id ,String phone,
+                              String city , String street, String houseNumber, String type) {
 
         pd.setMessage("Please Wait!");
         pd.show();
@@ -116,10 +119,14 @@ public class register_BusinessOwner extends AppCompatActivity {
                 map.put("email", email);
                 map.put("username" , username);
                 map.put("id" , mAuth.getCurrentUser().getUid());
-                map.put("bio" , "");
-                map.put("imageurl" , "default");
+                map.put("businessID", id);
+                map.put("phone", phone);
+                map.put("city", city);
+                map.put("street", street);
+                map.put("houseNumber",houseNumber);
+                map.put("type",type);
 
-                mRootRef.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                mRootRef.child("Business").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
