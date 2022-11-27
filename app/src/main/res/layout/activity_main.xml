@@ -8,8 +8,8 @@
     android:addStatesFromChildren="false"
     android:alwaysDrawnWithCache="false"
     android:animateLayoutChanges="false"
-    android:background="#DF87A5"
-    android:backgroundTint="#EAAEC2"
+    android:background="#F6E8ED"
+    android:backgroundTint="#F3E4E9"
     android:backgroundTintMode="src_in"
     android:clickable="false"
     android:visibility="visible"
@@ -44,7 +44,7 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColor="@color/black"
-        android:textColorHint="#615E61"
+        android:textColorHint="#424242"
         app:layout_constraintBottom_toTopOf="@+id/edtTxt2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -61,7 +61,7 @@
         android:hint="@string/password"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textColorHint="#615E61"
+        android:textColorHint="#424242"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
@@ -78,10 +78,10 @@
         app:iconTint="#7A3E3E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtTxt2"
-        app:layout_constraintVertical_bias="0.118"
+        app:layout_constraintVertical_bias="0.055"
         tools:ignore="MissingConstraints,TextContrastCheck" />
 
     <Button
@@ -89,40 +89,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/forgot_password"
-        android:background="@drawable/butten"
-        android:textColor="#F8BBD0"
+        android:background="@android:color/transparent"
+        android:textAllCaps="false"
+        android:textColor="@color/purple_700"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.123"
+        app:layout_constraintVertical_bias="0.54"
         tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="196dp"
-        android:background="@drawable/butten"
-        android:text="@string/create_a_new_account"
-        android:textColor="#F8BBD0"
+        android:layout_width="383dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="240dp"
+        android:background="@android:color/transparent"
+        android:text="create a new account for your animal"
+        android:textAllCaps="false"
+        android:textColor="@color/purple_700"
+        android:textSize="16sp"
         app:iconTint="#69CD56"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintHorizontal_bias="0.321"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="392dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="136dp"
+        android:background="@android:color/transparent"
+        android:text="@string/create_a_new_account_for_your_business"
+        android:textAllCaps="false"
+        android:textColor="@color/purple_700"
+        android:textSize="16sp"
+        app:iconTint="#69CD56"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintVertical_bias="0.122" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="124dp"
         android:layout_height="92dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="80dp"
         android:contentDescription="@string/todo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:srcCompat="@drawable/doc" />
 
@@ -130,9 +150,10 @@
         android:id="@+id/imageView4"
         android:layout_width="115dp"
         android:layout_height="96dp"
+        android:layout_marginTop="8dp"
         android:contentDescription="@string/todo2"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.736"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:srcCompat="@drawable/profile" />
@@ -150,27 +171,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.388" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/animal"
-        app:layout_constraintBottom_toTopOf="@+id/editTextName"
-        app:layout_constraintEnd_toStartOf="@+id/radioButton3"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="4dp"
-        android:text="@string/business_owner"
-        app:layout_constraintBottom_toTopOf="@+id/editTextName"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
@@ -197,5 +197,44 @@
         app:layout_constraintVertical_bias="0.797"
         app:srcCompat="@drawable/logo" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/editTextName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
 
+        <RadioButton
+            android:id="@+id/animal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="75dp"
+            android:paddingStart="0dp"
+            android:text="@string/animal"
+            app:layout_constraintBottom_toTopOf="@+id/editTextName"
+            app:layout_constraintEnd_toStartOf="@+id/business"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:layout_constraintVertical_bias="1.0"
+            android:onClick="onRadioButtonClicked"/>
+
+        <RadioButton
+            android:id="@+id/business"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="44dp"
+            android:layout_marginBottom="4dp"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/business_owner"
+            app:layout_constraintBottom_toTopOf="@+id/editTextName"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </RadioGroup>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                 {
                     TextView txtFirstName = findViewById(R.id.textView4);
-                   txtFirstName.setText("Please select a permission");
+                    txtFirstName.setText("Please select a permission");
                 }
 
 
@@ -100,11 +100,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.animal:
                 if (checked)
                     this.permit="animal";
-                    break;
+                break;
             case R.id.business:
                 if (checked)
                     this.permit="business";
-                    break;
+                break;
         }
     }
 }

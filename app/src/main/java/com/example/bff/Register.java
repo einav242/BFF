@@ -37,6 +37,7 @@ public class Register extends AppCompatActivity {
     private DatabaseReference mRootRef;
     private FirebaseAuth mAuth;
 
+
     ProgressDialog pd;
 
     @SuppressLint("MissingInflatedId")
@@ -99,7 +100,6 @@ public class Register extends AppCompatActivity {
                 map.put("id" , mAuth.getCurrentUser().getUid());
                 map.put("bio" , "");
                 map.put("imageurl" , "default");
-
                 mRootRef.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
