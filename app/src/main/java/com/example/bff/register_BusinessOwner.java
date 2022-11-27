@@ -47,7 +47,7 @@ public class register_BusinessOwner extends AppCompatActivity {
     private DatabaseReference mRootRef;
     private FirebaseAuth mAuth;
 
-    String[] language ={"C","C++","Java",".NET","iPhone","Android","ASP.NET","PHP"};
+    String[] language ={"veterinary medicine","hairdressing salon","dog walker"};
 
     ProgressDialog pd;
 
@@ -60,10 +60,11 @@ public class register_BusinessOwner extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this,android.R.layout.select_dialog_item,language);
         //Getting the instance of AutoCompleteTextView
-        AutoCompleteTextView actv =  (AutoCompleteTextView)findViewById(R.id.register_BO_TypeOfBusiness);
+        AutoCompleteTextView actv = findViewById(R.id.register_BO_TypeOfBusiness);
         actv.setThreshold(1);//will start working from first character
         actv.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
         actv.setTextColor(Color.RED);
+
 
 
         name = findViewById(R.id.register_BO_fullName);
