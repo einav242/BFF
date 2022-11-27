@@ -252,7 +252,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:text="Type of your business"
+        android:hint="Type of business"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -272,31 +272,28 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginTop="32dp"
+        android:padding="10dp"
         android:text="@string/register"
         android:textSize="20sp"
-        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_BO_TypeOfBusiness"
-        app:layout_constraintVertical_bias="0.01"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/register_BO_TypeOfBusiness" />
 
     <TextView
         android:id="@+id/register_BO_LoginHere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="40dp"
         android:hint="@string/already_account_login_here"
         android:textColor="#617587"
         android:textColorHint="#757575"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/register_BO_Register"
-        app:layout_constraintVertical_bias="0.01"/>
-
+        app:layout_constraintTop_toBottomOf="@id/register_BO_Register" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
