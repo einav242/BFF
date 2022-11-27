@@ -59,7 +59,7 @@ public class Register extends AppCompatActivity {
         loginUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Register.this , LoginActivity.class));
+                startActivity(new Intent(Register.this , animalActivity.class));
             }
         });
 

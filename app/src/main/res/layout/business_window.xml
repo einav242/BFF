@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
-    >
+    android:background="@drawable/back_buisness">
 
 
     <TextView
@@ -13,8 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/hello_animal1"
-        android:textColor="#EA84A7"
+        android:text="hellow business"
+        android:textColor="#673AB7"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,10 +26,9 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/information1"
-        android:textColor="#EA84A7"
+        android:layout_marginStart="75dp"
+        android:text="view client"
+        android:textColor="#673AB7"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageButton8"
@@ -42,8 +40,8 @@
         android:layout_height="39dp"
         android:layout_marginStart="27dp"
         android:layout_marginEnd="250dp"
-        android:text="@string/i_got_lost"
-        android:textColor="#EA84A7"
+        android:text="add client"
+        android:textColor="#673AB7"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +55,7 @@
         android:layout_height="36dp"
         android:layout_marginStart="27dp"
         android:text="@string/edit1"
-        android:textColor="#EA84A7"
+        android:textColor="#673AB7"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,12 +65,12 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:text="@string/business_search"
-        android:textColor="#EA84A7"
+        android:layout_marginStart="75dp"
+        android:text="remove client"
+        android:textColor="#673AB7"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2"
+        app:layout_constraintStart_toEndOf="@+id/imageButton3"
         app:layout_constraintTop_toBottomOf="@+id/imageView11" />
 
     <ImageView
@@ -88,38 +86,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/pretty_button" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="11dp"
-        android:contentDescription="@string/i_got_lost"
-        app:layout_constraintEnd_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toTopOf="@+id/imageView8"
-        app:srcCompat="@drawable/sad_dog_cat" />
-
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginBottom="460dp"
         android:contentDescription="@string/button2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/pretty_button" />
-
-    <ImageButton
-        android:id="@+id/imageButton7"
-        android:layout_width="125dp"
-        android:layout_height="125sp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="10dp"
-        android:contentDescription="@string/shop"
-        app:layout_constraintEnd_toEndOf="@+id/imageView11"
-        app:layout_constraintTop_toTopOf="@+id/imageView11"
-        app:srcCompat="@drawable/dogshop" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -147,45 +123,67 @@
         android:id="@+id/imageView6"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginBottom="230dp"
         android:contentDescription="@string/button4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/pretty_button" />
 
-    <ImageButton
-        android:id="@+id/imageButton10"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="10dp"
-        android:contentDescription="@string/information"
-        app:layout_constraintEnd_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toTopOf="@+id/imageView6"
-        app:srcCompat="@drawable/information" />
-
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="59dp"
+        android:layout_marginEnd="28dp"
         android:contentDescription="@string/button5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pretty_button2" />
 
     <ImageButton
-        android:id="@+id/imageButton23"
+        android:id="@+id/imageButton"
         android:layout_width="73dp"
         android:layout_height="73dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="14dp"
-        android:contentDescription="@string/add"
+        android:contentDescription="@string/business_owner"
         app:layout_constraintEnd_toEndOf="@+id/imageView9"
         app:layout_constraintTop_toTopOf="@+id/imageView9"
-        app:srcCompat="@drawable/add_image" />
+        app:srcCompat="@drawable/add_bimage" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="hello_business"
+        app:layout_constraintStart_toStartOf="@+id/imageView8"
+        app:layout_constraintTop_toTopOf="@+id/imageView8"
+        app:srcCompat="@drawable/add_client_buisness" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="remove"
+        app:layout_constraintStart_toStartOf="@+id/imageView11"
+        app:layout_constraintTop_toTopOf="@+id/imageView11"
+        app:srcCompat="@drawable/remove_client" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="view"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:srcCompat="@drawable/view_cleint" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

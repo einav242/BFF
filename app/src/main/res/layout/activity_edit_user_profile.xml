@@ -4,31 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".Register">
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".edit_User_Profile"
+    android:background="@drawable/background">
+
 
     <TextView
-        android:id="@+id/sign_Up_title"
+        android:id="@+id/edit_user_UpdateProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sign_up"
+        android:text="Update Profile"
         android:textColor="#000"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07" />
+        app:layout_constraintVertical_bias="0.04" />
 
+
+    <ImageView
+        android:id="@+id/edit_user_image"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/profile"
+        app:layout_constraintTop_toBottomOf="@+id/edit_user_UpdateProfile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.14"
+        />
+
+    <TextView
+        android:id="@+id/edit_user_EditPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:hint="Edit Photo"
+        android:textColor="#617587"
+        android:textColorHint="#757575"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_user_image" />
 
     <EditText
-        android:id="@+id/singUp_fullName"
+        android:id="@+id/edit_user_fullName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/full_name_singup"
+        android:hint="Full Name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -38,12 +67,31 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_Up_title"
-
-        app:layout_constraintVertical_bias="0.13999999" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_user_EditPhoto"
+        app:layout_constraintVertical_bias="0.13" />
 
     <EditText
-        android:id="@+id/singUp_Email"
+        android:id="@+id/edit_user_AnimalName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Animal Name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_user_fullName"
+        app:layout_constraintVertical_bias="0.01" />
+
+    <EditText
+        android:id="@+id/edit_user_Email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -59,11 +107,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/singUp_fullName"
+        app:layout_constraintTop_toBottomOf="@+id/edit_user_AnimalName"
         app:layout_constraintVertical_bias="0.01" />
 
     <EditText
-        android:id="@+id/singUp_Password"
+        android:id="@+id/edit_user_Password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -79,38 +127,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/singUp_Email"
+        app:layout_constraintTop_toBottomOf="@+id/edit_user_Email"
         app:layout_constraintVertical_bias="0.01" />
 
-
     <Button
-        android:id="@+id/singUp_Register"
+        android:id="@+id/edit_user_Update"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
         android:layout_marginTop="32dp"
-        android:text="@string/register"
-        android:textSize="20sp"
+        android:layout_marginEnd="50dp"
+        android:onClick="update"
         android:padding="10dp"
+        android:text="UPDATE"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/singUp_Password"
-        />
-
-    <TextView
-        android:id="@+id/singUp_LoginHere"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:hint="@string/already_account_login_here"
-        android:textColor="#617587"
-        android:textColorHint="#757575"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/singUp_Register" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/edit_user_Password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
