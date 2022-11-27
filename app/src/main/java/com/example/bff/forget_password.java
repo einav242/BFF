@@ -4,71 +4,71 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.util.Patterns;
-import android.view.MenuInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
 
 import com.example.bff.R;
 
 public class forget_password extends AppCompatActivity {
 
-    EditText _txtEmail;
-    Button _send;
+    EditText etEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.forget_password);
-        _txtEmail=findViewById(R.id.et_email);
-        _send=findViewById(R.id.bt_forget);
-        _send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final String username="bffdogandcat@gmail.com";
-                final String password="bffnivbar";
-                String messageToSend="hi";
-                Properties props=new Properties();
-                props.put("mail.smtp.auth","true");
-                props.put("mail.smtp.starttls.enable","true");
-                props.put("mail.smtp.host","smtp.gmail.com");
-                props.put("mail.smtp.port",587);
-                Session session=Session.getInstance(props,new javax.mail.Authenticator(){
-                    @Override
-                    protected PasswordAuthentication getPasswordAuthentication()
-                    {
-                        return new PasswordAuthentication(username,password);
-                    }
-                });
-                try {
-                    Message msg=new MimeMessage(session);
-                    msg.setFrom(new InternetAddress(username));
-                    msg.setRecipients(Message.RecipientType.TO,InternetAddress.parse(_txtEmail.getText().toString()));
-                    msg.setSubject("sending email without opening gmail app");
-                    msg.setText(messageToSend);
-                    Transport.send(msg);
-                    System.out.println("hiiiiii");
-                    Toast.makeText(getApplicationContext(),"email send successfully",Toast.LENGTH_LONG).show();
+        setContentView(R.layout.activity_main);
 
-                } catch (MessagingException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-        StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+        viewInitializations();
+    }
+
+    void viewInitializations() {
+        etEmail = findViewById(R.id.et_email);
+
+        // To show back button in actionbar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    // Checking if the input in form is valid
+    boolean validateInput() {
+
+        if (etEmail.getText().toString().equals("")) {
+            etEmail.setError("Please Enter Email");
+            return false;
+        }
+
+        // checking the proper email format
+        if (!isEmailValid(etEmail.getText().toString())) {
+            etEmail.setError("Please Enter Valid Email");
+            return false;
+        }
+
+
+        return true;
+    }
+
+    boolean isEmailValid(String email) {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    // Hook Click Event
+
+    public void performCodeVerify (View v) {
+        if (validateInput()) {
+
+            // Input is valid, here send data to your server
+
+            String email = etEmail.getText().toString();
+
+            Intent intent = new Intent(forget_password.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            Toast.makeText(this,"Email send to Register Email Address",Toast.LENGTH_SHORT).show();
+            // Here you can call you API
+            // Check this tutorial to call server api through Google Volley Library https://handyopinion.com
+
+        }
 
     }
 
