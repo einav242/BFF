@@ -230,9 +230,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:autofillHints=""
         android:ems="10"
-        android:hint="House number"
+        android:hint="Street_number"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -243,16 +242,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_BO_Street"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintVertical_bias="0.01"
+        android:autofillHints="" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/register_BO_TypeOfBusiness"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Type of business"
+        android:text="Type of your business"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"

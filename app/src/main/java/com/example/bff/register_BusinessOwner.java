@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -44,6 +47,8 @@ public class register_BusinessOwner extends AppCompatActivity {
     private DatabaseReference mRootRef;
     private FirebaseAuth mAuth;
 
+    String[] language ={"C","C++","Java",".NET","iPhone","Android","ASP.NET","PHP"};
+
     ProgressDialog pd;
 
     @SuppressLint("MissingInflatedId")
@@ -51,6 +56,15 @@ public class register_BusinessOwner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_business_owner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item,language);
+        //Getting the instance of AutoCompleteTextView
+        AutoCompleteTextView actv =  (AutoCompleteTextView)findViewById(R.id.register_BO_TypeOfBusiness);
+        actv.setThreshold(1);//will start working from first character
+        actv.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
+        actv.setTextColor(Color.RED);
+
 
         name = findViewById(R.id.register_BO_fullName);
         businessName = findViewById(R.id.register_BO_BusinessName);
