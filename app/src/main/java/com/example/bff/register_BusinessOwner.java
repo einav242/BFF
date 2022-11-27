@@ -59,7 +59,6 @@ public class register_BusinessOwner extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this,android.R.layout.select_dialog_item,language);
-        //Getting the instance of AutoCompleteTextView
         AutoCompleteTextView actv = findViewById(R.id.register_BO_TypeOfBusiness);
         actv.setThreshold(1);//will start working from first character
         actv.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView

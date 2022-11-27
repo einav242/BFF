@@ -79,12 +79,12 @@
         android:id="@+id/button5"
         android:layout_width="259dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="176dp"
+        android:layout_marginBottom="132dp"
         android:backgroundTint="#2196F3"
         android:text="add client"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.401"
+        app:layout_constraintHorizontal_bias="0.414"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText

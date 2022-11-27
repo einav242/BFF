@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, forget_password.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
             }
         });
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,8 +98,6 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
 
-//
-//
                     });
                 }
             }
@@ -122,20 +121,6 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-//                    public void onRadioButtonClicked (View view){
-//                        // Is the button now checked?
-//                        boolean checked = ((RadioButton) view).isChecked();
-//
-//                        // Check which radio button was clicked
-//                        switch (view.getId()) {
-//                            case R.id.animal:
-//                                if (checked)
-//                                    this.permit = "animal";
-//                                break;
-//                            case R.id.business:
-//                                if (checked)
-//                                    this.permit = "business";
-//                                break;
 
 
 

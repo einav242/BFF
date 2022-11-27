@@ -73,9 +73,6 @@ public class addUser extends AppCompatActivity {
         HashMap<String , Object> map = new HashMap<>();
         map.put("bussniessemail" , mAuth.getCurrentUser().getEmail());
         map.put("email", email);
-//        map.put("phone" , phone);
-//        map.put("animalName", animalName);
-//        map.put("Date",date);
         mRootRef.child("Em").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
