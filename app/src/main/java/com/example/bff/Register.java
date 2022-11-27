@@ -27,7 +27,7 @@ import java.util.HashMap;
 
 public class Register extends AppCompatActivity {
 
-    private EditText username;
+    private EditText animalName;
     private EditText name;
     private EditText email;
     private EditText password;
@@ -46,7 +46,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        username = findViewById(R.id.singUp_AnimalName);
+        animalName = findViewById(R.id.singUp_AnimalName);
         name = findViewById(R.id.singUp_fullName);
         email = findViewById(R.id.singUp_Email);
         password = findViewById(R.id.singUp_Password);
@@ -67,7 +67,7 @@ public class Register extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String txtUsername = username.getText().toString();
+                String txtUsername = animalName.getText().toString();
                 String txtName = name.getText().toString();
                 String txtEmail = email.getText().toString();
                 String txtPassword = password.getText().toString();
@@ -98,8 +98,6 @@ public class Register extends AppCompatActivity {
                 map.put("email", email);
                 map.put("username" , username);
                 map.put("id" , mAuth.getCurrentUser().getUid());
-                map.put("bio" , "");
-                map.put("imageurl" , "default");
                 mRootRef.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
