@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".edit_User_Profile">
+    tools:context=".edit_User_Profile"
+    android:background="@drawable/background">
 
 
     <TextView
