@@ -1,77 +1,31 @@
 
 package com.example.bff;
 
-        import android.content.ContentValues;
-        import android.content.Context;
-        import android.database.Cursor;
-        import android.database.sqlite.SQLiteDatabase;
-        import android.database.sqlite.SQLiteOpenHelper;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
-        import androidx.annotation.Nullable;
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class DBHelper extends SQLiteOpenHelper {
-    public DBHelper(Context context) {
-        super(context, "Userdata.db", null, 1);
-    }
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-    @Override
-    public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("create Table Userdetails(name TEXT primary key, email TEXT, age TEXT)");
-    }
+import java.util.HashMap;
 
-    @Override
-    public void onUpgrade(SQLiteDatabase DB, int i, int ii) {
-        DB.execSQL("drop Table if exists Userdetails");
-    }
-
-    public Boolean insertuserdata(String name, String email, String id)
-    {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("name", name);
-        contentValues.put("email", email);
-        contentValues.put("id", id);
-        long result = DB.insert("Userdetails", null, contentValues);
-        if(result==-1)
-        {
-            return  false;
-        }
-        else
-        {
-            return true;
-        }
-    }
-
-    public Cursor getdata()
-    {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor  = DB.rawQuery("Select * from Userdetails", null);
-        return cursor;
-    }
-
-
-
-    public Boolean deleteuserdata(String name)
-    {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("Select * from Userdetails where name = ?", new String[]{name});
-        if(cursor.getCount()>0)
-        {
-            long result = DB.delete("Userdetails", "name=?", new String[]{name});
-            if(result==-1)
-            {
-                return  false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        else
-        {
-            return false;
-        }
-
-    }
+public class DBHelper extends AppCompatActivity {
 
 }
