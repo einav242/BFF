@@ -28,8 +28,12 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     packagingOptions {
-        exclude 'META-INF/NOTICE.md'
-        exclude 'META-INF/LICENSE.md'
+//        exclude 'META-INF/NOTICE.md'
+//        exclude 'META-INF/LICENSE.md'
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+            excludes += '/META-INF/{NOTICE.md,LICENSE.md}' // <-- This line
+        }
     }
 }
 
@@ -46,7 +50,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
-//    implementation'com.sun.mail:android-mail:1.6.0'
-//    implementation 'com.sun.mail:android-activation:1.6.0'
+//    implementation 'com.sun.mail:android-mail:1.6.6'
+//    implementation 'com.sun.mail:android-activation:1.6.6'
     implementation "com.sun.mail:android-mail:$java_mail_version"
 }

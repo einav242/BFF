@@ -58,4 +58,11 @@
     <string name="button5">TODO</string>
     <string name="add">add</string>
     <string name="hello_animal1">Hello animal</string>
+    <string name="hellow_business">hellow business</string>
+    <string name="view_client">view client</string>
+    <string name="add_client">add client</string>
+    <string name="remove_client">remove client</string>
+    <string name="hello_business">hello_business</string>
+    <string name="remove">remove</string>
+    <string name="view">view</string>
 </resources>
