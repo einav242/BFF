@@ -83,9 +83,15 @@ public class register_BusinessOwner extends AppCompatActivity {
                 String txtName = name.getText().toString();
                 String txtEmail = email.getText().toString();
                 String txtPassword = password.getText().toString();
+                String txtId = id.getText().toString();
+                String txtPhone = phone.getText().toString();
+                String txtCity = city.getText().toString();
+                String txtStreet = street.getText().toString();
+                String txtHouseNumber = house_number.getText().toString();
+                String txtType = type.getText().toString();
 
                 if (TextUtils.isEmpty(txtUsername) || TextUtils.isEmpty(txtName)
-                        || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword)){
+                        || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword) || TextUtils.isEmpty(txtId)){
                     Toast.makeText(register_BusinessOwner.this, "Empty credentials!", Toast.LENGTH_SHORT).show();
                 } else if (txtPassword.length() < 6){
                     Toast.makeText(register_BusinessOwner.this, "Password too short!", Toast.LENGTH_SHORT).show();
