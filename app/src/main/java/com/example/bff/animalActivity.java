@@ -22,7 +22,6 @@ import java.util.HashMap;
 public class animalActivity extends AppCompatActivity {
     private TextView title;
     private DatabaseReference mRootRef;
-//    private FirebaseAuth mAuth;
     private FirebaseUser mAuth;
 
     @Override
@@ -35,10 +34,8 @@ public class animalActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                HashMap<String,Object> user = dataSnapshot.getValue(HashMap.class);
-                title.setText(user.get("username").toString());
-
-
+                User user = dataSnapshot.getValue(User.class);
+                title.setText("Hello "+user.getUsername());
             }
 
             @Override
