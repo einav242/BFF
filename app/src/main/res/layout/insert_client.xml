@@ -28,7 +28,7 @@
         android:layout_marginTop="130dp"
         android:layout_marginEnd="44dp"
         android:ems="10"
-        android:hint="client Name"
+        android:hint="client ID"
         android:inputType="textPersonName"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -49,19 +49,6 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="332dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="46dp"
-        android:ems="10"
-        android:hint="animal Name"
-        android:inputType="textPersonName"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
-
-    <EditText
         android:id="@+id/editTextPhone"
         android:layout_width="332dp"
         android:layout_height="67dp"
@@ -79,12 +66,12 @@
         android:id="@+id/button5"
         android:layout_width="259dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="132dp"
+        android:layout_marginBottom="244dp"
         android:backgroundTint="#2196F3"
         android:text="add client"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintHorizontal_bias="0.394"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -98,7 +85,7 @@
         android:inputType="date"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
