@@ -23,6 +23,7 @@ public class businessActivity extends AppCompatActivity {
     private ImageButton view;
     private ImageButton delete;
     private ImageButton insert;
+    private ImageButton edit;
     private TextView title;
     private DatabaseReference mRootRef;
     private FirebaseUser mAuth;
@@ -34,6 +35,7 @@ public class businessActivity extends AppCompatActivity {
         view = findViewById(R.id.imageButton5);
         delete = findViewById(R.id.imageButton4);
         insert = findViewById(R.id.imageButton3);
+        edit = findViewById(R.id.imageButton8);
         title = findViewById(R.id.txtMessage);
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
@@ -68,7 +70,12 @@ public class businessActivity extends AppCompatActivity {
                 startActivity(new Intent(businessActivity.this, deleteUser.class));
             }
         });
-
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(businessActivity.this, editBusiness.class));
+            }
+        });
 
     }
 }

@@ -29,11 +29,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.013" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/register_BO_image"
-            android:layout_width="135dp"
-            android:layout_height="135dp"
+            android:layout_width="186dp"
+            android:layout_height="141dp"
+            android:background="@android:color/transparent"
+            android:adjustViewBounds="true"
             android:contentDescription="TODO"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -103,28 +106,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_BO_BusinessName"
-            app:layout_constraintVertical_bias="0.01" />
-
-        <EditText
-            android:id="@+id/register_BO_Password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/password_singup"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/register_BO_Email"
-            app:layout_constraintVertical_bias="0.01" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/register_BO_ID"
@@ -144,7 +126,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_BO_Password"
+            app:layout_constraintTop_toBottomOf="@+id/register_BO_Email"
             app:layout_constraintVertical_bias="0.01" />
 
         <EditText
