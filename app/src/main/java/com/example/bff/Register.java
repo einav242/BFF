@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +33,9 @@ public class Register extends AppCompatActivity {
     private EditText name;
     private EditText email;
     private EditText password;
+    private ImageButton image;
     private Button register;
+    private Button editImage;
     private TextView loginUser;
 
     private DatabaseReference mRootRef;
@@ -52,18 +55,43 @@ public class Register extends AppCompatActivity {
         email = findViewById(R.id.singUp_Email);
         password = findViewById(R.id.singUp_Password);
         register = findViewById(R.id.singUp_Register);
-        loginUser = findViewById(R.id.singUp_LoginHere);
+        loginUser = findViewById(R.id.singUp_Button_LoginHere);
+        image = findViewById(R.id.sign_Up_image);
+        editImage = findViewById(R.id.singUp_Button_EditPhoto);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
         pd = new ProgressDialog(this);
 
+
+        // if to the user have already account
         loginUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Register.this , animalActivity.class));
+                startActivity(new Intent(Register.this , MainActivity.class));
             }
         });
+
+//        //if the user click on image --> he can add new image
+
+//        image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(Register.this,));
+//            }
+//        });
+
+
+        // the same thing like image
+
+//        editImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(Register.this,));
+//            }
+//        });
+
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
