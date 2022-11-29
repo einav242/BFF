@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.04" />
 
 
-    <ImageView
+    <ImageButton
         android:id="@+id/sign_Up_image"
         android:layout_width="135dp"
         android:layout_height="135dp"
@@ -33,10 +33,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.14"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
         />
 
-    <TextView
-        android:id="@+id/singUp_EditPhoto"
+    <Button
+        android:id="@+id/singUp_Button_EditPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
@@ -44,6 +46,8 @@
         android:textColor="#617587"
         android:textColorHint="#757575"
         android:textSize="17sp"
+        android:textAllCaps="false"
+        android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_Up_image" />
@@ -145,8 +149,8 @@
         app:layout_constraintTop_toBottomOf="@id/singUp_Password"
         />
 
-    <TextView
-        android:id="@+id/singUp_LoginHere"
+    <Button
+        android:id="@+id/singUp_Button_LoginHere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
@@ -157,8 +161,7 @@
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/singUp_Register" />
-
-
+        app:layout_constraintTop_toBottomOf="@id/singUp_Register"
+        android:background="@android:color/transparent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
