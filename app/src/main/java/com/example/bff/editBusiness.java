@@ -3,11 +3,12 @@ package com.example.bff;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +23,7 @@ public class editBusiness extends AppCompatActivity {
 
     private EditText name;
     private EditText businessName;
-    private EditText email;
+    private TextView email;
     private EditText id;
     private EditText phone;
     private EditText city;
@@ -58,12 +59,12 @@ public class editBusiness extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Business user = dataSnapshot.getValue(Business.class);
-                name.setText("name:"+user.getUsername());
-                businessName.setText(user.getBusinessID());
+                name.setText(user.getName());
+                businessName.setText(user.getUsername());
                 email.setText(user.getEmail());
                 id.setText(user.getBusinessID());
                 phone.setText(user.getPhone());
-                city.setText(user.getPhone());
+                city.setText(user.getCity());
                 street.setText(user.getStreet());
                 house_number.setText(user.getHouseNumber());
                 type.setText(user.getType());
@@ -77,29 +78,55 @@ public class editBusiness extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!TextUtils.isEmpty(name.getText())) {
-                    updateName(name.getText().toString());
-                }
+                update(name.getText().toString(),businessName.getText().toString(),id.getText().toString(),phone.getText().toString(),city.getText().toString(),street.getText().toString(),
+                        house_number.getText().toString(),type.getText().toString());
+                startActivity(new Intent(editBusiness.this, businessActivity.class));
             }
         });
 
     }
 
 
-    private boolean updateName(String newName) {
+    private boolean update(String newName,String newBusinessName, String newId, String newPhone, String newCity, String newStreet, String newHouseNumber, String newType) {
         FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Business user = dataSnapshot.getValue(Business.class);
                 String email = user.getEmail();
                 String name = user.getName();
+                String businessName = user.getUsername();
+                String ID = user.getId();
+                String phone = user.getPhone();
+                String city = user.getCity();
+                String street = user.getStreet();
+                String houseNumber = user.getHouseNumber();
+                String type = user.getType();
                 if (!name.equals(newName)) {
-                    reference.child(email).child("FullName").setValue(name);
-                } else {
-                    Toast.makeText(editBusiness.this, "same name", Toast.LENGTH_SHORT).show();
+                    reference.child(mAuth.getUid()).child("name").setValue(newName);
                 }
-            }
+                if (!businessName.equals(newBusinessName)) {
+                    reference.child(mAuth.getUid()).child("username").setValue(newBusinessName);
+                }
+                if (!ID.equals(newId)) {
+                    reference.child(mAuth.getUid()).child("id").setValue(newId);
+                }
+                if (!phone.equals(newPhone)) {
+                    reference.child(mAuth.getUid()).child("phone").setValue(newPhone);
+                }
+                if (!city.equals(newCity)) {
+                    reference.child(mAuth.getUid()).child("city").setValue(newCity);
+                }
+                if (!street.equals(newStreet)) {
+                    reference.child(mAuth.getUid()).child("street").setValue(newStreet);
+                }
+                if (!houseNumber.equals(newHouseNumber)) {
+                    reference.child(mAuth.getUid()).child("houseNumber").setValue(newHouseNumber);
+                }
+                if (!type.equals(newType)) {
+                    reference.child(mAuth.getUid()).child("type").setValue(newType);
+                }
 
+            }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
