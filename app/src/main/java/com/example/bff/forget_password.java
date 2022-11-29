@@ -1,75 +1,76 @@
 package com.example.bff;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
+import android.text.TextUtils;
 import android.util.Patterns;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
 
 import com.example.bff.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class forget_password extends AppCompatActivity {
 
-    EditText _txtEmail;
-    Button _send;
+    EditText etEmail;
+    Button sendEmail;
+    private FirebaseAuth authProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forget_password);
-        _txtEmail=findViewById(R.id.et_email);
-        _send=findViewById(R.id.bt_forget);
-        _send.setOnClickListener(new View.OnClickListener() {
+
+        getSupportActionBar().setTitle("Forgat Password");
+        etEmail = findViewById(R.id.et_email);
+        sendEmail = findViewById(R.id.bt_forget);
+        sendEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String username="bffdogandcat@gmail.com";
-                final String password="bffnivbar";
-                String messageToSend="hi";
-                Properties props=new Properties();
-                props.put("mail.smtp.auth","true");
-                props.put("mail.smtp.starttls.enable","true");
-                props.put("mail.smtp.host","smtp.gmail.com");
-                props.put("mail.smtp.port",587);
-                Session session=Session.getInstance(props,new javax.mail.Authenticator(){
-                    @Override
-                    protected PasswordAuthentication getPasswordAuthentication()
-                    {
-                        return new PasswordAuthentication(username,password);
-                    }
-                });
-                try {
-                    Message msg=new MimeMessage(session);
-                    msg.setFrom(new InternetAddress(username));
-                    msg.setRecipients(Message.RecipientType.TO,InternetAddress.parse(_txtEmail.getText().toString()));
-                    msg.setSubject("sending email without opening gmail app");
-                    msg.setText(messageToSend);
-                    Transport.send(msg);
-                    System.out.println("hiiiiii");
-                    Toast.makeText(getApplicationContext(),"email send successfully",Toast.LENGTH_LONG).show();
-
-                } catch (MessagingException e) {
-                    throw new RuntimeException(e);
+                String email = etEmail.getText().toString();
+                if(TextUtils.isEmpty(email))
+                {
+                    Toast.makeText(forget_password.this,"Please enter your email",Toast.LENGTH_SHORT).show();
+                    etEmail.setError("Email is required");
+                    etEmail.requestFocus();
+                }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+                {
+                    Toast.makeText(forget_password.this,"Please enter vaild email",Toast.LENGTH_SHORT).show();
+                    etEmail.setError("Valid email is required");
+                    etEmail.requestFocus();
+                }else{
+                    resetPassword(email);
                 }
             }
         });
-        StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
 
     }
 
-}
+    private void resetPassword(String email) {
+        authProfile = FirebaseAuth.getInstance();
+        authProfile.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                  Toast.makeText(forget_password.this,"please cheke youre inbox for password resert link",Toast.LENGTH_SHORT).show();
+                  Intent intent = new Intent(forget_password.this, MainActivity.class);
+                  intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                  startActivity(intent);
+                  Toast.makeText(forget_password.this,"Email send to Register Email Address",Toast.LENGTH_SHORT).show();
+                  finish();
+                }else{
+                    Toast.makeText(forget_password.this,"Something went worng",Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
+    }
+
+    }

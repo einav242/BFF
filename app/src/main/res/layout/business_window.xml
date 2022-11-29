@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="hellow business"
+        android:text="hello business"
         android:textColor="#673AB7"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
-        android:text="view client"
+        android:text="@string/view_client"
         android:textColor="#673AB7"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -40,7 +40,7 @@
         android:layout_height="39dp"
         android:layout_marginStart="27dp"
         android:layout_marginEnd="250dp"
-        android:text="add client"
+        android:text="@string/add_client"
         android:textColor="#673AB7"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -50,23 +50,11 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="67dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="27dp"
-        android:text="@string/edit1"
-        android:textColor="#673AB7"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
-    <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
-        android:text="remove client"
+        android:text="@string/remove_client"
         android:textColor="#673AB7"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -158,7 +146,7 @@
         android:layout_height="125dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
-        android:contentDescription="hello_business"
+        android:contentDescription="@string/hello_business"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:layout_constraintTop_toTopOf="@+id/imageView8"
         app:srcCompat="@drawable/add_client_buisness" />
@@ -169,7 +157,7 @@
         android:layout_height="125dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
-        android:contentDescription="remove"
+        android:contentDescription="@string/remove"
         app:layout_constraintStart_toStartOf="@+id/imageView11"
         app:layout_constraintTop_toTopOf="@+id/imageView11"
         app:srcCompat="@drawable/remove_client" />
@@ -180,10 +168,22 @@
         android:layout_height="125dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
-        android:contentDescription="view"
+        android:contentDescription="@string/view"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
         app:layout_constraintTop_toTopOf="@+id/imageView6"
         app:srcCompat="@drawable/view_cleint" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:text="edit business"
+        android:textColor="#673AB7"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
