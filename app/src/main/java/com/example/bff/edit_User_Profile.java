@@ -37,31 +37,36 @@ public class edit_User_Profile extends AppCompatActivity {
 
         //user can change
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("User");
+        reference = FirebaseDatabase.getInstance().getReference("Users");
         edFullName = findViewById(R.id.edit_user_fullName);
         edAnimalName = findViewById(R.id.edit_user_AnimalName);
         edEmail = findViewById(R.id.edit_user_Email);
         update = findViewById(R.id.edit_user_Update);
-        FirebaseDatabase.getInstance().getReference().child("User").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
                 edFullName.setText(user.getName());
                 edAnimalName.setText(user.getUsername());
+                edEmail.setText(user.getEmail());
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-        update(edFullName.getText().toString(), edAnimalName.getText().toString());
-        startActivity(new Intent(edit_User_Profile.this, animalActivity.class));
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                update(edFullName.getText().toString(), edAnimalName.getText().toString());
+                startActivity(new Intent(edit_User_Profile.this, animalActivity.class));
+            }
+        });
     }
 
     public void update(String newFullName, String newAnimalName)
     {
-        FirebaseDatabase.getInstance().getReference().child("User").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);

@@ -25,6 +25,7 @@ import java.util.HashMap;
 public class animalActivity extends AppCompatActivity {
     private TextView title;
     private ImageButton information;
+    private ImageButton edit;
     private DatabaseReference mRootRef;
     private FirebaseUser mAuth;
 
@@ -33,6 +34,7 @@ public class animalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animalwindow);
         information = findViewById(R.id.imageButton10);
+        edit = findViewById(R.id.imageButton8);
         title = findViewById(R.id.txtMessage);
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
@@ -53,6 +55,13 @@ public class animalActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(animalActivity.this, information_page.class));
+            }
+        });
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(animalActivity.this, edit_User_Profile.class));
+
             }
         });
     }
