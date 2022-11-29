@@ -69,7 +69,6 @@ public class editBusiness extends AppCompatActivity {
                 house_number.setText(user.getHouseNumber());
                 type.setText(user.getType());
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
