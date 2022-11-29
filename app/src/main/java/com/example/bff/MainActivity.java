@@ -41,12 +41,7 @@ public class MainActivity extends AppCompatActivity {
         EditText password = findViewById(R.id.edtTxt2);
         mAuth = FirebaseAuth.getInstance();
 
-        singupAnimal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Register.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
-            }
-        });
+        singupAnimal.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Register.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)));
         singupBusiness.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
