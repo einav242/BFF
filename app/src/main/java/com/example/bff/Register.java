@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 import java.util.HashMap;
 
 public class Register extends AppCompatActivity {
@@ -72,14 +73,14 @@ public class Register extends AppCompatActivity {
             }
         });
 
-//        //if the user click on image --> he can add new image
+        //if the user click on image --> he can add new image
 
-//        image.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(Register.this,));
-//            }
-//        });
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Register.this,addImage.class));
+            }
+        });
 
 
         // the same thing like image
