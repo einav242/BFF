@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         EditText password = findViewById(R.id.edtTxt2);
         mAuth = FirebaseAuth.getInstance();
 
-
         singupAnimal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         forget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("hi");
                 startActivity(new Intent(MainActivity.this, forget_password.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
             }
         });
@@ -78,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (TextUtils.isEmpty(passwordE)) {
                     password.setError("Password cannot be empty");
                     password.requestFocus();
-                } else {
+                } else{
                     mAuth.signInWithEmailAndPassword(username, passwordE).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
