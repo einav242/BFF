@@ -46,7 +46,25 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
-//    implementation'com.sun.mail:android-mail:1.6.0'
-//    implementation 'com.sun.mail:android-activation:1.6.0'
+//    implementation 'com.sun.mail:android-mail:1.6.6'
+//    implementation 'com.sun.mail:android-activation:1.6.6'
     implementation "com.sun.mail:android-mail:$java_mail_version"
+
+
+
+    //bar add for edit profile image
+// 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+//    implementation 'com.theartofdev.edmodo:android-image-cropper:2.4.+'
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.0'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    //Cloud storage
+    implementation 'com.google.firebase:firebase-storage:20.1.0'
+    implementation 'com.squareup.picasso:2.71828'
+
+
+
+
+
+
+
 }
