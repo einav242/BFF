@@ -92,7 +92,6 @@ public class editBusiness extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Business user = dataSnapshot.getValue(Business.class);
-                String email = user.getEmail();
                 String name = user.getName();
                 String businessName = user.getUsername();
                 String ID = user.getId();

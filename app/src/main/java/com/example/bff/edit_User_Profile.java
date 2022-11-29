@@ -1,23 +1,32 @@
 package com.example.bff;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class edit_User_Profile extends AppCompatActivity {
 
-    EditText edFullName, edAnimalName, edEmail , edPassword ;
-
-    String _FULLNAME, _ANIMALNAME, _EMAIL, _PASSWORD;
-
+    EditText edFullName;
+    EditText edAnimalName;
+    TextView edEmail;
+    private Button update;
+    private FirebaseUser mAuth;
     DatabaseReference reference; //for the database that save already
 
 
@@ -27,72 +36,49 @@ public class edit_User_Profile extends AppCompatActivity {
         setContentView(R.layout.activity_edit_user_profile);
 
         //user can change
-        reference = FirebaseDatabase.getInstance().getReference("user");
-
+        mAuth = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("User");
         edFullName = findViewById(R.id.edit_user_fullName);
         edAnimalName = findViewById(R.id.edit_user_AnimalName);
         edEmail = findViewById(R.id.edit_user_Email);
-        edPassword = findViewById(R.id.edit_user_Password);
+        update = findViewById(R.id.edit_user_Update);
+        FirebaseDatabase.getInstance().getReference().child("User").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                edFullName.setText(user.getName());
+                edAnimalName.setText(user.getUsername());
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        viewInitializations();
+            }
+        });
+        update(edFullName.getText().toString(), edAnimalName.getText().toString());
+        startActivity(new Intent(edit_User_Profile.this, animalActivity.class));
     }
 
-    void viewInitializations() {
-        edFullName = findViewById(R.id.edit_user_fullName);
-        edAnimalName = findViewById(R.id.edit_user_AnimalName);
-        edEmail = findViewById(R.id.edit_user_Email);
-        edPassword = findViewById(R.id.edit_user_Password);
+    public void update(String newFullName, String newAnimalName)
+    {
+        FirebaseDatabase.getInstance().getReference().child("User").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                String fullName = user.getName();
+                String animalName = user.getUsername();
+                if (!fullName.equals(newFullName)) {
+                    reference.child(mAuth.getUid()).child("name").setValue(newFullName);
+                }
+                if (!animalName.equals(newAnimalName)) {
+                    reference.child(mAuth.getUid()).child("username").setValue(newAnimalName);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        // To show back button in actionbar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            }
+        });
+
     }
-
-
-
-    //update data
-    // you cant change the primary ket (Email)
-    public void update(View view){
-
-        if(isfullNameChanged() || isanimelNameChanged() || isPasswordChanged()){
-            Toast.makeText(this,"Profile Update Successfully",Toast.LENGTH_LONG).show();
-        }
-        else Toast.makeText(this,"Data is same and can not be updated",Toast.LENGTH_LONG).show();
-    }
-
-    private boolean isPasswordChanged() {
-        if(!_PASSWORD.equals(edPassword.getText().toString())){
-            reference.child(_EMAIL).child("password").setValue(edPassword.getText().toString());
-            _PASSWORD = edPassword.getText().toString();
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    private boolean isanimelNameChanged() {
-        if(!_ANIMALNAME.equals(edAnimalName.getText().toString())){
-            // Check what the primary key is _Email , how animalName is in the data
-            reference.child(_EMAIL).child("animalName").setValue(edAnimalName.getText().toString());
-            _ANIMALNAME = edAnimalName.getText().toString();
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    private boolean isfullNameChanged() {
-        if(!_FULLNAME.equals(edFullName.getText().toString())){
-            // Check what the primary key is _Email , how animalName is in the data
-            reference.child(_EMAIL).child("FullName").setValue(edFullName.getText().toString());
-            _FULLNAME = edFullName.getText().toString();
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
 }
