@@ -104,7 +104,7 @@
         android:id="@+id/button3"
         android:layout_width="383dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginBottom="236dp"
         android:background="@android:color/transparent"
         android:text="create a new account for your animal"
         android:textAllCaps="false"
