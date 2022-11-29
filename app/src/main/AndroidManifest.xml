@@ -70,13 +70,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MyAdapter"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".Userlist"
             android:exported="false">
             <meta-data
