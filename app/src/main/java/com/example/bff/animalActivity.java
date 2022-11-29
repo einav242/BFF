@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +24,7 @@ import java.util.HashMap;
 
 public class animalActivity extends AppCompatActivity {
     private TextView title;
+    private ImageButton information;
     private DatabaseReference mRootRef;
     private FirebaseUser mAuth;
 
@@ -28,6 +32,7 @@ public class animalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animalwindow);
+        information = findViewById(R.id.imageButton10);
         title = findViewById(R.id.txtMessage);
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
@@ -41,6 +46,13 @@ public class animalActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        information.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(animalActivity.this, information_page.class));
             }
         });
     }
