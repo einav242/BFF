@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.04" />
 
 
-    <ImageButton
+    <ImageView
         android:id="@+id/edit_user_image"
         android:layout_width="135dp"
         android:layout_height="135dp"
