@@ -176,8 +176,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pretty_button2" />
 
-    <ImageButton
-        android:id="@+id/imageButton23"
+    <ImageView
+        android:id="@+id/edit_user_image"
         android:layout_width="73dp"
         android:layout_height="73dp"
         android:layout_marginTop="12dp"
