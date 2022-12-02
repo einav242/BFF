@@ -31,18 +31,18 @@ public class deleteUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.remove_client);
-        ID = findViewById(R.id.editTextTextEmailAddress);
-        delete = findViewById(R.id.button5);
-        pd = new ProgressDialog(this);
-        mRootRef = FirebaseDatabase.getInstance().getReference();
-        mAuth = FirebaseAuth.getInstance();
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleter(ID.getText().toString());
-
-               }
-        });
+//        ID = findViewById(R.id.editTextTextEmailAddress);
+//        delete = findViewById(R.id.button5);
+//        pd = new ProgressDialog(this);
+//        mRootRef = FirebaseDatabase.getInstance().getReference();
+//        mAuth = FirebaseAuth.getInstance();
+//        delete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                deleter(ID.getText().toString());
+//
+//               }
+//        });
     }
 
     private void deleter(String ID) {

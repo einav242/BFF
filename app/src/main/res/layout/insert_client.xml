@@ -1,91 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_buisness">
+    android:background="@drawable/back_buisness"
+    tools:context=".addUser"
+    android:layout_margin="10dp">
+
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="Please enter your client details  "
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="26dp"
         android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="332dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="130dp"
-        android:layout_marginEnd="44dp"
-        android:ems="10"
-        android:hint="client ID"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="332dp"
-        android:layout_height="67dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ClientnEmail"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="46dp"
-        android:ems="10"
-        android:hint="client Email"
-        android:inputType="textEmailAddress"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
-
+        android:layout_below="@id/textView"
+        android:textSize="20dp"
+        android:hint="Enter email"/>
     <EditText
-        android:id="@+id/editTextPhone"
-        android:layout_width="332dp"
-        android:layout_height="67dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ClientnPhone"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="46dp"
-        android:ems="10"
-        android:hint="client phone Namber"
-        android:inputType="phone"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        android:textSize="20dp"
+        android:hint="Enter phone"
+        android:layout_below="@id/ClientnEmail"/>
 
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="259dp"
-        android:layout_height="58dp"
-        android:layout_marginBottom="244dp"
+        android:id="@+id/buttinset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:backgroundTint="#2196F3"
         android:text="add client"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.394"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_below="@id/ClientnPhone"/>
 
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="332dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="46dp"
-        android:ems="10"
-        android:hint="last visit"
-        android:inputType="date"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+    <Button
+        android:id="@+id/buttview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttinset"
+        android:backgroundTint="#2196F3"
+        android:text="view clients" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

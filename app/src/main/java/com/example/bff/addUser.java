@@ -27,8 +27,10 @@ import java.util.HashMap;
 
 
 public class addUser extends AppCompatActivity {
-    EditText ID, email, phone, date;
-    Button add;
+    Button add,btnview;
+    EditText emailclin,phoneclin;
+    String id;
+
     private DatabaseReference mRootRef;
     private FirebaseAuth mAuth;
     ProgressDialog pd;
@@ -39,69 +41,51 @@ public class addUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.insert_client);
-        ID = findViewById(R.id.editTextTextPersonName);
-        email = findViewById(R.id.editTextTextEmailAddress);
-        phone = findViewById(R.id.editTextPhone);
-        date = findViewById(R.id.editTextDate);
-        add =findViewById(R.id.button5);
+        emailclin = findViewById(R.id.ClientnEmail);
+        phoneclin = findViewById(R.id.ClientnPhone);
+        add =findViewById(R.id.buttinset);
+        btnview=findViewById(R.id.buttview);
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
         pd = new ProgressDialog(this);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String txtID = ID.getText().toString();
-                String txtEmail = email.getText().toString();
-                String txtphone = phone.getText().toString();
-                String txtDate = date.getText().toString();
+                String txtEmail = emailclin.getText().toString();
+                String txtphone = phoneclin.getText().toString();
 
-                if (TextUtils.isEmpty(txtID)
-                        || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtphone) || TextUtils.isEmpty(txtDate)){
+                if ( TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtphone) ){
                     Toast.makeText(addUser.this, "Empty credentials!", Toast.LENGTH_SHORT).show();
                 } else {
-                    addUsersD(txtID , txtEmail , txtphone,txtDate);
+                    addUsersD(txtEmail , txtphone);
                 }
+            }
+        });
+        btnview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(addUser.this, Clientlist.class));
+                finish();
             }
         });
     }
-    private void addUsersD(final String ID, final String email, String phone,String date){
-        pd.setMessage("Please Wait!");
+    private void addUsersD( final String email, String phone){
         pd.show();
-        mRootRef = FirebaseDatabase.getInstance().getReference();
-        FirebaseDatabase.getInstance().getReference().child("Em").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Em user = dataSnapshot.getValue(Em.class);
-                if (user==null)
-                {
-                    user=new Em();
-                }
-                Client client=new Client(phone,date,email);
-                user.getClients().put(ID,client);
-                HashMap<String , Object> map = new HashMap<>();
-                map.put("bussniessemail" , mAuth.getCurrentUser().getEmail());
-                map.put("clients",user.getClients());
-                mRootRef.child("Em").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            pd.dismiss();
-                            Toast.makeText(addUser.this, "Update the profile " +
-                                    "for better expereince", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(addUser.this , businessActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
-                });
-            }
+        id=mRootRef.push().getKey();
 
+        Client client=new Client(phone,email);
+        FirebaseDatabase.getInstance().getReference().child("Em").child(mAuth.getUid()).child(id).setValue(client).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    pd.dismiss();
+                    Toast.makeText(addUser.this,"Client insert",Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
+
+
 
     }
 }

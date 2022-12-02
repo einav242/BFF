@@ -19,6 +19,9 @@ public class User {
         this.id = id;
     }
 
+    public User(String name, String country, double weight, String somthing, String somthin2) {
+    }
+
     public String getName() {
         return name;
     }
