@@ -97,29 +97,35 @@
         android:contentDescription="@string/i_got_lost"
         app:layout_constraintEnd_toEndOf="@+id/imageView8"
         app:layout_constraintTop_toTopOf="@+id/imageView8"
-        app:srcCompat="@drawable/sad_dog_cat" />
+        app:srcCompat="@drawable/lost"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"/>
 
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="51dp"
         android:layout_marginBottom="460dp"
         android:contentDescription="@string/button2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/pretty_button" />
+        app:srcCompat="@drawable/pretty_button"
+
+        />
 
     <ImageButton
         android:id="@+id/imageButton7"
         android:layout_width="125dp"
         android:layout_height="125sp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="10dp"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/shop"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="@+id/imageView11"
+        app:layout_constraintStart_toStartOf="@+id/imageView11"
         app:layout_constraintTop_toTopOf="@+id/imageView11"
-        app:srcCompat="@drawable/dogshop" />
+        app:srcCompat="@drawable/shope" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -141,7 +147,9 @@
         android:contentDescription="@string/edit"
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:srcCompat="@drawable/edit" />
+        app:srcCompat="@drawable/edit"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"/>
 
     <ImageView
         android:id="@+id/imageView6"
@@ -163,7 +171,9 @@
         android:contentDescription="@string/information"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toTopOf="@+id/imageView6"
-        app:srcCompat="@drawable/information" />
+        app:srcCompat="@drawable/informshion"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"/>
 
     <ImageView
         android:id="@+id/imageView9"

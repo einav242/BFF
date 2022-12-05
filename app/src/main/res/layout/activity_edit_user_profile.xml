@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".edit_User_Profile"
-    android:background="@drawable/background">
+    android:background="#f1dff2">
 
 
     <TextView
@@ -119,6 +119,8 @@
         android:padding="10dp"
         android:text="UPDATE"
         android:textSize="20sp"
+        android:background="@drawable/colorbutton"
+        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
