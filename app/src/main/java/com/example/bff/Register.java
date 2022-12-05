@@ -57,8 +57,8 @@ public class Register extends AppCompatActivity {
         password = findViewById(R.id.singUp_Password);
         register = findViewById(R.id.singUp_Register);
         loginUser = findViewById(R.id.singUp_Button_LoginHere);
-        image = findViewById(R.id.sign_Up_image);
-        editImage = findViewById(R.id.singUp_Button_EditPhoto);
+        image = findViewById(R.id.edit_user_image);
+//        editImage = findViewById(R.id.singUp_Button_EditPhoto);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();

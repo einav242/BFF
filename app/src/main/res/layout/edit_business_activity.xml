@@ -38,7 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_BO_title"
-            app:srcCompat="@drawable/doc" />
+            app:srcCompat="@drawable/vetuser" />
 
         <EditText
             android:id="@+id/register_BO_fullName"

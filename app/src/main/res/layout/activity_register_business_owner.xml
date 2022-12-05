@@ -42,20 +42,20 @@
         app:srcCompat="@drawable/vetuser"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/register_BO_EditPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:hint="Edit photo"
-        android:textAllCaps="false"
-        android:textColor="#617587"
-        android:textColorHint="#757575"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_BO_image"
-        app:layout_goneMarginTop="80dp" />
+<!--    <Button-->
+<!--        android:id="@+id/register_BO_EditPhoto"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:hint="Edit photo"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:textColor="#617587"-->
+<!--        android:textColorHint="#757575"-->
+<!--        android:textSize="17sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/register_BO_image"-->
+<!--        app:layout_goneMarginTop="80dp" />-->
 
     <EditText
         android:id="@+id/register_BO_fullName"

@@ -78,11 +78,11 @@ public class register_BusinessOwner extends AppCompatActivity {
         city = findViewById(R.id.register_BO_City);
         street = findViewById(R.id.register_BO_Street);
         house_number = findViewById(R.id.register_BO_StreetNum);
-        type = findViewById(R.id.register_BO_TypeOfBusiness);
+//        type = findViewById(R.id.register_BO_TypeOfBusiness);
         register = findViewById(R.id.register_BO_Register);
         loginUser = findViewById(R.id.register_BO_LoginHere);
         imageB = findViewById(R.id.register_BO_image);
-        editImage = findViewById(R.id.register_BO_EditPhoto);
+//        editImage = findViewById(R.id.register_BO_EditPhoto);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();

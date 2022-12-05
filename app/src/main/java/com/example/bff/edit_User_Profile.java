@@ -78,6 +78,8 @@ public class edit_User_Profile extends AppCompatActivity {
             }
         });
 
+
+        //for add Images
         profilePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,7 +135,7 @@ public class edit_User_Profile extends AppCompatActivity {
 
     }
 
-
+    //for add Image
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

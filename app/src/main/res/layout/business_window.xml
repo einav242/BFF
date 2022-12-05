@@ -101,9 +101,11 @@
         android:layout_width="125dp"
         android:layout_height="125dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/edit"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
         app:srcCompat="@drawable/edit" />
 
@@ -130,7 +132,7 @@
         app:srcCompat="@drawable/pretty_button2" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/register_BO_title"
         android:layout_width="73dp"
         android:layout_height="73dp"
         android:layout_marginTop="12dp"
@@ -149,7 +151,9 @@
         android:contentDescription="@string/hello_business"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:layout_constraintTop_toTopOf="@+id/imageView8"
-        app:srcCompat="@drawable/add_client_buisness" />
+        app:srcCompat="@drawable/add_user"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"/>
 
     <ImageButton
         android:id="@+id/imageButton4"
@@ -160,7 +164,9 @@
         android:contentDescription="@string/remove"
         app:layout_constraintStart_toStartOf="@+id/imageView11"
         app:layout_constraintTop_toTopOf="@+id/imageView11"
-        app:srcCompat="@drawable/remove_client" />
+        app:srcCompat="@drawable/remove_user"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"/>
 
     <ImageButton
         android:id="@+id/imageButton5"
@@ -171,7 +177,10 @@
         android:contentDescription="@string/view"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
         app:layout_constraintTop_toTopOf="@+id/imageView6"
-        app:srcCompat="@drawable/view_cleint" />
+        app:srcCompat="@drawable/search"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        />
 
     <TextView
         android:id="@+id/textView2"
