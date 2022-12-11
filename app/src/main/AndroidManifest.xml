@@ -15,6 +15,13 @@
         android:theme="@style/Theme.BFF"
         tools:targetApi="31">
         <activity
+            android:name=".get_lost"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Clientlist"
             android:exported="false">
             <meta-data

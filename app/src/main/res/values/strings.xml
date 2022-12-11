@@ -68,19 +68,4 @@
     <string name="dogs_and_cats_and_everything_in_between">Dogs and cats and everything in between</string>
     <string name="clicking_on_the_following_button_will_take_you_to_the_pafiz_website">Clicking on the following button will take you to the \'Pafiz\' website</string>
     <string name="edit_photo">Edit Photo</string>
-    <string name="triangle">Triangle</string>
-    <string name="all">All</string>
-    <string name="square">Square</string>
-    <string name="octagon">Octagon</string>
-    <string name="rectangle">Rectangle</string>
-    <string name="circle">Circle</string>
-    <string name="veterinary_medicine">veterinary medicine</string>
-    <string name="dog_walker">dog walker</string>
-    <string name="hairdressing_salon">hairdressing salon</string>
-    <string name="hairdressing_salon1">hairdressing salon</string>
-    <string name="hair">hair</string>
-    <string name="dog">dog</string>
-    <string name="veterinary_medicine1">veterinary medicine</string>
-    <string name="dog_walker1">dog walker</string>
-    <string name="vet">vet</string>
 </resources>
