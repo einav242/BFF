@@ -74,4 +74,8 @@
     <string name="dog_walker1">dog_walker1</string>
     <string name="dog">dog</string>
     <string name="vet">vet</string>
+    <string name="phone">Phone:</string>
+    <string name="business_name">Business Name:</string>
+    <string name="buttonn">Button</string>
+    <string name="all">All</string>
 </resources>

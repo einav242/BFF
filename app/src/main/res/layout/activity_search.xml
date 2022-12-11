@@ -121,62 +121,77 @@
         app:layout_constraintTop_toTopOf="@+id/textView22" />
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="539dp"
+        android:layout_width="410dp"
+        android:layout_height="487dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="107dp"
+            android:layout_height="96dp"
+            android:src="@drawable/shope" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_margin="16dp"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Business Name:"
-                android:textSize="24dp"
+                android:text="@string/business_name"
                 android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/textviewemail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="24sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_margin="16dp"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Phone:"
-                android:textSize="24dp"
+                android:text="@string/phone"
                 android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/textviewPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="24sp" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="Button"
-            app:layout_constraintStart_toStartOf="parent" />
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="406dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#B485BC"
+        android:text="@string/all"
+        android:textColor="#3E2723"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <!--    <LinearLayout-->
 <!--        android:layout_width="match_parent"-->
