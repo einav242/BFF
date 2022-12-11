@@ -93,7 +93,5 @@ public class Clientlist extends AppCompatActivity {
         mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(valueEventListener);
 
 
-
-
     }
 }
