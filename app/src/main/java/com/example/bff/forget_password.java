@@ -59,12 +59,12 @@ public class forget_password extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                  Toast.makeText(forget_password.this,"please cheke youre inbox for password resert link",Toast.LENGTH_SHORT).show();
-                  Intent intent = new Intent(forget_password.this, MainActivity.class);
-                  intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                  startActivity(intent);
-                  Toast.makeText(forget_password.this,"Email send to Register Email Address",Toast.LENGTH_SHORT).show();
-                  finish();
+                    Toast.makeText(forget_password.this,"please cheke youre inbox for password resert link",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(forget_password.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    Toast.makeText(forget_password.this,"Email send to Register Email Address",Toast.LENGTH_SHORT).show();
+                    finish();
                 }else{
                     Toast.makeText(forget_password.this,"Something went worng",Toast.LENGTH_SHORT).show();
 
@@ -73,4 +73,4 @@ public class forget_password extends AppCompatActivity {
         });
     }
 
-    }
+}

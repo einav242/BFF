@@ -29,9 +29,9 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
 
     @Override
     public void onBindViewHolder(@NonNull ClientVH holder, int position) {
-       Client c= lst.get(position);
-       holder.Email.setText(c.getEmail());
-       holder.Phone.setText(c.getPhone());
+        Client c= lst.get(position);
+        holder.Email.setText(c.getEmail());
+        holder.Phone.setText(c.getPhone());
 
     }
 

@@ -226,4 +226,3 @@ public class editBusiness extends AppCompatActivity {
 
 
 }
-

@@ -65,4 +65,7 @@
     <string name="hello_business">hello_business</string>
     <string name="remove">remove</string>
     <string name="view">view</string>
+    <string name="dogs_and_cats_and_everything_in_between">Dogs and cats and everything in between</string>
+    <string name="clicking_on_the_following_button_will_take_you_to_the_pafiz_website">Clicking on the following button will take you to the \'Pafiz\' website</string>
+    <string name="edit_photo">Edit Photo</string>
 </resources>

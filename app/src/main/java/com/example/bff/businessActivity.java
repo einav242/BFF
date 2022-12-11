@@ -73,7 +73,7 @@ public class businessActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Business user = dataSnapshot.getValue(Business.class);
-                title.setText("Hello ");
+                title.setText("Hello "+user.getUsername());
             }
 
             @Override
@@ -173,4 +173,3 @@ public class businessActivity extends AppCompatActivity {
 
     }
 }
-

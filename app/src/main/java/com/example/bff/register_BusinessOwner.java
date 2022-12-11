@@ -131,8 +131,8 @@ public class register_BusinessOwner extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(txtUsername) || TextUtils.isEmpty(txtName)
                         || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword) || TextUtils.isEmpty(txtId)
-                || TextUtils.isEmpty(txtPhone) || TextUtils.isEmpty(txtCity) || TextUtils.isEmpty(txtStreet)
-                || TextUtils.isEmpty(txtHouseNumber) || TextUtils.isEmpty(txtType)){
+                        || TextUtils.isEmpty(txtPhone) || TextUtils.isEmpty(txtCity) || TextUtils.isEmpty(txtStreet)
+                        || TextUtils.isEmpty(txtHouseNumber) || TextUtils.isEmpty(txtType)){
                     Toast.makeText(register_BusinessOwner.this, "Empty credentials!", Toast.LENGTH_SHORT).show();
                 } else if (txtPassword.length() < 6){
                     Toast.makeText(register_BusinessOwner.this, "Password too short!", Toast.LENGTH_SHORT).show();

@@ -97,12 +97,12 @@ public class addImage extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 pd.dismiss();
-               riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                   @Override
-                   public void onSuccess(Uri uri) {
-                       Picasso.get().load(uri).into(profilePic);
-                   }
-               });
+                riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).into(profilePic);
+                    }
+                });
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override

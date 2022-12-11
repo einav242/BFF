@@ -168,4 +168,3 @@ public class animalActivity extends AppCompatActivity {
 
 }
 
-
