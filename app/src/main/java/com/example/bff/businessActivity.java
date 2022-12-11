@@ -42,6 +42,7 @@ public class businessActivity extends AppCompatActivity {
     private TextView title;
     private DatabaseReference mRootRef;
     private FirebaseUser mAuth;
+    private Button logOut;
 
     private FirebaseAuth fAuth;
     private ImageView profilePic;
@@ -60,6 +61,7 @@ public class businessActivity extends AppCompatActivity {
         edit = findViewById(R.id.imageButton8);
         title = findViewById(R.id.txtMessage);
         profilePic = findViewById(R.id.register_BO_title);
+        logOut = findViewById(R.id.singUp_LogOut);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
@@ -120,6 +122,16 @@ public class businessActivity extends AppCompatActivity {
             }
         });
 
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(businessActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(businessActivity.this , "Logout Successful",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     //for add Image
