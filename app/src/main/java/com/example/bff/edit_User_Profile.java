@@ -4,12 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,6 +39,7 @@ public class edit_User_Profile extends AppCompatActivity {
 
     EditText edFullName;
     EditText edAnimalName;
+    EditText editPhone;
     TextView edEmail;
     private Button update;
     private FirebaseUser mAuth;
@@ -64,6 +65,7 @@ public class edit_User_Profile extends AppCompatActivity {
         edFullName = findViewById(R.id.edit_user_fullName);
         edAnimalName = findViewById(R.id.edit_user_AnimalName);
         edEmail = findViewById(R.id.edit_user_Email);
+        editPhone = findViewById(R.id.editTxtPhone);
         update = findViewById(R.id.edit_user_Update);
         profilePic = findViewById(R.id.edit_user_image);
 
@@ -97,6 +99,7 @@ public class edit_User_Profile extends AppCompatActivity {
                 edFullName.setText(user.getName());
                 edAnimalName.setText(user.getUsername());
                 edEmail.setText(user.getEmail());
+                editPhone.setText(user.getPhone());
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -106,13 +109,13 @@ public class edit_User_Profile extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                update(edFullName.getText().toString(), edAnimalName.getText().toString());
+                update(edFullName.getText().toString(), edAnimalName.getText().toString(), editPhone.getText().toString());
                 startActivity(new Intent(edit_User_Profile.this, animalActivity.class));
             }
         });
     }
 
-    public void update(String newFullName, String newAnimalName)
+    public void update(String newFullName, String newAnimalName, String newPhone)
     {
         FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -120,11 +123,15 @@ public class edit_User_Profile extends AppCompatActivity {
                 User user = dataSnapshot.getValue(User.class);
                 String fullName = user.getName();
                 String animalName = user.getUsername();
+                String phone = user.getPhone();
                 if (!fullName.equals(newFullName)) {
                     reference.child(mAuth.getUid()).child("name").setValue(newFullName);
                 }
                 if (!animalName.equals(newAnimalName)) {
                     reference.child(mAuth.getUid()).child("username").setValue(newAnimalName);
+                }
+                if (!phone.equals(newPhone)) {
+                    reference.child(mAuth.getUid()).child("phone").setValue(newPhone);
                 }
             }
             @Override

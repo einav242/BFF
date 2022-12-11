@@ -35,6 +35,7 @@ public class Register extends AppCompatActivity {
     private EditText name;
     private EditText email;
     private EditText password;
+    private EditText phone;
     private ImageButton image;
     private Button register;
     private Button editImage;
@@ -57,6 +58,7 @@ public class Register extends AppCompatActivity {
         name = findViewById(R.id.singUp_fullName);
         email = findViewById(R.id.singUp_Email);
         password = findViewById(R.id.singUp_Password);
+        phone = findViewById(R.id.editTextPhone);
         register = findViewById(R.id.singUp_Register);
         loginUser = findViewById(R.id.singUp_Button_LoginHere);
         image = findViewById(R.id.sign_Up_image);
@@ -103,20 +105,21 @@ public class Register extends AppCompatActivity {
                 String txtName = name.getText().toString();
                 String txtEmail = email.getText().toString();
                 String txtPassword = password.getText().toString();
+                String txtPhone = phone.getText().toString();
 
                 if (TextUtils.isEmpty(txtUsername) || TextUtils.isEmpty(txtName)
-                        || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword)){
+                        || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword) || TextUtils.isEmpty(txtPhone)){
                     Toast.makeText(Register.this, "Empty credentials!", Toast.LENGTH_SHORT).show();
                 } else if (txtPassword.length() < 6){
                     Toast.makeText(Register.this, "Password too short!", Toast.LENGTH_SHORT).show();
                 } else {
-                    registerUser(txtUsername , txtName , txtEmail , txtPassword);
+                    registerUser(txtUsername , txtName , txtEmail , txtPassword, txtPhone);
                 }
             }
         });
     }
 
-    private void registerUser(final String username, final String name, final String email, String password) {
+    private void registerUser(final String username, final String name, final String email, String password, String phone) {
 
         pd.setMessage("Please Wait!");
         pd.show();
@@ -129,6 +132,7 @@ public class Register extends AppCompatActivity {
                 map.put("name" , name);
                 map.put("email", email);
                 map.put("username" , username);
+                map.put("phone",phone);
                 map.put("flag","animal");
                 map.put("id" , mAuth.getCurrentUser().getUid());
                 mRootRef.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -41,6 +41,7 @@ public class register_BusinessOwner extends AppCompatActivity {
     private EditText street;
     private EditText house_number;
     private EditText type;
+    private EditText time;
 
     private Button register;
     private Button editImage;
@@ -67,8 +68,6 @@ public class register_BusinessOwner extends AppCompatActivity {
         actv.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
         actv.setTextColor(Color.RED);
 
-
-
         name = findViewById(R.id.register_BO_fullName);
         businessName = findViewById(R.id.register_BO_BusinessName);
         email = findViewById(R.id.register_BO_Email);
@@ -78,7 +77,8 @@ public class register_BusinessOwner extends AppCompatActivity {
         city = findViewById(R.id.register_BO_City);
         street = findViewById(R.id.register_BO_Street);
         house_number = findViewById(R.id.register_BO_StreetNum);
-//        type = findViewById(R.id.register_BO_TypeOfBusiness);
+        time = findViewById(R.id.editTextTextPersonName);
+        type = findViewById(R.id.register_BO_TypeOfBusiness);
         register = findViewById(R.id.register_BO_Register);
         loginUser = findViewById(R.id.register_BO_LoginHere);
         imageB = findViewById(R.id.register_BO_image);
@@ -128,23 +128,24 @@ public class register_BusinessOwner extends AppCompatActivity {
                 String txtStreet = street.getText().toString();
                 String txtHouseNumber = house_number.getText().toString();
                 String txtType = type.getText().toString();
+                String txtTime = time.getText().toString();
 
                 if (TextUtils.isEmpty(txtUsername) || TextUtils.isEmpty(txtName)
                         || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword) || TextUtils.isEmpty(txtId)
                         || TextUtils.isEmpty(txtPhone) || TextUtils.isEmpty(txtCity) || TextUtils.isEmpty(txtStreet)
-                        || TextUtils.isEmpty(txtHouseNumber) || TextUtils.isEmpty(txtType)){
+                        || TextUtils.isEmpty(txtHouseNumber) || TextUtils.isEmpty(txtType) || TextUtils.isEmpty(txtTime)){
                     Toast.makeText(register_BusinessOwner.this, "Empty credentials!", Toast.LENGTH_SHORT).show();
                 } else if (txtPassword.length() < 6){
                     Toast.makeText(register_BusinessOwner.this, "Password too short!", Toast.LENGTH_SHORT).show();
                 } else {
-                    registerUser(txtUsername , txtName , txtEmail , txtPassword, txtId, txtPhone, txtCity, txtStreet, txtHouseNumber, txtType);
+                    registerUser(txtUsername , txtName , txtEmail , txtPassword, txtId, txtPhone, txtCity, txtStreet, txtHouseNumber, txtType, txtTime);
                 }
             }
         });
     }
 
     private void registerUser(final String username, final String name, final String email, String password ,String id ,String phone,
-                              String city , String street, String houseNumber, String type) {
+                              String city , String street, String houseNumber, String type, String time) {
 
         pd.setMessage("Please Wait!");
         pd.show();
@@ -164,6 +165,7 @@ public class register_BusinessOwner extends AppCompatActivity {
                 map.put("street", street);
                 map.put("houseNumber",houseNumber);
                 map.put("type",type);
+                map.put("time",time);
                 map.put("flag","business");
 
                 mRootRef.child("Business").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {

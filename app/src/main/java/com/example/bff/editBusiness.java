@@ -167,7 +167,7 @@ public class editBusiness extends AppCompatActivity {
                 if (!type.equals(newType)) {
                     reference.child(mAuth.getUid()).child("type").setValue(newType);
                 }
-                if (!type.equals(newTime)) {
+                if (!time.equals(newTime)) {
                     reference.child(mAuth.getUid()).child("time").setValue(newTime);
                 }
 
