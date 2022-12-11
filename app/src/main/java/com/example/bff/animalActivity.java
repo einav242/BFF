@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -41,10 +42,11 @@ public class animalActivity extends AppCompatActivity {
     private TextView title;
     private ImageButton information;
     private ImageButton edit;
+    private ImageButton search;
     private DatabaseReference mRootRef;
     private FirebaseUser mAuth;
     private FirebaseAuth fAuth;
-
+    private ImageButton getlost;
 
     private ImageView profilePic;
     public Uri imageUri;
@@ -56,13 +58,14 @@ public class animalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animalwindow);
 
-
+        getlost = findViewById(R.id.imageButton2);
         information = findViewById(R.id.imageButton10);
         edit = findViewById(R.id.imageButton8);
         title = findViewById(R.id.txtMessage);
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         profilePic = findViewById(R.id.edit_user_image);
+        search = findViewById(R.id.imageButton7);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -82,6 +85,13 @@ public class animalActivity extends AppCompatActivity {
                 //open gallery
                 Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI) ;
                 startActivityForResult(openGalleryIntent,1000);
+            }
+        });
+
+        getlost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(animalActivity.this, get_lost.class));
             }
         });
 
@@ -109,6 +119,13 @@ public class animalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(animalActivity.this, edit_User_Profile.class));
+
+            }
+        });
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(animalActivity.this, search.class));
 
             }
         });

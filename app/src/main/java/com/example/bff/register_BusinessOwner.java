@@ -54,7 +54,7 @@ public class register_BusinessOwner extends AppCompatActivity {
 
     ProgressDialog pd;
 
-    @SuppressLint("MissingInflatedId")
+//    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -68,4 +68,14 @@
     <string name="dogs_and_cats_and_everything_in_between">Dogs and cats and everything in between</string>
     <string name="clicking_on_the_following_button_will_take_you_to_the_pafiz_website">Clicking on the following button will take you to the \'Pafiz\' website</string>
     <string name="edit_photo">Edit Photo</string>
+    <string name="hair">hair</string>
+    <string name="hairdressing_salon1">hairdressing_salon1</string>
+    <string name="veterinary_medicine1">veterinary_medicine1</string>
+    <string name="dog_walker1">dog_walker1</string>
+    <string name="dog">dog</string>
+    <string name="vet">vet</string>
+    <string name="phone">Phone:</string>
+    <string name="business_name">Business Name:</string>
+    <string name="buttonn">Button</string>
+    <string name="all">All</string>
 </resources>
