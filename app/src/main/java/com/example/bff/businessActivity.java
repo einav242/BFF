@@ -60,7 +60,7 @@ public class businessActivity extends AppCompatActivity {
         insert = findViewById(R.id.imageButton3);
         edit = findViewById(R.id.imageButton8);
         title = findViewById(R.id.txtMessage);
-        profilePic = findViewById(R.id.register_BO_title);
+        profilePic = findViewById(R.id.register_BO_image);
         logOut = findViewById(R.id.singUp_LogOut);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -69,7 +69,15 @@ public class businessActivity extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        fAuth =  FirebaseAuth.getInstance();
 
+        StorageReference profileRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profilePic);
+            }
+        });
 
         FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
