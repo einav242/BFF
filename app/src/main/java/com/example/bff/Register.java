@@ -24,6 +24,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 import java.util.HashMap;
@@ -43,6 +44,7 @@ public class Register extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
 
+
     ProgressDialog pd;
 
     @SuppressLint("MissingInflatedId")
@@ -57,7 +59,7 @@ public class Register extends AppCompatActivity {
         password = findViewById(R.id.singUp_Password);
         register = findViewById(R.id.singUp_Register);
         loginUser = findViewById(R.id.singUp_Button_LoginHere);
-        image = findViewById(R.id.edit_user_image);
+        image = findViewById(R.id.sign_Up_image);
 //        editImage = findViewById(R.id.singUp_Button_EditPhoto);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -127,6 +129,7 @@ public class Register extends AppCompatActivity {
                 map.put("name" , name);
                 map.put("email", email);
                 map.put("username" , username);
+                map.put("flag","animal");
                 map.put("id" , mAuth.getCurrentUser().getUid());
                 mRootRef.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

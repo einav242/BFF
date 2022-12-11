@@ -164,6 +164,7 @@ public class register_BusinessOwner extends AppCompatActivity {
                 map.put("street", street);
                 map.put("houseNumber",houseNumber);
                 map.put("type",type);
+                map.put("flag","business");
 
                 mRootRef.child("Business").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
