@@ -68,4 +68,13 @@
     <string name="dogs_and_cats_and_everything_in_between">Dogs and cats and everything in between</string>
     <string name="clicking_on_the_following_button_will_take_you_to_the_pafiz_website">Clicking on the following button will take you to the \'Pafiz\' website</string>
     <string name="edit_photo">Edit Photo</string>
+    <string name="title_activity_get_lost">getLost</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
