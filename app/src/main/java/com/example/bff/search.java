@@ -27,7 +27,7 @@ public class search extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(search.this, addUser.class));
+        startActivity(new Intent(search.this, animalActivity.class));
         finish();
     }
 
@@ -47,19 +47,19 @@ public class search extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Business business = dataSnapshot.getValue(Business.class);
-//                    ValueEventListener query = FirebaseDatabase.getInstance().getReference()
-//                            .child("Business").orderByKey().equalTo(business.getEmail()).addValueEventListener(new ValueEventListener() {
-//                                @Override
-//                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//
-//                                }
-//
-//                                @Override
-//                                public void onCancelled(@NonNull DatabaseError error) {
-//
-//                                }
-//                            });
+                    ValueEventListener query=FirebaseDatabase.getInstance().getReference()
+                            .child("Business").orderByKey().equalTo(business.getEmail()).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                     lst.add(business);
                 }
                 myadapt.notifyDataSetChanged();
