@@ -31,15 +31,16 @@
         android:id="@+id/register_BO_image"
         android:layout_width="135dp"
         android:layout_height="135dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/doc"
-        app:layout_constraintTop_toBottomOf="@+id/register_BO_title"
+        android:background="@android:color/transparent"
+        android:contentDescription="photo"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_BO_title"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.1"
-        android:scaleType="fitCenter"
-        android:background="@android:color/transparent"/>
+        app:srcCompat="@drawable/doc" />
 
     <Button
         android:id="@+id/register_BO_EditPhoto"
@@ -83,8 +84,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Business_name"
+        android:hint="Business name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -95,8 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_BO_fullName"
-        app:layout_constraintVertical_bias="0.01"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.01" />
 
     <EditText
         android:id="@+id/register_BO_Email"
@@ -167,8 +168,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Phone_number"
+        android:hint="Phone number"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -179,8 +181,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_BO_ID"
-        app:layout_constraintVertical_bias="0.01"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.01" />
 
     <EditText
         android:id="@+id/register_BO_City"
@@ -230,8 +231,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:autofillHints=""
         android:ems="10"
-        android:hint="Street_number"
+        android:hint="House number"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -242,8 +244,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_BO_Street"
-        app:layout_constraintVertical_bias="0.01"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <AutoCompleteTextView
         android:id="@+id/register_BO_TypeOfBusiness"
@@ -295,6 +296,22 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/register_BO_Register" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="Activity time"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_BO_TypeOfBusiness" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

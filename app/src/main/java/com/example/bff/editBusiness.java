@@ -45,6 +45,7 @@ public class editBusiness extends AppCompatActivity {
     private EditText street;
     private EditText house_number;
     private EditText type;
+    private EditText time;
     private Button update;
     private FirebaseUser mAuth;
 
@@ -77,6 +78,7 @@ public class editBusiness extends AppCompatActivity {
         street = findViewById(R.id.register_BO_Street);
         house_number = findViewById(R.id.register_BO_StreetNum);
         type = findViewById(R.id.register_BO_TypeOfBusiness);
+        time = findViewById(R.id.editTextTextPersonName2);
         update = findViewById(R.id.register_BO_Register);
         profilePic = findViewById(R.id.register_BO_image);
 
@@ -96,6 +98,8 @@ public class editBusiness extends AppCompatActivity {
                 street.setText(user.getStreet());
                 house_number.setText(user.getHouseNumber());
                 type.setText(user.getType());
+                time.setText(user.getTime());
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -106,7 +110,7 @@ public class editBusiness extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 update(name.getText().toString(),businessName.getText().toString(),id.getText().toString(),phone.getText().toString(),city.getText().toString(),street.getText().toString(),
-                        house_number.getText().toString(),type.getText().toString());
+                        house_number.getText().toString(),type.getText().toString(), time.getText().toString());
                 startActivity(new Intent(editBusiness.this, businessActivity.class));
             }
         });
@@ -125,7 +129,7 @@ public class editBusiness extends AppCompatActivity {
     }
 
 
-    private boolean update(String newName,String newBusinessName, String newId, String newPhone, String newCity, String newStreet, String newHouseNumber, String newType) {
+    private boolean update(String newName,String newBusinessName, String newId, String newPhone, String newCity, String newStreet, String newHouseNumber, String newType, String newTime) {
         FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -138,6 +142,7 @@ public class editBusiness extends AppCompatActivity {
                 String street = user.getStreet();
                 String houseNumber = user.getHouseNumber();
                 String type = user.getType();
+                String time = user.getTime();
                 if (!name.equals(newName)) {
                     reference.child(mAuth.getUid()).child("name").setValue(newName);
                 }
@@ -161,6 +166,9 @@ public class editBusiness extends AppCompatActivity {
                 }
                 if (!type.equals(newType)) {
                     reference.child(mAuth.getUid()).child("type").setValue(newType);
+                }
+                if (!time.equals(newTime)) {
+                    reference.child(mAuth.getUid()).child("time").setValue(newTime);
                 }
 
             }

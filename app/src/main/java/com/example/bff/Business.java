@@ -14,12 +14,14 @@ public class Business {
     private String street;
     private String type;
     private String username;
+    private String time;
 
 
     public Business() {
     }
 
-    public Business(String businessID, String city, String name, String email, String houseNumber, String username, String phone, String id, String street, String type) {
+    public Business(String businessID, String city, String name, String email, String houseNumber,
+                    String username, String phone, String id, String street, String type, String time) {
         this.name = name;
         this.email = email;
         this.username = username;
@@ -30,6 +32,7 @@ public class Business {
         this.phone = phone;
         this.street = street;
         this.type = type;
+        this.time = time;
     }
 
     public String getBusinessID() {
@@ -39,6 +42,13 @@ public class Business {
         this.businessID = businessID;
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public String getName() {
         return name;

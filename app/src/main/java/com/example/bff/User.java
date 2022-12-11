@@ -7,19 +7,29 @@ public class User {
     private String username;
     private String flag;
     private String id;
+    private String phone;
 
     public User() {
     }
 
-    public User(String name, String email, String username, String flag, String id) {
+    public User(String name, String email, String username, String flag, String id, String phone) {
         this.name = name;
         this.email = email;
         this.username = username;
         this.flag = flag;
         this.id = id;
+        this.phone = phone;
     }
 
     public User(String name, String country, double weight, String somthing, String somthin2) {
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getName() {

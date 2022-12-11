@@ -49,6 +49,19 @@ public class Clientlist extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren())
                 {
                     Client client = dataSnapshot.getValue(Client.class);
+                    ValueEventListener query=FirebaseDatabase.getInstance().getReference()
+                                    .child("User").orderByKey().equalTo(client.getEmail()).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                     lst.add(client);
                 }
                 myadapt.notifyDataSetChanged();
@@ -60,6 +73,26 @@ public class Clientlist extends AppCompatActivity {
 
             }
         });
+        ValueEventListener valueEventListener=new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren())
+                {
+                    Client client = dataSnapshot.getValue(Client.class);
+                    lst.add(client);
+                }
+                myadapt.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(valueEventListener);
+
+
 
 
     }
