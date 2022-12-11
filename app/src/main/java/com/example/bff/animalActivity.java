@@ -45,8 +45,10 @@ public class animalActivity extends AppCompatActivity {
     private ImageButton search;
     private DatabaseReference mRootRef;
     private FirebaseUser mAuth;
+    private FirebaseUser mAuth2;
     private FirebaseAuth fAuth;
     private ImageButton getlost;
+    private Button logOut;
 
     private ImageView profilePic;
     public Uri imageUri;
@@ -66,6 +68,7 @@ public class animalActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         profilePic = findViewById(R.id.edit_user_image);
         search = findViewById(R.id.imageButton7);
+        logOut = findViewById(R.id.singUp_LogOut);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -129,7 +132,21 @@ public class animalActivity extends AppCompatActivity {
 
             }
         });
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(animalActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(animalActivity.this , "Logout Successful",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+
+
 
 
     @Override

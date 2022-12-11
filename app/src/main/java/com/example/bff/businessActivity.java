@@ -42,6 +42,7 @@ public class businessActivity extends AppCompatActivity {
     private TextView title;
     private DatabaseReference mRootRef;
     private FirebaseUser mAuth;
+    private Button logOut;
 
     private FirebaseAuth fAuth;
     private ImageView profilePic;
@@ -59,7 +60,8 @@ public class businessActivity extends AppCompatActivity {
         insert = findViewById(R.id.imageButton3);
         edit = findViewById(R.id.imageButton8);
         title = findViewById(R.id.txtMessage);
-        profilePic = findViewById(R.id.register_BO_title);
+        profilePic = findViewById(R.id.register_BO_image);
+        logOut = findViewById(R.id.singUp_LogOut);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
@@ -67,7 +69,15 @@ public class businessActivity extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        fAuth =  FirebaseAuth.getInstance();
 
+        StorageReference profileRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profilePic);
+            }
+        });
 
         FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -121,6 +131,16 @@ public class businessActivity extends AppCompatActivity {
             }
         });
 
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(businessActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(businessActivity.this , "Logout Successful",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     //for add Image

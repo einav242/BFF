@@ -37,20 +37,6 @@
         app:layout_constraintVertical_bias="0.14"
         app:srcCompat="@drawable/profile" />
 
-    <Button
-        android:id="@+id/singUp_Button_EditPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:hint="Edit Photo"
-        android:textColor="#617587"
-        android:textColorHint="#757575"
-        android:textSize="17sp"
-        android:textAllCaps="false"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_Up_image" />
 
     <EditText
         android:id="@+id/singUp_fullName"

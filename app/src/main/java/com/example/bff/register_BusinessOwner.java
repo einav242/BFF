@@ -81,8 +81,6 @@ public class register_BusinessOwner extends AppCompatActivity {
         type = findViewById(R.id.register_BO_TypeOfBusiness);
         register = findViewById(R.id.register_BO_Register);
         loginUser = findViewById(R.id.register_BO_LoginHere);
-        imageB = findViewById(R.id.register_BO_image);
-//        editImage = findViewById(R.id.register_BO_EditPhoto);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
@@ -95,25 +93,6 @@ public class register_BusinessOwner extends AppCompatActivity {
             }
         });
 
-
-        //if the user click on image --> he can add new image
-
-//        imageB.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
-
-
-        // the same thing like image
-
-//        editImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
