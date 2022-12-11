@@ -33,6 +33,7 @@ public class addUser extends AppCompatActivity {
 
     private DatabaseReference mRootRef;
     private FirebaseAuth mAuth;
+    private DatabaseReference query;
     ProgressDialog pd;
 
 
