@@ -42,6 +42,7 @@ public class animalActivity extends AppCompatActivity {
     private TextView title;
     private ImageButton information;
     private ImageButton edit;
+    private ImageButton search;
     private DatabaseReference mRootRef;
     private FirebaseUser mAuth;
     private FirebaseAuth fAuth;
@@ -64,6 +65,7 @@ public class animalActivity extends AppCompatActivity {
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         profilePic = findViewById(R.id.edit_user_image);
+        search = findViewById(R.id.imageButton7);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -117,6 +119,13 @@ public class animalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(animalActivity.this, edit_User_Profile.class));
+
+            }
+        });
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(animalActivity.this, search.class));
 
             }
         });
