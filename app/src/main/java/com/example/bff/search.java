@@ -186,9 +186,12 @@ public class search extends AppCompatActivity implements RecyclerViewInterface {
     }
 
     @Override
-    public void onItemClick() {
-        startActivity(new Intent(search.this, seeMore.class));
+    public void onItemClick(String email) {
+        Intent intent = new Intent(search.this, seeMore.class);
+        intent.putExtra("key",email);
+        startActivity(intent);
     }
+
 }
 
 

@@ -25,6 +25,7 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
         this.recyclerViewInterface=recyclerViewInterface;
         this.context = context;
         this.list = list;
+
     }
 
     @NonNull
@@ -39,6 +40,8 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
         Business business = list.get(position);
         holder.Business_name.setText(business.getUsername());
         holder.type.setText(business.getType());
+        holder.email=business.getEmail();
+
     }
 
     @Override
@@ -48,18 +51,19 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
 
     public static class BusinessVh extends RecyclerView.ViewHolder{
         TextView Business_name, type;
-        Button see;
+        String email;
         public BusinessVh(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface){
             super(itemView);
             Business_name = itemView.findViewById(R.id.BusinessName);
             type = itemView.findViewById(R.id.type);
+            email="";
             Button button = itemView.findViewById(R.id.button10);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if(recyclerViewInterface != null)
                     {
-                        recyclerViewInterface.onItemClick();
+                        recyclerViewInterface.onItemClick(email);
                     }
                 }
             });

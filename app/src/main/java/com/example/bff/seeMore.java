@@ -9,13 +9,17 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class seeMore extends AppCompatActivity {
-
-
+    String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.see_more);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            email = extras.getString("key");
+        }
+
     }
 
 }
