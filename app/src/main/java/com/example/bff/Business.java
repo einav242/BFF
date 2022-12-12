@@ -1,7 +1,8 @@
 package com.example.bff;
 
-import java.security.PrivateKey;
+import  com.google.firebase.database.IgnoreExtraProperties;
 
+@IgnoreExtraProperties
 public class Business {
 
     private String businessID;

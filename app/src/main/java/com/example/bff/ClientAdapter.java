@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
     Context context;
@@ -47,7 +46,7 @@ class ClientVH extends RecyclerView.ViewHolder{
 
     public ClientVH(@NonNull View itemView) {
         super(itemView);
-        Email=itemView.findViewById(R.id.textviewemail);
+        Email=itemView.findViewById(R.id.textviewname);
         Phone=itemView.findViewById(R.id.textviewPhone);
     }
     public ClientVH linkAdapter(ClientAdapter adp){

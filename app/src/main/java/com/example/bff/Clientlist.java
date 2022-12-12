@@ -36,7 +36,7 @@ public class Clientlist extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clientlist);
-        recyclerView = findViewById(R.id.Recycleviewtest);
+        recyclerView = findViewById(R.id.Recycleview);
         mAuth = FirebaseAuth.getInstance();
         mroot = FirebaseDatabase.getInstance().getReference("Em");
         lst=new ArrayList<>();
@@ -91,8 +91,6 @@ public class Clientlist extends AppCompatActivity {
             }
         };
         mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(valueEventListener);
-
-
 
 
     }

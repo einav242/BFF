@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     txtFirstName.setText("Please select a permission");
                     txtFirstName.setTextColor(Color.RED);
                 }
-                if (TextUtils.isEmpty(username)) {
+                else if (TextUtils.isEmpty(username)) {
                     user_name.setError("Email cannot be empty");
                     user_name.requestFocus();
                 } else if (TextUtils.isEmpty(passwordE)) {
@@ -85,17 +85,6 @@ public class MainActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 checkUserAccesLevel(task.getResult().getUser().getUid());
-//                                if (MainActivity.this.permit == "animal") {
-//                                    Toast.makeText(MainActivity.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
-//                                    checkUserAccesLevel(task.getResult().getUser().getUid());
-//                                    startActivity(new Intent(MainActivity.this, animalActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
-//                                    finish();
-//                                } else if (MainActivity.this.permit == "business") {
-//                                    Toast.makeText(MainActivity.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
-//                                    startActivity(new Intent(MainActivity.this, businessActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
-//                                    finish();
-//
-//                                }
                             } else {
                                 Toast.makeText(MainActivity.this, "Log in Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
@@ -126,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(MainActivity.this, businessActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         finish();
-
                     }
                 }
                 else{Toast.makeText(MainActivity.this, "Log in Error: User Not Exist at that section" , Toast.LENGTH_SHORT).show();}
