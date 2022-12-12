@@ -58,7 +58,7 @@ public class get_lost extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 String id = mRootRef.push().getKey();
-                FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         User user = dataSnapshot.getValue(User.class);
@@ -78,28 +78,27 @@ public class get_lost extends AppCompatActivity
 
     }
 
-//    private void InserData(String username, String email) {
-//        String id = mRootRef.push().getKey();
-//        mRootRef.child("Got Lost").child(id).setValue(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Void> task) {
-//                if (task.isSuccessful()) {
-//                    Toast.makeText(get_lost.this, "User Details Inserted", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                pd.dismiss();
-//                Toast.makeText(get_lost.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-
-
     private void InserData(String phone,final String email) {
-        System.out.print("email: " + email);
-        System.out.print("email: " + email);
+        String id = mRootRef.push().getKey();
+        User user = new User(phone,email);
+        mRootRef.child("Got Lost").child(id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(get_lost.this, "User Details Inserted", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                pd.dismiss();
+                Toast.makeText(get_lost.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+//    private void InserData(String phone,final String email) {
 //        pd.show();
 //        String id = mRootRef.push().getKey();
 //        User user = new User(phone,email);
@@ -113,7 +112,7 @@ public class get_lost extends AppCompatActivity
 //
 //                }
 //            });
-        }
+//        }
 
 
 
