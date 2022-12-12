@@ -98,6 +98,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".seeMore"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".animalActivity"
             android:exported="false">
             <meta-data
