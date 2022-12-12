@@ -25,6 +25,11 @@ public class User {
     public User(String name, String country, double weight, String somthing, String somthin2) {
     }
 
+    public User(String phone, String email) {
+        this.phone=phone;
+        this.email=email;
+    }
+
     public String getPhone() {
         return phone;
     }

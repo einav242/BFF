@@ -77,12 +77,12 @@ public class Register extends AppCompatActivity {
 
         //if the user click on image --> he can add new image
 
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Register.this,addImage.class));
-            }
-        });
+//        image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(Register.this,addImage.class));
+//            }
+//        });
 
 
         // the same thing like image
