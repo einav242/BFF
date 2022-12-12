@@ -32,6 +32,7 @@ public class get_lost extends AppCompatActivity
 
     private FirebaseAuth mAuth;
     private Button addLost;
+    private Button lostView;
     FirebaseUser userF;
 
 
@@ -45,14 +46,18 @@ public class get_lost extends AppCompatActivity
         setContentView(R.layout.activity_get_lost);
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
-//        String email = mRootRef.child("Users").child("email").toString();
-        //String username = mRootRef.child("username").toString();
-
         addLost = findViewById(R.id.get_lost_IgotLost);
+        lostView = findViewById(R.id.get_lost_viewlost);
         mAuth = FirebaseAuth.getInstance();
 
         userF = FirebaseAuth.getInstance().getCurrentUser();
-        System.out.print("email: ");
+
+        lostView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(get_lost.this, list_gotLost.class));
+            }
+        });
 
         addLost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,8 +70,7 @@ public class get_lost extends AppCompatActivity
                         String email = user.getEmail();
                         String phone = user.getPhone();
                         String username = user.getUsername();
-                        System.out.print("email: " + email);
-                        InserData(phone, email);
+                        InserData(phone, email , username);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -78,9 +82,9 @@ public class get_lost extends AppCompatActivity
 
     }
 
-    private void InserData(String phone,final String email) {
+    private void InserData(String phone,final String email,String userName) {
         String id = mRootRef.push().getKey();
-        User user = new User(phone,email);
+        User user = new User(phone,email,userName);
         mRootRef.child("Got Lost").child(id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

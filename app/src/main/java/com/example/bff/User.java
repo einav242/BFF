@@ -25,9 +25,10 @@ public class User {
     public User(String name, String country, double weight, String somthing, String somthin2) {
     }
 
-    public User(String phone, String email) {
+    public User(String phone, String email,String username) {
         this.phone=phone;
         this.email=email;
+        this.username= username;
     }
 
     public String getPhone() {
