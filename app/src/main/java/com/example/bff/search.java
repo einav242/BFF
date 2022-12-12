@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class search extends AppCompatActivity {
+public class search extends AppCompatActivity implements RecyclerViewInterface {
     RecyclerView recyclerView;
     ArrayList<Business> lst;
     DatabaseReference databaseReference;
@@ -52,7 +52,7 @@ public class search extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("Business");
         lst = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        myadapt = new BusinessAdapter(this,lst);
+        myadapt = new BusinessAdapter(this,lst,this);
         recyclerView.setAdapter(myadapt);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -177,12 +177,21 @@ public class search extends AppCompatActivity {
                 setfilter(filteredBusiness);
             }
         });
+
     }
     public void setfilter(ArrayList<Business> lst)
     {
-        BusinessAdapter adpt = new BusinessAdapter(this,lst);
+        BusinessAdapter adpt = new BusinessAdapter(this,lst,this);
         recyclerView.setAdapter(adpt);
     }
+
+    @Override
+    public void onItemClick(String email) {
+        Intent intent = new Intent(search.this, seeMore.class);
+        intent.putExtra("key",email);
+        startActivity(intent);
+    }
+
 }
 
 

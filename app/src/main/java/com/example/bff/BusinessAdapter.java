@@ -17,26 +17,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.BusinessVh> {
+    private final RecyclerViewInterface recyclerViewInterface;
     Context context;
     ArrayList<Business> list;
 
-    public BusinessAdapter(Context context, ArrayList<Business> list) {
+    public BusinessAdapter(Context context, ArrayList<Business> list, RecyclerViewInterface recyclerViewInterface) {
+        this.recyclerViewInterface=recyclerViewInterface;
         this.context = context;
         this.list = list;
+
     }
 
     @NonNull
     @Override
     public BusinessVh onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.business_search,parent,false);
-        Button see=v.findViewById(R.id.button10);
-        see.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-        return new BusinessVh(v);
+        return new BusinessVh(v,recyclerViewInterface);
     }
 
     @Override
@@ -44,6 +40,8 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
         Business business = list.get(position);
         holder.Business_name.setText(business.getUsername());
         holder.type.setText(business.getType());
+        holder.email=business.getEmail();
+
     }
 
     @Override
@@ -53,10 +51,22 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
 
     public static class BusinessVh extends RecyclerView.ViewHolder{
         TextView Business_name, type;
-        public BusinessVh(@NonNull View itemView){
+        String email;
+        public BusinessVh(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface){
             super(itemView);
             Business_name = itemView.findViewById(R.id.BusinessName);
             type = itemView.findViewById(R.id.type);
+            email="";
+            Button button = itemView.findViewById(R.id.button10);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(recyclerViewInterface != null)
+                    {
+                        recyclerViewInterface.onItemClick(email);
+                    }
+                }
+            });
         }
     }
 }
