@@ -69,7 +69,7 @@ public class make_appointment extends AppCompatActivity {
 //                id=mRootRef.push().getKey();
                 txt_time = time.getText().toString();
                 txt_date = date.getText().toString();
-                mRootRef.child("Em").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+                mRootRef.child("Em").child(businessID).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Em user = snapshot.getValue(Em.class);
@@ -82,7 +82,7 @@ public class make_appointment extends AppCompatActivity {
                         user.setBusinessName(businessName);
                         map.put("bussniesseName" , businessName);
                         map.put("clients",user.getClients());
-                        mRootRef.child("Em").child(mAuth.getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        mRootRef.child("Em").child(businessID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
