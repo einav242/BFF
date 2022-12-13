@@ -56,7 +56,6 @@ public class seeMore extends AppCompatActivity {
                         tv_streetHouse.setText(business.getHouseNumber());
                         tv_ActivityTime.setText(business.getTime());
                         id = business.getId();
-                        System.out.println("id= "+id);
                         break;
                     }
                 }

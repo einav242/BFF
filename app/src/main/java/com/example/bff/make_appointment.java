@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Locale;
 
 public class make_appointment extends AppCompatActivity {
     EditText time, date;
@@ -28,7 +29,6 @@ public class make_appointment extends AppCompatActivity {
     String businessName;
     Button send;
     ProgressDialog pd;
-    HashMap<String , Object> map;
    static int id=1;
     String email;
     private DatabaseReference mRootRef;
@@ -42,7 +42,7 @@ public class make_appointment extends AppCompatActivity {
             businessID = extras.getString("key");
             businessName = extras.getString("name");
         }
-        map = new HashMap<>();
+//        map = new HashMap<>();
         pd = new ProgressDialog(this);
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
@@ -65,40 +65,20 @@ public class make_appointment extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pd.show();
-//                id=mRootRef.push().getKey();
                 txt_time = time.getText().toString();
                 txt_date = date.getText().toString();
-                mRootRef.child("Em").child(businessID).addValueEventListener(new ValueEventListener() {
+                String id="date: "+txt_date.replace('/','-')+" hour: "+txt_time;
+                Client client=new Client(email,txt_date,txt_time);
+                FirebaseDatabase.getInstance().getReference().child("Em").child(businessID).child(id).setValue(client).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        Em user = snapshot.getValue(Em.class);
-                        if (user==null)
-                        {
-                            user=new Em();
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            pd.dismiss();
+                            Toast.makeText(make_appointment.this,"send message",Toast.LENGTH_SHORT).show();
                         }
-                        Client client=new Client(email,txt_date,txt_time);
-                        user.getClients().put(String.valueOf(id),client);
-                        user.setBusinessName(businessName);
-                        map.put("bussniesseName" , businessName);
-                        map.put("clients",user.getClients());
-                        mRootRef.child("Em").child(businessID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    pd.dismiss();
-                                    id++;
-                                    Toast.makeText(make_appointment.this, "Send message", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
-
             }
         });
 
