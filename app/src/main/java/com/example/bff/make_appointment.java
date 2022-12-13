@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +21,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 public class make_appointment extends AppCompatActivity {
@@ -29,6 +33,8 @@ public class make_appointment extends AppCompatActivity {
     String businessName;
     Button send;
     ProgressDialog pd;
+    List<Client> clientList;
+    int flag=0;
    static int id=1;
     String email;
     private DatabaseReference mRootRef;
@@ -42,7 +48,18 @@ public class make_appointment extends AppCompatActivity {
             businessID = extras.getString("key");
             businessName = extras.getString("name");
         }
-//        map = new HashMap<>();
+        clientList=new ArrayList<>();
+        FirebaseDatabase.getInstance().getReference().child("Em").child(businessID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Client user = dataSnapshot.getValue(Client.class);
+                clientList.add(user);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         pd = new ProgressDialog(this);
         mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
@@ -68,21 +85,49 @@ public class make_appointment extends AppCompatActivity {
                 txt_time = time.getText().toString();
                 txt_date = date.getText().toString();
                 String id="date: "+txt_date.replace('/','-')+" hour: "+txt_time;
-
-                Client client=new Client(email,txt_date,txt_time,"waiting");
-                FirebaseDatabase.getInstance().getReference().child("Em").child(businessID).child(id).setValue(client).addOnCompleteListener(new OnCompleteListener<Void>() {
+                FirebaseDatabase.getInstance().getReference().child("Em").child(businessID).child(id).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            pd.dismiss();
-                            Toast.makeText(make_appointment.this,"send message",Toast.LENGTH_SHORT).show();
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists())
+                        {
+                            Toast.makeText(make_appointment.this,"The queue is currently occupied",Toast.LENGTH_SHORT).show();
+                            flag=1;
                         }
+                        else
+                        {
+                            flag = 0;
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        if(flag==0)
+                        {
+                            Client client=new Client(email,txt_date,txt_time,"waiting");
+                            FirebaseDatabase.getInstance().getReference().child("Em").child(businessID).child(id).setValue(client).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        pd.dismiss();
+                                        Toast.makeText(make_appointment.this,"send message",Toast.LENGTH_SHORT).show();
+                                    }
+
+                                }
+                            });
+                        }
+
+                    }
+                };
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.postDelayed(runnable,300);
             }
         });
-
     }
 
 }
