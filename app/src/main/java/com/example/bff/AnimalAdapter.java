@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
@@ -22,6 +23,8 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHold
         this.list = list;
     }
 
+
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -32,7 +35,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         User user = list.get(position);
-        holder.userName.setText(user.getName());
+        holder.userName.setText(user.getUsername());
         holder.email.setText(user.getEmail());
         holder.phone.setText(user.getPhone());
 

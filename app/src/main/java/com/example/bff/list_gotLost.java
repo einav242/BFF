@@ -7,12 +7,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.checkerframework.common.subtyping.qual.Bottom;
 
 import java.util.ArrayList;
 
@@ -21,6 +27,7 @@ public class list_gotLost extends AppCompatActivity {
     ArrayList<User> list;
     DatabaseReference databaseReference;
     AnimalAdapter adapter;
+
 
     @Override
     public void onBackPressed() {
@@ -40,6 +47,8 @@ public class list_gotLost extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AnimalAdapter(this,list);
 
+
+
         recyclerView.setAdapter(adapter);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -57,6 +66,7 @@ public class list_gotLost extends AppCompatActivity {
 
             }
         });
+
 
 
 
