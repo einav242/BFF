@@ -19,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class seeMore extends AppCompatActivity {
     String email;
+    String id;
     TextView tv_name, tv_email, tv_phone, tv_city, tv_street, tv_streetHouse, tv_ActivityTime;
     Button send;
     DatabaseReference databaseReference;
@@ -54,6 +55,8 @@ public class seeMore extends AppCompatActivity {
                         tv_street.setText(business.getStreet());
                         tv_streetHouse.setText(business.getHouseNumber());
                         tv_ActivityTime.setText(business.getTime());
+                        id = business.getId();
+                        System.out.println("id= "+id);
                         break;
                     }
                 }
@@ -67,7 +70,10 @@ public class seeMore extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(seeMore.this, make_appointment.class));
+                Intent intent = new Intent(seeMore.this, make_appointment.class);
+                intent.putExtra("key",id);
+                intent.putExtra("name",tv_name.getText().toString());
+                startActivity(intent);
             }
         });
     }

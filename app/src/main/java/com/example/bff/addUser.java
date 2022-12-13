@@ -73,7 +73,6 @@ public class addUser extends AppCompatActivity {
     private void addUsersD( final String email, String phone){
         pd.show();
         id=mRootRef.push().getKey();
-
         Client client=new Client(email,"","");
         FirebaseDatabase.getInstance().getReference().child("Em").child(mAuth.getUid()).child(id).setValue(client).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
