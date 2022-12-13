@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".get_lost">
-
+    tools:context=".get_lost"
+    >
 
     <Button
         android:id="@+id/get_lost_viewlost"
@@ -43,6 +43,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/get_lost_viewlost"
+        />
+
+    <Button
+        android:id="@+id/get_lost_foundMe"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/colorbutton"
+        android:padding="10dp"
+        android:text="they found me"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/get_lost_IgotLost"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

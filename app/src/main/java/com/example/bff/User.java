@@ -28,7 +28,7 @@ public class User {
     public User(String phone, String email,String username) {
         this.phone=phone;
         this.email=email;
-        this.username= username;
+        this.username=username;
     }
 
     public String getPhone() {
