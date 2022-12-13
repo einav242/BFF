@@ -7,14 +7,24 @@ public class Client {
     private String email;
     private String date;
     private String time;
+    private String status;
 
     public Client() {
     }
 
-    public Client(String email, String date, String time) {
+    public Client(String email, String date, String time, String status) {
         this.email=email;
         this.date=date;
         this.time=time;
+        this.status=status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getDate() {

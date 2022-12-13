@@ -68,7 +68,8 @@ public class make_appointment extends AppCompatActivity {
                 txt_time = time.getText().toString();
                 txt_date = date.getText().toString();
                 String id="date: "+txt_date.replace('/','-')+" hour: "+txt_time;
-                Client client=new Client(email,txt_date,txt_time);
+
+                Client client=new Client(email,txt_date,txt_time,"waiting");
                 FirebaseDatabase.getInstance().getReference().child("Em").child(businessID).child(id).setValue(client).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

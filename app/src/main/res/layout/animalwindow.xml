@@ -27,8 +27,8 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="8dp"
         android:text="@string/information1"
         android:textColor="#EA84A7"
         android:textSize="24sp"
@@ -67,7 +67,7 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
+        android:layout_marginStart="100dp"
         android:text="@string/business_search"
         android:textColor="#EA84A7"
         android:textSize="24sp"
@@ -80,11 +80,11 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginEnd="240dp"
-        android:layout_marginBottom="460dp"
+        android:layout_marginBottom="504dp"
         android:contentDescription="@string/image1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/pretty_button" />
 
@@ -105,8 +105,8 @@
         android:id="@+id/imageView11"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="51dp"
-        android:layout_marginBottom="460dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="504dp"
         android:contentDescription="@string/button2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,8 +131,8 @@
         android:id="@+id/imageView5"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="240dp"
-        android:layout_marginBottom="230dp"
+        android:layout_marginEnd="244dp"
+        android:layout_marginBottom="280dp"
         android:contentDescription="@string/button3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -155,8 +155,8 @@
         android:id="@+id/imageView6"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="230dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="276dp"
         android:contentDescription="@string/button4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -197,22 +197,34 @@
         app:layout_constraintTop_toTopOf="@+id/imageView9"
         app:srcCompat="@drawable/addphoto" />
 
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginBottom="116dp"
+        android:contentDescription="@string/image1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/pretty_button" />
+
     <Button
         android:id="@+id/singUp_LogOut"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="152dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginTop="32dp"
-        android:text="logout"
         android:background="@drawable/colorbutton3"
-        app:backgroundTint="@null"
-        android:textSize="20sp"
         android:padding="10dp"
+        android:text="logout"
+        android:textSize="20sp"
+        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
