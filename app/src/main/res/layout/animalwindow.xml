@@ -202,8 +202,8 @@
         android:id="@+id/image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="148dp"
-        android:layout_marginBottom="116dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="124dp"
         android:contentDescription="@string/image1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -214,7 +214,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="168dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/colorbutton3"
         android:padding="10dp"
@@ -222,9 +222,35 @@
         android:textSize="20sp"
         app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <ImageButton
+        android:id="@+id/imageButton13"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="10dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="view"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@+id/image"
+        app:layout_constraintTop_toTopOf="@+id/image"
+        app:srcCompat="@drawable/vieww" />
+
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="8dp"
+        android:text="View queues"
+        android:textColor="#EA84A7"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton13" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
