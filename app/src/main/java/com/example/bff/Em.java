@@ -1,20 +1,23 @@
 package com.example.bff;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class Em {
 
-    private String businessEmail;
+    private String businessName;
     private HashMap<String,Client> clients;
 
-    public Em() {
+    public Em(){
         this.clients=new HashMap<>();
     }
 
+//    public Em(String businessName) {
+//        this.clients=new HashMap<>();
+//        this.businessName = businessName;
+//    }
+
     public Em(String email,HashMap<String,Client> clients) {
-        this.businessEmail = email;
+        this.businessName = email;
         this.clients=clients;
     }
 
@@ -26,12 +29,12 @@ public class Em {
         this.clients = clients;
     }
 
-    public String getBusinessEmail() {
-        return businessEmail;
+    public String getBusinessName() {
+        return businessName;
     }
 
-    public void setBusinessEmail(String businessEmail) {
-        this.businessEmail = businessEmail;
+    public void setBusinessName(String businessName) {
+        this.businessName = businessName;
     }
 
 }
