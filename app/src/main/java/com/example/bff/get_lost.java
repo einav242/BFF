@@ -94,7 +94,7 @@ public class get_lost extends AppCompatActivity
 ////                }
 ////                else{
 //                    FirebaseDatabase.getInstance().getReference().child("Got Lost")
-//                            .child(mRootRef.push().getKey()).setValue(null)
+//                            .child(mAuth.getUid()).setValue(null)
 //                            .addOnSuccessListener(new OnSuccessListener<Void>() {
 //                                @Override
 //                                public void onSuccess(Void unused) {
@@ -117,6 +117,28 @@ public class get_lost extends AppCompatActivity
 //        });
 
 
+        found.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FirebaseDatabase.getInstance().getReference().child("Got Lost").child(mAuth.getUid())
+                        .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        User user = dataSnapshot.getValue(User.class);
+                        String email = user.getEmail();
+                        String id = user.getId();
+                        String phone = user.getPhone();
+                        String username = user.getUsername();
+                        deleteArtist(id);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+            }
+        });
+
 
         lostView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,8 +158,9 @@ public class get_lost extends AppCompatActivity
                         User user = dataSnapshot.getValue(User.class);
                         String email = user.getEmail();
                         String phone = user.getPhone();
+                        String id = user.getId();
                         String username = user.getUsername();
-                        InserData(phone, email , username);
+                        InserData(phone, email , username,id);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -150,9 +173,38 @@ public class get_lost extends AppCompatActivity
 
     }
 
+    private void showToast(String massage){
+        Toast.makeText(this,massage,Toast.LENGTH_LONG).show();
+    }
 
-    private void InserData(String phone,final String email,String username) {
-        String id = mRootRef.push().getKey();
+    private void deleteArtist(String id) {
+         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Got Lost").child(id);
+//         databaseReference.removeValue();
+         Task<Void> mTask = databaseReference.removeValue();
+         mTask.addOnSuccessListener(new OnSuccessListener<Void>() {
+             @Override
+             public void onSuccess(Void unused) {
+                showToast("Deleted");
+             }
+         }).addOnFailureListener(new OnFailureListener() {
+             @Override
+             public void onFailure(@NonNull Exception e) {
+                 showToast("Error delete");
+             }
+         });
+
+
+        Toast.makeText(get_lost.this, "User Details delete", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(get_lost.this,animalActivity.class);
+        startActivity(intent);
+
+
+
+    }
+
+
+    private void InserData(String phone,final String email,String username,String id) {
+ //       String id = mRootRef.push().getKey();
         User user = new User(phone,email,username);
 //        StorageReference riversRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
         mRootRef.child("Got Lost").child(id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -175,6 +227,32 @@ public class get_lost extends AppCompatActivity
             }
         });
     }
+
+
+//    private void InserData(String phone,final String email,String username) {
+//        String id = mRootRef.push().getKey();
+//        User user = new User(phone,email,username);
+////        StorageReference riversRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
+//        mRootRef.child("Got Lost").child(id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                if (task.isSuccessful()) {
+//                    pd.dismiss();
+//                    Toast.makeText(get_lost.this, "User Details Inserted", Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(get_lost.this,animalActivity.class);
+//                    startActivity(intent);
+//                }
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                pd.dismiss();
+//                Toast.makeText(get_lost.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(get_lost.this,animalActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//    }
 
 
 }
