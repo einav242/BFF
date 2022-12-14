@@ -16,6 +16,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bff.view.animalActivityView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -109,7 +110,8 @@ public class MainActivity extends AppCompatActivity {
                 if(snapshot.exists()){
                     if (MainActivity.this.permit == "animal") {
                         Toast.makeText(MainActivity.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this, animalActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                        Intent intent=new Intent(MainActivity.this, com.example.bff.view.animalActivityView.class);
+                        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         finish();
                     } else if (MainActivity.this.permit == "business") {
                         Toast.makeText(MainActivity.this, "User logged in successfully", Toast.LENGTH_SHORT).show();

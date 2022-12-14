@@ -44,9 +44,9 @@ public class animalActivity extends AppCompatActivity {
     private ImageButton edit;
     private ImageButton search;
     private ImageButton view;
-    private DatabaseReference mRootRef;
+//    private DatabaseReference mRootRef;
     private FirebaseUser mAuth;
-    private FirebaseUser mAuth2;
+//    private FirebaseUser mAuth2;
     private FirebaseAuth fAuth;
     private ImageButton getlost;
     private Button logOut;
@@ -80,7 +80,7 @@ public class animalActivity extends AppCompatActivity {
         information = findViewById(R.id.imageButton10);
         edit = findViewById(R.id.imageButton8);
         title = findViewById(R.id.txtMessage);
-        mRootRef = FirebaseDatabase.getInstance().getReference();
+//        mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         profilePic = findViewById(R.id.edit_user_image);
         search = findViewById(R.id.imageButton7);

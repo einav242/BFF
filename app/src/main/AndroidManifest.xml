@@ -126,6 +126,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".view.animalActivityView"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".animalActivity"
             android:exported="false">
             <meta-data
