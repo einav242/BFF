@@ -31,6 +31,13 @@ public class User {
         this.username=username;
     }
 
+    public User(String phone, String email, String username, String id) {
+        this.phone=phone;
+        this.email=email;
+        this.username=username;
+        this.id=id;
+    }
+
     public String getPhone() {
         return phone;
     }

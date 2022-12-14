@@ -81,65 +81,28 @@ public class get_lost extends AppCompatActivity
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-//        found.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-////                if (userF.equals("")){
-////                    Toast.makeText(get_lost.this, "Somthing went wrong!"+
-////                            "User Derails are not availble at the moment" , Toast.LENGTH_SHORT).show();
-////                    Intent intent = new Intent(get_lost.this,animalActivity.class);
-////                    startActivity(intent);
-////                    finish();
-////                }
-////                else{
-//                    FirebaseDatabase.getInstance().getReference().child("Got Lost")
-//                            .child(mAuth.getUid()).setValue(null)
-//                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                @Override
-//                                public void onSuccess(Void unused) {
-//                                    mAuth.getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                        @Override
-//                                        public void onComplete(@NonNull Task<Void> task) {
-//                                            if(task.isSuccessful()){
-//                                                pd.dismiss();
-//                                                Intent intent = new Intent(get_lost.this,animalActivity.class);
-//                                                startActivity(intent);
-//
-//                                            }
-//
-//                                        }
-//                                    });
-//                                }
-//                            });
-//
-//            }
-//        });
 
-
+        // if they found me
         found.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                FirebaseDatabase.getInstance().getReference().child("Got Lost").child(mAuth.getUid())
-                        .addValueEventListener(new ValueEventListener() {
+                FirebaseDatabase.getInstance().getReference("Got Lost").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        User user = dataSnapshot.getValue(User.class);
-                        String email = user.getEmail();
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        User user = snapshot.getValue(User.class);
                         String id = user.getId();
-                        String phone = user.getPhone();
-                        String username = user.getUsername();
                         deleteArtist(id);
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
+
                     }
                 });
             }
         });
 
-
+        //view all dog and cat that got lost
         lostView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,7 +111,7 @@ public class get_lost extends AppCompatActivity
         });
 
 
-
+        //add lost pet
         addLost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -173,39 +136,21 @@ public class get_lost extends AppCompatActivity
 
     }
 
-    private void showToast(String massage){
-        Toast.makeText(this,massage,Toast.LENGTH_LONG).show();
-    }
 
     private void deleteArtist(String id) {
          DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Got Lost").child(id);
-//         databaseReference.removeValue();
-         Task<Void> mTask = databaseReference.removeValue();
-         mTask.addOnSuccessListener(new OnSuccessListener<Void>() {
-             @Override
-             public void onSuccess(Void unused) {
-                showToast("Deleted");
-             }
-         }).addOnFailureListener(new OnFailureListener() {
-             @Override
-             public void onFailure(@NonNull Exception e) {
-                 showToast("Error delete");
-             }
-         });
-
+         databaseReference.removeValue();
 
         Toast.makeText(get_lost.this, "User Details delete", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(get_lost.this,animalActivity.class);
         startActivity(intent);
-
-
 
     }
 
 
     private void InserData(String phone,final String email,String username,String id) {
  //       String id = mRootRef.push().getKey();
-        User user = new User(phone,email,username);
+        User user = new User(phone,email,username,id);
 //        StorageReference riversRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
         mRootRef.child("Got Lost").child(id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -229,30 +174,6 @@ public class get_lost extends AppCompatActivity
     }
 
 
-//    private void InserData(String phone,final String email,String username) {
-//        String id = mRootRef.push().getKey();
-//        User user = new User(phone,email,username);
-////        StorageReference riversRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
-//        mRootRef.child("Got Lost").child(id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Void> task) {
-//                if (task.isSuccessful()) {
-//                    pd.dismiss();
-//                    Toast.makeText(get_lost.this, "User Details Inserted", Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(get_lost.this,animalActivity.class);
-//                    startActivity(intent);
-//                }
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                pd.dismiss();
-//                Toast.makeText(get_lost.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(get_lost.this,animalActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//    }
 
 
 }
