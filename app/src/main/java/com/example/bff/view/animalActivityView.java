@@ -1,5 +1,6 @@
 package com.example.bff.view;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.bff.MainActivity;
 import com.example.bff.R;
+import com.example.bff.User;
 import com.example.bff.controller.animalActivity_controller;
 import com.example.bff.edit_User_Profile;
 import com.example.bff.get_lost;
@@ -23,6 +25,11 @@ import com.example.bff.information_page;
 import com.example.bff.search;
 import com.example.bff.viewQueue;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
@@ -39,6 +46,7 @@ public class animalActivityView extends AppCompatActivity {
     private String userName;
     private HashMap<String, String> businessNames;
     public Uri imageUri;
+    private FirebaseUser mAuth;
 
     private ImageView profilePic;
 
@@ -56,8 +64,20 @@ public class animalActivityView extends AppCompatActivity {
         search = findViewById(R.id.imageButton7);
         logOut = findViewById(R.id.singUp_LogOut);
         view = findViewById(R.id.imageButton13);
-        userName = controller.getName_controller();
-        title.setText("Hello "+userName);
+        mAuth = FirebaseAuth.getInstance().getCurrentUser();
+
+        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                title.setText("Hello "+user.getUsername());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         controller.imageListener_controller(profilePic);
 
         profilePic.setOnClickListener(new View.OnClickListener() {
@@ -128,8 +148,16 @@ public class animalActivityView extends AppCompatActivity {
         }
     }
 
-}
+    public animalActivityView() {
 
+    }
+
+    public void setUserName(String name)
+    {
+        this.userName = name;
+    }
+
+}
 
 
 

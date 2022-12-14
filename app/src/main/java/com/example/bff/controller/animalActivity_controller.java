@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.widget.ImageView;
 
 import com.example.bff.model.animalActivityModel;
+import com.example.bff.view.animalActivityView;
 import com.squareup.picasso.Target;
 
 import java.util.ConcurrentModificationException;
@@ -13,14 +14,12 @@ import java.util.HashMap;
 public class animalActivity_controller {
 
     animalActivityModel model;
+    animalActivityView view;
 
     public animalActivity_controller(Context context) {
         model = new animalActivityModel(context);
     }
-    public String getName_controller()
-    {
-        return model.getUserName();
-    }
+
     public void imageListener_controller(ImageView profilePic)
     {
         model.imageListener(profilePic);

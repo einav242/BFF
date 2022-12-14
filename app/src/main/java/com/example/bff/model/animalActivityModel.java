@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 
 import com.example.bff.Business;
 import com.example.bff.User;
+import com.example.bff.controller.animalActivity_controller;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,7 +31,7 @@ import java.util.UUID;
 
 public class animalActivityModel {
     private FirebaseUser mAuth;
-    String userName;
+    public String userName;
     private FirebaseAuth fAuth;
     private StorageReference storageReference;
     private FirebaseStorage storage;
@@ -46,22 +47,6 @@ public class animalActivityModel {
         this.context = context;
     }
 
-    public String getUserName()
-    {
-        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                userName = user.getUsername();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        return this.userName;
-    }
     public void imageListener(ImageView profilePic)
     {
         this.profilePic =profilePic;
