@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class Em {
 
     private String businessName;
+    private int id;
     private HashMap<String,Client> clients;
 
     public Em(){
@@ -16,9 +17,18 @@ public class Em {
 //        this.businessName = businessName;
 //    }
 
-    public Em(String email,HashMap<String,Client> clients) {
+    public Em(int id,String email,HashMap<String,Client> clients) {
         this.businessName = email;
         this.clients=clients;
+        this.id=id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public HashMap<String, Client> getClients() {

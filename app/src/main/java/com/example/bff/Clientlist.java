@@ -49,20 +49,8 @@ public class Clientlist extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren())
                 {
                     Client client = dataSnapshot.getValue(Client.class);
-                    ValueEventListener query=FirebaseDatabase.getInstance().getReference()
-                                    .child("User").orderByKey().equalTo(client.getEmail()).addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
-                    lst.add(client);
+                    if(client.getStatus()=="waiting")
+                        lst.add(client);
                 }
                 myadapt.notifyDataSetChanged();
 
