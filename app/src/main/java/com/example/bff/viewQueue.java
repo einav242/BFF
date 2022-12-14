@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class viewQueue extends AppCompatActivity{
@@ -29,9 +30,9 @@ public class viewQueue extends AppCompatActivity{
     ArrayList<queue> lst;
     DatabaseReference databaseReference;
     queueAdapter myadapt;
+    HashMap<String,String> names;
     private FirebaseUser mAuth;
     String email;
-    String name;
 
     @Override
     public void onBackPressed() {
@@ -44,6 +45,8 @@ public class viewQueue extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.queue_list);
+        Intent intent = getIntent();
+        names = (HashMap<String, String>) intent.getSerializableExtra("key");
         recyclerView = findViewById(R.id.Recycleview);
         databaseReference = FirebaseDatabase.getInstance().getReference("Em");
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
@@ -68,7 +71,8 @@ public class viewQueue extends AppCompatActivity{
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                    findName(dataSnapshot.getKey().toString());
+                   String name= names.get(dataSnapshot.getKey().toString());
+                    System.out.println("name: "+name);
                     for(DataSnapshot dataSnapshot2 : dataSnapshot.getChildren())
                     {
                         Client client = dataSnapshot2.getValue(Client.class);
@@ -89,26 +93,6 @@ public class viewQueue extends AppCompatActivity{
             }
         });
 
-    }
-    public void findName(String id){
-        FirebaseDatabase.getInstance().getReference("Business").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Business business = dataSnapshot.getValue(Business.class);
-                    if(business.getId().equals(id))
-                    {
-                        name = business.getUsername();
-                        break;
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 }
 

@@ -50,6 +50,7 @@ public class animalActivity extends AppCompatActivity {
     private FirebaseAuth fAuth;
     private ImageButton getlost;
     private Button logOut;
+    private HashMap<String, String> names;
 
     private ImageView profilePic;
     public Uri imageUri;
@@ -60,7 +61,21 @@ public class animalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animalwindow);
+        names= new HashMap<>();
+        FirebaseDatabase.getInstance().getReference("Business").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Business business = dataSnapshot.getValue(Business.class);
+                    names.put(business.getId(),business.getUsername());
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         getlost = findViewById(R.id.imageButton2);
         information = findViewById(R.id.imageButton10);
         edit = findViewById(R.id.imageButton8);
@@ -150,6 +165,7 @@ public class animalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(animalActivity.this, viewQueue.class);
+                intent.putExtra("key",names);
                 startActivity(intent);
                 finish();
             }
