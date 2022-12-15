@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.widget.ImageView;
 
+import com.example.bff.User;
 import com.example.bff.model.animalActivityModel;
 import com.example.bff.view.animalActivityView;
 import com.squareup.picasso.Target;
@@ -14,10 +15,10 @@ import java.util.HashMap;
 public class animalActivity_controller {
 
     animalActivityModel model;
-    animalActivityView view;
 
-    public animalActivity_controller(Context context) {
-        model = new animalActivityModel(context);
+
+    public animalActivity_controller(User user, Context context) {
+        model = new animalActivityModel(user,context);
     }
 
     public void imageListener_controller(ImageView profilePic)

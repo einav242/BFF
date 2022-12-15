@@ -39,13 +39,15 @@ public class animalActivityModel {
     private ImageView profilePic;
 //    public Uri imageUri;
 
-    public animalActivityModel(Context context) {
+    public animalActivityModel(User user,Context context) {
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         fAuth =  FirebaseAuth.getInstance();
         this.context = context;
     }
+
+
 
     public void imageListener(ImageView profilePic)
     {

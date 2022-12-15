@@ -1,7 +1,10 @@
 package com.example.bff;
 
 
-public class User {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class User implements Parcelable {
 
     private String name;
     private String email;
@@ -37,6 +40,27 @@ public class User {
         this.username=username;
         this.id=id;
     }
+
+    protected User(Parcel in) {
+        name = in.readString();
+        email = in.readString();
+        username = in.readString();
+        flag = in.readString();
+        id = in.readString();
+        phone = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public String getPhone() {
         return phone;
@@ -84,5 +108,20 @@ public class User {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(email);
+        parcel.writeString(username);
+        parcel.writeString(flag);
+        parcel.writeString(id);
+        parcel.writeString(phone);
     }
 }

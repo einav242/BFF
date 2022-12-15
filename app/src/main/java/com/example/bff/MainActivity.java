@@ -109,8 +109,10 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     if (MainActivity.this.permit == "animal") {
+                        User user =  snapshot.getValue(User.class);
                         Toast.makeText(MainActivity.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent(MainActivity.this, com.example.bff.view.animalActivityView.class);
+                        intent.putExtra("key", user);
                         startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         finish();
                     } else if (MainActivity.this.permit == "business") {

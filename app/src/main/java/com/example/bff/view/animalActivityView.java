@@ -42,11 +42,11 @@ public class animalActivityView extends AppCompatActivity {
     private ImageButton view;
     private ImageButton getlost;
     private Button logOut;
-    private animalActivity_controller controller = new animalActivity_controller(this);
+    private animalActivity_controller controller;
     private String userName;
     private HashMap<String, String> businessNames;
     public Uri imageUri;
-    private FirebaseUser mAuth;
+    private User user;
 
     private ImageView profilePic;
 
@@ -55,6 +55,8 @@ public class animalActivityView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animalwindow);
+        user = getIntent().getParcelableExtra("key");
+        controller = new animalActivity_controller(user,this);
         businessNames = controller.getbusinessName_controller();
         getlost = findViewById(R.id.imageButton2);
         information = findViewById(R.id.imageButton10);
@@ -64,20 +66,9 @@ public class animalActivityView extends AppCompatActivity {
         search = findViewById(R.id.imageButton7);
         logOut = findViewById(R.id.singUp_LogOut);
         view = findViewById(R.id.imageButton13);
-        mAuth = FirebaseAuth.getInstance().getCurrentUser();
 
-        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                title.setText("Hello "+user.getUsername());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        title.setText("Hello "+user.getUsername());
+ ;
         controller.imageListener_controller(profilePic);
 
         profilePic.setOnClickListener(new View.OnClickListener() {
