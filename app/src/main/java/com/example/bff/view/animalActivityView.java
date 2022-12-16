@@ -82,7 +82,7 @@ public class animalActivityView extends AppCompatActivity {
         information.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(animalActivityView.this, information_page.class));
+                startActivity(new Intent(animalActivityView.this, informationPageView.class));
             }
         });
         edit.setOnClickListener(new View.OnClickListener() {
