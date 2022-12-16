@@ -10,20 +10,17 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.bff.R;
-import com.example.bff.WebViewActivity;
 
-import java.util.HashMap;
 
 public class informationPageView extends AppCompatActivity{
 
     private ImageButton homeButton;
-    private Context context;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        this.context = context;
-
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        final Context context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information_page);
 
@@ -31,7 +28,7 @@ public class informationPageView extends AppCompatActivity{
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(context, WebViewActivity.class);
+                Intent intent = new Intent(context, WebViewActivityView.class);
                 startActivity(intent);
             }
         });

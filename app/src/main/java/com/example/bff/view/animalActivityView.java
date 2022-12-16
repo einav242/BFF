@@ -96,7 +96,7 @@ public class animalActivityView extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(animalActivityView.this, edit_User_Profile.class));
+                startActivity(new Intent(animalActivityView.this, EditUserProfileView.class));
 
             }
         });

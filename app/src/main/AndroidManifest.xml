@@ -43,21 +43,21 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".WebViewActivity"
+            android:name=".view.WebViewActivityView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".information_page"
+            android:name=".view.informationPageView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".edit_User_Profile"
+            android:name=".view.EditUserProfileView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
