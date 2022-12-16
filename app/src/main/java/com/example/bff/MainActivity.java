@@ -3,7 +3,7 @@ package com.example.bff;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.example.bff.view.MainActivity_view;
+import com.example.bff.view.MainActivityView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        startActivity(new Intent(MainActivity.this, MainActivity_view.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        startActivity(new Intent(MainActivity.this, MainActivityView.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
         finish();
     }
 }

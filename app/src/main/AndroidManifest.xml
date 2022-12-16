@@ -133,7 +133,21 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.MainActivity_view"
+            android:name=".view.searchView"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.forget_passwordView"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.MainActivityView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -141,13 +155,6 @@
         </activity>
         <activity
             android:name=".animalActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".forget_password"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
