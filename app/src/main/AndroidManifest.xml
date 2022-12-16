@@ -105,7 +105,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".seeMore"
+            android:name=".view.seeMoreView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
