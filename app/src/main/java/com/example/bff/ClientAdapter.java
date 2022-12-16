@@ -43,8 +43,9 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
         holder.aprove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String id="date: "+c.getDate().replace('-','/')+" hour: "+c.getTime().toString();
-                FirebaseDatabase.getInstance().getReference().child("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).child("status").setValue("aprove").addOnCompleteListener(new OnCompleteListener<Void>() {
+                String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime().toString();
+                c.setStatus("aprove");
+                FirebaseDatabase.getInstance().getReference().child("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
@@ -60,8 +61,9 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
         holder.decline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String id="date: "+c.getDate().replace('-','/')+" hour: "+c.getTime().toString();
-                FirebaseDatabase.getInstance().getReference().child("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).child("status").setValue("decline").addOnCompleteListener(new OnCompleteListener<Void>() {
+                String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime();
+                c.setStatus("decline");
+                FirebaseDatabase.getInstance().getReference().child("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
