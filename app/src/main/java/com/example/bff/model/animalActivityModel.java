@@ -48,7 +48,6 @@ public class animalActivityModel {
     }
 
 
-
     public void imageListener(ImageView profilePic)
     {
         this.profilePic =profilePic;
