@@ -112,7 +112,7 @@ public class animalActivityView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 controller.logOut_controller();
-                Intent intent = new Intent(animalActivityView.this, MainActivity.class);
+                Intent intent = new Intent(animalActivityView.this, MainActivity_view.class);
                 startActivity(intent);
                 finish();
                 Toast.makeText(animalActivityView.this , "Logout Successful",Toast.LENGTH_SHORT).show();
