@@ -12,10 +12,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.bff.Business;
 import com.example.bff.R;
 import com.example.bff.User;
 import com.example.bff.animalActivity;
 import com.example.bff.controller.EditUserProfileController;
+import com.example.bff.controller.seeMoreController;
 import com.example.bff.edit_User_Profile;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -43,6 +45,7 @@ public class EditUserProfileModel {
     private FirebaseAuth fAuth;
     private ImageView profilePic;
     private Context context;
+    DatabaseReference databaseReference;
 
 
     private FirebaseStorage storage;
@@ -55,6 +58,7 @@ public class EditUserProfileModel {
         storageReference = storage.getReference();
         fAuth =  FirebaseAuth.getInstance();
         this.context = context;
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
     }
 
     public void update(String edfullName, String edAnimalName, String edPhone) {
@@ -137,5 +141,21 @@ public class EditUserProfileModel {
 
     }
 
+
+//    public void setDataModel(String email, String fullName, String animalName, String phone) {
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                    User user = dataSnapshot.getValue(User.class);
+//                    controller.setDataController(user);
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
 
 }

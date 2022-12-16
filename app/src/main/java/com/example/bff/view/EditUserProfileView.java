@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bff.Business;
 import com.example.bff.R;
 import com.example.bff.User;
 import com.example.bff.controller.EditUserProfileController;
@@ -27,10 +28,17 @@ public class EditUserProfileView extends AppCompatActivity {
     TextView edEmail;
     private Button update;
     private User user;
+    TextView tv_fullName, tv_email, tv_phone, tv_animalName;
+    String id;
 
     private ImageView profilePic;
     public Uri imageUri;
     EditUserProfileController controller;
+
+    String email;
+    String phone;
+    String fullName;
+    String animalName;
 
 
     protected void onCreate(Bundle savedInstanceState)
@@ -48,6 +56,21 @@ public class EditUserProfileView extends AppCompatActivity {
         update = findViewById(R.id.edit_user_Update);
         profilePic = findViewById(R.id.edit_user_image);
         controller.EditProfileimage_controller(profilePic);
+
+//        Bundle extras = getIntent().getExtras();
+//        email = extras.getString("key");
+//        fullName = extras.getString("key");
+//        animalName = extras.getString("key");
+//        phone = extras.getString("key");
+
+
+//        email = user.getEmail();
+//        fullName = user.getName();
+//        animalName = user.getUsername();
+//        phone = user.getPhone();
+
+//        controller.data(email,fullName,animalName,phone);
+
 
         //for add Images
         profilePic.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +93,7 @@ public class EditUserProfileView extends AppCompatActivity {
 
 
 
+
     }
 
     //for add Image
@@ -83,5 +107,10 @@ public class EditUserProfileView extends AppCompatActivity {
         }
     }
 
-
+    public void setDataView(User user){
+        tv_fullName.setText(user.getName());
+        tv_email.setText(user.getEmail());
+        tv_phone.setText(user.getPhone());
+        tv_animalName.setText(user.getUsername());
+    }
 }
