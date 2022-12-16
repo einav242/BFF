@@ -54,7 +54,8 @@ public class edit_User_Profile extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user_profile);
 
@@ -106,6 +107,7 @@ public class edit_User_Profile extends AppCompatActivity {
 
             }
         });
+
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

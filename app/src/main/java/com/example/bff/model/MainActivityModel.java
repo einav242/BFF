@@ -2,7 +2,7 @@ package com.example.bff.model;
 
 import androidx.annotation.NonNull;
 import com.example.bff.User;
-import com.example.bff.controller.MainActivity_controller;
+import com.example.bff.controller.MainActivityController;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -13,12 +13,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity_model {
+public class MainActivityModel {
     FirebaseAuth mAuth;
     private DatabaseReference mData;
-    private MainActivity_controller controller;
+    private MainActivityController controller;
     String permit;
-    public MainActivity_model(MainActivity_controller controller) {
+    public MainActivityModel(MainActivityController controller) {
         mAuth = FirebaseAuth.getInstance();
         this.controller = controller;
         permit = "empty";

@@ -3,20 +3,20 @@ package com.example.bff.controller;
 import android.text.TextUtils;
 
 import com.example.bff.User;
-import com.example.bff.model.MainActivity_model;
-import com.example.bff.view.MainActivity_view;
+import com.example.bff.model.MainActivityModel;
+import com.example.bff.view.MainActivityView;
 
 
 import javax.annotation.Nullable;
 
-public class MainActivity_controller {
+public class MainActivityController {
 
-    MainActivity_view view;
-    MainActivity_model model;
+    MainActivityView view;
+    MainActivityModel model;
     String permit;
-    public MainActivity_controller(MainActivity_view view) {
+    public MainActivityController(MainActivityView view) {
         this.view = view;
-        model = new MainActivity_model(this);
+        model = new MainActivityModel(this);
         permit = "empty";
     }
     public void check_empty(String username, String  passwordE, String permit) {

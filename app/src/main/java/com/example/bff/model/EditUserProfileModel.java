@@ -2,20 +2,30 @@ package com.example.bff.model;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.bff.Business;
+import com.example.bff.R;
 import com.example.bff.User;
+import com.example.bff.animalActivity;
+import com.example.bff.controller.EditUserProfileController;
+import com.example.bff.controller.seeMoreController;
+import com.example.bff.edit_User_Profile;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -24,32 +34,62 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
 
-public class animalActivityModel {
-    private FirebaseUser mAuth;
-    public String userName;
-    private FirebaseAuth fAuth;
-    private StorageReference storageReference;
-    private FirebaseStorage storage;
-    private Context context;
-    private ImageView profilePic;
-//    public Uri imageUri;
+public class EditUserProfileModel {
 
-    public animalActivityModel(User user,Context context) {
+    private EditUserProfileController controller;
+    private FirebaseUser mAuth;
+    DatabaseReference reference; //for the database that save already
+    private FirebaseAuth fAuth;
+    private ImageView profilePic;
+    private Context context;
+    DatabaseReference databaseReference;
+
+
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
+
+
+    public EditUserProfileModel(User user, Context context) {
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         fAuth =  FirebaseAuth.getInstance();
         this.context = context;
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
     }
 
+    public void update(String edfullName, String edAnimalName, String edPhone) {
+        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                String fullName = user.getName();
+                String animalName = user.getUsername();
+                String phone = user.getPhone();
+                if (!fullName.equals(edfullName)) {
+                    reference.child(mAuth.getUid()).child("name").setValue(edfullName);
+                }
+                if (!animalName.equals(edAnimalName)) {
+                    reference.child(mAuth.getUid()).child("username").setValue(edAnimalName);
+                }
+                if (!phone.equals(edPhone)) {
+                    reference.child(mAuth.getUid()).child("phone").setValue(edPhone);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-    public void imageListener(ImageView profilePic)
-    {
-        this.profilePic =profilePic;
+            }
+        });
+
+
+    }
+
+    public void EditProfileimage_controller(ImageView profilePic) {
+//        this.profilePic = profilePic;
         StorageReference profileRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -58,30 +98,6 @@ public class animalActivityModel {
             }
         });
     }
-    public HashMap<String,String> getbusinessName_model()
-    {
-        HashMap<String, String> names = new HashMap<>();
-        FirebaseDatabase.getInstance().getReference("Business").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Business business = dataSnapshot.getValue(Business.class);
-                    names.put(business.getId(),business.getUsername());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        return names;
-    }
-    public void logOut_model()
-    {
-        FirebaseAuth.getInstance().signOut();
-    }
-
 
     public void uploadPicture_model(Uri imageUri) {
         //uplaod image to firebase storage
@@ -124,4 +140,22 @@ public class animalActivityModel {
 
 
     }
+
+
+//    public void setDataModel(String email, String fullName, String animalName, String phone) {
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                    User user = dataSnapshot.getValue(User.class);
+//                    controller.setDataController(user);
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
+
 }

@@ -6,18 +6,15 @@ import android.widget.ImageView;
 
 import com.example.bff.User;
 import com.example.bff.model.animalActivityModel;
-import com.example.bff.view.animalActivityView;
-import com.squareup.picasso.Target;
 
-import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 
-public class animalActivity_controller {
+public class animalActivityController {
 
     animalActivityModel model;
 
 
-    public animalActivity_controller(User user, Context context) {
+    public animalActivityController(User user, Context context) {
         model = new animalActivityModel(user,context);
     }
 
