@@ -1,6 +1,5 @@
 package com.example.bff.view;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,21 +14,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bff.MainActivity;
 import com.example.bff.R;
 import com.example.bff.User;
-import com.example.bff.controller.animalActivity_controller;
+import com.example.bff.controller.animalActivityController;
 import com.example.bff.edit_User_Profile;
 import com.example.bff.get_lost;
 import com.example.bff.information_page;
 import com.example.bff.search;
 import com.example.bff.viewQueue;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
@@ -42,7 +34,7 @@ public class animalActivityView extends AppCompatActivity {
     private ImageButton view;
     private ImageButton getlost;
     private Button logOut;
-    private animalActivity_controller controller;
+    private animalActivityController controller;
     private String userName;
     private HashMap<String, String> businessNames;
     public Uri imageUri;
@@ -56,7 +48,7 @@ public class animalActivityView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animalwindow);
         user = getIntent().getParcelableExtra("key");
-        controller = new animalActivity_controller(user,this);
+        controller = new animalActivityController(user,this);
         businessNames = controller.getbusinessName_controller();
         getlost = findViewById(R.id.imageButton2);
         information = findViewById(R.id.imageButton10);
@@ -103,7 +95,7 @@ public class animalActivityView extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(animalActivityView.this, search.class));
+                startActivity(new Intent(animalActivityView.this, searchView.class));
 
             }
         });
@@ -112,7 +104,7 @@ public class animalActivityView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 controller.logOut_controller();
-                Intent intent = new Intent(animalActivityView.this, MainActivity_view.class);
+                Intent intent = new Intent(animalActivityView.this, MainActivityView.class);
                 startActivity(intent);
                 finish();
                 Toast.makeText(animalActivityView.this , "Logout Successful",Toast.LENGTH_SHORT).show();

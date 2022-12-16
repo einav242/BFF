@@ -17,11 +17,10 @@ import com.example.bff.R;
 import com.example.bff.Register;
 import com.example.bff.User;
 import com.example.bff.businessActivity;
-import com.example.bff.controller.MainActivity_controller;
-import com.example.bff.forget_password;
+import com.example.bff.controller.MainActivityController;
 import com.example.bff.register_BusinessOwner;
 
-public class MainActivity_view extends AppCompatActivity {
+public class MainActivityView extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private Button singupAnimal;
     private Button login;
@@ -31,9 +30,9 @@ public class MainActivity_view extends AppCompatActivity {
     EditText user_name;
     TextView txtFirstName;
     String permit = "empty";
-    MainActivity_controller controller;
+    MainActivityController controller;
 
-    public MainActivity_view() {
+    public MainActivityView() {
     }
 
     @Override
@@ -41,7 +40,7 @@ public class MainActivity_view extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        controller = new MainActivity_controller(this);
+        controller = new MainActivityController(this);
         txtFirstName = findViewById(R.id.textView4);
         singupAnimal = findViewById(R.id.button3);
         login = findViewById(R.id.button2);
@@ -51,17 +50,17 @@ public class MainActivity_view extends AppCompatActivity {
         password = findViewById(R.id.edtTxt2);
 
 
-        singupAnimal.setOnClickListener(v -> startActivity(new Intent(MainActivity_view.this, Register.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)));
+        singupAnimal.setOnClickListener(v -> startActivity(new Intent(MainActivityView.this, Register.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)));
         singupBusiness.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity_view.this, register_BusinessOwner.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                startActivity(new Intent(MainActivityView.this, register_BusinessOwner.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
             }
         });
         forget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity_view.this, forget_password.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                startActivity(new Intent(MainActivityView.this, forget_passwordView.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
             }
         });
 
@@ -104,16 +103,16 @@ public class MainActivity_view extends AppCompatActivity {
     }
     public void  toast_view(String msg){
 
-        Toast.makeText(MainActivity_view.this,msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivityView.this,msg, Toast.LENGTH_SHORT).show();
     }
     public void paasAnimalActivity(User user){
-        Intent intent=new Intent(MainActivity_view.this, com.example.bff.view.animalActivityView.class);
+        Intent intent=new Intent(MainActivityView.this, com.example.bff.view.animalActivityView.class);
         intent.putExtra("key", user);
         startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
         finish();
     }
     public void passBusinessActivity(){
-        startActivity(new Intent(MainActivity_view.this, businessActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        startActivity(new Intent(MainActivityView.this, businessActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
         finish();
     }
 }
