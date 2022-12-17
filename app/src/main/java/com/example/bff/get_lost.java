@@ -56,6 +56,8 @@ public class get_lost extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_lost);
+
+
         pd = new ProgressDialog(this);
         mRootRef = FirebaseDatabase.getInstance().getReference();
         addLost = findViewById(R.id.get_lost_IgotLost);
@@ -66,10 +68,6 @@ public class get_lost extends AppCompatActivity
 
         userF = FirebaseAuth.getInstance().getCurrentUser();
 
-
-        //try add image
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
 
 
         // if they found me
@@ -123,7 +121,7 @@ public class get_lost extends AppCompatActivity
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists())
                         {
-                            Toast.makeText(get_lost.this,"The queue is currently occupied",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(get_lost.this,"Your animal is already listed",Toast.LENGTH_SHORT).show();
                         }
                         else
                         {
@@ -134,7 +132,7 @@ public class get_lost extends AppCompatActivity
                                     String email = user.getEmail();
                                     String phone = user.getPhone();
                                     String id = user.getId();
-                                    String username = user.getUsername();
+                                    String username = user.getName();
                                     InserData(phone, email , username,id);
                                 }
                                 @Override
@@ -252,6 +250,7 @@ public class get_lost extends AppCompatActivity
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
+
                     Toast.makeText(get_lost.this, "User Details Inserted", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(get_lost.this, animalActivityView.class);
                     startActivity(intent);
@@ -265,6 +264,7 @@ public class get_lost extends AppCompatActivity
                 Toast.makeText(get_lost.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(get_lost.this,animalActivityView.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
