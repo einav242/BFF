@@ -38,49 +38,22 @@
         android:id="@+id/textView7"
         android:layout_width="134dp"
         android:layout_height="39dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginEnd="250dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="144dp"
         android:text="@string/add_client"
         android:textColor="#673AB7"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView8" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
-        android:text="@string/remove_client"
-        android:textColor="#673AB7"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageButton3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="240dp"
+        android:layout_marginEnd="144dp"
         android:layout_marginBottom="460dp"
         android:contentDescription="@string/image1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/pretty_button" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="460dp"
-        android:contentDescription="@string/button2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/pretty_button" />
@@ -89,8 +62,8 @@
         android:id="@+id/imageView5"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="240dp"
-        android:layout_marginBottom="230dp"
+        android:layout_marginEnd="232dp"
+        android:layout_marginBottom="264dp"
         android:contentDescription="@string/button3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -113,8 +86,8 @@
         android:id="@+id/imageView6"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="230dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="264dp"
         android:contentDescription="@string/button4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -152,19 +125,6 @@
         app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:layout_constraintTop_toTopOf="@+id/imageView8"
         app:srcCompat="@drawable/add_user"
-        android:scaleType="fitCenter"
-        android:background="@android:color/transparent"/>
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:contentDescription="@string/remove"
-        app:layout_constraintStart_toStartOf="@+id/imageView11"
-        app:layout_constraintTop_toTopOf="@+id/imageView11"
-        app:srcCompat="@drawable/remove_user"
         android:scaleType="fitCenter"
         android:background="@android:color/transparent"/>
 

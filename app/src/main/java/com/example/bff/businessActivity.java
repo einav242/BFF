@@ -37,7 +37,6 @@ import java.util.UUID;
 
 public class businessActivity extends AppCompatActivity {
     private ImageButton view;
-    private ImageButton delete;
     private ImageButton insert;
     private ImageButton edit;
     private TextView title;
@@ -57,7 +56,6 @@ public class businessActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.business_window);
         view = findViewById(R.id.imageButton5);
-        delete = findViewById(R.id.imageButton4);
         insert = findViewById(R.id.imageButton3);
         edit = findViewById(R.id.imageButton8);
         title = findViewById(R.id.txtMessage);
@@ -105,13 +103,6 @@ public class businessActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(businessActivity.this,addUser.class));
-            }
-        });
-
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(businessActivity.this, deleteUser.class));
             }
         });
 

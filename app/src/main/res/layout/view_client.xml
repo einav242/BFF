@@ -6,77 +6,92 @@
     app:cardElevation="12dp"
     app:cardCornerRadius="12dp"
     android:layout_margin="16dp">
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="359dp"
+        android:layout_height="252dp"
         android:layout_margin="16dp"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_margin="16dp"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email:"
-                android:textSize="24dp"
                 android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/textviewname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:textColor="@color/black"/>
-
+                android:textColor="@color/black"
+                android:textSize="24dp" />
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_margin="16dp"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Time:"
-                android:textSize="24dp"
                 android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/textviewPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:textColor="@color/black"/>
-
+                android:textColor="@color/black"
+                android:textSize="24dp" />
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_margin="16dp"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date:"
-                android:textSize="24dp"
                 android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/dateviewPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="24dp" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E60909"
+            android:text="delete" />
 
     </LinearLayout>
 
