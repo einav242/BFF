@@ -33,7 +33,7 @@ public class make_appointment extends AppCompatActivity {
     String businessName;
     Button send;
     ProgressDialog pd;
-    List<Client> clientList;
+//    List<Client> clientList;
     int flag=0;
    static int id=1;
     String email;
@@ -48,12 +48,12 @@ public class make_appointment extends AppCompatActivity {
             businessID = extras.getString("key");
             businessName = extras.getString("name");
         }
-        clientList=new ArrayList<>();
+//        clientList=new ArrayList<>();
         FirebaseDatabase.getInstance().getReference().child("Em").child(businessID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Client user = dataSnapshot.getValue(Client.class);
-                clientList.add(user);
+//                clientList.add(user);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

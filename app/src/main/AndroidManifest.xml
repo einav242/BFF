@@ -112,6 +112,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".view.make_appointmentView"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".viewQueue"
             android:exported="false">
             <meta-data

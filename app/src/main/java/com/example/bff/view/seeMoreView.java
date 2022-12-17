@@ -51,7 +51,7 @@ public class seeMoreView extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(seeMoreView.this, make_appointment.class);
+                Intent intent = new Intent(seeMoreView.this, make_appointmentView.class);
                 intent.putExtra("key",id);
                 intent.putExtra("name",tv_name.getText().toString());
                 startActivity(intent);
