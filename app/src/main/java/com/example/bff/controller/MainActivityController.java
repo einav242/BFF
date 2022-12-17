@@ -2,7 +2,7 @@ package com.example.bff.controller;
 
 import android.text.TextUtils;
 
-import com.example.bff.User;
+import com.example.bff.entities.User;
 import com.example.bff.model.MainActivityModel;
 import com.example.bff.view.MainActivityView;
 

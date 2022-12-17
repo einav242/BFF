@@ -1,12 +1,14 @@
 package com.example.bff;
 
+import com.example.bff.entities.Client;
+
 import java.util.HashMap;
 
 public class Em {
 
     private String businessName;
     private int id;
-    private HashMap<String,Client> clients;
+    private HashMap<String, Client> clients;
 
     public Em(){
         this.clients=new HashMap<>();

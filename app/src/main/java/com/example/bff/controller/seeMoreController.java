@@ -1,6 +1,6 @@
 package com.example.bff.controller;
 
-import com.example.bff.Business;
+import com.example.bff.entities.Business;
 import com.example.bff.model.seeMoreModel;
 import com.example.bff.view.seeMoreView;
 

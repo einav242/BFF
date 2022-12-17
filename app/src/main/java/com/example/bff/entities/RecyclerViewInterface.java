@@ -1,4 +1,4 @@
-package com.example.bff;
+package com.example.bff.entities;
 
 import android.widget.Button;
 

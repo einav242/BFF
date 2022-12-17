@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.widget.ImageView;
 
-import com.example.bff.User;
+import com.example.bff.entities.User;
 import com.example.bff.model.animalActivityModel;
 
 import java.util.HashMap;

@@ -3,8 +3,8 @@ package com.example.bff.model;
 
 import androidx.annotation.NonNull;
 
-import com.example.bff.Business;
-import com.example.bff.Client;
+import com.example.bff.entities.Business;
+import com.example.bff.entities.Client;
 import com.example.bff.controller.make_appointmentController;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

@@ -1,4 +1,4 @@
-package com.example.bff;
+package com.example.bff.entities;
 
 import  com.google.firebase.database.IgnoreExtraProperties;
 

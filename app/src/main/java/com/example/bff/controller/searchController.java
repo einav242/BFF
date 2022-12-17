@@ -1,7 +1,7 @@
 package com.example.bff.controller;
 
-import com.example.bff.Business;
-import com.example.bff.BusinessAdapter;
+import com.example.bff.entities.Business;
+import com.example.bff.view.BusinessAdapter;
 import com.example.bff.model.searchModel;
 import com.example.bff.view.searchView;
 

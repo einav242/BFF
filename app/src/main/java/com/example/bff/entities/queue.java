@@ -1,4 +1,4 @@
-package com.example.bff;
+package com.example.bff.entities;
 
 public class queue {
     String businessName;

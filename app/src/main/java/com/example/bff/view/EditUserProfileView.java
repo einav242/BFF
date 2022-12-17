@@ -14,9 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bff.Business;
 import com.example.bff.R;
-import com.example.bff.User;
+import com.example.bff.entities.User;
 import com.example.bff.controller.EditUserProfileController;
 
 

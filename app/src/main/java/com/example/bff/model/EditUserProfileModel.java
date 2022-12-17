@@ -2,23 +2,14 @@ package com.example.bff.model;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.bff.Business;
-import com.example.bff.R;
-import com.example.bff.User;
-import com.example.bff.animalActivity;
+import com.example.bff.entities.User;
 import com.example.bff.controller.EditUserProfileController;
-import com.example.bff.controller.seeMoreController;
-import com.example.bff.edit_User_Profile;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;

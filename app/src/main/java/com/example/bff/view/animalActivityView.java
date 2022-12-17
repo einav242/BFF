@@ -15,12 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bff.R;
-import com.example.bff.User;
+import com.example.bff.entities.User;
 import com.example.bff.controller.animalActivityController;
-import com.example.bff.edit_User_Profile;
 import com.example.bff.get_lost;
-import com.example.bff.information_page;
-import com.example.bff.search;
 import com.example.bff.viewQueue;
 
 import java.util.HashMap;
@@ -114,7 +111,7 @@ public class animalActivityView extends AppCompatActivity {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(animalActivityView.this, viewQueue.class);
+                Intent intent = new Intent(animalActivityView.this, viewQueueView.class);
                 intent.putExtra("key", businessNames);
                 startActivity(intent);
                 finish();

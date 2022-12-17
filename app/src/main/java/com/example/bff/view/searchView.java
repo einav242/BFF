@@ -1,6 +1,5 @@
 package com.example.bff.view;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,20 +11,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 
-import com.example.bff.Business;
-import com.example.bff.BusinessAdapter;
+import com.example.bff.entities.Business;
 import com.example.bff.R;
-import com.example.bff.RecyclerViewInterface;
+import com.example.bff.entities.RecyclerViewInterface;
 import com.example.bff.controller.searchController;
-import com.example.bff.seeMore;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class searchView extends AppCompatActivity implements RecyclerViewInterface {
     searchController controller;

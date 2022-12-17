@@ -10,28 +10,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bff.Business;
 import com.example.bff.R;
-import com.example.bff.User;
+import com.example.bff.entities.User;
 import com.example.bff.businessActivity;
-import com.example.bff.controller.EditUserProfileController;
 import com.example.bff.controller.editBusinessController;
-import com.example.bff.editBusiness;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
-
-import java.util.Objects;
 
 public class editBusinessView extends AppCompatActivity {
     private EditText name;

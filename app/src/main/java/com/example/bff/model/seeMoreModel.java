@@ -2,7 +2,7 @@ package com.example.bff.model;
 
 import androidx.annotation.NonNull;
 
-import com.example.bff.Business;
+import com.example.bff.entities.Business;
 import com.example.bff.controller.seeMoreController;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

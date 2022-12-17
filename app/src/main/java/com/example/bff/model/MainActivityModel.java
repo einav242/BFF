@@ -1,7 +1,7 @@
 package com.example.bff.model;
 
 import androidx.annotation.NonNull;
-import com.example.bff.User;
+import com.example.bff.entities.User;
 import com.example.bff.controller.MainActivityController;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

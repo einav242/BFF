@@ -8,8 +8,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.bff.Business;
-import com.example.bff.User;
+import com.example.bff.entities.Business;
+import com.example.bff.entities.User;
 import com.example.bff.controller.EditUserProfileController;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

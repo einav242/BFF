@@ -1,4 +1,4 @@
-package com.example.bff;
+package com.example.bff.view;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.bff.R;
+import com.example.bff.entities.queue;
 
 import java.util.ArrayList;
 
@@ -29,10 +32,10 @@ public class queueAdapter extends RecyclerView.Adapter<queueVH> {
     @Override
     public void onBindViewHolder(@NonNull  queueVH holder, int position) {
         queue q= lst.get(position);
-        holder.name.setText(q.businessName);
-        holder.date.setText(q.date);
-        holder.time.setText(q.time);
-        holder.status.setText(q.status);
+        holder.name.setText(q.getBusinessName());
+        holder.date.setText(q.getDate());
+        holder.time.setText(q.getTime());
+        holder.status.setText(q.getStatus());
     }
 
     @Override

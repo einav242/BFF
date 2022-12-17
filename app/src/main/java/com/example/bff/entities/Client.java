@@ -1,4 +1,4 @@
-package com.example.bff;
+package com.example.bff.entities;
 
 import java.util.ArrayList;
 import java.util.List;
