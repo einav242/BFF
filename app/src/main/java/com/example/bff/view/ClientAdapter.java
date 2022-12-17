@@ -96,7 +96,16 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
                 @Override
                 public void onClick(View view) {
                     String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime();
-                    FirebaseDatabase.getInstance().getReference("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).removeValue();
+                    FirebaseDatabase.getInstance().getReference("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                holder.delete.setVisibility(view.GONE);
+                                holder.noUser.setText("No client");
+                            }
+                            else {}
+                        }
+                    });
 
                 }
             });
@@ -110,7 +119,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
 }
 
 class ClientVH extends RecyclerView.ViewHolder{
-    TextView Email , Phone, Date;
+    TextView Email , Phone, Date, noUser;
     Button aprove,decline, delete;
     Client c;
     private ClientAdapter adp;
@@ -126,6 +135,7 @@ class ClientVH extends RecyclerView.ViewHolder{
         }
         else if(flag ==1){
             delete = itemView.findViewById(R.id.button11);
+            noUser = itemView.findViewById(R.id.textView41);
         }
     }
     public ClientVH linkAdapter(ClientAdapter adp){

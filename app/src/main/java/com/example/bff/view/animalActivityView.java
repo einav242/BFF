@@ -56,7 +56,7 @@ public class animalActivityView extends AppCompatActivity {
         view = findViewById(R.id.imageButton13);
 
         title.setText("Hello "+user.getUsername());
- ;
+
         controller.imageListener_controller(profilePic);
 
         profilePic.setOnClickListener(new View.OnClickListener() {
