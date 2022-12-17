@@ -19,7 +19,6 @@ public class make_appointmentModel {
     make_appointmentController controller;
     private DatabaseReference mRootRef;
     private FirebaseAuth mAuth;
-    int flag=0;
 
     public make_appointmentModel(make_appointmentController controller) {
         this.controller = controller;
@@ -44,14 +43,10 @@ public class make_appointmentModel {
         FirebaseDatabase.getInstance().getReference().child("Em").child(businessID).child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists())
+                Client client = snapshot.getValue(Client.class);;
+                if(!snapshot.exists() || (snapshot.exists() && client.getStatus().equals("decline")))
                 {
-                    controller.setToastController("The queue is currently occupied");
-                    flag=1;
-                }
-                else
-                {
-                    Client client=new Client(email,txt_date,txt_time,"waiting");
+                    client=new Client(email,txt_date,txt_time,"waiting");
                     FirebaseDatabase.getInstance().getReference().child("Em").child(businessID).child(id).setValue(client).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -62,7 +57,11 @@ public class make_appointmentModel {
 
                         }
                     });
-                    flag = 0;
+
+                }
+                else
+                {
+                    controller.setToastController("The queue is currently occupied");
                 }
             }
 
