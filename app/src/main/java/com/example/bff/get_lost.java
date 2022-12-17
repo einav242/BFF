@@ -253,6 +253,7 @@ public class get_lost extends AppCompatActivity
 
                     Toast.makeText(get_lost.this, "User Details Inserted", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(get_lost.this, animalActivityView.class);
+                    intent.putExtra("key", user);
                     startActivity(intent);
                     pd.dismiss();
                 }

@@ -96,7 +96,7 @@ public class businessActivity extends AppCompatActivity {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(businessActivity.this, Clientlist.class));
+                startActivity(new Intent(businessActivity.this, viewClient.class));
                 finish();
             }
         });
@@ -104,7 +104,7 @@ public class businessActivity extends AppCompatActivity {
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(businessActivity.this, Clientlist.class));
+                startActivity(new Intent(businessActivity.this,addUser.class));
             }
         });
 

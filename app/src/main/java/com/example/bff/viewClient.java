@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.bff.entities.Client;
+import com.example.bff.view.ClientAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Clientlist extends AppCompatActivity {
+public class viewClient extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Client> lst;
     DatabaseReference mroot;
@@ -29,7 +30,7 @@ public class Clientlist extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(Clientlist.this , businessActivity.class));
+        startActivity(new Intent(viewClient.this , businessActivity.class));
         finish();
     }
 
@@ -42,7 +43,7 @@ public class Clientlist extends AppCompatActivity {
         mroot = FirebaseDatabase.getInstance().getReference("Em");
         lst=new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        myadapt = new ClientAdapter(lst,this);
+        myadapt = new ClientAdapter(lst,this,1);
         recyclerView.setAdapter(myadapt);
         mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -50,7 +51,7 @@ public class Clientlist extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren())
                 {
                     Client client = dataSnapshot.getValue(Client.class);
-                    if(client.getStatus()=="waiting")
+                    if(client.getStatus().equals("approve"))
                         lst.add(client);
                 }
                 myadapt.notifyDataSetChanged();
@@ -62,25 +63,5 @@ public class Clientlist extends AppCompatActivity {
 
             }
         });
-        ValueEventListener valueEventListener=new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                {
-                    Client client = dataSnapshot.getValue(Client.class);
-                    lst.add(client);
-                }
-                myadapt.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        };
-        mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(valueEventListener);
-
-
     }
 }
