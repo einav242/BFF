@@ -74,32 +74,32 @@ public class get_lost extends AppCompatActivity
         found.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference("Got Lost").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+                FirebaseDatabase.getInstance().getReference("Got Lost").child(mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()){
+                        if (snapshot.exists() == false){
+                            Toast.makeText(get_lost.this,"Your animal not on the list",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
                             User user = snapshot.getValue(User.class);
                             String id = user.getId();
                             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Got Lost").child(id);
                             databaseReference.removeValue();
                             Toast.makeText(get_lost.this, "User Details delete", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(get_lost.this, animalActivityView.class);
+                            intent.putExtra("key", user);
+                            startActivity(intent);
                             finish();
-//                            Intent intent = new Intent(get_lost.this,animalActivityView.class);
-//                            startActivity(intent);
                         }
-                        else {
-                            Toast.makeText(get_lost.this,"Your animal not on the list",Toast.LENGTH_SHORT).show();
-//                            Intent intent = new Intent(get_lost.this,animalActivityView.class);
-//                            startActivity(intent);
-                        }
+                        finish();
 
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
+                finish();
             }
         });
 
@@ -147,30 +147,6 @@ public class get_lost extends AppCompatActivity
 
                     }
                 });
-//                Runnable runnable = new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        if(flag==0)
-//                        {
-//                            FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
-//                                @Override
-//                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                    User user = dataSnapshot.getValue(User.class);
-//                                    String email = user.getEmail();
-//                                    String phone = user.getPhone();
-//                                    String id = user.getId();
-//                                    String username = user.getUsername();
-//                                    InserData(phone, email , username,id);
-//                                }
-//                                @Override
-//                                public void onCancelled(@NonNull DatabaseError error) {
-//                                }
-//                            });
-//                        }
-//                    }
-//                };
-//                Handler handler = new Handler(Looper.getMainLooper());
-//                handler.postDelayed(runnable,300);
                 finish();
             }
 
@@ -179,72 +155,7 @@ public class get_lost extends AppCompatActivity
 
     }
 
-
-    private void deleteArtist(String id) {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Got Lost").child(id);
-        Task<Void> mTask = databaseReference.removeValue();
-        mTask.addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(get_lost.this, "User Details delete", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(get_lost.this,animalActivityView.class);
-                startActivity(intent);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(get_lost.this, "Faild", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        databaseReference.removeValue();
-
-//        Toast.makeText(get_lost.this, "User Details delete", Toast.LENGTH_SHORT).show();
-//        Intent intent = new Intent(get_lost.this,animalActivity.class);
-//        startActivity(intent);
-
-    }
-
-
     private void InserData(String phone,final String email,String username,String id) {
-//        FirebaseDatabase.getInstance().getReference("Got Lost").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
-//                                                                                                                @Override
-//                                                                                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                                                                                                                    if (snapshot.exists()){
-//                                                                                                                        Toast.makeText(get_lost.this,"Your animal is already registered as lost",Toast.LENGTH_SHORT).show();
-//                                                                                                                        Intent intent = new Intent(get_lost.this,animalActivity.class);
-//                                                                                                                        startActivity(intent);
-//                                                                                                                    }
-//                                                                                                                    else {
-//                                                                                                                        User user = new User(phone,email,username,id);
-//                                                                                                                        mRootRef.child("Got Lost").child(id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                                                                                                            @Override
-//                                                                                                                            public void onComplete(@NonNull Task<Void> task) {
-//                                                                                                                                if (task.isSuccessful()) {
-//                                                                                                                                    pd.dismiss();
-//                                                                                                                                    Toast.makeText(get_lost.this, "User Details Inserted", Toast.LENGTH_SHORT).show();
-//                                                                                                                                    Intent intent = new Intent(get_lost.this,animalActivity.class);
-//                                                                                                                                    startActivity(intent);
-//                                                                                                                                }
-//                                                                                                                            }
-//                                                                                                                        }).addOnFailureListener(new OnFailureListener() {
-//                                                                                                                            @Override
-//                                                                                                                            public void onFailure(@NonNull Exception e) {
-//                                                                                                                                pd.dismiss();
-//                                                                                                                                Toast.makeText(get_lost.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                                                                                                                                Intent intent = new Intent(get_lost.this,animalActivity.class);
-//                                                                                                                                startActivity(intent);
-//                                                                                                                            }
-//                                                                                                                        });
-//                                                                                                                    }
-//                                                                                                                }
-//                                                                                                                @Override
-//                                                                                                                public void onCancelled(@NonNull DatabaseError error) {
-//                                                                                                                }
-//                                                                                                            });
-
-
-
         User user = new User(phone,email,username,id);
         mRootRef.child("Got Lost").child(id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
