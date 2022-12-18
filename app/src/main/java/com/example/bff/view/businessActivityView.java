@@ -133,4 +133,8 @@ public class businessActivityView extends AppCompatActivity {
     public void pdDismissView(){
         pd.dismiss();
     }
+
+    public void picassoView(Uri uri){
+        Picasso.get().load(uri).into(profilePic);
+    }
 }

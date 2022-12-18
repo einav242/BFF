@@ -36,4 +36,7 @@ public class businessActivityController {
     public void uploadPicture(Uri imageUri) {
         model.uploadPicture(imageUri);
     }
+    public void picassoController(Uri uri){
+        view.picassoView(uri);
+    }
 }
