@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bff.R;
+import com.example.bff.controller.ClientAdpterController;
 import com.example.bff.entities.Client;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,11 +23,13 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
     Context context;
     ArrayList<Client> lst;
     int flag;
+    ClientAdpterController controller;
 
     public ClientAdapter(ArrayList<Client> lst,Context context, int flag){
         this.lst=lst;
         this.context=context;
         this.flag = flag;
+        controller=new ClientAdpterController(this);
     }
     @NonNull
     @Override
@@ -57,17 +60,19 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
                 public void onClick(View view) {
                     String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime().toString();
                     c.setStatus("approve");
-                    FirebaseDatabase.getInstance().getReference().child("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-                                holder.aprove.setVisibility(view.GONE);
-                                holder.decline.setVisibility(view.GONE);
-                            }
-                            else {}
+                    controller.SendControlAprove(c,id,holder.aprove,holder.decline,view);
 
-                        }
-                    });
+//                    FirebaseDatabase.getInstance().getReference().child("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//                            if(task.isSuccessful()){
+//                                holder.aprove.setVisibility(view.GONE);
+//                                holder.decline.setVisibility(view.GONE);
+//                            }
+//                            else {}
+//
+//                        }
+//                    });
                 }
             });
             holder.decline.setOnClickListener(new View.OnClickListener() {
@@ -75,18 +80,19 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
                 public void onClick(View view) {
                     String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime();
                     c.setStatus("decline");
-                    FirebaseDatabase.getInstance().getReference().child("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-                                holder.aprove.setVisibility(view.GONE);
-                                holder.decline.setVisibility(view.GONE);
-
-                            }
-                            else {}
-
-                        }
-                    });
+                    controller.SendControlDecline(c,id,holder.aprove,holder.decline,view);
+//                    FirebaseDatabase.getInstance().getReference().child("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//                            if(task.isSuccessful()){
+//                                holder.aprove.setVisibility(view.GONE);
+//                                holder.decline.setVisibility(view.GONE);
+//
+//                            }
+//                            else {}
+//
+//                        }
+//                    });
                 }
             });
         }
@@ -96,16 +102,17 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
                 @Override
                 public void onClick(View view) {
                     String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime();
-                    FirebaseDatabase.getInstance().getReference("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-                                holder.delete.setVisibility(view.GONE);
-                                holder.noUser.setText("No client");
-                            }
-                            else {}
-                        }
-                    });
+                    controller.SendControlDelete(id,holder.delete,holder.noUser,view);
+//                    FirebaseDatabase.getInstance().getReference("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//                            if(task.isSuccessful()){
+//                                holder.delete.setVisibility(view.GONE);
+//                                holder.noUser.setText("No client");
+//                            }
+//                            else {}
+//                        }
+//                    });
 
                 }
             });

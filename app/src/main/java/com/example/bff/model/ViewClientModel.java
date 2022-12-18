@@ -1,13 +1,8 @@
-package com.example.bff;
+package com.example.bff.model;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-
+import com.example.bff.controller.ViewClientController;
 import com.example.bff.entities.Client;
 import com.example.bff.view.ClientAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,32 +14,19 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class viewClient extends AppCompatActivity {
-    RecyclerView recyclerView;
-    ArrayList<Client> lst;
-    DatabaseReference mroot;
-    ClientAdapter myadapt;
+public class ViewClientModel {
+    ViewClientController controller;
     FirebaseAuth mAuth;
+    DatabaseReference mroot;
 
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        startActivity(new Intent(viewClient.this , businessActivity.class));
-        finish();
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clientlist);
-        recyclerView = findViewById(R.id.Recycleview);
+    public ViewClientModel(ViewClientController viewClientController) {
+        controller=viewClientController;
         mAuth = FirebaseAuth.getInstance();
         mroot = FirebaseDatabase.getInstance().getReference("Em");
-        lst=new ArrayList<>();
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        myadapt = new ClientAdapter(lst,this,1);
-        recyclerView.setAdapter(myadapt);
+    }
+
+    public void SendModelAdpter(ClientAdapter myadapt, ArrayList<Client> lst) {
         mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

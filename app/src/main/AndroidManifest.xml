@@ -29,14 +29,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".viewClient"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".addImage"
+            android:name=".view.viewClient"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -126,13 +119,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.businessActivityView"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".edit_User_Profile"
             android:exported="false">
             <meta-data
@@ -190,13 +176,6 @@
         </activity>
         <activity
             android:name=".addUser"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".deleteUser"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

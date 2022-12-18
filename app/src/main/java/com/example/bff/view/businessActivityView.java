@@ -17,8 +17,6 @@ import android.widget.Toast;
 import com.example.bff.R;
 import com.example.bff.controller.businessActivityController;
 
-import com.example.bff.viewClient;
-
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.squareup.picasso.Picasso;
