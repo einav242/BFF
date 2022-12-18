@@ -43,12 +43,12 @@ public class EditUserProfileModel {
     private StorageReference storageReference;
 
 
-    public EditUserProfileModel(User user, Context context) {
+    public EditUserProfileModel(EditUserProfileController controller) {
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         fAuth =  FirebaseAuth.getInstance();
-        this.context = context;
+        this.controller = controller;
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
     }
 
@@ -78,6 +78,7 @@ public class EditUserProfileModel {
 
 
     }
+
 
     public void EditUserimage_controller(ImageView profilePic) {
 //        this.profilePic = profilePic;
@@ -132,19 +133,12 @@ public class EditUserProfileModel {
 
     }
 
-
     public void setDataModel(String email) {
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    User user = dataSnapshot.getValue(User.class);
-                    if(user.getEmail().equals(email))
-                    {
-                        controller.setDataController(user);
-                        break;
-                    }
-                }
+                User user = snapshot.getValue(User.class);
+                controller.setDataController(user);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

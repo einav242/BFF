@@ -26,7 +26,7 @@ public class EditUserProfileView extends AppCompatActivity {
     TextView editPhone;
     TextView edEmail;
     private Button update;
-    private User user;
+//    private User user;
     TextView tv_fullName, tv_email, tv_phone, tv_animalName;
     String id;
 
@@ -42,8 +42,8 @@ public class EditUserProfileView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user_profile);
 
-        user = getIntent().getParcelableExtra("key");
-        controller = new EditUserProfileController(user,this);
+//        user = getIntent().getParcelableExtra("key");
+        controller = new EditUserProfileController(this);
 
 
         edFullName = findViewById(R.id.edit_user_fullName);
@@ -53,7 +53,7 @@ public class EditUserProfileView extends AppCompatActivity {
         update = findViewById(R.id.edit_user_Update);
         profilePic = findViewById(R.id.edit_user_image);
         controller.EditUserimage_controller(profilePic);
-
+        controller.data(email);
 
 
 
@@ -64,12 +64,12 @@ public class EditUserProfileView extends AppCompatActivity {
 //        animalName = extras.getString("key");
 //        phone = extras.getString("key");
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            email = user.getEmail();
-        }
-//        email = user.getEmail();
-        controller.data(email);
+//        Bundle extras = getIntent().getExtras();
+//        if (extras != null) {
+//            email = user.getEmail();
+//        }
+////        email = user.getEmail();
+
 
 
 //        email = user.getEmail();
@@ -123,4 +123,5 @@ public class EditUserProfileView extends AppCompatActivity {
         edAnimalName.setText(user.getUsername());
         id = user.getId();
     }
+
 }

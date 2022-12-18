@@ -17,14 +17,14 @@ public class EditUserProfileController {
     EditUserProfileView view;
 
 
-    public EditUserProfileController(User user, Context context) {
-        model = new EditUserProfileModel(user,context);
+    public EditUserProfileController(EditUserProfileView view) {
+        this.view = view;
+        model = new EditUserProfileModel(this);
     }
 
 
     public void update(String edfullName, String edAnimalName, String edPhone) {
         model.update(edfullName,edAnimalName,edPhone);
-
     }
 
     public void EditUserimage_controller(ImageView profilePic) {
@@ -48,4 +48,5 @@ public class EditUserProfileController {
     public void setDataController(User user) {
         view.setDataView(user);
     }
+
 }
