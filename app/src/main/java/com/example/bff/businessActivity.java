@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.bff.entities.Business;
 //import com.example.bff.view.editBusinessView;
-import com.example.bff.view.viewClient;
+import com.example.bff.view.addUserView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -103,7 +103,7 @@ public class businessActivity extends AppCompatActivity {
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(businessActivity.this,addUser.class));
+                startActivity(new Intent(businessActivity.this, addUserView.class));
             }
         });
 

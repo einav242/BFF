@@ -48,6 +48,7 @@ public class businessActivityView extends AppCompatActivity {
         pd = new ProgressDialog(this);
         controller = new businessActivityController(this);
         controller.getImageController(profilePic);
+        controller.getUserNameController();
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
