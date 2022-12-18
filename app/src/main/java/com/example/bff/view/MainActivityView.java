@@ -112,7 +112,7 @@ public class MainActivityView extends AppCompatActivity {
         finish();
     }
     public void passBusinessActivity(){
-        startActivity(new Intent(MainActivityView.this, businessActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        startActivity(new Intent(MainActivityView.this, businessActivityView.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
         finish();
     }
 }
