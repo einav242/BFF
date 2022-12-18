@@ -48,6 +48,7 @@ public class RegisterView extends AppCompatActivity {
         phone = findViewById(R.id.editTextPhone);
         register = findViewById(R.id.singUp_Register);
         loginUser = findViewById(R.id.singUp_Button_LoginHere);
+        pd = new ProgressDialog(this);
 
         // if to the user have already account
         loginUser.setOnClickListener(new View.OnClickListener() {
@@ -65,17 +66,10 @@ public class RegisterView extends AppCompatActivity {
                 String txtEmail = email.getText().toString();
                 String txtPassword = password.getText().toString();
                 String txtPhone = phone.getText().toString();
-
-                if (TextUtils.isEmpty(txtUsername) || TextUtils.isEmpty(txtName)
-                        || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword) || TextUtils.isEmpty(txtPhone)){
-                    Toast.makeText(RegisterView.this, "Empty credentials!", Toast.LENGTH_SHORT).show();
-                } else if (txtPassword.length() < 6){
-                    Toast.makeText(RegisterView.this, "Password too short!", Toast.LENGTH_SHORT).show();
-                } else {
-                    controller.registerUser(txtUsername , txtName , txtEmail , txtPassword, txtPhone , pd);
-                }
+                controller.registerUser(txtUsername , txtName , txtEmail , txtPassword, txtPhone);
             }
         });
+
     }
 
     public void  toast_view(String msg){
@@ -87,6 +81,15 @@ public class RegisterView extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
+    }
+
+    public void setPdView(String msg){
+        pd.setTitle(msg);
+        pd.show();
+    }
+
+    public void pdDismissView(){
+        pd.dismiss();
     }
 
 }
