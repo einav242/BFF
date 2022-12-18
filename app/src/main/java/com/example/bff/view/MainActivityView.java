@@ -50,7 +50,7 @@ public class MainActivityView extends AppCompatActivity {
         password = findViewById(R.id.edtTxt2);
 
 
-        singupAnimal.setOnClickListener(v -> startActivity(new Intent(MainActivityView.this, Register.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)));
+        singupAnimal.setOnClickListener(v -> startActivity(new Intent(MainActivityView.this, RegisterView.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)));
         singupBusiness.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

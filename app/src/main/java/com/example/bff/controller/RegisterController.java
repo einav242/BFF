@@ -12,7 +12,8 @@ public class RegisterController {
     RegisterModel model;
     RegisterView view;
 
-    public RegisterController(RegisterView view){
+    public RegisterController(RegisterView view)
+    {
         this.view = view;
         model = new RegisterModel(this);
     }
@@ -20,9 +21,11 @@ public class RegisterController {
     public void registerUser(String txtUsername, String txtName, String txtEmail, String txtPassword, String txtPhone, ProgressDialog pd) {
         model.registerUser(txtUsername,txtName,txtEmail,txtPassword,txtPhone,pd);
     }
+
     public void d() {
         view.p();
     }
+
     public void toast_controller(String s) {
         view.toast_view(s);
     }

@@ -77,11 +77,14 @@ public class editBusinessView extends AppCompatActivity {
             public void onClick(View view) {
                 controller.updateController(name.getText().toString(),businessName.getText().toString(),id.getText().toString(),phone.getText().toString(),city.getText().toString(),street.getText().toString(),
                         house_number.getText().toString(),type.getText().toString(), time.getText().toString());
-                startActivity(new Intent(editBusinessView.this, businessActivityView.class));
+
             }
         });
     }
 
+    public void passPage(){
+        startActivity(new Intent(editBusinessView.this, businessActivityView.class));
+    }
 
     //for add Image
     @Override

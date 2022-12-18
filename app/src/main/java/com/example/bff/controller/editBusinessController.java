@@ -35,7 +35,7 @@ public class editBusinessController {
     }
 
     public void updateController(String name, String businessName, String id ,String phone, String city,String street,
-                        String house_number, String type , String time) {
+                                 String house_number, String type , String time) {
         model.updateModel(name,businessName,id,phone,city, street, house_number, type, time);
     }
 
@@ -50,5 +50,8 @@ public class editBusinessController {
     }
     public void pdDismissController(){
         view.pdDismissView();
+    }
+    public void passPageController(){
+        view.passPage();
     }
 }

@@ -36,14 +36,14 @@ public class RegisterModel {
     }
 
     public void registerUser(String txtUsername, String txtName, String txtEmail, String txtPassword, String txtPhone, ProgressDialog pd) {
-
-        this.pd.setMessage("Please Wait!");
-        this.pd.show();
+        pd.setMessage("Please Wait!");
+        pd.show();
+//        this.pd.setMessage("Please Wait!");
+//        this.pd.show();
 
         mAuth.createUserWithEmailAndPassword(txtEmail , txtPassword).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-
                 HashMap<String , Object> map = new HashMap<>();
                 map.put("name" , txtName);
                 map.put("email", txtEmail);
