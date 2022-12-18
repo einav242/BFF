@@ -12,9 +12,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class list_gotLostModel {
     ArrayList<User> lst;
@@ -30,31 +28,14 @@ public class list_gotLostModel {
     }
 
     public void allListModel( ArrayList<User> lst){
-//        FirebaseDatabase.getInstance().getReference().child("Got Lost").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                User user = dataSnapshot.getValue(User.class);
-//                email = user.getEmail();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
         databaseReference.addValueEventListener(new ValueEventListener()
         {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-//                    String name = names.get(dataSnapshot.getKey().toString());
-//                    for (DataSnapshot dataSnapshot2 : dataSnapshot.getChildren()){
                         User user = dataSnapshot.getValue(User.class);
                         lst.add(user);
-                    //}
-
                 }
-//                controller.setListController(lst);
                 controller.notifyDataSetChanged();
             }
 
@@ -65,23 +46,4 @@ public class list_gotLostModel {
         });
 
     }
-
-//    public void getUserNameModel() {
-//        HashMap<String, String> names = new HashMap<>();
-//        FirebaseDatabase.getInstance().getReference("Users").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    User user = dataSnapshot.getValue(User.class);
-//                    names.put(user.getId(), user.getUsername());
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//        controller.setUserNameController(names);
-//    }
 }

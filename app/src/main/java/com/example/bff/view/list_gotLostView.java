@@ -21,7 +21,6 @@ public class list_gotLostView extends AppCompatActivity {
     ArrayList<User> lst;
     AnimalAdapter adapter;
     list_gotLostController controller;
-//    HashMap<String,String> names;
 
     @Override
     public void onBackPressed() {
@@ -36,13 +35,11 @@ public class list_gotLostView extends AppCompatActivity {
         setContentView(R.layout.activity_list_got_lost);
 
         controller = new list_gotLostController(this);
-//        controller.getUserNameController();
         recyclerView = findViewById(R.id.recycleview);
         lst = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AnimalAdapter(this,lst);
         recyclerView.setAdapter(adapter);
-//        controller.addListController(names,lst);
 
         controller.addListController(lst);
     }
@@ -50,12 +47,5 @@ public class list_gotLostView extends AppCompatActivity {
     public void notifyView() {
         adapter.notifyDataSetChanged();
     }
-
-//    public void setUserNameView(HashMap<String, String> names) {
-//        this.names = names;
-//    }
-//    public void setListView(ArrayList<User> lst){
-//        this.lst = lst;
-//    }
 
 }
