@@ -1,5 +1,4 @@
 package com.example.bff.view;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,28 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bff.R;
-import com.example.bff.addUser;
 import com.example.bff.controller.businessActivityController;
-import com.example.bff.entities.Business;
-import com.example.bff.view.editBusinessView;
+
 import com.example.bff.viewClient;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
+
 import com.squareup.picasso.Picasso;
 
-import java.util.Objects;
-import java.util.UUID;
 
 public class businessActivityView extends AppCompatActivity {
     private ImageButton view;
@@ -77,7 +62,7 @@ public class businessActivityView extends AppCompatActivity {
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(businessActivityView.this, addUser.class));
+                startActivity(new Intent(businessActivityView.this, addUserView.class));
             }
         });
 
