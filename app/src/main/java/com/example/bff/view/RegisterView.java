@@ -14,11 +14,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bff.MainActivity;
 import com.example.bff.R;
-import com.example.bff.Register;
 import com.example.bff.controller.RegisterController;
-import com.example.bff.entities.User;
 
 public class RegisterView extends AppCompatActivity {
 
@@ -27,9 +24,7 @@ public class RegisterView extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private EditText phone;
-    private ImageButton image;
     private Button register;
-    private Button editImage;
     private TextView loginUser;
     ProgressDialog pd;
     RegisterController controller;

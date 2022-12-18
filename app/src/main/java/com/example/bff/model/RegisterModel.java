@@ -8,7 +8,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.bff.MainActivity;
-import com.example.bff.Register;
 import com.example.bff.controller.RegisterController;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;

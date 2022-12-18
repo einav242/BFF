@@ -62,17 +62,6 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
                     c.setStatus("approve");
                     controller.SendControlAprove(c,id,holder.aprove,holder.decline,view);
 
-//                    FirebaseDatabase.getInstance().getReference().child("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Void> task) {
-//                            if(task.isSuccessful()){
-//                                holder.aprove.setVisibility(view.GONE);
-//                                holder.decline.setVisibility(view.GONE);
-//                            }
-//                            else {}
-//
-//                        }
-//                    });
                 }
             });
             holder.decline.setOnClickListener(new View.OnClickListener() {
@@ -81,18 +70,6 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
                     String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime();
                     c.setStatus("decline");
                     controller.SendControlDecline(c,id,holder.aprove,holder.decline,view);
-//                    FirebaseDatabase.getInstance().getReference().child("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Void> task) {
-//                            if(task.isSuccessful()){
-//                                holder.aprove.setVisibility(view.GONE);
-//                                holder.decline.setVisibility(view.GONE);
-//
-//                            }
-//                            else {}
-//
-//                        }
-//                    });
                 }
             });
         }
@@ -102,18 +79,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
                 @Override
                 public void onClick(View view) {
                     String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime();
-                    controller.SendControlDelete(id,holder.delete,holder.noUser,view);
-//                    FirebaseDatabase.getInstance().getReference("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Void> task) {
-//                            if(task.isSuccessful()){
-//                                holder.delete.setVisibility(view.GONE);
-//                                holder.noUser.setText("No client");
-//                            }
-//                            else {}
-//                        }
-//                    });
-
+                    controller.SendControlDelete(id,holder.delete,view);
                 }
             });
         }
@@ -126,7 +92,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
 }
 
 class ClientVH extends RecyclerView.ViewHolder{
-    TextView Email , Phone, Date, noUser;
+    TextView Email , Phone, Date;
     Button aprove,decline, delete;
     Client c;
     private ClientAdapter adp;
@@ -142,7 +108,6 @@ class ClientVH extends RecyclerView.ViewHolder{
         }
         else if(flag ==1){
             delete = itemView.findViewById(R.id.button11);
-            noUser = itemView.findViewById(R.id.textView41);
         }
     }
     public ClientVH linkAdapter(ClientAdapter adp){

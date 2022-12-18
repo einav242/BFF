@@ -25,7 +25,7 @@ public class ClientAdpterController {
         model.SendModelDecline(c,id,aprove,decline,view);
     }
 
-    public void SendControlDelete(String id, Button delete, TextView noUser, View view) {
-        model.SendModelDelete(id,delete,noUser,view);
+    public void SendControlDelete(String id, Button delete, View view) {
+        model.SendModelDelete(id,delete,view);
     }
 }

@@ -43,7 +43,6 @@ public class ClienyAdpterModel {
                 if(task.isSuccessful()){
                     aprove.setVisibility(view.GONE);
                     decline.setVisibility(view.GONE);
-
                 }
                 else {}
 
@@ -51,13 +50,12 @@ public class ClienyAdpterModel {
         });
     }
 
-    public void SendModelDelete(String id, Button delete, TextView noUser, View view) {
+    public void SendModelDelete(String id, Button delete, View view) {
         FirebaseDatabase.getInstance().getReference("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
                     delete.setVisibility(view.GONE);
-                    noUser.setText("No client");
                 }
                 else {}
             }
