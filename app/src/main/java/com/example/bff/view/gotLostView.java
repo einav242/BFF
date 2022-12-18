@@ -36,8 +36,7 @@ public class gotLostView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_lost);
 
-        user = getIntent().getParcelableExtra("key");
-        controller = new gotLostController(user, this);
+        controller = new gotLostController(this);
 
         pd = new ProgressDialog(this);
         addLost = findViewById(R.id.get_lost_IgotLost);
@@ -60,7 +59,6 @@ public class gotLostView extends AppCompatActivity {
                 startActivity(new Intent(gotLostView.this, list_gotLost.class));
             }
         });
-
 
         //add lost pet
         addLost.setOnClickListener(new View.OnClickListener() {

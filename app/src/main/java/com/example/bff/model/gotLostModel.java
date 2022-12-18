@@ -36,12 +36,13 @@ public class gotLostModel {
     gotLostController controller;
 
 
-    public gotLostModel(User user, Context context) {
+    public gotLostModel(gotLostController controller) {
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        mRootRef = FirebaseDatabase.getInstance().getReference();
         fAuth =  FirebaseAuth.getInstance();
-        this.context = context;
+        this.controller = controller;
     }
 
 

@@ -10,10 +10,10 @@ public class gotLostController {
     gotLostModel model;
     gotLostView view;
 
-    public gotLostController(User user, Context context) {
-        model = new gotLostModel(user,context);
+    public gotLostController(gotLostView view) {
+        this.view = view;
+        model = new gotLostModel(this);
     }
-
 
     public void found() {
         model.found();
