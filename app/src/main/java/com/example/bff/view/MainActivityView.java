@@ -54,7 +54,7 @@ public class MainActivityView extends AppCompatActivity {
         singupBusiness.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivityView.this, register_BusinessOwner.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                startActivity(new Intent(MainActivityView.this, register_BusinessOwnerView.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
             }
         });
         forget.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +106,7 @@ public class MainActivityView extends AppCompatActivity {
         Toast.makeText(MainActivityView.this,msg, Toast.LENGTH_SHORT).show();
     }
     public void paasAnimalActivity(User user){
-        Intent intent=new Intent(MainActivityView.this, com.example.bff.view.animalActivityView.class);
+        Intent intent=new Intent(MainActivityView.this, animalActivityView.class);
         intent.putExtra("key", user);
         startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
         finish();

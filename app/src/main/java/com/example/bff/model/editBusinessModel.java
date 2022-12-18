@@ -39,7 +39,7 @@ public class editBusinessModel {
         this.controller = controller;
         this.mAuth = FirebaseAuth.getInstance().getCurrentUser();
         this.fAuth =  FirebaseAuth.getInstance();
-        this.reference = FirebaseDatabase.getInstance().getReference("Users");
+        this.reference = FirebaseDatabase.getInstance().getReference("Business");
         this.storage = FirebaseStorage.getInstance();
         this.storageReference = storage.getReference();
 
@@ -84,6 +84,7 @@ public class editBusinessModel {
                 String houseNumber = user.getHouseNumber();
                 String type = user.getType();
                 String time = user.getTime();
+                System.out.println("business!!!" +newBusinessName);
                 if (!name.equals(newName)) {
                     reference.child(mAuth.getUid()).child("name").setValue(newName);
                 }
@@ -118,6 +119,7 @@ public class editBusinessModel {
 
             }
         });
+        controller.passPageController();
     }
 
     public void uploadPicture_model(Uri imageUri) {

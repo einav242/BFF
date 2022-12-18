@@ -51,4 +51,7 @@ public class editBusinessController {
     public void pdDismissController(){
         view.pdDismissView();
     }
+    public void passPageController(){
+        view.passPage();
+    }
 }
