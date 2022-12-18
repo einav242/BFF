@@ -4,26 +4,24 @@ import android.content.Context;
 import android.net.Uri;
 import android.widget.ImageView;
 
-import com.example.bff.entities.User;
 import com.example.bff.model.animalActivityModel;
+import com.example.bff.view.animalActivityView;
 
-import java.util.HashMap;
 
 public class animalActivityController {
 
     animalActivityModel model;
+    animalActivityView view;
 
 
-    public animalActivityController(User user, Context context) {
-        model = new animalActivityModel(user,context);
+    public animalActivityController(animalActivityView view) {
+        model = new animalActivityModel(this);
+        this.view = view;
     }
 
     public void imageListener_controller(ImageView profilePic)
     {
         model.imageListener(profilePic);
-    }
-    public HashMap<String, String>  getbusinessName_controller(){
-        return model.getbusinessName_model();
     }
     public void logOut_controller()
     {
@@ -32,5 +30,20 @@ public class animalActivityController {
     public void uploadPicture_controller(Uri imageUri)
     {
         model.uploadPicture_model(imageUri);
+    }
+    public void getUserNameController(){
+        model.getUserNameModel();
+    }
+    public void setNameController(String name){
+        view.setUserName(name);
+    }
+    public void setToastController(String msg){
+        view.setToastView(msg);
+    }
+    public void setPdController(String msg){
+        view.setPdView(msg);
+    }
+    public void pdDismissController(){
+        view.pdDismissView();
     }
 }

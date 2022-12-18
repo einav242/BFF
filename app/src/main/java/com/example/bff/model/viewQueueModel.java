@@ -3,6 +3,7 @@ package com.example.bff.model;
 import androidx.annotation.NonNull;
 
 import com.example.bff.controller.viewQueueController;
+import com.example.bff.entities.Business;
 import com.example.bff.entities.Client;
 import com.example.bff.entities.User;
 import com.example.bff.entities.queue;
@@ -70,5 +71,23 @@ public class viewQueueModel {
             }
         });
 
+    }
+    public void getBusinessNameModel() {
+        HashMap<String, String> names = new HashMap<>();
+        FirebaseDatabase.getInstance().getReference("Business").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Business business = dataSnapshot.getValue(Business.class);
+                    names.put(business.getId(), business.getUsername());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        controller.setBusinessNameController(names);
     }
 }

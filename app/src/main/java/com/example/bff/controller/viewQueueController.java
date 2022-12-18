@@ -25,4 +25,10 @@ public class viewQueueController {
     public void notifyController(){
         view.notifyView();
     }
+    public void getBusinessNameController(){
+        this.model.getBusinessNameModel();
+    }
+    public void setBusinessNameController(HashMap<String, String> names){
+        view.setBusinessNameView(names);
+    }
 }

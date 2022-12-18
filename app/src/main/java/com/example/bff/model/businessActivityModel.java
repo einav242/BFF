@@ -1,15 +1,18 @@
 package com.example.bff.model;
 
 import android.app.ProgressDialog;
-import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
+import com.example.bff.controller.businessActivityController;
 import com.example.bff.entities.Business;
-import com.example.bff.entities.User;
+import com.example.bff.view.businessActivityView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,32 +27,27 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
 
-public class animalActivityModel {
-    private FirebaseUser mAuth;
-    public String userName;
-    private FirebaseAuth fAuth;
-    private StorageReference storageReference;
+public class businessActivityModel {
+    businessActivityController controller;
     private FirebaseStorage storage;
-    private Context context;
-    private ImageView profilePic;
-//    public Uri imageUri;
+    private StorageReference storageReference;
+    private FirebaseUser mAuth;
+    private FirebaseAuth fAuth;
+    ImageView profilePic;
 
-    public animalActivityModel(User user,Context context) {
-        mAuth = FirebaseAuth.getInstance().getCurrentUser();
+
+    public businessActivityModel(businessActivityController controller) {
+        this.controller = controller;
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        mAuth = FirebaseAuth.getInstance().getCurrentUser();
         fAuth =  FirebaseAuth.getInstance();
-        this.context = context;
     }
-
-
-    public void imageListener(ImageView profilePic)
-    {
-        this.profilePic =profilePic;
+    public void getImageModel(ImageView profilePic){
+        this.profilePic = profilePic;
         StorageReference profileRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -58,16 +56,12 @@ public class animalActivityModel {
             }
         });
     }
-    public HashMap<String,String> getbusinessName_model()
-    {
-        HashMap<String, String> names = new HashMap<>();
-        FirebaseDatabase.getInstance().getReference("Business").addValueEventListener(new ValueEventListener() {
+    public void getUserNameModel(){
+        FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Business business = dataSnapshot.getValue(Business.class);
-                    names.put(business.getId(),business.getUsername());
-                }
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Business user = dataSnapshot.getValue(Business.class);
+                controller.setUserName(user.getUsername());
             }
 
             @Override
@@ -75,21 +69,11 @@ public class animalActivityModel {
 
             }
         });
-        return names;
-    }
-    public void logOut_model()
-    {
-        FirebaseAuth.getInstance().signOut();
     }
 
-
-    public void uploadPicture_model(Uri imageUri) {
+    public void uploadPicture(Uri imageUri) {
         //uplaod image to firebase storage
-        ImageView profilePic = this.profilePic;
-        final ProgressDialog pd = new ProgressDialog(context);
-        pd.setTitle("Uploading Image...");
-        pd.show();
-
+        controller.setPdController("Uploading Image...");
 
         final  String randomKey = UUID.randomUUID().toString();
 
@@ -99,15 +83,14 @@ public class animalActivityModel {
         riversRef.putFile(imageUri).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                pd.dismiss();
-                Toast.makeText(context, "Failed To Upload", Toast.LENGTH_SHORT).show();
+                controller.pdDismissController();
+                controller.setToastController("Failed To Upload");
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                pd.dismiss();
+                controller.pdDismissController();
                 riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-
                     @Override
                     public void onSuccess(Uri uri) {
                         Picasso.get().load(uri).into(profilePic);
@@ -118,7 +101,7 @@ public class animalActivityModel {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
                 double progressPercent = (100.00 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                pd.setMessage("Percentage: " + (int)progressPercent + "%");
+                controller.setPdController("Percentage: " + (int)progressPercent + "%");
             }
         });
 

@@ -13,6 +13,7 @@ import com.example.bff.controller.viewQueueController;
 import com.example.bff.entities.Client;
 import com.example.bff.entities.User;
 import com.example.bff.entities.queue;
+import com.example.bff.get_lost;
 import com.example.bff.view.animalActivityView;
 import com.example.bff.view.queueAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,8 +38,8 @@ public class viewQueueView extends AppCompatActivity{
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(viewQueueView.this, animalActivityView.class));
-        finish();
+        Intent intent = new Intent(viewQueueView.this, animalActivityView.class);
+        startActivity(intent);
     }
 
     @Override
@@ -47,8 +48,7 @@ public class viewQueueView extends AppCompatActivity{
         setContentView(R.layout.queue_list);
 
         controller = new viewQueueController(this);
-        Intent intent = getIntent();
-        names = (HashMap<String, String>) intent.getSerializableExtra("key");
+        controller.getBusinessNameController();
         recyclerView = findViewById(R.id.Recycleview);
         lst = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -63,6 +63,10 @@ public class viewQueueView extends AppCompatActivity{
 
     public void notifyView(){
         myadapt.notifyDataSetChanged();
+    }
+
+    public void setBusinessNameView(HashMap<String, String> names){
+        this.names = names;
     }
 }
 
