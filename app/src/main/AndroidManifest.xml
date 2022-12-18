@@ -29,14 +29,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".viewClient"
+            android:name=".view.viewClient"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".addImage"
+            android:name=".view.addUserView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -71,7 +71,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".register_BusinessOwner"
+            android:name=".view.register_BusinessOwnerView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -126,20 +126,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.businessActivityView"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".edit_User_Profile"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".view.animalActivityView"
             android:exported="false">
             <meta-data
@@ -168,14 +154,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Userlist"
+            android:name=".view.editBusinessView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.editBusinessView"
+            android:name=".view.register_BusinessOwnerView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -188,20 +174,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".addUser"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".deleteUser"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

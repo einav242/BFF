@@ -17,8 +17,6 @@ import android.widget.Toast;
 import com.example.bff.R;
 import com.example.bff.controller.businessActivityController;
 
-import com.example.bff.viewClient;
-
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.squareup.picasso.Picasso;
@@ -50,6 +48,7 @@ public class businessActivityView extends AppCompatActivity {
         pd = new ProgressDialog(this);
         controller = new businessActivityController(this);
         controller.getImageController(profilePic);
+        controller.getUserNameController();
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
