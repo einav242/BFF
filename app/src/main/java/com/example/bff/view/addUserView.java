@@ -36,10 +36,15 @@ public class addUserView extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         myadapt = new ClientAdapter(lst,this,0);
         recyclerView.setAdapter(myadapt);
+        controller.RunApdater(this.lst);
     }
 
     public void setListView(ArrayList<Client> lst) {
         this.lst = lst;
+        myadapt.notifyDataSetChanged();
+    }
+
+    public void AdpterUpdateView() {
         myadapt.notifyDataSetChanged();
     }
 }

@@ -26,7 +26,7 @@ public class addUserModel {
         mAuth = FirebaseAuth.getInstance();
         mroot = FirebaseDatabase.getInstance().getReference("Em");
     }
-    public void getListModel(){
+    public void getListModel(ArrayList<Client> lst){
         mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -36,7 +36,7 @@ public class addUserModel {
                     if(client.getStatus().equals("waiting"))
                         lst.add(client);
                 }
-                controller.setList(lst);
+                controller.AdpterUpdatecontrol();
             }
 
             @Override
