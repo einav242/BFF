@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.example.bff.controller.gotLostController;
 import com.example.bff.entities.User;
-import com.example.bff.get_lost;
+
 import com.example.bff.view.animalActivityView;
 import com.example.bff.view.gotLostView;
 import com.google.android.gms.tasks.OnCompleteListener;
