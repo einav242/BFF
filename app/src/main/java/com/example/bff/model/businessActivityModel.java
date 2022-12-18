@@ -52,7 +52,7 @@ public class businessActivityModel {
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profilePic);
+                controller.picassoController(uri);
             }
         });
     }
@@ -93,7 +93,7 @@ public class businessActivityModel {
                 riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Picasso.get().load(uri).into(profilePic);
+                        controller.picassoController(uri);
                     }
                 });
             }
