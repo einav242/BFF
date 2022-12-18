@@ -1,5 +1,9 @@
 package com.example.bff.view;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,77 +13,46 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.example.bff.R;
-import com.example.bff.entities.User;
 import com.example.bff.controller.EditUserProfileController;
-
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class EditUserProfileView extends AppCompatActivity {
-    TextView edFullName;
-    TextView edAnimalName;
-    TextView editPhone;
+
+    EditText edFullName;
+    EditText edAnimalName;
+    EditText editPhone;
     TextView edEmail;
     private Button update;
-//    private User user;
-    TextView tv_fullName, tv_email, tv_phone, tv_animalName;
-    String id;
-
+    EditUserProfileController controller;
+    ProgressDialog pd;
     private ImageView profilePic;
     public Uri imageUri;
-    EditUserProfileController controller;
 
-    String email;
-
-
+    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user_profile);
 
-//        user = getIntent().getParcelableExtra("key");
-        controller = new EditUserProfileController(this);
-
-
+        //user can change
         edFullName = findViewById(R.id.edit_user_fullName);
         edAnimalName = findViewById(R.id.edit_user_AnimalName);
         edEmail = findViewById(R.id.edit_user_Email);
         editPhone = findViewById(R.id.editTxtPhone);
         update = findViewById(R.id.edit_user_Update);
         profilePic = findViewById(R.id.edit_user_image);
-        controller.EditUserimage_controller(profilePic);
-        controller.data(email);
-
-
-
-
-//        Bundle extras = getIntent().getExtras();
-//        email = extras.getString("key");
-//        fullName = extras.getString("key");
-//        animalName = extras.getString("key");
-//        phone = extras.getString("key");
-
-//        Bundle extras = getIntent().getExtras();
-//        if (extras != null) {
-//            email = user.getEmail();
-//        }
-////        email = user.getEmail();
-
-
-
-//        email = user.getEmail();
-//        fullName = user.getName();
-//        animalName = user.getUsername();
-//        phone = user.getPhone();
-//
-//        controller.data(email,fullName,animalName,phone);
-
-
+        pd = new ProgressDialog(this);
+        controller = new EditUserProfileController(this);
+        controller.getImageController();
+        controller.getDataController();
         //for add Images
         profilePic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,15 +67,12 @@ public class EditUserProfileView extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                controller.update(edFullName.getText().toString(), edAnimalName.getText().toString(), editPhone.getText().toString());
+                controller.updateController(edFullName.getText().toString(), edAnimalName.getText().toString(), editPhone.getText().toString());
                 startActivity(new Intent(EditUserProfileView.this, animalActivityView.class));
             }
         });
-
-
-
-
     }
+
 
     //for add Image
     @Override
@@ -111,17 +81,31 @@ public class EditUserProfileView extends AppCompatActivity {
         if (requestCode==1000 && resultCode==RESULT_OK ){
             imageUri = data.getData();
             //profilePic.setImageURI(imageUri);
-            controller.EditProfileimage_controller(imageUri);
+            controller.uploadPictureController(imageUri);
         }
     }
 
-    public void setDataView(User user)
-    {
-        edFullName.setText(user.getName());
-        edEmail.setText(user.getEmail());
-        editPhone.setText(user.getPhone());
-        edAnimalName.setText(user.getUsername());
-        id = user.getId();
+
+
+
+    public void setDataView(String name, String username, String email, String phone) {
+        edFullName.setText(name);
+        edAnimalName.setText(username);
+        edEmail.setText(email);
+        editPhone.setText(phone);
     }
 
+    public void setImegeView(Uri uri) {
+        Picasso.get().load(uri).into(profilePic);
+    }
+    public void setToastView(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+    public void setPdView(String msg){
+        pd.setTitle(msg);
+        pd.show();
+    }
+    public void pdDismissView(){
+        pd.dismiss();
+    }
 }
