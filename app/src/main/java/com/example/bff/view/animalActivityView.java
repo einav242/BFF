@@ -21,6 +21,7 @@ import com.example.bff.controller.animalActivityController;;
 
 
 public class animalActivityView extends AppCompatActivity {
+
     private TextView title;
     private ImageButton information;
     private ImageButton edit;

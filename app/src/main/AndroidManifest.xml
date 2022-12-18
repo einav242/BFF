@@ -15,7 +15,7 @@
         android:theme="@style/Theme.BFF"
         tools:targetApi="31">
         <activity
-            android:name=".list_gotLost"
+            android:name=".view.list_gotLostView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

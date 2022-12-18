@@ -19,11 +19,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class viewQueueModel {
+
     viewQueueController controller;
     DatabaseReference databaseReference;
     private FirebaseUser mAuth;
     String email;
-
 
 
     public viewQueueModel(viewQueueController controller) {

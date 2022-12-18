@@ -18,10 +18,28 @@ public class list_gotLostController {
         model = new list_gotLostModel(this);
     }
 
+//    public void addListController(HashMap<String, String> names,ArrayList<User> lst) {
+//        model.allListModel(names,lst);
+//    }
+
     public void addListController(ArrayList<User> lst) {
         model.allListModel(lst);
     }
+
+
     public void notifyDataSetChanged() {
         view.notifyView();
     }
+
+//    public void getUserNameController() {
+//        this.model.getUserNameModel();
+//    }
+//
+//    public void setUserNameController(HashMap<String, String> names) {
+//        view.setUserNameView(names);
+//    }
+//
+//    public void setListController(ArrayList<User> lst){
+//        view.setListView(lst);
+//    }
 }
