@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.bff.R;
-import com.example.bff.businessActivity;
 import com.example.bff.controller.ViewClientController;
 import com.example.bff.entities.Client;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,7 +32,7 @@ public class viewClient extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(viewClient.this , businessActivity.class));
+        startActivity(new Intent(viewClient.this , businessActivityView.class));
         finish();
     }
 

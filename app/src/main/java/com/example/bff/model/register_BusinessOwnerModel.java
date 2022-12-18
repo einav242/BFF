@@ -49,7 +49,7 @@ public class register_BusinessOwnerModel {
                 map.put("type",type);
                 map.put("time",time);
                 map.put("flag","business");
-
+                System.out.println("email!!"+email);
                 mRootRef.child("Business").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
