@@ -5,13 +5,21 @@ import android.net.Uri;
 import android.widget.ImageView;
 
 import com.example.bff.entities.User;
+import com.example.bff.model.EditUserProfileModel;
 import com.example.bff.model.editBusinessModel;
+import com.example.bff.view.editBusinessView;
 
 public class editBusinessController {
 
     editBusinessModel model;
-    public editBusinessController(User user, Context context) {
-        model = new editBusinessModel(user,context);
+    editBusinessView view;
+    public editBusinessController(editBusinessView view) {
+        this.view = view;
+        model = new editBusinessModel(this);
+    }
+
+    public void getImageController(){
+        model.getImageModel();
     }
 
     public void update(String newName,String newBusinessName, String newId, String newPhone, String newCity, String newStreet, String newHouseNumber, String newType, String newTime) {
