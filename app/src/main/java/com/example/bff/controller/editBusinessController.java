@@ -1,36 +1,54 @@
 package com.example.bff.controller;
 
-import android.content.Context;
 import android.net.Uri;
-import android.widget.ImageView;
 
-import com.example.bff.entities.User;
-import com.example.bff.model.EditUserProfileModel;
 import com.example.bff.model.editBusinessModel;
 import com.example.bff.view.editBusinessView;
+
 
 public class editBusinessController {
 
     editBusinessModel model;
     editBusinessView view;
+
+
     public editBusinessController(editBusinessView view) {
         this.view = view;
         model = new editBusinessModel(this);
+    }
+
+    public void setDataController(String email ,String name, String businessName, String id ,String phone, String city,String street,
+                                  String house_number, String type , String time) {
+        view.setDataView(email,name, businessName, id, phone, city, street, house_number, type, time);
+    }
+
+    public void getDataController(){
+        model.getDataModel();
     }
 
     public void getImageController(){
         model.getImageModel();
     }
 
-    public void update(String newName,String newBusinessName, String newId, String newPhone, String newCity, String newStreet, String newHouseNumber, String newType, String newTime) {
-        model.update(newName,newBusinessName,newId,newPhone,newCity,newStreet,newHouseNumber,newType,newTime);
+    public void setImageController(Uri uri) {
+        view.setImegeView(uri);
     }
 
-    public void EditProfileimage_controller(ImageView profilePic) {
-        model.EditProfileimage_controller(profilePic);
+    public void updateController(String name, String businessName, String id ,String phone, String city,String street,
+                        String house_number, String type , String time) {
+        model.updateModel(name,businessName,id,phone,city, street, house_number, type, time);
     }
 
-    public void uploadPicture_controller(Uri imageUri) {
+    public void uploadPictureController(Uri imageUri) {
         model.uploadPicture_model(imageUri);
+    }
+    public void setToastController(String msg){
+        view.setToastView(msg);
+    }
+    public void setPdController(String msg){
+        view.setPdView(msg);
+    }
+    public void pdDismissController(){
+        view.pdDismissView();
     }
 }
