@@ -36,20 +36,14 @@ public class get_lost extends AppCompatActivity
     private Button addLost;
     private Button lostView;
     private Button found;
-    private int flag=0;
     FirebaseUser userF;
 
 
 
     DatabaseReference mRootRef;
+
     ProgressDialog pd;
-
-
-    private FirebaseAuth fAuth;
-    private ImageView profilePic;
     public Uri imageUri;
-    private FirebaseStorage storage;
-    private StorageReference storageReference;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -63,7 +57,6 @@ public class get_lost extends AppCompatActivity
         addLost = findViewById(R.id.get_lost_IgotLost);
         lostView = findViewById(R.id.get_lost_viewlost);
         mAuth = FirebaseAuth.getInstance();
-        profilePic = findViewById(R.id.imageButton);
         found = findViewById(R.id.get_lost_foundMe);
 
         userF = FirebaseAuth.getInstance().getCurrentUser();

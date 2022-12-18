@@ -79,7 +79,7 @@ public class EditUserProfileModel {
 
     }
 
-    public void EditProfileimage_controller(ImageView profilePic) {
+    public void EditUserimage_controller(ImageView profilePic) {
 //        this.profilePic = profilePic;
         StorageReference profileRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -90,7 +90,7 @@ public class EditUserProfileModel {
         });
     }
 
-    public void uploadPicture_model(Uri imageUri) {
+    public void EditProfileimage_model(Uri imageUri) {
         //uplaod image to firebase storage
         ImageView profilePic = this.profilePic;
         final ProgressDialog pd = new ProgressDialog(context);
@@ -133,20 +133,24 @@ public class EditUserProfileModel {
     }
 
 
-//    public void setDataModel(String email, String fullName, String animalName, String phone) {
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    User user = dataSnapshot.getValue(User.class);
-//                    controller.setDataController(user);
-//                }
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
+    public void setDataModel(String email) {
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    User user = dataSnapshot.getValue(User.class);
+                    if(user.getEmail().equals(email))
+                    {
+                        controller.setDataController(user);
+                        break;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
 }

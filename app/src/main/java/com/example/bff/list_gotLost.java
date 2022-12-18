@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.bff.entities.User;
+import com.example.bff.view.AnimalAdapter;
 import com.example.bff.view.animalActivityView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,8 +43,6 @@ public class list_gotLost extends AppCompatActivity {
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AnimalAdapter(this,list);
-
-
 
         recyclerView.setAdapter(adapter);
 

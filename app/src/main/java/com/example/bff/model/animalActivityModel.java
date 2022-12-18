@@ -58,6 +58,7 @@ public class animalActivityModel {
             }
         });
     }
+
     public HashMap<String,String> getbusinessName_model()
     {
         HashMap<String, String> names = new HashMap<>();

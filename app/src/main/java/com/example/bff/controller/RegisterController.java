@@ -10,14 +10,14 @@
 //
 //public class RegisterController {
 //
-//    RegisterModel model;
+//    static RegisterModel model;
 //
 //    public RegisterController(Context context){
 //        model = new RegisterModel(context);
 //
 //    }
 //
-//    public void registerUser(String txtUsername, String txtName, String txtEmail, String txtPassword, String txtPhone) {
+//    public static void registerUser(String txtUsername, String txtName, String txtEmail, String txtPassword, String txtPhone) {
 //        model.registerUser(txtUsername,txtName,txtEmail,txtPassword,txtPhone);
 //    }
 //}

@@ -21,9 +21,9 @@ import com.example.bff.controller.EditUserProfileController;
 
 
 public class EditUserProfileView extends AppCompatActivity {
-    EditText edFullName;
-    EditText edAnimalName;
-    EditText editPhone;
+    TextView edFullName;
+    TextView edAnimalName;
+    TextView editPhone;
     TextView edEmail;
     private Button update;
     private User user;
@@ -35,9 +35,6 @@ public class EditUserProfileView extends AppCompatActivity {
     EditUserProfileController controller;
 
     String email;
-    String phone;
-    String fullName;
-    String animalName;
 
 
     protected void onCreate(Bundle savedInstanceState)
@@ -48,13 +45,18 @@ public class EditUserProfileView extends AppCompatActivity {
         user = getIntent().getParcelableExtra("key");
         controller = new EditUserProfileController(user,this);
 
+
         edFullName = findViewById(R.id.edit_user_fullName);
         edAnimalName = findViewById(R.id.edit_user_AnimalName);
         edEmail = findViewById(R.id.edit_user_Email);
         editPhone = findViewById(R.id.editTxtPhone);
         update = findViewById(R.id.edit_user_Update);
         profilePic = findViewById(R.id.edit_user_image);
-        controller.EditProfileimage_controller(profilePic);
+        controller.EditUserimage_controller(profilePic);
+
+
+
+
 
 //        Bundle extras = getIntent().getExtras();
 //        email = extras.getString("key");
@@ -62,12 +64,19 @@ public class EditUserProfileView extends AppCompatActivity {
 //        animalName = extras.getString("key");
 //        phone = extras.getString("key");
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            email = user.getEmail();
+        }
+//        email = user.getEmail();
+        controller.data(email);
+
 
 //        email = user.getEmail();
 //        fullName = user.getName();
 //        animalName = user.getUsername();
 //        phone = user.getPhone();
-
+//
 //        controller.data(email,fullName,animalName,phone);
 
 
@@ -102,14 +111,16 @@ public class EditUserProfileView extends AppCompatActivity {
         if (requestCode==1000 && resultCode==RESULT_OK ){
             imageUri = data.getData();
             //profilePic.setImageURI(imageUri);
-            controller.uploadPicture_controller(imageUri);
+            controller.EditProfileimage_controller(imageUri);
         }
     }
 
-    public void setDataView(User user){
-        tv_fullName.setText(user.getName());
-        tv_email.setText(user.getEmail());
-        tv_phone.setText(user.getPhone());
-        tv_animalName.setText(user.getUsername());
+    public void setDataView(User user)
+    {
+        edFullName.setText(user.getName());
+        edEmail.setText(user.getEmail());
+        editPhone.setText(user.getPhone());
+        edAnimalName.setText(user.getUsername());
+        id = user.getId();
     }
 }

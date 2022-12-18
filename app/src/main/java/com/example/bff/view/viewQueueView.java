@@ -45,6 +45,7 @@ public class viewQueueView extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.queue_list);
+
         controller = new viewQueueController(this);
         Intent intent = getIntent();
         names = (HashMap<String, String>) intent.getSerializableExtra("key");
@@ -54,7 +55,6 @@ public class viewQueueView extends AppCompatActivity{
         myadapt = new queueAdapter(lst,this);
         recyclerView.setAdapter(myadapt);
         controller.getListController(names,lst);
-
     }
 
     public void setListView(ArrayList<queue> lst){

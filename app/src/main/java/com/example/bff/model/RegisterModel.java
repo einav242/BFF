@@ -22,8 +22,10 @@
 //    ProgressDialog pd;
 //
 //
+//
 //    public RegisterModel(Context context) {
 //        this.context = context;
+//
 //    }
 //
 //    public void registerUser(String txtUsername, String txtName, String txtEmail, String txtPassword, String txtPhone) {

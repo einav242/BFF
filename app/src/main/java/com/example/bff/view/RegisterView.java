@@ -1,4 +1,4 @@
-//package com.example.bff.controller;
+//package com.example.bff.view;
 //
 //import android.annotation.SuppressLint;
 //import android.app.ProgressDialog;
@@ -17,9 +17,7 @@
 //import com.example.bff.MainActivity;
 //import com.example.bff.R;
 //import com.example.bff.Register;
-//import com.example.bff.view.MainActivityView;
-//import com.google.firebase.auth.FirebaseAuth;
-//import com.google.firebase.database.FirebaseDatabase;
+//import com.example.bff.controller.RegisterController;
 //
 //public class RegisterView extends AppCompatActivity {
 //
@@ -58,7 +56,6 @@
 //                startActivity(new Intent(RegisterView.this , MainActivityView.class));
 //            }
 //        });
-//
 //
 //        register.setOnClickListener(new View.OnClickListener() {
 //            @Override

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.widget.ImageView;
 
+import com.example.bff.entities.Business;
 import com.example.bff.entities.User;
 import com.example.bff.model.EditUserProfileModel;
 import com.example.bff.view.EditUserProfileView;
@@ -26,20 +27,25 @@ public class EditUserProfileController {
 
     }
 
-    public void EditProfileimage_controller(ImageView profilePic) {
-        model.EditProfileimage_controller(profilePic);
+    public void EditUserimage_controller(ImageView profilePic) {
+        model.EditUserimage_controller(profilePic);
     }
-    public void uploadPicture_controller(Uri imageUri)
+
+    public void EditProfileimage_controller(Uri imageUri)
     {
-        model.uploadPicture_model(imageUri);
+        model.EditProfileimage_model(imageUri);
     }
 
 
-//    public void data(String email, String fullName, String animalName, String phone) {
-//        model.setDataModel(email,fullName,animalName,phone);
-//    }
-//
-//    public void setDataController(User user) {
-//        view.setDataView(user);
-//    }
+    public void data(String email, String fullName, String animalName, String phone) {
+        model.setDataModel(email);
+    }
+
+    public void data(String email){
+        model.setDataModel(email);
+    }
+
+    public void setDataController(User user) {
+        view.setDataView(user);
+    }
 }

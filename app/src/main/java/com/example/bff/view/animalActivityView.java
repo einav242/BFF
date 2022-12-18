@@ -71,7 +71,7 @@ public class animalActivityView extends AppCompatActivity {
         getlost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(animalActivityView.this, get_lost.class));
+                startActivity(new Intent(animalActivityView.this, gotLostView.class));
             }
         });
 
