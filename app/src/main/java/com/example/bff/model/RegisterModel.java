@@ -35,11 +35,8 @@ public class RegisterModel {
         mRootRef = FirebaseDatabase.getInstance().getReference();
     }
 
-    public void registerUser(String txtUsername, String txtName, String txtEmail, String txtPassword, String txtPhone, ProgressDialog pd) {
-        pd.setMessage("Please Wait!");
-        pd.show();
-//        this.pd.setMessage("Please Wait!");
-//        this.pd.show();
+    public void registerUser(String txtUsername, String txtName,final String txtEmail, String txtPassword, String txtPhone) {
+        controller.setPdController("Please Wait!");
 
         mAuth.createUserWithEmailAndPassword(txtEmail , txtPassword).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
@@ -51,11 +48,12 @@ public class RegisterModel {
                 map.put("phone",txtPhone);
                 map.put("flag","animal");
                 map.put("id" , mAuth.getCurrentUser().getUid());
+
                 mRootRef.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            RegisterModel.this.pd.dismiss();
+                            controller.pdDismissController();
                             controller.toast_controller("Update the profile " + "for better expereince");
                             controller.d();
                         }
@@ -66,7 +64,7 @@ public class RegisterModel {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                RegisterModel.this.pd.dismiss();
+                controller.pdDismissController();
                 controller.toast_controller(e.getMessage());
             }
         });
