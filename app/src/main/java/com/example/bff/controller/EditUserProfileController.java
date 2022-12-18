@@ -1,11 +1,7 @@
 package com.example.bff.controller;
 
-import android.content.Context;
 import android.net.Uri;
-import android.widget.ImageView;
 
-import com.example.bff.entities.Business;
-import com.example.bff.entities.User;
 import com.example.bff.model.EditUserProfileModel;
 import com.example.bff.view.EditUserProfileView;
 
@@ -22,31 +18,36 @@ public class EditUserProfileController {
         model = new EditUserProfileModel(this);
     }
 
-
-    public void update(String edfullName, String edAnimalName, String edPhone) {
-        model.update(edfullName,edAnimalName,edPhone);
+    public void setDataController(String name, String username, String email, String phone) {
+        view.setDataView(name, username, email, phone);
     }
 
-    public void EditUserimage_controller(ImageView profilePic) {
-        model.EditUserimage_controller(profilePic);
+    public void getDataController(){
+        model.getDataModel();
     }
 
-    public void EditProfileimage_controller(Uri imageUri)
-    {
-        model.EditProfileimage_model(imageUri);
+    public void getImageController(){
+        model.getImageModel();
     }
 
-
-    public void data(String email, String fullName, String animalName, String phone) {
-        model.setDataModel(email);
+    public void setImageController(Uri uri) {
+        view.setImegeView(uri);
     }
 
-    public void data(String email){
-        model.setDataModel(email);
+    public void updateController(String toString, String toString1, String toString2) {
+        model.updateModel(toString,toString1,toString2);
     }
 
-    public void setDataController(User user) {
-        view.setDataView(user);
+    public void uploadPictureController(Uri imageUri) {
+        model.uploadPicture_model(imageUri);
     }
-
+    public void setToastController(String msg){
+        view.setToastView(msg);
+    }
+    public void setPdController(String msg){
+        view.setPdView(msg);
+    }
+    public void pdDismissController(){
+        view.pdDismissView();
+    }
 }

@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 
 import com.example.bff.entities.User;
 import com.example.bff.controller.EditUserProfileController;
+import com.example.bff.view.EditUserProfileView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,27 +33,47 @@ public class EditUserProfileModel {
 
     private EditUserProfileController controller;
     private FirebaseUser mAuth;
-    DatabaseReference reference; //for the database that save already
+    private DatabaseReference reference; //for the database that save already
     private FirebaseAuth fAuth;
-    private ImageView profilePic;
-    private Context context;
-    DatabaseReference databaseReference;
-
-
     private FirebaseStorage storage;
     private StorageReference storageReference;
-
+//    private ImageView profilePic;
 
     public EditUserProfileModel(EditUserProfileController controller) {
-        mAuth = FirebaseAuth.getInstance().getCurrentUser();
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
-        fAuth =  FirebaseAuth.getInstance();
         this.controller = controller;
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        this.mAuth = FirebaseAuth.getInstance().getCurrentUser();
+        this.fAuth =  FirebaseAuth.getInstance();
+        this.reference = FirebaseDatabase.getInstance().getReference("Users");
+        this.storage = FirebaseStorage.getInstance();
+        this.storageReference = storage.getReference();
+
+    }
+    public void getImageModel(){
+        StorageReference profileRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                controller.setImageController(uri);
+            }
+        });
     }
 
-    public void update(String edfullName, String edAnimalName, String edPhone) {
+    public void getDataModel(){
+        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                controller.setDataController(user.getName(),user.getUsername(),user.getEmail(),user.getPhone());
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void updateModel(String newFullName, String newAnimalName, String newPhone) {
         FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -60,14 +81,14 @@ public class EditUserProfileModel {
                 String fullName = user.getName();
                 String animalName = user.getUsername();
                 String phone = user.getPhone();
-                if (!fullName.equals(edfullName)) {
-                    reference.child(mAuth.getUid()).child("name").setValue(edfullName);
+                if (!fullName.equals(newFullName)) {
+                    reference.child(mAuth.getUid()).child("name").setValue(newFullName);
                 }
-                if (!animalName.equals(edAnimalName)) {
-                    reference.child(mAuth.getUid()).child("username").setValue(edAnimalName);
+                if (!animalName.equals(newAnimalName)) {
+                    reference.child(mAuth.getUid()).child("username").setValue(newAnimalName);
                 }
-                if (!phone.equals(edPhone)) {
-                    reference.child(mAuth.getUid()).child("phone").setValue(edPhone);
+                if (!phone.equals(newPhone)) {
+                    reference.child(mAuth.getUid()).child("phone").setValue(newPhone);
                 }
             }
             @Override
@@ -75,50 +96,33 @@ public class EditUserProfileModel {
 
             }
         });
-
-
     }
 
-
-    public void EditUserimage_controller(ImageView profilePic) {
-//        this.profilePic = profilePic;
-        StorageReference profileRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profilePic);
-            }
-        });
-    }
-
-    public void EditProfileimage_model(Uri imageUri) {
+    public void uploadPicture_model(Uri imageUri) {
         //uplaod image to firebase storage
-        ImageView profilePic = this.profilePic;
-        final ProgressDialog pd = new ProgressDialog(context);
-        pd.setTitle("Uploading Image...");
-        pd.show();
+//        ImageView profilePic = this.profilePic;
+        controller.setPdController("Uploading Image...");
+
+        final String randomKey = UUID.randomUUID().toString();
 
 
-        final  String randomKey = UUID.randomUUID().toString();
-
-
-        StorageReference riversRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
+        StorageReference riversRef = storageReference.child("user/" + Objects.requireNonNull(fAuth.getCurrentUser()).getUid() + "profile.jpg");
         // Register observers to listen for when the download is done or if it fails
         riversRef.putFile(imageUri).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                pd.dismiss();
-                Toast.makeText(context, "Failed To Upload", Toast.LENGTH_SHORT).show();
+                controller.pdDismissController();
+                controller.setToastController("Failed To Upload");
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                pd.dismiss();
+                controller.pdDismissController();
                 riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
 
                     @Override
                     public void onSuccess(Uri uri) {
-                        Picasso.get().load(uri).into(profilePic);
+                        controller.setImageController(uri);
                     }
                 });
             }
@@ -126,25 +130,13 @@ public class EditUserProfileModel {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
                 double progressPercent = (100.00 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                pd.setMessage("Percentage: " + (int)progressPercent + "%");
+                controller.setPdController("Percentage: " + (int) progressPercent + "%");
             }
         });
 
 
     }
 
-    public void setDataModel(String email) {
-        databaseReference.child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
-                controller.setDataController(user);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-    }
 
 }
