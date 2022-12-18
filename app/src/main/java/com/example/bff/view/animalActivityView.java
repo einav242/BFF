@@ -3,6 +3,7 @@ package com.example.bff.view;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,11 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bff.R;
-import com.example.bff.entities.User;
 import com.example.bff.controller.animalActivityController;
 import com.example.bff.get_lost;
 
-import java.util.HashMap;
 
 
 public class animalActivityView extends AppCompatActivity {
@@ -32,20 +31,16 @@ public class animalActivityView extends AppCompatActivity {
     private Button logOut;
     private animalActivityController controller;
     private String userName;
-    private HashMap<String, String> businessNames;
     public Uri imageUri;
-    private User user;
-
     private ImageView profilePic;
+    private ProgressDialog pd;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animalwindow);
-        user = getIntent().getParcelableExtra("key");
-        controller = new animalActivityController(user,this);
-        businessNames = controller.getbusinessName_controller();
+        controller = new animalActivityController(this);
         getlost = findViewById(R.id.imageButton2);
         information = findViewById(R.id.imageButton10);
         edit = findViewById(R.id.imageButton8);
@@ -54,9 +49,8 @@ public class animalActivityView extends AppCompatActivity {
         search = findViewById(R.id.imageButton7);
         logOut = findViewById(R.id.singUp_LogOut);
         view = findViewById(R.id.imageButton13);
-
-        title.setText("Hello "+user.getUsername());
-
+        pd = new ProgressDialog(this);
+        controller.getUserNameController();
         controller.imageListener_controller(profilePic);
 
         profilePic.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +105,6 @@ public class animalActivityView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(animalActivityView.this, viewQueueView.class);
-                intent.putExtra("key", businessNames);
                 startActivity(intent);
                 finish();
             }
@@ -122,20 +115,27 @@ public class animalActivityView extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==1000 && resultCode==RESULT_OK ){
             imageUri = data.getData();
-            //profilePic.setImageURI(imageUri);
             controller.uploadPicture_controller(imageUri);
         }
     }
 
-    public animalActivityView() {
-
-    }
 
     public void setUserName(String name)
     {
         this.userName = name;
+        title.setText("Hello "+this.userName);
     }
 
+    public void setToastView(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+    public void setPdView(String msg){
+        pd.setTitle(msg);
+        pd.show();
+    }
+    public void pdDismissView(){
+        pd.dismiss();
+    }
 }
 
 

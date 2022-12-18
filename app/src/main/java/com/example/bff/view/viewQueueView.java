@@ -47,8 +47,7 @@ public class viewQueueView extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.queue_list);
         controller = new viewQueueController(this);
-        Intent intent = getIntent();
-        names = (HashMap<String, String>) intent.getSerializableExtra("key");
+        controller.getBusinessNameController();
         recyclerView = findViewById(R.id.Recycleview);
         lst = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -63,6 +62,10 @@ public class viewQueueView extends AppCompatActivity{
 
     public void notifyView(){
         myadapt.notifyDataSetChanged();
+    }
+
+    public void setBusinessNameView(HashMap<String, String> names){
+        this.names = names;
     }
 }
 

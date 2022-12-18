@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.bff.entities.Business;
+import com.example.bff.controller.animalActivityController;
 import com.example.bff.entities.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -24,7 +24,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -34,23 +33,21 @@ public class animalActivityModel {
     private FirebaseAuth fAuth;
     private StorageReference storageReference;
     private FirebaseStorage storage;
-    private Context context;
     private ImageView profilePic;
-//    public Uri imageUri;
+    animalActivityController controller;
 
-    public animalActivityModel(User user,Context context) {
+    public animalActivityModel(animalActivityController controller) {
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        fAuth =  FirebaseAuth.getInstance();
-        this.context = context;
+        fAuth = FirebaseAuth.getInstance();
+        this.controller = controller;
     }
 
 
-    public void imageListener(ImageView profilePic)
-    {
-        this.profilePic =profilePic;
-        StorageReference profileRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
+    public void imageListener(ImageView profilePic) {
+        this.profilePic = profilePic;
+        StorageReference profileRef = storageReference.child("user/" + Objects.requireNonNull(fAuth.getCurrentUser()).getUid() + "profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -58,54 +55,32 @@ public class animalActivityModel {
             }
         });
     }
-    public HashMap<String,String> getbusinessName_model()
-    {
-        HashMap<String, String> names = new HashMap<>();
-        FirebaseDatabase.getInstance().getReference("Business").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Business business = dataSnapshot.getValue(Business.class);
-                    names.put(business.getId(),business.getUsername());
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        return names;
-    }
-    public void logOut_model()
-    {
+    public void logOut_model() {
         FirebaseAuth.getInstance().signOut();
     }
-
 
     public void uploadPicture_model(Uri imageUri) {
         //uplaod image to firebase storage
         ImageView profilePic = this.profilePic;
-        final ProgressDialog pd = new ProgressDialog(context);
-        pd.setTitle("Uploading Image...");
-        pd.show();
+        controller.setPdController("Uploading Image...");
 
 
-        final  String randomKey = UUID.randomUUID().toString();
+        final String randomKey = UUID.randomUUID().toString();
 
 
-        StorageReference riversRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
+        StorageReference riversRef = storageReference.child("user/" + Objects.requireNonNull(fAuth.getCurrentUser()).getUid() + "profile.jpg");
         // Register observers to listen for when the download is done or if it fails
         riversRef.putFile(imageUri).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                pd.dismiss();
-                Toast.makeText(context, "Failed To Upload", Toast.LENGTH_SHORT).show();
+                controller.pdDismissController();
+                controller.setToastController("Failed To Upload");
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                pd.dismiss();
+                controller.pdDismissController();
                 riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
 
                     @Override
@@ -118,10 +93,25 @@ public class animalActivityModel {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
                 double progressPercent = (100.00 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                pd.setMessage("Percentage: " + (int)progressPercent + "%");
+                controller.setPdController("Percentage: " + (int) progressPercent + "%");
             }
         });
 
 
+    }
+
+    public void getUserNameModel() {
+        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                controller.setNameController(user.getUsername());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
