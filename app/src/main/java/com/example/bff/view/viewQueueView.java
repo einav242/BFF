@@ -10,19 +10,7 @@ import android.os.Bundle;
 
 import com.example.bff.R;
 import com.example.bff.controller.viewQueueController;
-import com.example.bff.entities.Client;
-import com.example.bff.entities.User;
 import com.example.bff.entities.queue;
-import com.example.bff.get_lost;
-import com.example.bff.view.animalActivityView;
-import com.example.bff.view.queueAdapter;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;

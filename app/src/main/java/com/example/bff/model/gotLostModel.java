@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.example.bff.controller.gotLostController;
 import com.example.bff.entities.User;
-import com.example.bff.get_lost;
+
 import com.example.bff.view.animalActivityView;
 import com.example.bff.view.gotLostView;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,12 +36,13 @@ public class gotLostModel {
     gotLostController controller;
 
 
-    public gotLostModel(User user, Context context) {
+    public gotLostModel(gotLostController controller) {
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        mRootRef = FirebaseDatabase.getInstance().getReference();
         fAuth =  FirebaseAuth.getInstance();
-        this.context = context;
+        this.controller = controller;
     }
 
 
