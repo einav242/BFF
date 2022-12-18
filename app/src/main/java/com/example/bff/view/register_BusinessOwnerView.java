@@ -107,17 +107,7 @@ public class register_BusinessOwnerView extends AppCompatActivity {
                 String txtHouseNumber = house_number.getText().toString();
                 String txtType = type.getText().toString();
                 String txtTime = time.getText().toString();
-
-                if (TextUtils.isEmpty(txtUsername) || TextUtils.isEmpty(txtName)
-                        || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword) || TextUtils.isEmpty(txtId)
-                        || TextUtils.isEmpty(txtPhone) || TextUtils.isEmpty(txtCity) || TextUtils.isEmpty(txtStreet)
-                        || TextUtils.isEmpty(txtHouseNumber) || TextUtils.isEmpty(txtType) || TextUtils.isEmpty(txtTime)){
-                    Toast.makeText(register_BusinessOwnerView.this, "Empty credentials!", Toast.LENGTH_SHORT).show();
-                } else if (txtPassword.length() < 6){
-                    Toast.makeText(register_BusinessOwnerView.this, "Password too short!", Toast.LENGTH_SHORT).show();
-                } else {
-                    controller.registerUserController(txtUsername , txtName , txtEmail , txtPassword, txtId, txtPhone, txtCity, txtStreet, txtHouseNumber, txtType, txtTime);
-                }
+                controller.registerUserController(txtUsername , txtName , txtEmail , txtPassword, txtId, txtPhone, txtCity, txtStreet, txtHouseNumber, txtType, txtTime);
             }
         });
     }

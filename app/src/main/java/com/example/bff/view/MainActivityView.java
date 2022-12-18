@@ -18,7 +18,7 @@ import com.example.bff.Register;
 import com.example.bff.entities.User;
 import com.example.bff.businessActivity;
 import com.example.bff.controller.MainActivityController;
-import com.example.bff.register_BusinessOwner;
+
 
 public class MainActivityView extends AppCompatActivity {
     private static final String TAG = "MainActivity";
