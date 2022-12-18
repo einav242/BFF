@@ -1,16 +1,12 @@
 package com.example.bff.model;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.net.Uri;
-import android.widget.ImageView;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 
+import com.example.bff.controller.editBusinessController;
 import com.example.bff.entities.Business;
-import com.example.bff.entities.User;
-import com.example.bff.controller.EditUserProfileController;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,78 +27,50 @@ import java.util.UUID;
 
 public class editBusinessModel {
 
-    private EditUserProfileController controller;
+    private editBusinessController controller;
     private FirebaseUser mAuth;
-    DatabaseReference reference; //for the database that save already
+    private DatabaseReference reference; //for the database that save already
     private FirebaseAuth fAuth;
-    private ImageView profilePic;
-    private Context context;
-
-
     private FirebaseStorage storage;
     private StorageReference storageReference;
+//    private ImageView profilePic;
 
-    public editBusinessModel(User user, Context context) {
-        mAuth = FirebaseAuth.getInstance().getCurrentUser();
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
-        fAuth =  FirebaseAuth.getInstance();
-        this.context = context;
+    public editBusinessModel(editBusinessController controller) {
+        this.controller = controller;
+        this.mAuth = FirebaseAuth.getInstance().getCurrentUser();
+        this.fAuth =  FirebaseAuth.getInstance();
+        this.reference = FirebaseDatabase.getInstance().getReference("Users");
+        this.storage = FirebaseStorage.getInstance();
+        this.storageReference = storage.getReference();
+
     }
-
-    public void EditProfileimage_controller(ImageView profilePic) {
-        //        this.profilePic = profilePic;
+    public void getImageModel(){
         StorageReference profileRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profilePic);
+                controller.setImageController(uri);
             }
         });
     }
 
-    public void uploadPicture_model(Uri imageUri) {
-        //uplaod image to firebase storage
-        ImageView profilePic = this.profilePic;
-        final ProgressDialog pd = new ProgressDialog(context);
-        pd.setTitle("Uploading Image...");
-        pd.show();
-
-
-        final  String randomKey = UUID.randomUUID().toString();
-
-
-        StorageReference riversRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
-        // Register observers to listen for when the download is done or if it fails
-        riversRef.putFile(imageUri).addOnFailureListener(new OnFailureListener() {
+    public void getDataModel(){
+        FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onFailure(@NonNull Exception exception) {
-                pd.dismiss();
-                Toast.makeText(context, "Failed To Upload", Toast.LENGTH_SHORT).show();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Business user = dataSnapshot.getValue(Business.class);
+                controller.setDataController(user.getEmail(),user.getName(),user.getUsername(),user.getBusinessID(),
+                        user.getPhone(),user.getCity(),user.getStreet(),user.getHouseNumber(),user.getType(),user.getTime());
+
             }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                pd.dismiss();
-                riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Picasso.get().load(uri).into(profilePic);
-                    }
-                });
-            }
-        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-                double progressPercent = (100.00 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                pd.setMessage("Percentage: " + (int)progressPercent + "%");
             }
         });
-
     }
 
-    public boolean update(String newName, String newBusinessName, String newId, String newPhone, String newCity, String newStreet, String newHouseNumber, String newType, String newTime) {
+    public void updateModel(String newName,String newBusinessName, String newId, String newPhone, String newCity, String newStreet, String newHouseNumber, String newType, String newTime) {
         FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -150,6 +118,47 @@ public class editBusinessModel {
 
             }
         });
-        return false;
     }
+
+    public void uploadPicture_model(Uri imageUri) {
+        //uplaod image to firebase storage
+//        ImageView profilePic = this.profilePic;
+        controller.setPdController("Uploading Image...");
+
+        final String randomKey = UUID.randomUUID().toString();
+
+
+        StorageReference riversRef = storageReference.child("user/" + Objects.requireNonNull(fAuth.getCurrentUser()).getUid() + "profile.jpg");
+        // Register observers to listen for when the download is done or if it fails
+        riversRef.putFile(imageUri).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                controller.pdDismissController();
+                controller.setToastController("Failed To Upload");
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                controller.pdDismissController();
+                riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        controller.setImageController(uri);
+                    }
+                });
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+                double progressPercent = (100.00 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                controller.setPdController("Percentage: " + (int) progressPercent + "%");
+            }
+        });
+
+
+    }
+
+
+
 }
