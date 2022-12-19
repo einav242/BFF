@@ -47,4 +47,10 @@ public class addUserView extends AppCompatActivity {
     public void AdpterUpdateView() {
         myadapt.notifyDataSetChanged();
     }
+
+    public void removeItem(Client client){
+        Intent intent = new Intent(addUserView.this, addUserView.class);
+        startActivity(intent);
+        finish();
+    }
 }

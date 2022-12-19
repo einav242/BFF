@@ -42,30 +42,15 @@ public class viewClient extends AppCompatActivity {
         setContentView(R.layout.activity_clientlist);
         recyclerView = findViewById(R.id.Recycleview);
         controller=new ViewClientController(this);
-//        mAuth = FirebaseAuth.getInstance();
-//        mroot = FirebaseDatabase.getInstance().getReference("Em");
         lst=new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         myadapt = new ClientAdapter(lst,this,1);
         recyclerView.setAdapter(myadapt);
         controller.SendControllAdpter(myadapt,lst);
-//        mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot dataSnapshot: snapshot.getChildren())
-//                {
-//                    Client client = dataSnapshot.getValue(Client.class);
-//                    if(client.getStatus().equals("approve"))
-//                        lst.add(client);
-//                }
-//                myadapt.notifyDataSetChanged();
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+    }
+    public void removeItem(Client client){
+        Intent intent = new Intent(viewClient.this, viewClient.class);
+        startActivity(intent);
+        finish();
     }
 }

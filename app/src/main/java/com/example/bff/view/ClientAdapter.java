@@ -12,10 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bff.R;
 import com.example.bff.controller.ClientAdpterController;
 import com.example.bff.entities.Client;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -24,17 +20,26 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
     ArrayList<Client> lst;
     int flag;
     ClientAdpterController controller;
+    addUserView addUser;
+    viewClient viewclient;
 
     public ClientAdapter(ArrayList<Client> lst,Context context, int flag){
         this.lst=lst;
         this.context=context;
         this.flag = flag;
         controller=new ClientAdpterController(this);
+        if(flag ==0){
+            this.addUser = (addUserView)context;
+        }
+        else if(flag == 1){
+            this.viewclient = (viewClient)context;
+        }
+
     }
     @NonNull
     @Override
     public ClientVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = null;
+        View view;
         if(flag == 0){
             view = LayoutInflater.from(context)
                     .inflate(R.layout.clinetstry , parent, false);
@@ -60,8 +65,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
                 public void onClick(View view) {
                     String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime().toString();
                     c.setStatus("approve");
-                    controller.SendControlAprove(c,id,holder.aprove,holder.decline,view);
-
+                    controller.SendControlAprove(c,id);
                 }
             });
             holder.decline.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +73,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
                 public void onClick(View view) {
                     String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime();
                     c.setStatus("decline");
-                    controller.SendControlDecline(c,id,holder.aprove,holder.decline,view);
+                    controller.SendControlDecline(c,id);
                 }
             });
         }
@@ -79,9 +83,17 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
                 @Override
                 public void onClick(View view) {
                     String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime();
-                    controller.SendControlDelete(id,holder.delete,view);
+                    controller.SendControlDelete(id,c);
                 }
             });
+        }
+    }
+    public void goneView(Client client){
+        if(flag == 0){
+            addUser.removeItem(client);
+        }
+        else if(flag == 1){
+            viewclient.removeItem(client);
         }
     }
 
@@ -91,27 +103,27 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
     }
 }
 
-class ClientVH extends RecyclerView.ViewHolder{
-    TextView Email , Phone, Date;
-    Button aprove,decline, delete;
-    Client c;
-    private ClientAdapter adp;
+    class ClientVH extends RecyclerView.ViewHolder{
+        TextView Email , Phone, Date;
+        Button aprove,decline, delete;
+        Client c;
+        private ClientAdapter adp;
 
-    public ClientVH(@NonNull View itemView,int flag) {
-        super(itemView);
-        Email=itemView.findViewById(R.id.textviewname);
-        Phone=itemView.findViewById(R.id.textviewPhone);
-        Date=itemView.findViewById(R.id.dateviewPhone);
-        if(flag==0){
-            aprove=itemView.findViewById(R.id.aprove);
-            decline=itemView.findViewById(R.id.decline);
+        public ClientVH(@NonNull View itemView,int flag) {
+            super(itemView);
+            Email=itemView.findViewById(R.id.textviewname);
+            Phone=itemView.findViewById(R.id.textviewPhone);
+            Date=itemView.findViewById(R.id.dateviewPhone);
+            if(flag==0){
+                aprove=itemView.findViewById(R.id.aprove);
+                decline=itemView.findViewById(R.id.decline);
+            }
+            else if(flag ==1){
+                delete = itemView.findViewById(R.id.button11);
+            }
         }
-        else if(flag ==1){
-            delete = itemView.findViewById(R.id.button11);
+        public ClientVH linkAdapter(ClientAdapter adp){
+            this.adp=adp;
+            return this;
         }
-    }
-    public ClientVH linkAdapter(ClientAdapter adp){
-        this.adp=adp;
-        return this;
-    }
 }

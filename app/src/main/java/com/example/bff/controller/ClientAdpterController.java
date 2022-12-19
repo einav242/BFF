@@ -4,9 +4,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.bff.entities.Client;
 import com.example.bff.model.ClienyAdpterModel;
 import com.example.bff.view.ClientAdapter;
+
 
 public class ClientAdpterController {
     ClienyAdpterModel model;
@@ -17,15 +20,18 @@ public class ClientAdpterController {
         model=new ClienyAdpterModel(this);
     }
 
-    public void SendControlAprove(Client c, String id, Button aprove, Button decline, View view) {
-        model.SendModelAprove(c,id,aprove,decline,view);
+    public void SendControlAprove(Client c, String id) {
+        model.SendModelAprove(c,id);
     }
 
-    public void SendControlDecline(Client c, String id, Button aprove, Button decline, View view) {
-        model.SendModelDecline(c,id,aprove,decline,view);
+    public void SendControlDecline(Client c, String id) {
+        model.SendModelDecline(c,id);
     }
 
-    public void SendControlDelete(String id, Button delete, View view) {
-        model.SendModelDelete(id,delete,view);
+    public void SendControlDelete(String id,Client client) {
+        model.SendModelDelete(id,client);
+    }
+    public void goneViewController(Client client){
+        this.view.goneView(client);
     }
 }

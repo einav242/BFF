@@ -3,6 +3,7 @@ package com.example.bff.model;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bff.controller.ClientAdpterController;
 import com.example.bff.entities.Client;
@@ -22,13 +23,12 @@ public class ClienyAdpterModel {
 
 
 
-    public void SendModelAprove(Client c, String id, Button aprove, Button decline, View view) {
+    public void SendModelAprove(Client c, String id) {
         FirebaseDatabase.getInstance().getReference().child("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                    aprove.setVisibility(view.GONE);
-                    decline.setVisibility(view.GONE);
+                    controller.goneViewController(c);
                 }
                 else {}
 
@@ -36,13 +36,12 @@ public class ClienyAdpterModel {
         });
     }
 
-    public void SendModelDecline(Client c, String id, Button aprove, Button decline, View view) {
+    public void SendModelDecline(Client c, String id) {
         FirebaseDatabase.getInstance().getReference().child("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                    aprove.setVisibility(view.GONE);
-                    decline.setVisibility(view.GONE);
+                    controller.goneViewController(c);
                 }
                 else {}
 
@@ -50,12 +49,12 @@ public class ClienyAdpterModel {
         });
     }
 
-    public void SendModelDelete(String id, Button delete, View view) {
+    public void SendModelDelete(String id, Client c) {
         FirebaseDatabase.getInstance().getReference("Em").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                    delete.setVisibility(view.GONE);
+                    controller.goneViewController(c);
                 }
                 else {}
             }
