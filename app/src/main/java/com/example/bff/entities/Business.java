@@ -1,8 +1,5 @@
 package com.example.bff.entities;
 
-import  com.google.firebase.database.IgnoreExtraProperties;
-
-@IgnoreExtraProperties
 public class Business {
 
     private String businessID;

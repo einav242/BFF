@@ -17,7 +17,7 @@ public class addUserModel {
     addUserController controller;
     DatabaseReference mroot;
     FirebaseAuth mAuth;
-    ArrayList<Client> lst;
+
 
 
 
@@ -36,7 +36,7 @@ public class addUserModel {
                     if(client.getStatus().equals("waiting"))
                         lst.add(client);
                 }
-                controller.AdpterUpdatecontrol();
+                controller.setListController(lst);
             }
 
             @Override

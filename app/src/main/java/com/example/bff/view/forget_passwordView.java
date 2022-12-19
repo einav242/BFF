@@ -22,7 +22,7 @@ public class forget_passwordView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.forget_password);
+        setContentView(R.layout.activity_forget_password);
         getSupportActionBar().setTitle("Forget Password");
         controller = new forget_passwordController(this);
         etEmail = findViewById(R.id.et_email);

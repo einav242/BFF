@@ -22,7 +22,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.gotLostView"
+            android:name=".view.getLostView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

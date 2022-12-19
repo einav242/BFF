@@ -1,18 +1,12 @@
 package com.example.bff.model;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.net.Uri;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.example.bff.controller.businessActivityController;
 import com.example.bff.entities.Business;
-import com.example.bff.view.businessActivityView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +19,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -36,7 +29,6 @@ public class businessActivityModel {
     private StorageReference storageReference;
     private FirebaseUser mAuth;
     private FirebaseAuth fAuth;
-    ImageView profilePic;
 
 
     public businessActivityModel(businessActivityController controller) {
@@ -46,8 +38,7 @@ public class businessActivityModel {
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         fAuth =  FirebaseAuth.getInstance();
     }
-    public void getImageModel(ImageView profilePic){
-        this.profilePic = profilePic;
+    public void getImageModel(){
         StorageReference profileRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -74,9 +65,6 @@ public class businessActivityModel {
     public void uploadPicture(Uri imageUri) {
         //uplaod image to firebase storage
         controller.setPdController("Uploading Image...");
-
-        final  String randomKey = UUID.randomUUID().toString();
-
 
         StorageReference riversRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
         // Register observers to listen for when the download is done or if it fails

@@ -14,7 +14,7 @@ import com.example.bff.R;
 import com.example.bff.controller.gotLostController;
 import com.example.bff.entities.User;
 
-public class gotLostView extends AppCompatActivity {
+public class getLostView extends AppCompatActivity {
     private Button addLost;
     private Button lostView;
     private Button found;
@@ -47,7 +47,7 @@ public class gotLostView extends AppCompatActivity {
         lostView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(gotLostView.this, list_gotLostView.class));
+                startActivity(new Intent(getLostView.this, list_gotLostView.class));
             }
         });
 
@@ -61,12 +61,11 @@ public class gotLostView extends AppCompatActivity {
     }
 
     public void  toast_view(String msg){
-        Toast.makeText(gotLostView.this,msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getLostView.this,msg, Toast.LENGTH_SHORT).show();
     }
 
-    public void p(String key, User user) {
-        Intent intent = new Intent(gotLostView.this, animalActivityView.class);
-        intent.putExtra(key, user);
+    public void p() {
+        Intent intent = new Intent(getLostView.this, animalActivityView.class);
         startActivity(intent);
         finish();
     }

@@ -2,6 +2,7 @@ package com.example.bff.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,10 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bff.R;
 import com.example.bff.controller.list_gotLostController;
 import com.example.bff.entities.User;
-import com.example.bff.entities.queue;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class list_gotLostView extends AppCompatActivity {
 
@@ -21,6 +20,8 @@ public class list_gotLostView extends AppCompatActivity {
     ArrayList<User> lst;
     AnimalAdapter adapter;
     list_gotLostController controller;
+    TextView empty;
+
 
     @Override
     public void onBackPressed() {
@@ -32,10 +33,11 @@ public class list_gotLostView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_got_lost);
+        setContentView(R.layout.activity_view_list);
 
         controller = new list_gotLostController(this);
-        recyclerView = findViewById(R.id.recycleview);
+        recyclerView = findViewById(R.id.Recycleview);
+        empty = findViewById(R.id.textView41);
         lst = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AnimalAdapter(this,lst);
@@ -46,6 +48,9 @@ public class list_gotLostView extends AppCompatActivity {
 
     public void notifyView() {
         adapter.notifyDataSetChanged();
+        if (lst == null){
+            this.empty.setText("No Lost");
+        }
     }
 
 }

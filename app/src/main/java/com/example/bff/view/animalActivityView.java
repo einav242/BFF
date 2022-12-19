@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.bff.R;
 import com.example.bff.controller.animalActivityController;
-
+import com.squareup.picasso.Picasso;
 
 
 public class animalActivityView extends AppCompatActivity {
@@ -39,7 +39,7 @@ public class animalActivityView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.animalwindow);
+        setContentView(R.layout.activity_animal_window);
         controller = new animalActivityController(this);
         getlost = findViewById(R.id.imageButton2);
         information = findViewById(R.id.imageButton10);
@@ -51,7 +51,7 @@ public class animalActivityView extends AppCompatActivity {
         view = findViewById(R.id.imageButton13);
         pd = new ProgressDialog(this);
         controller.getUserNameController();
-        controller.imageListener_controller(profilePic);
+        controller.imageListener_controller();
 
         profilePic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +65,7 @@ public class animalActivityView extends AppCompatActivity {
         getlost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(animalActivityView.this, gotLostView.class));
+                startActivity(new Intent(animalActivityView.this, getLostView.class));
             }
         });
 
@@ -135,6 +135,10 @@ public class animalActivityView extends AppCompatActivity {
     }
     public void pdDismissView(){
         pd.dismiss();
+    }
+
+    public void set_msg_view(Uri uri) {
+        Picasso.get().load(uri).into(profilePic);
     }
 }
 

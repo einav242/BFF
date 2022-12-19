@@ -38,7 +38,7 @@ public class businessActivityView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.business_window);
+        setContentView(R.layout.activity_business_window);
         view = findViewById(R.id.imageButton5);
         insert = findViewById(R.id.imageButton3);
         edit = findViewById(R.id.imageButton8);
@@ -47,7 +47,7 @@ public class businessActivityView extends AppCompatActivity {
         logOut = findViewById(R.id.singUp_LogOut);
         pd = new ProgressDialog(this);
         controller = new businessActivityController(this);
-        controller.getImageController(profilePic);
+        controller.getImageController();
         controller.getUserNameController();
 
         view.setOnClickListener(new View.OnClickListener() {

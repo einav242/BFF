@@ -25,7 +25,7 @@ public class queueAdapter extends RecyclerView.Adapter<queueVH> {
     @Override
     public  queueVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context)
-                .inflate(R.layout.activity_queue , parent, false);
+                .inflate(R.layout.activity_appoiment_list, parent, false);
         return new queueVH(view);
     }
 

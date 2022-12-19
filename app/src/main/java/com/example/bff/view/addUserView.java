@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.bff.R;
 import com.example.bff.controller.addUserController;
@@ -17,6 +18,7 @@ public class addUserView extends AppCompatActivity {
     ArrayList<Client> lst;
     ClientAdapter myadapt;
     addUserController controller;
+    TextView empty;
 
 
     @Override
@@ -29,26 +31,26 @@ public class addUserView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clientlist);
+        setContentView(R.layout.activity_view_list);
+        empty = findViewById(R.id.textView41);
         controller = new addUserController(this);
         recyclerView = findViewById(R.id.Recycleview);
         lst=new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         myadapt = new ClientAdapter(lst,this,0);
         recyclerView.setAdapter(myadapt);
-        controller.RunApdater(this.lst);
+        controller.RunApdater(lst);
     }
 
-    public void setListView(ArrayList<Client> lst) {
-        this.lst = lst;
+    public void setListView(ArrayList<Client> lst1) {
+        this.lst = lst1;
         myadapt.notifyDataSetChanged();
+        if(lst == null){
+            empty.setText("No Client");
+        }
     }
 
-    public void AdpterUpdateView() {
-        myadapt.notifyDataSetChanged();
-    }
-
-    public void removeItem(Client client){
+    public void removeItem(){
         Intent intent = new Intent(addUserView.this, addUserView.class);
         startActivity(intent);
         finish();

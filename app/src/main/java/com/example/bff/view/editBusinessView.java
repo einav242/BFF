@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.example.bff.R;
 import com.example.bff.controller.editBusinessController;
-import com.example.bff.entities.Business;
 import com.squareup.picasso.Picasso;
 
 public class editBusinessView extends AppCompatActivity {
@@ -42,7 +41,7 @@ public class editBusinessView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit_business_activity);
+        setContentView(R.layout.activity_edit_business);
 
         //user can change
         name = findViewById(R.id.register_BO_fullName);

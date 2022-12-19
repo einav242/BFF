@@ -14,8 +14,8 @@ public class businessActivityController {
         this.view = view;
         model = new businessActivityModel(this);
     }
-    public void getImageController(ImageView profilePic){
-        model.getImageModel(profilePic);
+    public void getImageController(){
+        model.getImageModel();
     }
     public void getUserNameController(){
         model.getUserNameModel();

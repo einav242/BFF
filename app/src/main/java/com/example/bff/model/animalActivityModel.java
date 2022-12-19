@@ -1,10 +1,7 @@
 package com.example.bff.model;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.net.Uri;
-import android.widget.ImageView;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 
@@ -22,7 +19,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
+
 
 import java.util.Objects;
 import java.util.UUID;
@@ -33,7 +30,6 @@ public class animalActivityModel {
     private FirebaseAuth fAuth;
     private StorageReference storageReference;
     private FirebaseStorage storage;
-    private ImageView profilePic;
     animalActivityController controller;
 
     public animalActivityModel(animalActivityController controller) {
@@ -45,13 +41,12 @@ public class animalActivityModel {
     }
 
 
-    public void imageListener(ImageView profilePic) {
-        this.profilePic = profilePic;
+    public void imageListener() {
         StorageReference profileRef = storageReference.child("user/" + Objects.requireNonNull(fAuth.getCurrentUser()).getUid() + "profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profilePic);
+                controller.set_msg(uri);
             }
         });
     }
@@ -61,13 +56,7 @@ public class animalActivityModel {
     }
 
     public void uploadPicture_model(Uri imageUri) {
-        //uplaod image to firebase storage
-        ImageView profilePic = this.profilePic;
         controller.setPdController("Uploading Image...");
-
-
-        final String randomKey = UUID.randomUUID().toString();
-
 
         StorageReference riversRef = storageReference.child("user/" + Objects.requireNonNull(fAuth.getCurrentUser()).getUid() + "profile.jpg");
         // Register observers to listen for when the download is done or if it fails
@@ -85,7 +74,7 @@ public class animalActivityModel {
 
                     @Override
                     public void onSuccess(Uri uri) {
-                        Picasso.get().load(uri).into(profilePic);
+                        controller.set_msg(uri);
                     }
                 });
             }

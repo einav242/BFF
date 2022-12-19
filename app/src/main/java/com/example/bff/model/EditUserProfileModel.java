@@ -26,6 +26,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -37,7 +38,6 @@ public class EditUserProfileModel {
     private FirebaseAuth fAuth;
     private FirebaseStorage storage;
     private StorageReference storageReference;
-//    private ImageView profilePic;
 
     public EditUserProfileModel(EditUserProfileController controller) {
         this.controller = controller;
@@ -78,18 +78,18 @@ public class EditUserProfileModel {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                String fullName = user.getName();
-                String animalName = user.getUsername();
-                String phone = user.getPhone();
-                if (!fullName.equals(newFullName)) {
-                    reference.child(mAuth.getUid()).child("name").setValue(newFullName);
-                }
-                if (!animalName.equals(newAnimalName)) {
-                    reference.child(mAuth.getUid()).child("username").setValue(newAnimalName);
-                }
-                if (!phone.equals(newPhone)) {
-                    reference.child(mAuth.getUid()).child("phone").setValue(newPhone);
-                }
+                HashMap hashMap = new HashMap();
+                hashMap.put("name",newFullName);
+                hashMap.put("username",newAnimalName);
+                hashMap.put("email", user.getEmail());
+                hashMap.put("flag","animal");
+                hashMap.put("id",user.getId());
+                hashMap.put("phone",newPhone);
+                reference.child(mAuth.getUid()).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {@Override
+                    public void onSuccess(Object o) {
+                        controller.setToastController("your Data is successfully Update");
+                    }
+                });
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -102,9 +102,6 @@ public class EditUserProfileModel {
         //uplaod image to firebase storage
 //        ImageView profilePic = this.profilePic;
         controller.setPdController("Uploading Image...");
-
-        final String randomKey = UUID.randomUUID().toString();
-
 
         StorageReference riversRef = storageReference.child("user/" + Objects.requireNonNull(fAuth.getCurrentUser()).getUid() + "profile.jpg");
         // Register observers to listen for when the download is done or if it fails

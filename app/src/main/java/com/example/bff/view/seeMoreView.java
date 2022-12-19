@@ -22,7 +22,7 @@ public class seeMoreView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.see_more);
+        setContentView(R.layout.activity_see_more);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {

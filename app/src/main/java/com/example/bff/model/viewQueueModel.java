@@ -61,8 +61,7 @@ public class viewQueueModel {
                     }
 
                 }
-                controller.setListController(lst);
-                controller.notifyController();
+                controller.notifyController(lst);
             }
 
             @Override

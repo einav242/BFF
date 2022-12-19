@@ -1,16 +1,13 @@
 package com.example.bff.controller;
 
-import android.content.Context;
-
-import com.example.bff.entities.User;
 import com.example.bff.model.gotLostModel;
-import com.example.bff.view.gotLostView;
+import com.example.bff.view.getLostView;
 
 public class gotLostController {
     gotLostModel model;
-    gotLostView view;
+    getLostView view;
 
-    public gotLostController(gotLostView view) {
+    public gotLostController(getLostView view) {
         this.view = view;
         model = new gotLostModel(this);
     }
@@ -27,7 +24,7 @@ public class gotLostController {
         model.addLost();
     }
 
-    public void d(String ket, User user) {
-        view.p(ket,user);
+    public void d() {
+        view.p();
     }
 }

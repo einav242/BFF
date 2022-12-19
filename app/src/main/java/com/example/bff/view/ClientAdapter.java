@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bff.R;
-import com.example.bff.controller.ClientAdpterController;
+import com.example.bff.controller.ClientAdapterController;
 import com.example.bff.entities.Client;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
     Context context;
     ArrayList<Client> lst;
     int flag;
-    ClientAdpterController controller;
+    ClientAdapterController controller;
     addUserView addUser;
     viewClient viewclient;
 
@@ -27,7 +27,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
         this.lst=lst;
         this.context=context;
         this.flag = flag;
-        controller=new ClientAdpterController(this);
+        controller=new ClientAdapterController(this);
         if(flag ==0){
             this.addUser = (addUserView)context;
         }
@@ -42,11 +42,11 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
         View view;
         if(flag == 0){
             view = LayoutInflater.from(context)
-                    .inflate(R.layout.clinetstry , parent, false);
+                    .inflate(R.layout.activity_add_client, parent, false);
         }
         else {
             view = LayoutInflater.from(context)
-                    .inflate(R.layout.view_client , parent, false);
+                    .inflate(R.layout.activity_client_list, parent, false);
         }
 
         return new ClientVH(view,flag).linkAdapter(this);
@@ -83,17 +83,17 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
                 @Override
                 public void onClick(View view) {
                     String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime();
-                    controller.SendControlDelete(id,c);
+                    controller.SendControlDelete(id);
                 }
             });
         }
     }
-    public void goneView(Client client){
+    public void goneView(){
         if(flag == 0){
-            addUser.removeItem(client);
+            addUser.removeItem();
         }
         else if(flag == 1){
-            viewclient.removeItem(client);
+            viewclient.removeItem();
         }
     }
 

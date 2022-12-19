@@ -26,7 +26,7 @@ public class ViewClientModel {
         mroot = FirebaseDatabase.getInstance().getReference("Em");
     }
 
-    public void SendModelAdpter(ClientAdapter myadapt, ArrayList<Client> lst) {
+    public void SendModelAdpter(ArrayList<Client> lst) {
         mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -36,8 +36,7 @@ public class ViewClientModel {
                     if(client.getStatus().equals("approve"))
                         lst.add(client);
                 }
-                myadapt.notifyDataSetChanged();
-
+                controller.setListController(lst);
             }
 
             @Override

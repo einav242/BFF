@@ -17,11 +17,6 @@ import android.widget.Toast;
 
 import com.example.bff.R;
 import com.example.bff.controller.EditUserProfileController;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class EditUserProfileView extends AppCompatActivity {

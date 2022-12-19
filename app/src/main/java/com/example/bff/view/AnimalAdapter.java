@@ -23,12 +23,10 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHold
         this.list = list;
     }
 
-
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.userentry,parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.activity_lost_list,parent,false);
         return new MyViewHolder(v);
     }
 

@@ -1,11 +1,8 @@
 package com.example.bff.controller;
 
 
-import android.app.ProgressDialog;
-import android.text.TextUtils;
-import android.widget.Toast;
 
-import com.example.bff.entities.User;
+import android.text.TextUtils;
 import com.example.bff.model.RegisterModel;
 import com.example.bff.view.RegisterView;
 

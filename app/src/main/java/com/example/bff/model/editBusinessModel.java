@@ -21,8 +21,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
+
+import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -34,7 +36,6 @@ public class editBusinessModel {
     private FirebaseAuth fAuth;
     private FirebaseStorage storage;
     private StorageReference storageReference;
-//    private ImageView profilePic;
 
     public editBusinessModel(editBusinessController controller) {
         this.controller = controller;
@@ -76,43 +77,25 @@ public class editBusinessModel {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Business user = dataSnapshot.getValue(Business.class);
-                String name = user.getName();
-                String businessName = user.getUsername();
-                String ID = user.getId();
-                String phone = user.getPhone();
-                String city = user.getCity();
-                String street = user.getStreet();
-                String houseNumber = user.getHouseNumber();
-                String type = user.getType();
-                String time = user.getTime();
-                System.out.println("business!!!" +newBusinessName);
-                if (!name.equals(newName)) {
-                    reference.child(mAuth.getUid()).child("name").setValue(newName);
-                }
-                if (!businessName.equals(newBusinessName)) {
-                    reference.child(mAuth.getUid()).child("username").setValue(newBusinessName);
-                }
-                if (!ID.equals(newId)) {
-                    reference.child(mAuth.getUid()).child("id").setValue(newId);
-                }
-                if (!phone.equals(newPhone)) {
-                    reference.child(mAuth.getUid()).child("phone").setValue(newPhone);
-                }
-                if (!city.equals(newCity)) {
-                    reference.child(mAuth.getUid()).child("city").setValue(newCity);
-                }
-                if (!street.equals(newStreet)) {
-                    reference.child(mAuth.getUid()).child("street").setValue(newStreet);
-                }
-                if (!houseNumber.equals(newHouseNumber)) {
-                    reference.child(mAuth.getUid()).child("houseNumber").setValue(newHouseNumber);
-                }
-                if (!type.equals(newType)) {
-                    reference.child(mAuth.getUid()).child("type").setValue(newType);
-                }
-                if (!time.equals(newTime)) {
-                    reference.child(mAuth.getUid()).child("time").setValue(newTime);
-                }
+                HashMap hashMap = new HashMap();
+                hashMap.put("name",newName);
+                hashMap.put("username",newBusinessName);
+                hashMap.put("businessID",newId);
+                hashMap.put("city",newCity);
+                hashMap.put("email", user.getEmail());
+                hashMap.put("flag","business");
+                hashMap.put("houseNumber",newHouseNumber);
+                hashMap.put("id",user.getId());
+                hashMap.put("phone",newPhone);
+                hashMap.put("street",newStreet);
+                hashMap.put("type",newType);
+                hashMap.put("time",newTime);
+                reference.child(mAuth.getUid()).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
+                    @Override
+                    public void onSuccess(Object o) {
+                        controller.setToastController("your Data is successfully Update");
+                    }
+                });
 
             }
             @Override
@@ -127,9 +110,6 @@ public class editBusinessModel {
         //uplaod image to firebase storage
 //        ImageView profilePic = this.profilePic;
         controller.setPdController("Uploading Image...");
-
-        final String randomKey = UUID.randomUUID().toString();
-
 
         StorageReference riversRef = storageReference.child("user/" + Objects.requireNonNull(fAuth.getCurrentUser()).getUid() + "profile.jpg");
         // Register observers to listen for when the download is done or if it fails

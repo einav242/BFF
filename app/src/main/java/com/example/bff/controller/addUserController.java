@@ -15,15 +15,11 @@ public class addUserController {
         model = new addUserModel(this);
     }
 
-    public void setList(ArrayList<Client> lst) {
-        view.setListView(lst);
-    }
-
-    public void AdpterUpdatecontrol() {
-        view.AdpterUpdateView();
-    }
-
     public void RunApdater(ArrayList<Client> lst) {
         model.getListModel(lst);
+    }
+
+    public void setListController(ArrayList<Client> lst){
+        view.setListView(lst);
     }
 }

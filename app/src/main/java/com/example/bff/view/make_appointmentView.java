@@ -24,7 +24,7 @@ public class make_appointmentView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.make_appointment);
+        setContentView(R.layout.activity_make_appointment);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             businessID = extras.getString("key");

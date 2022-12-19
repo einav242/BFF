@@ -19,11 +19,8 @@ public class viewQueueController {
     public void getListController(HashMap<String, String> names, ArrayList<queue> lst) {
         model.getListModel(names, lst);
     }
-    public void setListController(ArrayList<queue> lst){
-        view.setListView(lst);
-    }
-    public void notifyController(){
-        view.notifyView();
+    public void notifyController(ArrayList<queue> lst){
+        view.notifyView(lst);
     }
     public void getBusinessNameController(){
         this.model.getBusinessNameModel();

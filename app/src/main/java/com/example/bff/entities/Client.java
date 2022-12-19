@@ -1,8 +1,5 @@
 package com.example.bff.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Client {
     private String email;
     private String date;

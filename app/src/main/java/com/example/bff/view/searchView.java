@@ -13,12 +13,11 @@ import android.widget.SearchView;
 
 import com.example.bff.entities.Business;
 import com.example.bff.R;
-import com.example.bff.entities.RecyclerViewInterface;
 import com.example.bff.controller.searchController;
 
 import java.util.ArrayList;
 
-public class searchView extends AppCompatActivity implements RecyclerViewInterface {
+public class searchView extends AppCompatActivity{
     searchController controller;
     RecyclerView recyclerView;
     ArrayList<Business> lst;
@@ -29,10 +28,9 @@ public class searchView extends AppCompatActivity implements RecyclerViewInterfa
     private ImageButton hair;
     private ImageButton walker;
     private Button all;
-    private String currentSearchText = "";
     private String currentSearchTextCity = "";
     private String selectedFilter = "all";
-    public static ArrayList<Business> businessList = new ArrayList<Business>();
+//    public static ArrayList<Business> businessList = new ArrayList<Business>();
 
     @Override
     public void onBackPressed() {
@@ -63,7 +61,6 @@ public class searchView extends AppCompatActivity implements RecyclerViewInterfa
             @Override
             public boolean onQueryTextChange(String s)
             {
-                currentSearchText = s;
                 ArrayList<Business> filteredBusiness = new ArrayList<Business>();
                 for(Business business: lst) {
                     if (business.getUsername().toLowerCase().contains(s.toLowerCase())) {
@@ -168,7 +165,6 @@ public class searchView extends AppCompatActivity implements RecyclerViewInterfa
         recyclerView.setAdapter(adpt);
     }
 
-    @Override
     public void onItemClick(String email) {
         Intent intent = new Intent(searchView.this, seeMoreView.class);
         intent.putExtra("key",email);

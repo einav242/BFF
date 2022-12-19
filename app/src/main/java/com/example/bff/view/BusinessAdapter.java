@@ -13,17 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bff.entities.Business;
 import com.example.bff.R;
-import com.example.bff.entities.RecyclerViewInterface;
 
 import java.util.ArrayList;
 
 public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.BusinessVh> {
-    private final RecyclerViewInterface recyclerViewInterface;
+    private final searchView search;
     Context context;
     ArrayList<Business> list;
 
-    public BusinessAdapter(Context context, ArrayList<Business> list, RecyclerViewInterface recyclerViewInterface) {
-        this.recyclerViewInterface=recyclerViewInterface;
+    public BusinessAdapter(Context context, ArrayList<Business> list, searchView search) {
+        this.search=search;
         this.context = context;
         this.list = list;
 
@@ -32,8 +31,8 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
     @NonNull
     @Override
     public BusinessVh onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.business_search,parent,false);
-        return new BusinessVh(v,recyclerViewInterface);
+        View v = LayoutInflater.from(context).inflate(R.layout.activity_business_list,parent,false);
+        return new BusinessVh(v);
     }
 
     @Override
@@ -42,6 +41,15 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
         holder.Business_name.setText(business.getUsername());
         holder.type.setText(business.getType());
         holder.email=business.getEmail();
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(search != null)
+                {
+                    search.onItemClick(holder.email);
+                }
+            }
+        });
 
     }
 
@@ -53,21 +61,12 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
     public static class BusinessVh extends RecyclerView.ViewHolder{
         TextView Business_name, type;
         String email;
-        public BusinessVh(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface){
+        Button button;
+        public BusinessVh(@NonNull View itemView){
             super(itemView);
             Business_name = itemView.findViewById(R.id.BusinessName);
             type = itemView.findViewById(R.id.type);
-            email="";
-            Button button = itemView.findViewById(R.id.button10);
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(recyclerViewInterface != null)
-                    {
-                        recyclerViewInterface.onItemClick(email);
-                    }
-                }
-            });
+            button = itemView.findViewById(R.id.button10);
         }
     }
 }

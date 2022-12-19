@@ -17,12 +17,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class make_appointmentModel {
     make_appointmentController controller;
-    private DatabaseReference mRootRef;
     private FirebaseAuth mAuth;
 
     public make_appointmentModel(make_appointmentController controller) {
         this.controller = controller;
-        mRootRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
     }
 
