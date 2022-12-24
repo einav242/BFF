@@ -63,7 +63,7 @@ public class EditUserProfileModel {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                controller.setDataController(user.getName(),user.getUsername(),user.getEmail(),user.getPhone());
+                controller.setDataController(user.getName(),user.getUsername(),user.getEmail(),user.getPhone(),user.getBreed(), user.getColor(),user.getType());
 
             }
             @Override
@@ -73,7 +73,7 @@ public class EditUserProfileModel {
         });
     }
 
-    public void updateModel(String newFullName, String newAnimalName, String newPhone) {
+    public void updateModel(String newFullName, String newAnimalName, String newPhone , String newBreed , String newColor , String newType) {
         FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -85,6 +85,9 @@ public class EditUserProfileModel {
                 hashMap.put("flag","animal");
                 hashMap.put("id",user.getId());
                 hashMap.put("phone",newPhone);
+                hashMap.put("breed" , newBreed);
+                hashMap.put("color" , newColor);
+                hashMap.put("type" , newType);
                 reference.child(mAuth.getUid()).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {@Override
                     public void onSuccess(Object o) {
                         controller.setToastController("your Data is successfully Update");

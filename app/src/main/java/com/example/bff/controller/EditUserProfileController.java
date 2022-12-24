@@ -18,8 +18,8 @@ public class EditUserProfileController {
         model = new EditUserProfileModel(this);
     }
 
-    public void setDataController(String name, String username, String email, String phone) {
-        view.setDataView(name, username, email, phone);
+    public void setDataController(String name, String username, String email, String phone , String breed , String color , String type) {
+        view.setDataView(name, username, email, phone , breed , color , type);
     }
 
     public void getDataController(){
@@ -34,8 +34,8 @@ public class EditUserProfileController {
         view.setImegeView(uri);
     }
 
-    public void updateController(String toString, String toString1, String toString2) {
-        model.updateModel(toString,toString1,toString2);
+    public void updateController(String toString, String toString1, String toString2 ,String toString3, String toString4, String toString5) {
+        model.updateModel(toString,toString1,toString2,toString3,toString4,toString5);
     }
 
     public void uploadPictureController(Uri imageUri) {

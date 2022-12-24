@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,6 +27,9 @@ public class EditUserProfileView extends AppCompatActivity {
     EditText edFullName;
     EditText edAnimalName;
     EditText editPhone;
+    EditText editBreed;
+    EditText editColor;
+    EditText editType;
     TextView edEmail;
     private Button update;
     EditUserProfileController controller;
@@ -31,11 +37,20 @@ public class EditUserProfileView extends AppCompatActivity {
     private ImageView profilePic;
     public Uri imageUri;
 
+    String[] language ={"Dog","Cat"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user_profile);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item,language);
+        AutoCompleteTextView actv = findViewById(R.id.getlost_type);
+        actv.setThreshold(1);//will start working from first character
+        actv.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
+        actv.setTextColor(Color.BLACK);
 
         //user can change
         edFullName = findViewById(R.id.edit_user_fullName);
@@ -44,6 +59,10 @@ public class EditUserProfileView extends AppCompatActivity {
         editPhone = findViewById(R.id.editTxtPhone);
         update = findViewById(R.id.edit_user_Update);
         profilePic = findViewById(R.id.edit_user_image);
+        editBreed = findViewById(R.id.getlost_breed);
+        editColor = findViewById(R.id.get_lost_color);
+        editType = findViewById(R.id.getlost_type);
+
         pd = new ProgressDialog(this);
         controller = new EditUserProfileController(this);
         controller.getImageController();
@@ -62,7 +81,7 @@ public class EditUserProfileView extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                controller.updateController(edFullName.getText().toString(), edAnimalName.getText().toString(), editPhone.getText().toString());
+                controller.updateController(edFullName.getText().toString(), edAnimalName.getText().toString(), editPhone.getText().toString() , editBreed.getText().toString() , editColor.getText().toString() , editType.getText().toString());
                 startActivity(new Intent(EditUserProfileView.this, animalActivityView.class));
             }
         });
@@ -83,11 +102,14 @@ public class EditUserProfileView extends AppCompatActivity {
 
 
 
-    public void setDataView(String name, String username, String email, String phone) {
+    public void setDataView(String name, String username, String email, String phone , String breed , String color , String type) {
         edFullName.setText(name);
         edAnimalName.setText(username);
         edEmail.setText(email);
         editPhone.setText(phone);
+        editBreed.setText(breed);
+        editColor.setText(color);
+        editType.setText(type);
     }
 
     public void setImegeView(Uri uri) {
