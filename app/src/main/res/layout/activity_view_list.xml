@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.viewClient">
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Recycleview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
 

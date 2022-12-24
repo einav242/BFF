@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -29,11 +30,12 @@ public class viewClient extends AppCompatActivity {
         finish();
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list);
-        recyclerView = findViewById(R.id.Recycleview);
+        recyclerView = findViewById(R.id.recyclebusiness);
         empty = findViewById(R.id.textView41);
         controller=new ViewClientController(this);
         lst=new ArrayList<>();

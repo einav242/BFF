@@ -2,8 +2,11 @@ package com.example.bff.view;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,10 +24,15 @@ public class RegisterView extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private EditText phone;
+    private EditText breed;
+    private EditText color;
+    private EditText type;
     private Button register;
     private TextView loginUser;
     ProgressDialog pd;
     RegisterController controller;
+
+    String[] language ={"Dog","Cat"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,13 @@ public class RegisterView extends AppCompatActivity {
 
         controller = new RegisterController(this);
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item,language);
+        AutoCompleteTextView actv = findViewById(R.id.getlost_type);
+        actv.setThreshold(1);//will start working from first character
+        actv.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
+        actv.setTextColor(Color.BLACK);
+
         animalName = findViewById(R.id.singUp_AnimalName);
         name = findViewById(R.id.singUp_fullName);
         email = findViewById(R.id.singUp_Email);
@@ -40,6 +55,10 @@ public class RegisterView extends AppCompatActivity {
         phone = findViewById(R.id.editTextPhone);
         register = findViewById(R.id.singUp_Register);
         loginUser = findViewById(R.id.singUp_Button_LoginHere);
+        breed = findViewById(R.id.getlost_breed);
+        color = findViewById(R.id.get_lost_color);
+        type = findViewById(R.id.getlost_type);
+
         pd = new ProgressDialog(this);
 
         // if to the user have already account
@@ -58,7 +77,10 @@ public class RegisterView extends AppCompatActivity {
                 String txtEmail = email.getText().toString();
                 String txtPassword = password.getText().toString();
                 String txtPhone = phone.getText().toString();
-                controller.registerUser(txtUsername , txtName , txtEmail , txtPassword, txtPhone);
+                String txtBreed = breed.getText().toString();
+                String txtColor = color.getText().toString();
+                String txtType = type.getText().toString();
+                controller.registerUser(txtUsername , txtName , txtEmail , txtPassword, txtPhone , txtBreed , txtColor , txtType);
             }
         });
 

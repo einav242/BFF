@@ -12,17 +12,23 @@ public class User implements Parcelable {
     private String flag;
     private String id;
     private String phone;
+    private String breed;
+    private String color;
+    private String type;
 
     public User() {
     }
 
-    public User(String name, String email, String username, String flag, String id, String phone) {
+    public User(String name, String email, String username, String flag, String id, String phone,String breed , String color , String type) {
         this.name = name;
         this.email = email;
         this.username = username;
         this.flag = flag;
         this.id = id;
         this.phone = phone;
+        this.breed = breed;
+        this.color = color;
+        this.type = type;
     }
 
     public User(String name, String country, double weight, String somthing, String somthin2) {
@@ -108,6 +114,30 @@ public class User implements Parcelable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

@@ -26,7 +26,7 @@ public class RegisterModel {
         mRootRef = FirebaseDatabase.getInstance().getReference();
     }
 
-    public void registerUser(String txtUsername, String txtName,final String txtEmail, String txtPassword, String txtPhone) {
+    public void registerUser(String txtUsername, String txtName,final String txtEmail, String txtPassword, String txtPhone ,String txtBreed , String txtColor , String txtType) {
         controller.setPdController("Please Wait!");
 
         mAuth.createUserWithEmailAndPassword(txtEmail , txtPassword).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -37,6 +37,9 @@ public class RegisterModel {
                 map.put("email", txtEmail);
                 map.put("username" , txtUsername);
                 map.put("phone",txtPhone);
+                map.put("breed" , txtBreed);
+                map.put("color" , txtColor);
+                map.put("type" , txtType);
                 map.put("flag","animal");
                 map.put("id" , mAuth.getCurrentUser().getUid());
 

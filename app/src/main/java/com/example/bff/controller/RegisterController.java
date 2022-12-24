@@ -17,15 +17,16 @@ public class RegisterController {
         model = new RegisterModel(this);
     }
 
-    public void registerUser(String txtUsername, String txtName, String txtEmail, String txtPassword, String txtPhone) {
+    public void registerUser(String txtUsername, String txtName, String txtEmail, String txtPassword, String txtPhone , String txtBreed , String txtColor , String txtType) {
         if (TextUtils.isEmpty(txtUsername) || TextUtils.isEmpty(txtName)
-                || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword) || TextUtils.isEmpty(txtPhone)){
+                || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword) || TextUtils.isEmpty(txtPhone) || TextUtils.isEmpty(txtColor) || TextUtils.isEmpty(txtBreed) ||
+                TextUtils.isEmpty(txtType)){
             view.toast_view("Empty credentials!");
         } else if (txtPassword.length() < 6){
             view.toast_view("Password too short!");
         } else {
-            model.registerUser(txtUsername,txtName,txtEmail,txtPassword,txtPhone);
-//                    controller.registerUser(txtUsername , txtName , txtEmail , txtPassword, txtPhone , pd);
+            model.registerUser(txtUsername,txtName,txtEmail,txtPassword,txtPhone, txtBreed , txtColor , txtType);
+//
         }
     }
 
