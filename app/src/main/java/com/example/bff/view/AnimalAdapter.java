@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,10 +18,12 @@ import java.util.ArrayList;
 public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHolder> {
     Context context;
     ArrayList<User> list;
+    private final list_gotLost_newView search;
 
-    public AnimalAdapter(Context context, ArrayList<User> list) {
+    public AnimalAdapter(Context context, ArrayList<User> list , list_gotLost_newView search) {
         this.context = context;
         this.list = list;
+        this.search = search;
     }
 
     @NonNull
@@ -34,9 +37,10 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHold
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         User user = list.get(position);
         holder.userName.setText(user.getUsername());
-        holder.email.setText(user.getEmail());
         holder.phone.setText(user.getPhone());
-
+        holder.type.setText(user.getType());
+        holder.breed.setText(user.getBreed());
+        holder.color.setText(user.getColor());
     }
 
     @Override
@@ -45,12 +49,14 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHold
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView userName, email , phone;
+        TextView userName, phone , color , breed , type;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             userName = itemView.findViewById(R.id.textName);
-            email = itemView.findViewById(R.id.textEmail);
             phone = itemView.findViewById(R.id.textPhone);
+            color = itemView.findViewById(R.id.textColor);
+            breed = itemView.findViewById(R.id.textBreed);
+            type = itemView.findViewById(R.id.textType);
         }
     }
 }

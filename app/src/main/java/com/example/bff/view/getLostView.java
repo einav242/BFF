@@ -47,7 +47,7 @@ public class getLostView extends AppCompatActivity {
         lostView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getLostView.this, list_gotLostView.class));
+                startActivity(new Intent(getLostView.this, list_gotLost_newView.class));
             }
         });
 

@@ -29,8 +29,8 @@ public class gotLostModel {
     }
 
 
-    private void InserData(String phone,final String email,String username,String id) {
-        User user = new User(phone,email,username,id);
+    private void InserData(String phone,final String email,String username,String id , String breed , String color ,String type) {
+        User user = new User(phone,email,username,id,breed, color, type);
         mRootRef.child("Got Lost").child(id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -89,7 +89,10 @@ public class gotLostModel {
                             String phone = user.getPhone();
                             String id = user.getId();
                             String username = user.getName();
-                            InserData(phone, email , username,id);
+                            String breed = user.getBreed();
+                            String color = user.getColor();
+                            String type = user.getType();
+                            InserData(phone, email , username,id , breed ,color , type);
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {

@@ -3,7 +3,10 @@ package com.example.bff.model;
 import androidx.annotation.NonNull;
 
 import com.example.bff.controller.list_gotLostController;
+import com.example.bff.entities.Business;
 import com.example.bff.entities.User;
+import com.example.bff.view.AnimalAdapter;
+import com.example.bff.view.BusinessAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,6 +20,7 @@ public class list_gotLostModel {
     DatabaseReference databaseReference;
     list_gotLostController controller;
     private FirebaseUser mAuth;
+    ArrayList<User> lst;
 
     public list_gotLostModel(list_gotLostController controller) {
         this.controller = controller;
@@ -43,4 +47,24 @@ public class list_gotLostModel {
         });
 
     }
+
+//    public void addValueModel(AnimalAdapter adapter)
+//    {
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                    User user = dataSnapshot.getValue(User.class);
+//                    lst.add(user);
+//                }
+//                adapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//        controller.setlstController(lst);
+//    }
 }

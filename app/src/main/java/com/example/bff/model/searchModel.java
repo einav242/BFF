@@ -34,7 +34,6 @@ public class searchModel {
                     lst.add(business);
                 }
                 myadapt.notifyDataSetChanged();
-
             }
 
             @Override

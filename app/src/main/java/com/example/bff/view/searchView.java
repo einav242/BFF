@@ -43,6 +43,7 @@ public class searchView extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
         controller = new searchController(this);
         recyclerView = findViewById(R.id.recyclebusiness);
         lst = new ArrayList<>();

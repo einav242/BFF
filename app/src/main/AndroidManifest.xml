@@ -15,6 +15,13 @@
         android:theme="@style/Theme.BFF"
         tools:targetApi="31">
         <activity
+            android:name=".view.list_gotLost_newView"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.list_gotLostView"
             android:exported="false">
             <meta-data
