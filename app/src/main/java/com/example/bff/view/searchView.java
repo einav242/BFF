@@ -5,8 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
@@ -22,7 +25,7 @@ public class searchView extends AppCompatActivity{
     RecyclerView recyclerView;
     ArrayList<Business> lst;
     BusinessAdapter myadapt;
-    private SearchView searchView;
+    private SearchView searchName;
     private SearchView searchCity;
     private ImageButton vet;
     private ImageButton hair;
@@ -30,7 +33,6 @@ public class searchView extends AppCompatActivity{
     private Button all;
     private String currentSearchTextCity = "";
     private String selectedFilter = "all";
-//    public static ArrayList<Business> businessList = new ArrayList<Business>();
 
     @Override
     public void onBackPressed() {
@@ -52,8 +54,8 @@ public class searchView extends AppCompatActivity{
         recyclerView.setAdapter(myadapt);
         controller.addValueController(myadapt);
 
-        searchView = findViewById(R.id.BusinessListSearchView);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchName = findViewById(R.id.BusinessListSearchView);
+        searchName.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 return false;

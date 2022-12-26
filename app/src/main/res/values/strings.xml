@@ -78,4 +78,10 @@
     <string name="business_name">Business Name:</string>
     <string name="buttonn">Button</string>
     <string name="all">All</string>
+    <string name="hello_business1">hello business</string>
+    <string name="edit_business">edit business</string>
+    <string name="logout">logout</string>
+    <string name="send_sales">send sales</string>
+    <string name="sales">sales</string>
+    <string name="todo1">TODO</string>
 </resources>

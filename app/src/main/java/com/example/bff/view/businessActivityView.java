@@ -2,6 +2,7 @@ package com.example.bff.view;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -26,6 +27,7 @@ public class businessActivityView extends AppCompatActivity {
     private ImageButton view;
     private ImageButton insert;
     private ImageButton edit;
+    private ImageButton sales;
     private TextView title;
     private businessActivityController controller;
     private Button logOut;
@@ -35,6 +37,7 @@ public class businessActivityView extends AppCompatActivity {
 
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +48,7 @@ public class businessActivityView extends AppCompatActivity {
         title = findViewById(R.id.txtMessage);
         profilePic = findViewById(R.id.register_BO_image);
         logOut = findViewById(R.id.singUp_LogOut);
+        sales = findViewById(R.id.imageButton6);
         pd = new ProgressDialog(this);
         controller = new businessActivityController(this);
         controller.getImageController();
@@ -66,6 +70,12 @@ public class businessActivityView extends AppCompatActivity {
         });
 
         edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(businessActivityView.this, editBusinessView.class));
+            }
+        });
+        sales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(businessActivityView.this, editBusinessView.class));
