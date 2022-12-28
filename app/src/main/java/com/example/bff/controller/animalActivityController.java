@@ -3,6 +3,7 @@ package com.example.bff.controller;
 import android.net.Uri;
 import android.widget.ImageView;
 
+import com.example.bff.entities.User;
 import com.example.bff.model.animalActivityModel;
 import com.example.bff.view.animalActivityView;
 
@@ -53,7 +54,20 @@ public class animalActivityController {
         view.pdDismissView();
     }
 
-    public void set_msg(Uri uri) {
-        view.set_msg_view(uri);
+
+    public void uploadPictureController(Uri imageUri) {
+        model.uploadPicture_model(imageUri);
+    }
+
+    public void setImageController(Uri uri) {
+        view.setImegeView(uri);
+    }
+
+    public void getImageProfile() {
+        model.getImageProfileModel();
+    }
+
+    public void setImage(User user) {
+        view.setImage(user);
     }
 }

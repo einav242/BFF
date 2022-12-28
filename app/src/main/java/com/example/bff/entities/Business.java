@@ -13,9 +13,26 @@ public class Business {
     private String type;
     private String username;
     private String time;
+    private String image;
 
 
     public Business() {
+    }
+
+    public Business(String businessID, String city, String name, String email, String houseNumber,
+                    String username, String phone, String id, String street, String type, String time , String image) {
+        this.name = name;
+        this.email = email;
+        this.username = username;
+        this.id = id;
+        this.businessID = businessID;
+        this.city = city;
+        this.houseNumber = houseNumber;
+        this.phone = phone;
+        this.street = street;
+        this.type = type;
+        this.time = time;
+        this.image = image;
     }
 
     public Business(String businessID, String city, String name, String email, String houseNumber,
@@ -31,6 +48,14 @@ public class Business {
         this.street = street;
         this.type = type;
         this.time = time;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getBusinessID() {

@@ -8,8 +8,10 @@ import androidx.annotation.NonNull;
 
 import com.example.bff.controller.editBusinessController;
 import com.example.bff.entities.Business;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +25,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 
+import java.util.Date;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Objects;
@@ -36,6 +39,7 @@ public class editBusinessModel {
     private FirebaseAuth fAuth;
     private FirebaseStorage storage;
     private StorageReference storageReference;
+    private FirebaseDatabase database;
 
     public editBusinessModel(editBusinessController controller) {
         this.controller = controller;
@@ -44,11 +48,12 @@ public class editBusinessModel {
         this.reference = FirebaseDatabase.getInstance().getReference("Business");
         this.storage = FirebaseStorage.getInstance();
         this.storageReference = storage.getReference();
+        this.database = FirebaseDatabase.getInstance();
 
     }
     public void getImageModel(){
-        StorageReference profileRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        StorageReference riversRef = storageReference.child("Business").child(mAuth.getUid());
+        riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 controller.setImageController(uri);
@@ -107,15 +112,12 @@ public class editBusinessModel {
     }
 
     public void uploadPicture_model(Uri imageUri) {
-        //uplaod image to firebase storage
-//        ImageView profilePic = this.profilePic;
         controller.setPdController("Uploading Image...");
-
-        StorageReference riversRef = storageReference.child("user/" + Objects.requireNonNull(fAuth.getCurrentUser()).getUid() + "profile.jpg");
-        // Register observers to listen for when the download is done or if it fails
+        long time = new Date().getTime();
+        StorageReference riversRef = storageReference.child("Profile").child(time + "");
         riversRef.putFile(imageUri).addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onFailure(@NonNull Exception exception) {
+            public void onFailure(@NonNull Exception e) {
                 controller.pdDismissController();
                 controller.setToastController("Failed To Upload");
             }
@@ -124,10 +126,18 @@ public class editBusinessModel {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 controller.pdDismissController();
                 riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-
                     @Override
                     public void onSuccess(Uri uri) {
-                        controller.setImageController(uri);
+                        String filePath = uri.toString();
+                        HashMap<String, Object> obj = new HashMap<>();
+                        obj.put("image", filePath);
+                        reference.child(fAuth.getCurrentUser().getUid()).updateChildren(obj).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                controller.setImageController(imageUri);
+                                controller.setToastController("Image Upload");
+                            }
+                        });
                     }
                 });
             }
@@ -138,10 +148,33 @@ public class editBusinessModel {
                 controller.setPdController("Percentage: " + (int) progressPercent + "%");
             }
         });
-
-
     }
 
 
+    public void updateImageModel(Uri imageUri) {
+        if(imageUri != null){
+            StorageReference reference = storageReference.child("Business").child(mAuth.getUid());
+            reference.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    if(task.isSuccessful()){
+                        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                String i = uri.toString();
+                                database.getReference().child("Business").child(mAuth.getUid()).child("image").setValue(i).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        controller.pdDismissController();
+                                        controller.setToastController("Successfully Save Image");
 
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    }
 }

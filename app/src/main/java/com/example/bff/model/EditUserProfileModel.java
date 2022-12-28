@@ -108,84 +108,42 @@ public class EditUserProfileModel {
 
     public void uploadPicture_model(Uri imageUri)
     {
-        //uplaod image to firebase storage
-//        ImageView profilePic = this.profilePic;
-//        if(imageUri != null){
-
-//            controller.setPdController("Uploading Image...");
-            long time = new Date().getTime();
-            StorageReference riversRef = storageReference.child("Profile").child(time + "");
-            riversRef.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                    if (task.isSuccessful()){
-                        riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        controller.setPdController("Uploading Image...");
+        long time = new Date().getTime();
+        StorageReference riversRef = storageReference.child("Profile").child(time + "");
+        riversRef.putFile(imageUri).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                controller.pdDismissController();
+                controller.setToastController("Failed To Upload");
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                controller.pdDismissController();
+                riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        String filePath = uri.toString();
+                        HashMap<String, Object> obj = new HashMap<>();
+                        obj.put("image", filePath);
+                        reference.child(fAuth.getCurrentUser().getUid()).updateChildren(obj).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onSuccess(Uri uri) {
-                                String filePath = uri.toString();
-                                HashMap<String, Object> obj = new HashMap<>();
-                                obj.put("image", filePath);
-                                reference.child(fAuth.getCurrentUser().getUid()).updateChildren(obj).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        controller.setImageController(imageUri);
-                                        controller.setToastController("Image Upload");
-                                    }
-                                });
+                            public void onSuccess(Void unused) {
+                                controller.setImageController(imageUri);
+                                controller.setToastController("Image Upload");
                             }
                         });
                     }
-                }
-            });
-//        }
-
-
-//        StorageReference riversRef = storageReference.child("profile Image").child(fAuth.getUid() + ".jpg");
-////        StorageReference riversRef = storageReference.child("user/" + Objects.requireNonNull(fAuth.getCurrentUser()).getUid() + "profile.jpg");
-//        // Register observers to listen for when the download is done or if it fails
-//        riversRef.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-//                if (task.isSuccessful()){
-//                    controller.pdDismissController();
-//                    controller.setToastController("Successfully To Upload");
-//                    reference.child(fAuth.getUid()).child("profileimage").setValue()
-//                    riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                        @Override
-//                        public void onSuccess(Uri uri) {
-//                            controller.setImageController(uri);
-//                        }
-//                    });
-//                }
-//            }
-//        });
-
-//        riversRef.putFile(imageUri).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception exception) {
-//                controller.pdDismissController();
-//                controller.setToastController("Failed To Upload");
-//            }
-//        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                controller.pdDismissController();
-//                riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//
-//                    @Override
-//                    public void onSuccess(Uri uri) {
-//                        controller.setImageController(uri);
-//                    }
-//                });
-//            }
-//        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-//                double progressPercent = (100.00 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-//                controller.setPdController("Percentage: " + (int) progressPercent + "%");
-//            }
-//        });
-
+                });
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+                double progressPercent = (100.00 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                controller.setPdController("Percentage: " + (int) progressPercent + "%");
+            }
+        });
 
     }
 

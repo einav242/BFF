@@ -54,4 +54,8 @@ public class editBusinessController {
     public void passPageController(){
         view.passPage();
     }
+
+    public void updateImageController(Uri imageUri) {
+        model.updateImageModel(imageUri);
+    }
 }

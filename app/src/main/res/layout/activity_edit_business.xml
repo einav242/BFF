@@ -13,6 +13,18 @@
         android:padding="80dp"
         tools:context=".register_BusinessOwner">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/register_BO_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/vetuser"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.07"
+
+            />
 
         <TextView
             android:id="@+id/register_BO_title"
@@ -26,19 +38,6 @@
             app:layout_constraintHorizontal_bias="0.442"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/register_BO_image"
-            android:layout_width="186dp"
-            android:layout_height="141dp"
-            android:adjustViewBounds="true"
-            android:background="@android:color/transparent"
-            android:contentDescription="TODO"
-            android:scaleType="fitCenter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_BO_title"
-            app:srcCompat="@drawable/vetuser" />
 
         <EditText
             android:id="@+id/register_BO_fullName"
@@ -230,18 +229,18 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/edit_userB_EditPhoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="125dp"
-            android:background="@android:color/transparent"
-            android:text="edit photo"
-            android:textAllCaps="false"
+            android:layout_marginTop="18dp"
+            android:hint="UPDATE IMAGE"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textColorHint="#757575"
+            android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
+            android:textAllCaps="false"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_BO_title" />
+            app:layout_constraintTop_toBottomOf="@+id/register_BO_image" />
 
         <TextView
             android:id="@+id/textView3"
@@ -254,7 +253,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button6" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_userB_EditPhoto" />
 
         <TextView
             android:id="@+id/textView6"

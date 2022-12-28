@@ -3,6 +3,7 @@ package com.example.bff.view;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -17,7 +18,10 @@ import android.widget.Toast;
 
 import com.example.bff.R;
 import com.example.bff.controller.animalActivityController;
+import com.example.bff.entities.User;
 import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class animalActivityView extends AppCompatActivity {
@@ -31,8 +35,10 @@ public class animalActivityView extends AppCompatActivity {
     private Button logOut;
     private animalActivityController controller;
     private String userName;
+
+
     public Uri imageUri;
-    private ImageView profilePic;
+    CircleImageView profilePic;
     private ProgressDialog pd;
 
 
@@ -40,6 +46,8 @@ public class animalActivityView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal_window);
+
+
         controller = new animalActivityController(this);
         getlost = findViewById(R.id.imageButton2);
         information = findViewById(R.id.imageButton10);
@@ -49,18 +57,24 @@ public class animalActivityView extends AppCompatActivity {
         search = findViewById(R.id.imageButton7);
         logOut = findViewById(R.id.singUp_LogOut);
         view = findViewById(R.id.imageButton13);
+
+
         pd = new ProgressDialog(this);
         controller.getUserNameController();
-        controller.imageListener_controller();
+        controller.getImageProfile();
+//        controller.imageListener_controller();
 
-        profilePic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //open gallery
-                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI) ;
-                startActivityForResult(openGalleryIntent,1000);
-            }
-        });
+//        //for add Images
+//        profilePic.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //open gallery
+//                Intent galleryIntent = new Intent();
+//                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+//                galleryIntent.setType("image/*");
+//                startActivityForResult(galleryIntent, 1);
+//            }
+//        });
 
         getlost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,14 +124,17 @@ public class animalActivityView extends AppCompatActivity {
             }
         });
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==1000 && resultCode==RESULT_OK ){
-            imageUri = data.getData();
-            controller.uploadPicture_controller(imageUri);
-        }
-    }
+//    //for add Image
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode==1 && resultCode==RESULT_OK  && data != null){
+//            if(data.getData() != null){
+//                imageUri = data.getData();
+//                controller.uploadPictureController(imageUri);
+//            }
+//        }
+//    }
 
 
     public void setUserName(String name)
@@ -137,8 +154,14 @@ public class animalActivityView extends AppCompatActivity {
         pd.dismiss();
     }
 
-    public void set_msg_view(Uri uri) {
+    public void setImegeView(Uri uri) {
+        profilePic.setImageURI(uri);
+        imageUri = uri;
         Picasso.get().load(uri).into(profilePic);
+    }
+
+    public void setImage(User user) {
+        Picasso.get().load(user.getImage()).placeholder(R.drawable.profile).into(profilePic);
     }
 }
 

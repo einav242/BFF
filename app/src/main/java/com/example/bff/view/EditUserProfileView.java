@@ -75,13 +75,12 @@ public class EditUserProfileView extends AppCompatActivity {
         controller = new EditUserProfileController(this);
         controller.getImageController();
         controller.getDataController();
+
         //for add Images
         profilePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //open gallery
-//                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI) ;
-//                startActivityForResult(openGalleryIntent,1000);
                 Intent galleryIntent = new Intent();
                 galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
                 galleryIntent.setType("image/*");
@@ -102,12 +101,11 @@ public class EditUserProfileView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 controller.updateImageController(imageUri);
+                startActivity(new Intent(EditUserProfileView.this, animalActivityView.class));
             }
         });
 
-
     }
-
 
     //for add Image
     @Override
@@ -120,8 +118,6 @@ public class EditUserProfileView extends AppCompatActivity {
             }
         }
     }
-
-
 
 
     public void setDataView(String name, String username, String email, String phone , String breed , String color , String type) {

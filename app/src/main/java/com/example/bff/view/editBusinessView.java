@@ -22,6 +22,8 @@ import com.example.bff.R;
 import com.example.bff.controller.editBusinessController;
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class editBusinessView extends AppCompatActivity {
 
     private EditText name;
@@ -35,9 +37,10 @@ public class editBusinessView extends AppCompatActivity {
     private EditText type;
     private EditText time;
     private Button update;
+    private Button edImagep;
     editBusinessController controller;
     ProgressDialog pd;
-    private ImageView profilePic;
+    CircleImageView profilePic;
     public Uri imageUri;
 
     String[] language ={"veterinary medicine","hairdressing salon","dog walker"};
@@ -69,20 +72,33 @@ public class editBusinessView extends AppCompatActivity {
         time = findViewById(R.id.editTextTextPersonName2);
         update = findViewById(R.id.register_BO_Register);
         profilePic = findViewById(R.id.register_BO_image);
+        edImagep = findViewById(R.id.edit_userB_EditPhoto);
+
+
         pd = new ProgressDialog(this);
         controller = new editBusinessController(this);
         controller.getImageController();
         controller.getDataController();
+
+
         //for add Images
         profilePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //open gallery
-                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI) ;
-                startActivityForResult(openGalleryIntent,1000);
+                Intent galleryIntent = new Intent();
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                galleryIntent.setType("image/*");
+                startActivityForResult(galleryIntent, 1);
             }
         });
 
+        edImagep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                controller.updateImageController(imageUri);
+            }
+        });
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,10 +118,11 @@ public class editBusinessView extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==1000 && resultCode==RESULT_OK ){
-            imageUri = data.getData();
-            //profilePic.setImageURI(imageUri);
-            controller.uploadPictureController(imageUri);
+        if (requestCode==1 && resultCode==RESULT_OK  && data != null){
+            if(data.getData() != null){
+                imageUri = data.getData();
+                controller.uploadPictureController(imageUri);
+            }
         }
     }
 
@@ -127,6 +144,8 @@ public class editBusinessView extends AppCompatActivity {
     }
 
     public void setImegeView(Uri uri) {
+        profilePic.setImageURI(uri);
+        imageUri = uri;
         Picasso.get().load(uri).into(profilePic);
     }
     public void setToastView(String msg){
