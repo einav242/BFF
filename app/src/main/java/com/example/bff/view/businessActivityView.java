@@ -18,9 +18,13 @@ import android.widget.Toast;
 import com.example.bff.R;
 import com.example.bff.controller.businessActivityController;
 
+import com.example.bff.entities.Business;
+import com.example.bff.entities.User;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class businessActivityView extends AppCompatActivity {
@@ -31,8 +35,10 @@ public class businessActivityView extends AppCompatActivity {
     private TextView title;
     private businessActivityController controller;
     private Button logOut;
+
+
     private ProgressDialog pd;
-    private ImageView profilePic;
+    CircleImageView profilePic;
     public Uri imageUri;
 
 
@@ -51,8 +57,8 @@ public class businessActivityView extends AppCompatActivity {
         sales = findViewById(R.id.imageButton6);
         pd = new ProgressDialog(this);
         controller = new businessActivityController(this);
-        controller.getImageController();
         controller.getUserNameController();
+        controller.getImageProfile();
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,16 +88,6 @@ public class businessActivityView extends AppCompatActivity {
             }
         });
 
-        //for add Images
-        profilePic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //open gallery
-                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI) ;
-                startActivityForResult(openGalleryIntent,1000);
-            }
-        });
-
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,16 +100,6 @@ public class businessActivityView extends AppCompatActivity {
         });
     }
 
-    //for add Image
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==1000 && resultCode==RESULT_OK ){
-            imageUri = data.getData();
-            //profilePic.setImageURI(imageUri);
-            controller.uploadPicture(imageUri);
-        }
-    }
     public void setUserName(String name){
         title.setText("Hello "+name);
     }
@@ -130,5 +116,9 @@ public class businessActivityView extends AppCompatActivity {
 
     public void picassoView(Uri uri){
         Picasso.get().load(uri).into(profilePic);
+    }
+
+    public void setImage(Business user) {
+        Picasso.get().load(user.getImage()).placeholder(R.drawable.vetuser).into(profilePic);
     }
 }

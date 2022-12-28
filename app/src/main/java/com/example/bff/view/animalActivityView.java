@@ -62,19 +62,6 @@ public class animalActivityView extends AppCompatActivity {
         pd = new ProgressDialog(this);
         controller.getUserNameController();
         controller.getImageProfile();
-//        controller.imageListener_controller();
-
-//        //for add Images
-//        profilePic.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //open gallery
-//                Intent galleryIntent = new Intent();
-//                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-//                galleryIntent.setType("image/*");
-//                startActivityForResult(galleryIntent, 1);
-//            }
-//        });
 
         getlost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,17 +111,6 @@ public class animalActivityView extends AppCompatActivity {
             }
         });
     }
-//    //for add Image
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode==1 && resultCode==RESULT_OK  && data != null){
-//            if(data.getData() != null){
-//                imageUri = data.getData();
-//                controller.uploadPictureController(imageUri);
-//            }
-//        }
-//    }
 
 
     public void setUserName(String name)

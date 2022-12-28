@@ -3,6 +3,8 @@ package com.example.bff.controller;
 import android.net.Uri;
 import android.widget.ImageView;
 
+import com.example.bff.entities.Business;
+import com.example.bff.entities.User;
 import com.example.bff.model.businessActivityModel;
 import com.example.bff.view.businessActivityView;
 
@@ -14,9 +16,7 @@ public class businessActivityController {
         this.view = view;
         model = new businessActivityModel(this);
     }
-    public void getImageController(){
-        model.getImageModel();
-    }
+
     public void getUserNameController(){
         model.getUserNameModel();
     }
@@ -33,10 +33,15 @@ public class businessActivityController {
         view.pdDismissView();
     }
 
-    public void uploadPicture(Uri imageUri) {
-        model.uploadPicture(imageUri);
-    }
     public void picassoController(Uri uri){
         view.picassoView(uri);
+    }
+
+    public void getImageProfile() {
+        model.getImageProfileModel();
+    }
+
+    public void setImage(Business user) {
+        view.setImage(user);
     }
 }

@@ -97,6 +97,7 @@ public class editBusinessView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 controller.updateImageController(imageUri);
+                startActivity(new Intent(editBusinessView.this, businessActivityView.class));
             }
         });
 
