@@ -29,6 +29,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHolder> {
     Context context;
     ArrayList<User> list;
@@ -37,7 +39,6 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHold
 
 
     public Uri imageUri;
-    ImageView profile;
     private StorageReference storageReference;
     private FirebaseStorage storage;
     private FirebaseAuth fAuth;
@@ -63,6 +64,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHold
         holder.type.setText(user.getType());
         holder.breed.setText(user.getBreed());
         holder.color.setText(user.getColor());
+        Glide.with(context).load(list.get(position).getImage()).into(holder.profile);
     }
 
 
@@ -73,12 +75,12 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHold
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView userName, phone , color , breed , type ;
-        ImageView profile;
+        CircleImageView profile;
 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            profile = itemView.findViewById(R.id.imageButtonGotLost);
+            profile = itemView.findViewById(R.id.c_ImageViewId);
             userName = itemView.findViewById(R.id.textName);
             phone = itemView.findViewById(R.id.textPhone);
             color = itemView.findViewById(R.id.textColor);
