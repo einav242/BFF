@@ -106,7 +106,8 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="34sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
 
 </LinearLayout>

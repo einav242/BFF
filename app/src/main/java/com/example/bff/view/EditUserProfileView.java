@@ -22,6 +22,8 @@ import com.example.bff.R;
 import com.example.bff.controller.EditUserProfileController;
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class EditUserProfileView extends AppCompatActivity {
 
     EditText edFullName;
@@ -31,10 +33,14 @@ public class EditUserProfileView extends AppCompatActivity {
     EditText editColor;
     EditText editType;
     TextView edEmail;
+    Button edImage;
     private Button update;
     EditUserProfileController controller;
     ProgressDialog pd;
-    private ImageView profilePic;
+    CircleImageView profilePic;
+
+
+//    private ImageView profilePic;
     public Uri imageUri;
 
     String[] language ={"Dog","Cat"};
@@ -58,10 +64,12 @@ public class EditUserProfileView extends AppCompatActivity {
         edEmail = findViewById(R.id.edit_user_Email);
         editPhone = findViewById(R.id.editTxtPhone);
         update = findViewById(R.id.edit_user_Update);
-        profilePic = findViewById(R.id.edit_user_image);
+        profilePic = findViewById(R.id.ImageViewId);
         editBreed = findViewById(R.id.getlost_breed);
         editColor = findViewById(R.id.get_lost_color);
         editType = findViewById(R.id.getlost_type);
+        edImage = findViewById(R.id.edit_user_EditPhoto);
+
 
         pd = new ProgressDialog(this);
         controller = new EditUserProfileController(this);
@@ -72,8 +80,12 @@ public class EditUserProfileView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //open gallery
-                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI) ;
-                startActivityForResult(openGalleryIntent,1000);
+//                Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI) ;
+//                startActivityForResult(openGalleryIntent,1000);
+                Intent galleryIntent = new Intent();
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                galleryIntent.setType("image/*");
+                startActivityForResult(galleryIntent, 1);
             }
         });
 
@@ -85,6 +97,15 @@ public class EditUserProfileView extends AppCompatActivity {
                 startActivity(new Intent(EditUserProfileView.this, animalActivityView.class));
             }
         });
+
+        edImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                controller.updateImageController(imageUri);
+            }
+        });
+
+
     }
 
 
@@ -92,10 +113,11 @@ public class EditUserProfileView extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==1000 && resultCode==RESULT_OK ){
-            imageUri = data.getData();
-            //profilePic.setImageURI(imageUri);
-            controller.uploadPictureController(imageUri);
+        if (requestCode==1 && resultCode==RESULT_OK  && data != null){
+            if(data.getData() != null){
+                imageUri = data.getData();
+                controller.uploadPictureController(imageUri);
+            }
         }
     }
 
@@ -113,6 +135,8 @@ public class EditUserProfileView extends AppCompatActivity {
     }
 
     public void setImegeView(Uri uri) {
+        profilePic.setImageURI(uri);
+        imageUri = uri;
         Picasso.get().load(uri).into(profilePic);
     }
     public void setToastView(String msg){

@@ -15,9 +15,28 @@ public class User implements Parcelable {
     private String breed;
     private String color;
     private String type;
+    private String pic;
 
     public User() {
     }
+
+    public User(String name, String email, String username, String flag, String id, String phone,String breed , String color , String type , String pic) {
+        this.name = name;
+        this.email = email;
+        this.username = username;
+        this.flag = flag;
+        this.id = id;
+        this.phone = phone;
+        this.breed = breed;
+        this.color = color;
+        this.type = type;
+        this.pic = pic;
+    }
+
+    public User(String pic) {
+        this.pic = pic;
+    }
+
 
     public User(String name, String email, String username, String flag, String id, String phone,String breed , String color , String type) {
         this.name = name;
@@ -76,6 +95,14 @@ public class User implements Parcelable {
         this.breed = breed;
         this.color = color;
         this.type = type;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 
     public String getPhone() {

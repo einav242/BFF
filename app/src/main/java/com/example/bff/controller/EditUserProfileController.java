@@ -50,4 +50,8 @@ public class EditUserProfileController {
     public void pdDismissController(){
         view.pdDismissView();
     }
+
+    public void updateImageController(Uri imageUri) {
+        model.updateImageModel(imageUri);
+    }
 }

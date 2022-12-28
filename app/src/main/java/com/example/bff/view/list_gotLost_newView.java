@@ -5,18 +5,24 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bff.R;
 import com.example.bff.controller.list_gotLostController;
 import com.example.bff.entities.Business;
 import com.example.bff.entities.User;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -58,7 +64,6 @@ public class list_gotLost_newView extends AppCompatActivity {
         adapter = new AnimalAdapter(this,lst,this);
         recyclerView.setAdapter(adapter);
         controller.addListController(lst);
-//        controller.addValueController(adapter);
 
         searchColor = findViewById(R.id.ColorSearch);
         searchColor.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -172,4 +177,5 @@ public class list_gotLost_newView extends AppCompatActivity {
     public void setlstView(ArrayList<User> lst) {
         this.lst = lst;
     }
+
 }

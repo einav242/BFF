@@ -11,8 +11,10 @@ import androidx.annotation.NonNull;
 import com.example.bff.entities.User;
 import com.example.bff.controller.EditUserProfileController;
 import com.example.bff.view.EditUserProfileView;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +28,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
@@ -38,6 +41,7 @@ public class EditUserProfileModel {
     private FirebaseAuth fAuth;
     private FirebaseStorage storage;
     private StorageReference storageReference;
+    private FirebaseDatabase database;
 
     public EditUserProfileModel(EditUserProfileController controller) {
         this.controller = controller;
@@ -46,11 +50,12 @@ public class EditUserProfileModel {
         this.reference = FirebaseDatabase.getInstance().getReference("Users");
         this.storage = FirebaseStorage.getInstance();
         this.storageReference = storage.getReference();
+        this.database = FirebaseDatabase.getInstance();
 
     }
     public void getImageModel(){
-        StorageReference profileRef = storageReference.child("user/"+ Objects.requireNonNull(fAuth.getCurrentUser()).getUid() +"profile.jpg");
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        StorageReference riversRef = storageReference.child("Users").child(mAuth.getUid());
+        riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 controller.setImageController(uri);
@@ -73,7 +78,7 @@ public class EditUserProfileModel {
         });
     }
 
-    public void updateModel(String newFullName, String newAnimalName, String newPhone , String newBreed , String newColor , String newType) {
+    public void updateModel(String newFullName, String newAnimalName, String newPhone , String newBreed , String newColor , String newType ) {
         FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -89,9 +94,9 @@ public class EditUserProfileModel {
                 hashMap.put("color" , newColor);
                 hashMap.put("type" , newType);
                 reference.child(mAuth.getUid()).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {@Override
-                    public void onSuccess(Object o) {
-                        controller.setToastController("your Data is successfully Update");
-                    }
+                public void onSuccess(Object o) {
+                    controller.setToastController("your Data is successfully Update");
+                }
                 });
             }
             @Override
@@ -101,42 +106,116 @@ public class EditUserProfileModel {
         });
     }
 
-    public void uploadPicture_model(Uri imageUri) {
+    public void uploadPicture_model(Uri imageUri)
+    {
         //uplaod image to firebase storage
 //        ImageView profilePic = this.profilePic;
-        controller.setPdController("Uploading Image...");
+//        if(imageUri != null){
 
-        StorageReference riversRef = storageReference.child("user/" + Objects.requireNonNull(fAuth.getCurrentUser()).getUid() + "profile.jpg");
-        // Register observers to listen for when the download is done or if it fails
-        riversRef.putFile(imageUri).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                controller.pdDismissController();
-                controller.setToastController("Failed To Upload");
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                controller.pdDismissController();
-                riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        controller.setImageController(uri);
+//            controller.setPdController("Uploading Image...");
+            long time = new Date().getTime();
+            StorageReference riversRef = storageReference.child("Profile").child(time + "");
+            riversRef.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    if (task.isSuccessful()){
+                        riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                String filePath = uri.toString();
+                                HashMap<String, Object> obj = new HashMap<>();
+                                obj.put("image", filePath);
+                                reference.child(fAuth.getCurrentUser().getUid()).updateChildren(obj).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        controller.setImageController(imageUri);
+                                        controller.setToastController("Image Upload");
+                                    }
+                                });
+                            }
+                        });
                     }
-                });
-            }
-        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-                double progressPercent = (100.00 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                controller.setPdController("Percentage: " + (int) progressPercent + "%");
-            }
-        });
+                }
+            });
+//        }
+
+
+//        StorageReference riversRef = storageReference.child("profile Image").child(fAuth.getUid() + ".jpg");
+////        StorageReference riversRef = storageReference.child("user/" + Objects.requireNonNull(fAuth.getCurrentUser()).getUid() + "profile.jpg");
+//        // Register observers to listen for when the download is done or if it fails
+//        riversRef.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+//                if (task.isSuccessful()){
+//                    controller.pdDismissController();
+//                    controller.setToastController("Successfully To Upload");
+//                    reference.child(fAuth.getUid()).child("profileimage").setValue()
+//                    riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                        @Override
+//                        public void onSuccess(Uri uri) {
+//                            controller.setImageController(uri);
+//                        }
+//                    });
+//                }
+//            }
+//        });
+
+//        riversRef.putFile(imageUri).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception exception) {
+//                controller.pdDismissController();
+//                controller.setToastController("Failed To Upload");
+//            }
+//        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//            @Override
+//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                controller.pdDismissController();
+//                riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//
+//                    @Override
+//                    public void onSuccess(Uri uri) {
+//                        controller.setImageController(uri);
+//                    }
+//                });
+//            }
+//        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//            @Override
+//            public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+//                double progressPercent = (100.00 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+//                controller.setPdController("Percentage: " + (int) progressPercent + "%");
+//            }
+//        });
 
 
     }
 
 
+    public void updateImageModel(Uri imageUri) {
+        if(imageUri != null){
 
+            StorageReference reference = storageReference.child("Users").child(mAuth.getUid());
+            reference.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    if(task.isSuccessful()){
+                        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                String i = uri.toString();
+                                database.getReference().child("Users").child(mAuth.getUid()).child("image").setValue(i).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        controller.pdDismissController();
+                                        controller.setToastController("Successfully Save Image");
+
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+        }
+
+    }
 }

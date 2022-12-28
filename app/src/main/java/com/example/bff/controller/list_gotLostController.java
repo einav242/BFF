@@ -1,5 +1,7 @@
 package com.example.bff.controller;
 
+import android.net.Uri;
+
 import com.example.bff.entities.User;
 import com.example.bff.model.list_gotLostModel;
 import com.example.bff.view.AnimalAdapter;
@@ -32,11 +34,9 @@ public class list_gotLostController {
         view.notifyView();
     }
 
-//    public void addValueController(AnimalAdapter adapter) {
-//        model.addValueModel(adapter);
-//    }
 
     public void setlstController(ArrayList<User> lst) {
         view.setlstView(lst);
     }
+
 }
