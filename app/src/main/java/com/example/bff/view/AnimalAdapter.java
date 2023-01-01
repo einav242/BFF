@@ -35,13 +35,8 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHold
     Context context;
     ArrayList<User> list;
     private final list_gotLost_newView search;
-//    AnimalAdapterController controller;
-
 
     public Uri imageUri;
-    private StorageReference storageReference;
-    private FirebaseStorage storage;
-    private FirebaseAuth fAuth;
 
     public AnimalAdapter(Context context, ArrayList<User> list , list_gotLost_newView search) {
         this.context = context;

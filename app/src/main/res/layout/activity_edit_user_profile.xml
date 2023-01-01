@@ -129,7 +129,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getlost_type" />
+        app:layout_constraintTop_toBottomOf="@+id/getlost_type"
+        tools:ignore="OnClick" />
 
     <TextView
         android:id="@+id/textView18"

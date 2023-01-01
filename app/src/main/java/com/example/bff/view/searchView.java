@@ -20,6 +20,8 @@ import com.example.bff.controller.searchController;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class searchView extends AppCompatActivity{
     searchController controller;
     RecyclerView recyclerView;

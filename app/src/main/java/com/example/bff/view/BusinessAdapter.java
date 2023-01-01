@@ -11,10 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.module.AppGlideModule;
+
+import com.bumptech.glide.Glide;
 import com.example.bff.entities.Business;
 import com.example.bff.R;
 
 import java.util.ArrayList;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.BusinessVh> {
     private final searchView search;
