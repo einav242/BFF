@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,9 +16,9 @@ import com.example.bff.controller.gotLostController;
 import com.example.bff.entities.User;
 
 public class getLostView extends AppCompatActivity {
-    private Button addLost;
-    private Button lostView;
-    private Button found;
+    private ImageButton addLost;
+    private ImageButton lostView;
+    private ImageButton found;
     ProgressDialog pd;
     private User user;
     private gotLostController controller;

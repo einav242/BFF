@@ -7,50 +7,81 @@
     tools:context=".view.getLostView"
     >
 
-    <Button
+
+    <ImageButton
         android:id="@+id/get_lost_viewlost"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="159dp"
+        android:layout_height="139dp"
         android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
         android:layout_marginTop="32dp"
-        android:text="view lost"
-        android:textSize="20sp"
-        android:padding="10dp"
+        android:layout_marginEnd="50dp"
         android:background="@drawable/colorbutton"
+        android:contentDescription="photo"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:text="view lost"
         android:textAllCaps="false"
+        android:textSize="20sp"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4"
-        />
+        app:layout_constraintVertical_bias="0.006"
+        app:srcCompat="@drawable/viewlost" />
 
-    <Button
-        android:id="@+id/get_lost_IgotLost"
-        android:layout_width="0dp"
+
+    <TextView
+        android:id="@+id/View_Lost_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="32dp"
-        android:text="I got lost"
-        android:background="@drawable/colorbutton"
-        android:textAllCaps="false"
-        app:backgroundTint="@null"
-        android:textSize="20sp"
-        android:padding="10dp"
+        android:text="View Lost"
+        android:textColor="#000"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/get_lost_viewlost"
         />
 
-    <Button
-        android:id="@+id/get_lost_foundMe"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+
+    <ImageButton
+        android:id="@+id/get_lost_IgotLost"
+        android:layout_width="159dp"
+        android:layout_height="139dp"
         android:layout_marginTop="32dp"
+        android:background="@drawable/colorbutton"
+        android:contentDescription="photo"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:text="I got lost"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toBottomOf="@id/View_Lost_title"
+        app:srcCompat="@drawable/gotlost2"
+        tools:layout_editor_absoluteX="121dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/IgotLostTitel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I Got Lost"
+        android:textColor="#000"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/get_lost_IgotLost"
+        />
+
+    <ImageButton
+        android:id="@+id/get_lost_foundMe"
+        android:layout_width="159dp"
+        android:layout_height="139dp"
+        android:layout_marginTop="32dp"
+
         android:layout_marginEnd="50dp"
         android:background="@drawable/colorbutton"
         android:padding="10dp"
@@ -60,7 +91,26 @@
         app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/get_lost_IgotLost"
+        app:layout_constraintTop_toBottomOf="@id/IgotLostTitel"
+
+        android:contentDescription="photo"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/fondme"
+        tools:layout_editor_absoluteX="121dp"
+        android:layout_marginStart="50dp"
+        tools:ignore="MissingConstraints"
+        />
+
+    <TextView
+        android:id="@+id/VFindMe_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="They Found Me"
+        android:textColor="#000"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/get_lost_foundMe"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
