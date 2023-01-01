@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView2"
         android:layout_width="147dp"
-        android:layout_height="135dp"
-        android:layout_marginStart="16dp"
+        android:layout_height="147dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
+        android:src="@drawable/shope"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/shope" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView25"

@@ -18,4 +18,12 @@ public class seeMoreController {
     public void setDataController(Business business){
         view.setDataView(business);
     }
+
+    public void getImageProfile(String email) {
+        model.getImageProfileModel(email);
+    }
+
+    public void setImage(Business user) {
+        view.setImage(user);
+    }
 }

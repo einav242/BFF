@@ -11,6 +11,9 @@ import android.widget.TextView;
 import com.example.bff.entities.Business;
 import com.example.bff.R;
 import com.example.bff.controller.seeMoreController;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class seeMoreView extends AppCompatActivity {
     String email;
@@ -18,6 +21,7 @@ public class seeMoreView extends AppCompatActivity {
     TextView tv_name, tv_email, tv_phone, tv_city, tv_street, tv_streetHouse, tv_ActivityTime;
     Button send;
     seeMoreController controller;
+    CircleImageView profilePic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,9 @@ public class seeMoreView extends AppCompatActivity {
         tv_street = findViewById(R.id.textView29);
         tv_streetHouse = findViewById(R.id.textView37);
         tv_ActivityTime = findViewById(R.id.textView39);
+        profilePic = findViewById(R.id.imageView2);
+
+        controller.getImageProfile(email);
         controller.data(email);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,4 +66,7 @@ public class seeMoreView extends AppCompatActivity {
         id = business.getId();
     }
 
+    public void setImage(Business user) {
+        Picasso.get().load(user.getImage()).placeholder(R.drawable.vetuser).into(profilePic);
+    }
 }
