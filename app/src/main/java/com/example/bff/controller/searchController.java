@@ -1,6 +1,7 @@
 package com.example.bff.controller;
 
 import com.example.bff.entities.Business;
+import com.example.bff.entities.User;
 import com.example.bff.view.BusinessAdapter;
 import com.example.bff.model.searchModel;
 import com.example.bff.view.searchView;
@@ -18,7 +19,10 @@ public class searchController {
     public void addValueController(BusinessAdapter myadapt){
         model.addValueModel(myadapt);
     }
+
+
     public void setlstController(ArrayList<Business> lst){
         view.setlstView(lst);
     }
+
 }

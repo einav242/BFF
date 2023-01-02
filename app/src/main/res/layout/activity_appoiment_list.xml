@@ -5,7 +5,7 @@
     android:layout_height="180dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageViewPic"
+        android:id="@+id/imageViewPicA"
         android:layout_width="107dp"
         android:layout_height="96dp"
         android:layout_marginLeft="0dp"

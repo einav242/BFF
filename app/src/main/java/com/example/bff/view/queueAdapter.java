@@ -8,10 +8,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.bff.R;
 import com.example.bff.entities.queue;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class queueAdapter extends RecyclerView.Adapter<queueVH> {
     Context context;
@@ -47,6 +50,7 @@ public class queueAdapter extends RecyclerView.Adapter<queueVH> {
 class queueVH extends RecyclerView.ViewHolder{
     TextView name, date, time, status;
     private queueAdapter adp;
+
 
     public queueVH(@NonNull View itemView) {
         super(itemView);

@@ -3,6 +3,7 @@ package com.example.bff.model;
 import androidx.annotation.NonNull;
 
 import com.example.bff.entities.Business;
+import com.example.bff.entities.User;
 import com.example.bff.view.BusinessAdapter;
 import com.example.bff.controller.searchController;
 import com.google.firebase.database.DataSnapshot;

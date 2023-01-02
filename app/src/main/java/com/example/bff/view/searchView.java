@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.example.bff.entities.Business;
 import com.example.bff.R;
@@ -36,12 +38,15 @@ public class searchView extends AppCompatActivity{
     private String currentSearchTextCity = "";
     private String selectedFilter = "all";
 
+    TextView empty;
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(searchView.this, animalActivityView.class));
         finish();
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +58,10 @@ public class searchView extends AppCompatActivity{
         lst = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         myadapt = new BusinessAdapter(this,lst,this);
+        empty = findViewById(R.id.textSearch);
         recyclerView.setAdapter(myadapt);
+
+
         controller.addValueController(myadapt);
 
         searchName = findViewById(R.id.BusinessListSearchView);

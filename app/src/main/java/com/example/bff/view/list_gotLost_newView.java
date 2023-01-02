@@ -43,6 +43,8 @@ public class list_gotLost_newView extends AppCompatActivity {
     private String selectedFilter = "all";
 
 
+
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -50,7 +52,6 @@ public class list_gotLost_newView extends AppCompatActivity {
         finish();
     }
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

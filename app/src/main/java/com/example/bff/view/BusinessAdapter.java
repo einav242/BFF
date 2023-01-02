@@ -46,6 +46,7 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
         holder.Business_name.setText(business.getUsername());
         holder.type.setText(business.getType());
         holder.email=business.getEmail();
+        Glide.with(context).load(list.get(position).getImage()).placeholder(R.drawable.shope).into(holder.profile);
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,10 +66,14 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
 
     public static class BusinessVh extends RecyclerView.ViewHolder{
         TextView Business_name, type;
+
         String email;
         Button button;
+        CircleImageView profile;
+
         public BusinessVh(@NonNull View itemView){
             super(itemView);
+            profile = itemView.findViewById(R.id.imageViewPic);
             Business_name = itemView.findViewById(R.id.BusinessName);
             type = itemView.findViewById(R.id.type);
             button = itemView.findViewById(R.id.button10);
