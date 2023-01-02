@@ -34,6 +34,7 @@ public class salesView extends AppCompatActivity {
             case R.id.business:
                 if (checked)
                     this.choice = "cat";
+                break;
             case R.id.all:
                 this.choice = "all";
                 break;

@@ -32,6 +32,7 @@ public class animalActivityView extends AppCompatActivity {
     private ImageButton search;
     private ImageButton view;
     private ImageButton getlost;
+    private ImageButton sale;
     private Button logOut;
     private animalActivityController controller;
     private String userName;
@@ -57,11 +58,20 @@ public class animalActivityView extends AppCompatActivity {
         search = findViewById(R.id.imageButton7);
         logOut = findViewById(R.id.singUp_LogOut);
         view = findViewById(R.id.imageButton13);
-
+        sale = findViewById(R.id.imageButton4);
 
         pd = new ProgressDialog(this);
         controller.getUserNameController();
         controller.getImageProfile();
+
+        sale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(animalActivityView.this, clientSalesView.class));
+
+            }
+        });
+
 
         getlost.setOnClickListener(new View.OnClickListener() {
             @Override
