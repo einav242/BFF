@@ -59,7 +59,7 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.MyViewHold
         holder.type.setText(user.getType());
         holder.breed.setText(user.getBreed());
         holder.color.setText(user.getColor());
-        Glide.with(context).load(list.get(position).getImage()).into(holder.profile);
+        Glide.with(context).load(list.get(position).getImage()).placeholder(R.drawable.profile).into(holder.profile);
     }
 
 

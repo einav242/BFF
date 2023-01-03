@@ -50,10 +50,12 @@ public class queueAdapter extends RecyclerView.Adapter<queueVH> {
 class queueVH extends RecyclerView.ViewHolder{
     TextView name, date, time, status;
     private queueAdapter adp;
+    CircleImageView profile;
 
 
     public queueVH(@NonNull View itemView) {
         super(itemView);
+        profile = itemView.findViewById(R.id.imageViewPicA);
         name = itemView.findViewById(R.id.BusinessName);
         date = itemView.findViewById(R.id.Date);
         time = itemView.findViewById(R.id.time);

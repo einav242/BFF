@@ -16,6 +16,7 @@ public class make_appointmentView extends AppCompatActivity {
     String txt_time, txt_date;
     String businessID;
     String businessName;
+    String businessImage;
     Button send;
     ProgressDialog pd;
     String email;
@@ -30,6 +31,7 @@ public class make_appointmentView extends AppCompatActivity {
         if (extras != null) {
             businessID = extras.getString("key");
             businessName = extras.getString("name");
+            businessImage = extras.getString("image");
         }
         controller = new make_appointmentController(this);
         pd = new ProgressDialog(this);

@@ -6,6 +6,7 @@ public class Client {
     private String time;
     private String status;
 
+
     public Client() {
     }
 
@@ -14,7 +15,9 @@ public class Client {
         this.date=date;
         this.time=time;
         this.status=status;
+
     }
+
 
     public String getStatus() {
         return status;

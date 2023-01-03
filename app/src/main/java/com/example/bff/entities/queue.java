@@ -9,11 +9,12 @@ public class queue {
 
     public queue(){}
 
-    public queue(String businessName, String date, String time, String status ) {
+    public queue(String businessName, String date, String time, String status) {
         this.businessName = businessName;
         this.date = date;
         this.time = time;
         this.status = status;
+
     }
 
 
