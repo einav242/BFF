@@ -84,7 +84,7 @@ public class businessActivityView extends AppCompatActivity {
         sales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(businessActivityView.this, editBusinessView.class));
+                startActivity(new Intent(businessActivityView.this, salesView.class));
             }
         });
 
