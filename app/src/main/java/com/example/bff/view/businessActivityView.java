@@ -1,5 +1,4 @@
 package com.example.bff.view;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -7,11 +6,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +16,6 @@ import com.example.bff.R;
 import com.example.bff.controller.businessActivityController;
 
 import com.example.bff.entities.Business;
-import com.example.bff.entities.User;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.squareup.picasso.Picasso;
@@ -84,7 +80,7 @@ public class businessActivityView extends AppCompatActivity {
         sales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(businessActivityView.this, salesView.class));
+                startActivity(new Intent(businessActivityView.this, saleView.class));
             }
         });
 

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="306dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="144dp"
+        android:contentDescription="for"
+        android:text="Who is this promotion for?"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView42"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/animal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:paddingStart="0dp"
+            android:paddingEnd="75dp"
+            android:text="Dog"
+            app:layout_constraintBottom_toTopOf="@+id/editTextName"
+            app:layout_constraintEnd_toStartOf="@+id/business"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <RadioButton
+            android:id="@+id/business"
+            android:layout_width="84dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="4dp"
+            android:onClick="onRadioButtonClicked"
+            android:text="Cat"
+            app:layout_constraintBottom_toTopOf="@+id/editTextName"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <RadioButton
+            android:id="@+id/all"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="4dp"
+            android:onClick="onRadioButtonClicked"
+            android:text="Both"
+            app:layout_constraintBottom_toTopOf="@+id/editTextName"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="303dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="40dp"
+        android:text="post your sale"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Description of the sales:"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName6"
+        android:layout_width="411dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="11dp"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textMultiLine"
+        android:lines="10"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView44"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+
+    <Button
+        android:id="@+id/button12"
+        android:layout_width="244dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="67dp"
+        android:backgroundTint="#4CAF50"
+        android:text="send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

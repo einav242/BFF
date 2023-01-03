@@ -1,25 +1,39 @@
 package com.example.bff.view;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bff.R;
-import com.example.bff.controller.salesController;
+import com.example.bff.controller.postSalesController;
 
 
-public class salesView extends AppCompatActivity {
+public class saleView extends AppCompatActivity {
     private Button send;
-    salesController controller;
+    EditText description;
+    postSalesController controller;
     String choice;
+    ProgressDialog pd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sales);
-        controller = new salesController(this);
+        setContentView(R.layout.activity_post_sales);
+        pd = new ProgressDialog(this);
+        send = findViewById(R.id.button12);
+        description = findViewById(R.id.editTextTextPersonName6);
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                controller.sendSalesController(description.getText().toString(),choice);
+            }
+        });
     }
     public void onRadioButtonClicked (View view) {
         // Is the button now checked?
@@ -39,5 +53,12 @@ public class salesView extends AppCompatActivity {
                 this.choice = "all";
                 break;
         }
+    }
+
+    public void setToastView(String msg){
+        Toast.makeText(saleView.this,msg,Toast.LENGTH_SHORT).show();
+    }
+    public void setPd(){
+        pd.dismiss();
     }
 }
