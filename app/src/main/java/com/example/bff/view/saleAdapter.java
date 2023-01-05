@@ -20,12 +20,12 @@ import java.util.ArrayList;
 public class saleAdapter extends RecyclerView.Adapter<SaleVH> {
     Context context;
     ArrayList<sale> lst;
-    viewSaleController viewSale;
+    viewSaleView viewSale;
 
     public saleAdapter(ArrayList<sale> lst,Context context){
         this.lst=lst;
         this.context=context;
-        this.viewSale = new viewSaleController((viewSaleView) context);
+        this.viewSale = (viewSaleView) context;
     }
     @NonNull
     @Override

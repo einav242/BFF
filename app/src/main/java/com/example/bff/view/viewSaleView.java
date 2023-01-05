@@ -1,10 +1,12 @@
 package com.example.bff.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -59,5 +61,19 @@ public class viewSaleView extends AppCompatActivity {
     public void setListView(ArrayList<sale> lst) {
         this.lst = lst;
         myadapt.notifyDataSetChanged();
+    }
+
+    public void removeSale(sale s) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(viewSaleView.this);
+        builder.setMessage("Do you want to delete ?");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
+            controller.removeSale(s);
+        });
+        builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
+            dialog.cancel();
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }
