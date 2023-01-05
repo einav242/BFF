@@ -13,6 +13,7 @@ import com.example.bff.R;
 public class saleView extends AppCompatActivity {
     private ImageButton post;
     private ImageButton view;
+    private ImageButton history;
 
 
     @Override
@@ -27,6 +28,7 @@ public class saleView extends AppCompatActivity {
         setContentView(R.layout.activity_sales);
         post = findViewById(R.id.post);
         view = findViewById(R.id.view);
+        history = findViewById(R.id.history_sale);
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,6 +40,13 @@ public class saleView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(saleView.this, viewSaleView.class));
+            }
+        });
+
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(saleView.this, historyView.class));
             }
         });
     }

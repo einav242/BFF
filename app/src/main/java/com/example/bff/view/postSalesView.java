@@ -21,6 +21,13 @@ public class postSalesView extends AppCompatActivity {
     String choice;
     ProgressDialog pd;
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(postSalesView.this , saleView.class));
+        finish();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

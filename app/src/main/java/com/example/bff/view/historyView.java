@@ -9,31 +9,26 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.example.bff.R;
-import com.example.bff.controller.ViewClientController;
-import com.example.bff.controller.viewSaleController;
-import com.example.bff.entities.Client;
+import com.example.bff.controller.historyController;
 import com.example.bff.entities.sale;
 
 import java.util.ArrayList;
 
-public class viewSaleView extends AppCompatActivity {
+public class historyView extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<sale> lst;
     saleAdapter myadapt;
-    viewSaleController controller;
+    historyController controller;
 
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(viewSaleView.this , saleView.class));
+        startActivity(new Intent(historyView.this , saleView.class));
         finish();
     }
-
-
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -41,17 +36,17 @@ public class viewSaleView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list);
         recyclerView = findViewById(R.id.Recycleview);
-        controller=new viewSaleController(this);
+        controller=new historyController(this);
         lst=new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        myadapt = new saleAdapter(lst,this,0);
+        myadapt = new saleAdapter(lst,this,1);
         recyclerView.setAdapter(myadapt);
         controller.SendControllerAdapter(lst);
     }
 
 
     public void setScreenView(){
-        Intent intent = new Intent(viewSaleView.this, viewSaleView.class);
+        Intent intent = new Intent(historyView.this, historyView.class);
         startActivity(intent);
         finish();
     }
@@ -61,12 +56,12 @@ public class viewSaleView extends AppCompatActivity {
         myadapt.notifyDataSetChanged();
     }
 
-    public void removeSale(sale s) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(viewSaleView.this);
-        builder.setMessage("Do you want to delete ?");
+    public void returnSale(sale s) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(historyView.this);
+        builder.setMessage("Do you want to return this sale ?");
         builder.setCancelable(false);
         builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
-            controller.removeSale(s);
+            controller.returnSale(s);
         });
         builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
             dialog.cancel();

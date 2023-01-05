@@ -21,17 +21,33 @@ public class saleAdapter extends RecyclerView.Adapter<SaleVH> {
     Context context;
     ArrayList<sale> lst;
     viewSaleView viewSale;
+    historyView history;
+    int flag;
 
-    public saleAdapter(ArrayList<sale> lst,Context context){
+    public saleAdapter(ArrayList<sale> lst,Context context,int flag){
         this.lst=lst;
         this.context=context;
-        this.viewSale = (viewSaleView) context;
+        this.flag = flag;
+        if (flag ==0){
+            this.viewSale = (viewSaleView) context;
+        }
+        else{
+            this.history = (historyView) context;
+        }
+
     }
     @NonNull
     @Override
     public SaleVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context)
-                .inflate(R.layout.activity_view_sale, parent, false);;
+        View view;
+        if (flag ==0){
+            view = LayoutInflater.from(context)
+                    .inflate(R.layout.activity_view_sale, parent, false);;
+        }
+        else {
+            view = LayoutInflater.from(context)
+                    .inflate(R.layout.activity_history_sale, parent, false);;
+        }
         return new SaleVH(view).linkAdapter(this);
     }
 
@@ -45,7 +61,13 @@ public class saleAdapter extends RecyclerView.Adapter<SaleVH> {
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewSale.removeSale(holder.s);
+                if(flag ==0){
+                    viewSale.removeSale(holder.s);
+                }
+               else
+                {
+                    history.returnSale(holder.s);
+                }
             }
         });
 
