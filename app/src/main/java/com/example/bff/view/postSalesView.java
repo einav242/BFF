@@ -1,5 +1,6 @@
 package com.example.bff.view;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -58,6 +59,7 @@ public class postSalesView extends AppCompatActivity {
 
     public void setToastView(String msg){
         Toast.makeText(postSalesView.this,msg,Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(postSalesView.this, saleView.class));
     }
     public void setPd(){
         pd.dismiss();

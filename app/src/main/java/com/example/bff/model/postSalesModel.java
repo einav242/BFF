@@ -13,9 +13,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.SQLOutput;
+
+import io.grpc.internal.JsonUtil;
+
 public class postSalesModel {
     postSalesController controller;
     private FirebaseAuth mAuth;
+    int count = 0;
 
 
     public postSalesModel(postSalesController controller) {
@@ -23,16 +28,18 @@ public class postSalesModel {
         mAuth = FirebaseAuth.getInstance();
     }
 
+
     public void sendSalesModel(String description, String choice) {
+        count();
         FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Business user = dataSnapshot.getValue(Business.class);
-                sale s = new sale(description,user.getUsername(),choice,user.getPhone());
-                FirebaseDatabase.getInstance().getReference().child("Sales").child(mAuth.getUid()).setValue(s).addOnCompleteListener(new OnCompleteListener<Void>() {
+                sale s = new sale(description, user.getUsername(), choice, user.getPhone(),String.valueOf(count),"ok");
+                FirebaseDatabase.getInstance().getReference().child("Sales").child(mAuth.getUid()).child(String.valueOf(count)).setValue(s).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             controller.setPdController();
                             controller.setToastController("send message");
                         }
@@ -41,7 +48,24 @@ public class postSalesModel {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
 
+
+    public void count(){
+        FirebaseDatabase.getInstance().getReference().child("Sales").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    count = 0;
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        count++;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
             }
         });
 
