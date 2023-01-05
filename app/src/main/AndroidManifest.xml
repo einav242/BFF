@@ -140,6 +140,20 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".view.clientSalesView"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.clientSaleAdapter"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.make_appointmentView"
             android:exported="false">
             <meta-data

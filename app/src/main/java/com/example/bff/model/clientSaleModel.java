@@ -2,11 +2,8 @@ package com.example.bff.model;
 
 import androidx.annotation.NonNull;
 
-import com.example.bff.controller.viewSaleController;
-import com.example.bff.entities.Client;
+import com.example.bff.controller.clientSaleController;
 import com.example.bff.entities.sale;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,27 +13,32 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class viewSaleModel {
-    viewSaleController controller;
+public class clientSaleModel {
+    clientSaleController controller;
     FirebaseAuth mAuth;
     DatabaseReference mroot;
 
-    public viewSaleModel(viewSaleController controller) {
+    public clientSaleModel(clientSaleController controller) {
         this.controller = controller;
         mAuth = FirebaseAuth.getInstance();
         mroot = FirebaseDatabase.getInstance().getReference("Sales");
+
     }
 
     public void sendModelAdapter(ArrayList<sale> lst) {
-        mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+        mroot.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren())
                 {
-                    sale s = dataSnapshot.getValue(sale.class);
-                    if (s.getStatus().equals("ok"))
+                    for(DataSnapshot dataSnapshot2: dataSnapshot.getChildren())
                     {
-                        lst.add(s);
+                        sale s = dataSnapshot2.getValue(sale.class);
+                        System.out.println("hiiiiii: "+s.getStatus());
+                        if (s.getStatus().equals("ok"))
+                        {
+                            lst.add(s);
+                        }
                     }
                 }
                 controller.setListController(lst);
@@ -44,21 +46,6 @@ public class viewSaleModel {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
-
-    public void removeSaleModel(sale s) {
-        s.setStatus("delete");
-        FirebaseDatabase.getInstance().getReference("Sales").child(mAuth.getCurrentUser().getUid()).child(s.getKey()).setValue(s).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    controller.setScreenController();
-                }
-                else {}
 
             }
         });

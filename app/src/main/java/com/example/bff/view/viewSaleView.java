@@ -50,10 +50,6 @@ public class viewSaleView extends AppCompatActivity {
     }
 
 
-    public void removeItem(sale s){
-        controller.removeSale(s);
-    }
-
     public void setScreenView(){
         Intent intent = new Intent(viewSaleView.this, viewSaleView.class);
         startActivity(intent);

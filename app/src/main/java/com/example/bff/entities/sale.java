@@ -8,13 +8,14 @@ public class sale {
     String description;
     String key;
     String status;
+    String businessId;
 
 
     public sale(){
 
     }
 
-    public sale(String description, String businessName, String animal, String businessPhone,String key,String status) {
+    public sale(String description, String businessName, String animal, String businessPhone,String key,String status,String businessId) {
         this.description = description;
         this.businessName = businessName;
         if(animal == "all"){
@@ -26,10 +27,19 @@ public class sale {
         this.businessPhone = businessPhone;
         this.key = key;
         this.status = status;
+        this.businessId =businessId;
     }
 
     public String getStatus() {
         return status;
+    }
+
+    public String getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(String businessId) {
+        this.businessId = businessId;
     }
 
     public void setStatus(String status) {

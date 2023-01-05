@@ -35,7 +35,7 @@ public class postSalesModel {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Business user = dataSnapshot.getValue(Business.class);
-                sale s = new sale(description, user.getUsername(), choice, user.getPhone(),String.valueOf(count),"ok");
+                sale s = new sale(description, user.getUsername(), choice, user.getPhone(),String.valueOf(count),"ok",mAuth.getUid());
                 FirebaseDatabase.getInstance().getReference().child("Sales").child(mAuth.getUid()).child(String.valueOf(count)).setValue(s).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
