@@ -20,8 +20,8 @@ public class ClientAdapterController {
 
 
 
-    public void SendControlDelete(String id) {
-        model.SendModelDelete(id);
+    public void SendControlDelete(queue q,String id) {
+        model.SendModelDelete(q,id);
     }
     public void goneViewController(){
         this.view.goneView();

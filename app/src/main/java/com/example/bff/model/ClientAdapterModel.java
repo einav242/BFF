@@ -35,7 +35,7 @@ public class ClientAdapterModel {
     }
 
 
-    public void SendModelDelete(String id) {
+    public void SendModelDelete(queue q,String id) {
         FirebaseDatabase.getInstance().getReference("queue").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -45,5 +45,16 @@ public class ClientAdapterModel {
                 else {}
             }
         });
+        FirebaseDatabase.getInstance().getReference("History").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(id).setValue(q).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    controller.goneViewController();
+                }
+                else {}
+            }
+        });
     }
+
 }
+
