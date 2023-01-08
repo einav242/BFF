@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.example.bff.R;
 import com.example.bff.controller.ViewClientController;
 import com.example.bff.controller.viewSaleController;
-import com.example.bff.entities.Client;
 import com.example.bff.entities.sale;
 
 import java.util.ArrayList;
@@ -32,7 +31,6 @@ public class viewSaleView extends AppCompatActivity {
         startActivity(new Intent(viewSaleView.this , saleView.class));
         finish();
     }
-
 
 
     @SuppressLint("MissingInflatedId")

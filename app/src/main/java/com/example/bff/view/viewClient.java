@@ -11,13 +11,14 @@ import android.widget.TextView;
 
 import com.example.bff.R;
 import com.example.bff.controller.ViewClientController;
-import com.example.bff.entities.Client;
+
+import com.example.bff.entities.queue;
 
 import java.util.ArrayList;
 
 public class viewClient extends AppCompatActivity {
     RecyclerView recyclerView;
-    ArrayList<Client> lst;
+    ArrayList<queue> lst;
     ClientAdapter myadapt;
     ViewClientController controller;
     TextView empty;
@@ -35,7 +36,7 @@ public class viewClient extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list);
-        recyclerView = findViewById(R.id.recyclebusiness);
+        recyclerView = findViewById(R.id.Recycleview);
         empty = findViewById(R.id.textView41);
         controller=new ViewClientController(this);
         lst=new ArrayList<>();
@@ -45,7 +46,7 @@ public class viewClient extends AppCompatActivity {
         controller.SendControllerAdapter(lst);
     }
 
-    public void setList(ArrayList<Client> lst){
+    public void setList(ArrayList<queue> lst){
         this.lst = lst;
         myadapt.notifyDataSetChanged();
         if(lst == null) {

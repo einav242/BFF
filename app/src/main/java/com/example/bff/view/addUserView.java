@@ -9,13 +9,13 @@ import android.widget.TextView;
 
 import com.example.bff.R;
 import com.example.bff.controller.addUserController;
-import com.example.bff.entities.Client;
+import com.example.bff.entities.queue;
 
 import java.util.ArrayList;
 
 public class addUserView extends AppCompatActivity {
     RecyclerView recyclerView;
-    ArrayList<Client> lst;
+    ArrayList<queue> lst;
     ClientAdapter myadapt;
     addUserController controller;
     TextView empty;
@@ -42,7 +42,7 @@ public class addUserView extends AppCompatActivity {
         controller.RunApdater(lst);
     }
 
-    public void setListView(ArrayList<Client> lst1) {
+    public void setListView(ArrayList<queue> lst1) {
         this.lst = lst1;
         myadapt.notifyDataSetChanged();
         if(lst == null){

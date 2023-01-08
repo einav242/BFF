@@ -3,7 +3,7 @@ package com.example.bff.model;
 import androidx.annotation.NonNull;
 
 import com.example.bff.controller.ViewClientController;
-import com.example.bff.entities.Client;
+import com.example.bff.entities.queue;
 import com.example.bff.view.ClientAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,18 +23,18 @@ public class ViewClientModel {
     public ViewClientModel(ViewClientController viewClientController) {
         controller=viewClientController;
         mAuth = FirebaseAuth.getInstance();
-        mroot = FirebaseDatabase.getInstance().getReference("Em");
+        mroot = FirebaseDatabase.getInstance().getReference("queue");
     }
 
-    public void SendModelAdpter(ArrayList<Client> lst) {
+    public void SendModelAdpter(ArrayList<queue> lst) {
         mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren())
                 {
-                    Client client = dataSnapshot.getValue(Client.class);
-                    if(client.getStatus().equals("approve"))
-                        lst.add(client);
+                    queue q = dataSnapshot.getValue(queue.class);
+                    if(q.getStatus().equals("approve"))
+                        lst.add(q);
                 }
                 controller.setListController(lst);
             }

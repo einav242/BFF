@@ -22,6 +22,7 @@ public class seeMoreView extends AppCompatActivity {
     Button send;
     seeMoreController controller;
     CircleImageView profilePic;
+    String image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +43,6 @@ public class seeMoreView extends AppCompatActivity {
         tv_streetHouse = findViewById(R.id.textView37);
         tv_ActivityTime = findViewById(R.id.textView39);
         profilePic = findViewById(R.id.imageView2);
-
-        controller.getImageProfile(email);
         controller.data(email);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +50,7 @@ public class seeMoreView extends AppCompatActivity {
                 Intent intent = new Intent(seeMoreView.this, make_appointmentView.class);
                 intent.putExtra("key",id);
                 intent.putExtra("name",tv_name.getText().toString());
+                intent.putExtra("image",image);
                 startActivity(intent);
             }
         });
@@ -64,9 +64,8 @@ public class seeMoreView extends AppCompatActivity {
         tv_streetHouse.setText(business.getHouseNumber());
         tv_ActivityTime.setText(business.getTime());
         id = business.getId();
+        image = business.getImage();
+        Picasso.get().load(business.getImage()).placeholder(R.drawable.vetuser).into(profilePic);
     }
 
-    public void setImage(Business user) {
-        Picasso.get().load(user.getImage()).placeholder(R.drawable.vetuser).into(profilePic);
-    }
 }

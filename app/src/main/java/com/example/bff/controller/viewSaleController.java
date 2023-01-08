@@ -1,6 +1,5 @@
 package com.example.bff.controller;
 
-import com.example.bff.entities.Client;
 import com.example.bff.entities.sale;
 import com.example.bff.model.viewSaleModel;
 import com.example.bff.view.viewSaleView;

@@ -34,7 +34,6 @@ public class clientSaleModel {
                     for(DataSnapshot dataSnapshot2: dataSnapshot.getChildren())
                     {
                         sale s = dataSnapshot2.getValue(sale.class);
-                        System.out.println("hiiiiii: "+s.getStatus());
                         if (s.getStatus().equals("ok"))
                         {
                             lst.add(s);

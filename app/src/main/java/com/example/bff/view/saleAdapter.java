@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bff.R;
 import com.example.bff.controller.ClientAdapterController;
 import com.example.bff.controller.viewSaleController;
-import com.example.bff.entities.Client;
 import com.example.bff.entities.sale;
 
 import java.util.ArrayList;

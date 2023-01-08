@@ -43,26 +43,5 @@ public class seeMoreModel {
         });
     }
 
-    public void getImageProfileModel(String email) {
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Business business = dataSnapshot.getValue(Business.class);
-                    Business user = snapshot.getValue(Business.class);
-                    if(business.getEmail().equals(email))
-                    {
-                        controller.setImage(user);
-                        break;
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
 
 }

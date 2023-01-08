@@ -34,11 +34,12 @@ public class queueAdapter extends RecyclerView.Adapter<queueVH> {
 
     @Override
     public void onBindViewHolder(@NonNull  queueVH holder, int position) {
-        queue q= lst.get(position);
+        queue q = lst.get(position);
         holder.name.setText(q.getBusinessName());
         holder.date.setText(q.getDate());
         holder.time.setText(q.getTime());
         holder.status.setText(q.getStatus());
+        Glide.with(context).load(lst.get(position).getImage()).placeholder(R.drawable.shope).into(holder.profile);
     }
 
     @Override

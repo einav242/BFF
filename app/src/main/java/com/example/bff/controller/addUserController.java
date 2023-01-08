@@ -1,6 +1,6 @@
 package com.example.bff.controller;
 
-import com.example.bff.entities.Client;
+import com.example.bff.entities.queue;
 import com.example.bff.model.addUserModel;
 import com.example.bff.view.addUserView;
 
@@ -15,11 +15,11 @@ public class addUserController {
         model = new addUserModel(this);
     }
 
-    public void RunApdater(ArrayList<Client> lst) {
+    public void RunApdater(ArrayList<queue> lst) {
         model.getListModel(lst);
     }
 
-    public void setListController(ArrayList<Client> lst){
+    public void setListController(ArrayList<queue> lst){
         view.setListView(lst);
     }
 }

@@ -47,7 +47,7 @@ public class make_appointmentView extends AppCompatActivity {
                 txt_time = time.getText().toString();
                 txt_date = date.getText().toString();
                 String id="date: "+txt_date.replace('/','-')+" hour: "+txt_time;
-                controller.sendController(email,txt_date,txt_time,id,businessID);
+                controller.sendController(email,txt_date,txt_time,id,businessID,businessName,businessImage);
             }
         });
     }

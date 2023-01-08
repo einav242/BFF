@@ -16,8 +16,8 @@ public class make_appointmentController {
     public void setEmailController(String email){
         view.setEmailView(email);
     }
-    public void sendController(String email, String txt_date,String txt_time,String id, String businessID){
-            model.sendModel(email,txt_date,txt_time,id,businessID);
+    public void sendController(String email, String txt_date,String txt_time,String id, String businessID, String businessName, String image){
+            model.sendModel(email,txt_date,txt_time,id,businessID, businessName, image);
     }
     public void setToastController(String msg){
         view.setToastView(msg);

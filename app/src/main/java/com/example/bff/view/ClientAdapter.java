@@ -11,19 +11,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bff.R;
 import com.example.bff.controller.ClientAdapterController;
-import com.example.bff.entities.Client;
+import com.example.bff.entities.queue;
 
 import java.util.ArrayList;
 
 public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
     Context context;
-    ArrayList<Client> lst;
+    ArrayList<queue> lst;
     int flag;
     ClientAdapterController controller;
     addUserView addUser;
     viewClient viewclient;
 
-    public ClientAdapter(ArrayList<Client> lst,Context context, int flag){
+    public ClientAdapter(ArrayList<queue> lst,Context context, int flag){
         this.lst=lst;
         this.context=context;
         this.flag = flag;
@@ -54,26 +54,26 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
 
     @Override
     public void onBindViewHolder(@NonNull ClientVH holder, int position) {
-        Client c= lst.get(position);
-        holder.c=c;
-        holder.Email.setText(c.getEmail());
-        holder.Phone.setText(c.getTime());
-        holder.Date.setText(c.getDate());
+        queue q= lst.get(position);
+        holder.q=q;
+        holder.Email.setText(q.getEmail());
+        holder.Phone.setText(q.getTime());
+        holder.Date.setText(q.getDate());
         if(flag==0){
             holder.aprove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime().toString();
-                    c.setStatus("approve");
-                    controller.SendControlAprove(c,id);
+                    String id="date: "+q.getDate().replace('/','-')+" hour: "+q.getTime().toString();
+                    q.setStatus("approve");
+                    controller.SendController(q,id);
                 }
             });
             holder.decline.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime();
-                    c.setStatus("decline");
-                    controller.SendControlDecline(c,id);
+                    String id="date: "+q.getDate().replace('/','-')+" hour: "+q.getTime();
+                    q.setStatus("decline");
+                    controller.SendController(q,id);
                 }
             });
         }
@@ -82,7 +82,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
             holder.delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String id="date: "+c.getDate().replace('/','-')+" hour: "+c.getTime();
+                    String id="date: "+q.getDate().replace('/','-')+" hour: "+q.getTime();
                     controller.SendControlDelete(id);
                 }
             });
@@ -106,7 +106,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
     class ClientVH extends RecyclerView.ViewHolder{
         TextView Email , Phone, Date;
         Button aprove,decline, delete;
-        Client c;
+        queue q;
         private ClientAdapter adp;
 
         public ClientVH(@NonNull View itemView,int flag) {

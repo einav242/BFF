@@ -1,6 +1,6 @@
 package com.example.bff.controller;
 
-import com.example.bff.entities.Client;
+import com.example.bff.entities.queue;
 import com.example.bff.model.ClientAdapterModel;
 import com.example.bff.view.ClientAdapter;
 
@@ -14,13 +14,11 @@ public class ClientAdapterController {
         model=new ClientAdapterModel(this);
     }
 
-    public void SendControlAprove(Client c, String id) {
-        model.SendModelAprove(c,id);
+    public void SendController(queue q, String id) {
+        model.SendModel(q,id);
     }
 
-    public void SendControlDecline(Client c, String id) {
-        model.SendModelDecline(c,id);
-    }
+
 
     public void SendControlDelete(String id) {
         model.SendModelDelete(id);

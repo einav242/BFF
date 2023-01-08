@@ -4,8 +4,9 @@ package com.example.bff.model;
 import androidx.annotation.NonNull;
 
 import com.example.bff.entities.Business;
-import com.example.bff.entities.Client;
 import com.example.bff.controller.make_appointmentController;
+import com.example.bff.entities.User;
+import com.example.bff.entities.queue;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +29,7 @@ public class make_appointmentModel {
         FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Business user = dataSnapshot.getValue(Business.class);
+                User user = dataSnapshot.getValue(User.class);
                 controller.setEmailController(user.getEmail());
             }
             @Override
@@ -37,15 +38,20 @@ public class make_appointmentModel {
             }
         });
     }
-    public void sendModel(String email, String txt_date, String txt_time, String id, String businessID){
-        FirebaseDatabase.getInstance().getReference().child("Em").child(businessID).child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+    public void getBusinessName(){
+
+    }
+
+
+    public void sendModel(String email, String txt_date, String txt_time, String id, String businessID, String businessName, String image){
+        FirebaseDatabase.getInstance().getReference().child("queue").child(businessID).child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Client client = snapshot.getValue(Client.class);;
-                if(!snapshot.exists() || (snapshot.exists() && client.getStatus().equals("decline")))
+                queue q = snapshot.getValue(queue.class);;
+                if(!snapshot.exists() || (snapshot.exists() && q.getStatus().equals("decline")))
                 {
-                    client=new Client(email,txt_date,txt_time,"waiting");
-                    FirebaseDatabase.getInstance().getReference().child("Em").child(businessID).child(id).setValue(client).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    q = new queue(businessName,txt_date,txt_time, "waiting",email,image);
+                    FirebaseDatabase.getInstance().getReference().child("queue").child(businessID).child(id).setValue(q).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
