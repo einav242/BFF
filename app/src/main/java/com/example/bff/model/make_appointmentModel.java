@@ -3,9 +3,8 @@ package com.example.bff.model;
 
 import androidx.annotation.NonNull;
 
-import com.example.bff.entities.Business;
 import com.example.bff.controller.make_appointmentController;
-import com.example.bff.entities.Notfiaction;
+import com.example.bff.entities.Notification;
 import com.example.bff.entities.User;
 import com.example.bff.entities.queue;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -13,13 +12,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class make_appointmentModel {
     make_appointmentController controller;
     private FirebaseAuth mAuth;
+    int count;
 
     public make_appointmentModel(make_appointmentController controller) {
         this.controller = controller;
@@ -39,9 +38,18 @@ public class make_appointmentModel {
             }
         });
     }
-    public void getBusinessName(){
 
+
+    public void setNotification(String email, String businessID, String id){
+        Notification note=new Notification("You got new appointment from "+email);
+        FirebaseDatabase.getInstance().getReference().child("Business").child(businessID).child("news").child(id).setValue(note).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+            }
+        });
     }
+
+
 
     public void sendModel(String email, String txt_date, String txt_time, String id, String businessID, String businessName, String image, String userImage){
         FirebaseDatabase.getInstance().getReference().child("queue").child(businessID).child(id).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -57,18 +65,10 @@ public class make_appointmentModel {
                             if(task.isSuccessful()){
                                 controller.setPdController();
                                 controller.setToastController("send message");
+                                setNotification(email, businessID,id);
                             }
                         }
                     });
-                    Notfiaction note=new Notfiaction("You got new appointment from"+email);
-                    FirebaseDatabase.getInstance().getReference().child("Business").child(businessID).child("news").setValue(note).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-
-                        }
-                    });
-
-
                 }
                 else
                 {

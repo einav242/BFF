@@ -1,11 +1,9 @@
 package com.example.bff.controller;
 
 import android.net.Uri;
-import android.widget.ImageView;
 
 import com.example.bff.entities.Business;
-import com.example.bff.entities.Notfiaction;
-import com.example.bff.entities.User;
+import com.example.bff.entities.Notification;
 import com.example.bff.model.businessActivityModel;
 import com.example.bff.view.businessActivityView;
 
@@ -52,16 +50,13 @@ public class businessActivityController {
         model.logout();
     }
 
-    public void GetNotfications(ArrayList<Notfiaction> lst) {
+    public void GetNotfications(ArrayList<Notification> lst) {
         model.GetNews(lst);
     }
 
-    public void SetNews(ArrayList<Notfiaction> lst) {
+    public void SetNews(ArrayList<Notification> lst) {
         view.SetNews(lst);
     }
 
-    public void SetNewsToOld(ArrayList<Notfiaction> lst) {
-        model.SetNewsToOld(lst);
-    }
 
 }
