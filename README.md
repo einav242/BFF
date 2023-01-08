@@ -26,9 +26,7 @@ On the main screen, the user will be able to:
 - **View Queues–** Here you can see all the meetings you have had with the various business owners and the status of the request, whether it has been rejected or whether it is awaiting approval.
 - **Information–** Clicking on this button will open a dog and cat information website where you can find useful information about your animal , such as a guide on behavior problems and how to educate your dog and more ... 
 
-
-<img width="200" alt="Capture" src="https://user-images.githubusercontent.com/93201414/209475955-9e789b54-3e57-404c-a660-05f652bd368b.png">
-
+ <img width="200" src="https://user-images.githubusercontent.com/93201414/211199306-2c49063b-aaac-4ba8-a0a0-8b38242d03d9.png">
 
 ## Type User: Business owner
 On the main screen, the user will be able to:
