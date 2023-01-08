@@ -95,7 +95,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ClientnPhone"
             android:backgroundTint="#0CBF2A"
-            android:text="Aprove" />
+            android:text="Aprove"
+            android:textSize="20dp"
+            app:backgroundTint="@null"
+            android:background="@drawable/colorbutton"/>
 
         <Button
             android:id="@+id/decline"
@@ -103,7 +106,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ClientnPhone"
             android:backgroundTint="#F30F3C"
-            android:text="Decline" />
+            android:text="Decline"
+            android:textSize="20dp"
+            app:backgroundTint="@null"
+            android:background="@drawable/colorbutton"/>
 
     </LinearLayout>
 

@@ -33,12 +33,15 @@
 
     <Button
         android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_width="205dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="45dp"
         android:backgroundTint="#4CAF50"
         android:contentDescription="sendbt"
         android:text="send"
+        app:backgroundTint="@null"
+        android:textSize="20dp"
+        android:background="@drawable/colorbutton2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.435"
         app:layout_constraintStart_toStartOf="parent"

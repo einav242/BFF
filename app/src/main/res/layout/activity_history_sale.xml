@@ -50,13 +50,21 @@
 
     <Button
         android:id="@+id/button11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#4CAF50"
+        android:layout_width="226dp"
+        android:layout_height="300dp"
         android:layout_marginTop="250dp"
-        android:textAllCaps="false"
+        android:layout_marginStart="100dp"
+        android:background="@drawable/colorbutton2"
+        android:backgroundTint="#4CAF50"
+        android:contentDescription="sendbt"
         android:text="Return"
-        android:textSize="20sp" />
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.435"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <ImageView
         android:id="@+id/imageView"

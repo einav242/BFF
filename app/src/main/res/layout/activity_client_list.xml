@@ -95,7 +95,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ClientnPhone"
             android:backgroundTint="#F30F3C"
-            android:text="Delete" />
+            android:text="Delete"
+            app:backgroundTint="@null"
+            android:textSize="20dp"
+            android:background="@drawable/colorbutton"
+            />
 
     </LinearLayout>
 
