@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 
 import com.example.bff.entities.Business;
 import com.example.bff.controller.make_appointmentController;
+import com.example.bff.entities.Notfiaction;
 import com.example.bff.entities.User;
 import com.example.bff.entities.queue;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -42,7 +43,6 @@ public class make_appointmentModel {
 
     }
 
-
     public void sendModel(String email, String txt_date, String txt_time, String id, String businessID, String businessName, String image, String userImage){
         FirebaseDatabase.getInstance().getReference().child("queue").child(businessID).child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -58,9 +58,16 @@ public class make_appointmentModel {
                                 controller.setPdController();
                                 controller.setToastController("send message");
                             }
+                        }
+                    });
+                    Notfiaction note=new Notfiaction("You got new appointment from"+email);
+                    FirebaseDatabase.getInstance().getReference().child("Business").child(businessID).child("news").setValue(note).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
 
                         }
                     });
+
 
                 }
                 else

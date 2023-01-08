@@ -1,10 +1,12 @@
 package com.example.bff.view;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -104,11 +106,22 @@ public class animalActivityView extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                controller.logOut_controller();
-                Intent intent = new Intent(animalActivityView.this, MainActivityView.class);
-                startActivity(intent);
-                finish();
-                Toast.makeText(animalActivityView.this , "Logout Successful",Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(animalActivityView.this);
+                builder.setMessage("are you sure you want to exit ?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
+                    controller.logOut_controller();
+                    Intent intent = new Intent(animalActivityView.this, MainActivityView.class);
+                    startActivity(intent);
+                    finish();
+                    Toast.makeText(animalActivityView.this , "Logout Successful",Toast.LENGTH_SHORT).show();
+
+                });
+                builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
+                    dialog.cancel();
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
 

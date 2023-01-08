@@ -4,9 +4,12 @@ import android.net.Uri;
 import android.widget.ImageView;
 
 import com.example.bff.entities.Business;
+import com.example.bff.entities.Notfiaction;
 import com.example.bff.entities.User;
 import com.example.bff.model.businessActivityModel;
 import com.example.bff.view.businessActivityView;
+
+import java.util.ArrayList;
 
 public class businessActivityController {
     businessActivityView view;
@@ -44,4 +47,21 @@ public class businessActivityController {
     public void setImage(Business user) {
         view.setImage(user);
     }
+
+    public void logout() {
+        model.logout();
+    }
+
+    public void GetNotfications(ArrayList<Notfiaction> lst) {
+        model.GetNews(lst);
+    }
+
+    public void SetNews(ArrayList<Notfiaction> lst) {
+        view.SetNews(lst);
+    }
+
+    public void SetNewsToOld(ArrayList<Notfiaction> lst) {
+        model.SetNewsToOld(lst);
+    }
+
 }

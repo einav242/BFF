@@ -87,7 +87,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
                 @Override
                 public void onClick(View view) {
                     String id="date: "+q.getDate().replace('/','-')+" hour: "+q.getTime();
-                    controller.SendControlDelete(id);
+                    controller.SendControlDelete(q,id);
                 }
             });
         }

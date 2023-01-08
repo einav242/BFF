@@ -1,10 +1,17 @@
 package com.example.bff.view;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,9 +23,12 @@ import com.example.bff.R;
 import com.example.bff.controller.businessActivityController;
 
 import com.example.bff.entities.Business;
+import com.example.bff.entities.Notfiaction;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -55,6 +65,14 @@ public class businessActivityView extends AppCompatActivity {
         controller = new businessActivityController(this);
         controller.getUserNameController();
         controller.getImageProfile();
+        ArrayList<Notfiaction> lst=new ArrayList<>();
+        controller.GetNotfications(lst);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            NotificationChannel channel=new NotificationChannel("Bussnies Chanel","Bussnies Chanel", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager= getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,11 +105,21 @@ public class businessActivityView extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(businessActivityView.this, MainActivityView.class);
-                startActivity(intent);
-                finish();
-                Toast.makeText(businessActivityView.this , "Logout Successful",Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(businessActivityView.this);
+                builder.setMessage("are you sure you want to exit ?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
+                    controller.logout();
+                    Intent intent = new Intent(businessActivityView.this, MainActivityView.class);
+                    startActivity(intent);
+                    finish();
+                    Toast.makeText(businessActivityView.this , "Logout Successful",Toast.LENGTH_SHORT).show();
+                });
+                builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
+                    dialog.cancel();
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
     }
@@ -117,4 +145,23 @@ public class businessActivityView extends AppCompatActivity {
     public void setImage(Business user) {
         Picasso.get().load(user.getImage()).placeholder(R.drawable.vetuser).into(profilePic);
     }
+
+    public void SetNews(ArrayList<Notfiaction> lst) {
+        if (!lst.isEmpty()) {
+            NotificationManagerCompat mange= NotificationManagerCompat.from(businessActivityView.this);
+            int k=1;
+            for (Notfiaction s : lst) {
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(businessActivityView.this, "Bussnies Chanel");
+                builder.setContentTitle("New event");
+                builder.setContentText(s.GetString());
+                builder.setSmallIcon(R.drawable.ic_launcher_background);
+                builder.setAutoCancel(true);
+                mange.notify(k,builder.build());
+                k++;
+            }
+            controller.SetNewsToOld(lst);
+        }
+
+    }
+
 }
