@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20dp">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView2"
-        android:layout_width="147dp"
-        android:layout_height="147dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
         android:background="@android:color/transparent"
         android:src="@drawable/shope"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,10 +20,10 @@
 
     <TextView
         android:id="@+id/textView25"
-        android:layout_width="241dp"
+        android:layout_width="234dp"
         android:layout_height="92dp"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="20dp"
         android:text="Business Name"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -36,7 +37,7 @@
         android:layout_width="117dp"
         android:layout_height="46dp"
         android:layout_marginTop="200dp"
-        android:text=" city:"
+        android:text="city:"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/black"
@@ -47,8 +48,8 @@
 
     <TextView
         android:id="@+id/textView27"
-        android:layout_width="290dp"
-        android:layout_height="46dp"
+        android:layout_width="253dp"
+        android:layout_height="49dp"
         android:layout_marginTop="200dp"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -69,8 +70,8 @@
 
     <TextView
         android:id="@+id/textView29"
-        android:layout_width="290dp"
-        android:layout_height="46dp"
+        android:layout_width="253dp"
+        android:layout_height="49dp"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -91,8 +92,8 @@
 
     <TextView
         android:id="@+id/textView33"
-        android:layout_width="290dp"
-        android:layout_height="46dp"
+        android:layout_width="253dp"
+        android:layout_height="49dp"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -112,8 +113,8 @@
 
     <TextView
         android:id="@+id/textView35"
-        android:layout_width="290dp"
-        android:layout_height="46dp"
+        android:layout_width="253dp"
+        android:layout_height="49dp"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -133,8 +134,8 @@
 
     <TextView
         android:id="@+id/textView37"
-        android:layout_width="230dp"
-        android:layout_height="46dp"
+        android:layout_width="198dp"
+        android:layout_height="49dp"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -155,8 +156,8 @@
 
     <TextView
         android:id="@+id/textView39"
-        android:layout_width="263dp"
-        android:layout_height="45dp"
+        android:layout_width="220dp"
+        android:layout_height="49dp"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -167,8 +168,8 @@
         android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="76dp"
         android:backgroundTint="#4CAF50"
         android:text="Making an appointment"
         android:textAllCaps="false"
