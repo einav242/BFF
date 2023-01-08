@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.example.bff.R;
 import com.example.bff.controller.make_appointmentController;
+import com.example.bff.entities.User;
 
 public class make_appointmentView extends AppCompatActivity {
     EditText time, date;
@@ -17,6 +18,7 @@ public class make_appointmentView extends AppCompatActivity {
     String businessID;
     String businessName;
     String businessImage;
+    String userImage;
     Button send;
     ProgressDialog pd;
     String email;
@@ -47,13 +49,14 @@ public class make_appointmentView extends AppCompatActivity {
                 txt_time = time.getText().toString();
                 txt_date = date.getText().toString();
                 String id="date: "+txt_date.replace('/','-')+" hour: "+txt_time;
-                controller.sendController(email,txt_date,txt_time,id,businessID,businessName,businessImage);
+                controller.sendController(email,txt_date,txt_time,id,businessID,businessName,businessImage, userImage);
             }
         });
     }
 
-    public void setEmailView(String email){
-        this.email = email;
+    public void setEmailView(User user){
+        this.email = user.getEmail();
+        this.userImage = user.getImage();
     }
 
     public void setToastView(String msg){

@@ -1,4 +1,5 @@
 package com.example.bff.controller;
+import com.example.bff.entities.User;
 import com.example.bff.model.make_appointmentModel;
 import com.example.bff.view.make_appointmentView;
 
@@ -13,11 +14,11 @@ public class make_appointmentController {
     public void getEmailController(){
         model.getEmailModel();
     }
-    public void setEmailController(String email){
-        view.setEmailView(email);
+    public void setEmailController(User user){
+        view.setEmailView(user);
     }
-    public void sendController(String email, String txt_date,String txt_time,String id, String businessID, String businessName, String image){
-            model.sendModel(email,txt_date,txt_time,id,businessID, businessName, image);
+    public void sendController(String email, String txt_date,String txt_time,String id, String businessID, String businessName, String image, String userImage){
+            model.sendModel(email,txt_date,txt_time,id,businessID, businessName, image, userImage);
     }
     public void setToastController(String msg){
         view.setToastView(msg);

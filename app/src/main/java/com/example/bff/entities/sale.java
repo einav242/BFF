@@ -9,13 +9,14 @@ public class sale {
     String key;
     String status;
     String businessId;
+    String image;
 
 
     public sale(){
 
     }
 
-    public sale(String description, String businessName, String animal, String businessPhone,String key,String status,String businessId) {
+    public sale(String description, String businessName, String animal, String businessPhone,String key,String status,String businessId,String image) {
         this.description = description;
         this.businessName = businessName;
         if(animal == "all"){
@@ -28,6 +29,15 @@ public class sale {
         this.key = key;
         this.status = status;
         this.businessId =businessId;
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getStatus() {

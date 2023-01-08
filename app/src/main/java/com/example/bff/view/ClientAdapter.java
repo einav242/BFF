@@ -62,7 +62,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
         holder.Email.setText(q.getEmail());
         holder.Phone.setText(q.getTime());
         holder.Date.setText(q.getDate());
-        Glide.with(context).load(lst.get(position).getImage()).placeholder(R.drawable.shope).into(holder.profile);
+        Glide.with(context).load(lst.get(position).getUser_image()).placeholder(R.drawable.profile).into(holder.profile);
         if(flag==0){
             holder.aprove.setOnClickListener(new View.OnClickListener() {
                 @Override
