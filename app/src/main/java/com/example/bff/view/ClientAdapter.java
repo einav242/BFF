@@ -9,11 +9,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.bff.R;
 import com.example.bff.controller.ClientAdapterController;
 import com.example.bff.entities.queue;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
     Context context;
@@ -59,6 +62,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
         holder.Email.setText(q.getEmail());
         holder.Phone.setText(q.getTime());
         holder.Date.setText(q.getDate());
+        Glide.with(context).load(lst.get(position).getImage()).placeholder(R.drawable.shope).into(holder.profile);
         if(flag==0){
             holder.aprove.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -107,10 +111,12 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
         TextView Email , Phone, Date;
         Button aprove,decline, delete;
         queue q;
+        CircleImageView profile;
         private ClientAdapter adp;
 
         public ClientVH(@NonNull View itemView,int flag) {
             super(itemView);
+            profile = itemView.findViewById(R.id.imageView13);
             Email=itemView.findViewById(R.id.textviewname);
             Phone=itemView.findViewById(R.id.textviewPhone);
             Date=itemView.findViewById(R.id.dateviewPhone);
@@ -119,7 +125,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
                 decline=itemView.findViewById(R.id.decline);
             }
             else if(flag ==1){
-                delete = itemView.findViewById(R.id.button11);
+                delete = itemView.findViewById(R.id.decline);
             }
         }
         public ClientVH linkAdapter(ClientAdapter adp){

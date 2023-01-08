@@ -6,11 +6,22 @@
     app:cardElevation="12dp"
     app:cardCornerRadius="12dp"
     android:layout_margin="16dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView13"
+            android:layout_width="107dp"
+            android:layout_height="96dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/profile" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,5 +106,7 @@
             android:text="Decline" />
 
     </LinearLayout>
+
+
 
 </androidx.cardview.widget.CardView>

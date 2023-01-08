@@ -8,91 +8,97 @@
     android:layout_margin="16dp">
 
     <LinearLayout
-        android:layout_width="359dp"
-        android:layout_height="252dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView13"
+            android:layout_width="107dp"
+            android:layout_height="96dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/profile" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:layout_margin="16dp"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email:"
-                android:textColor="@color/black"
                 android:textSize="24dp"
-                android:textStyle="bold" />
-
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
             <TextView
                 android:id="@+id/textviewname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="24dp" />
+                android:textSize="24dp"
+                android:textColor="@color/black"/>
+
 
 
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:layout_margin="16dp"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Time:"
-                android:textColor="@color/black"
                 android:textSize="24dp"
-                android:textStyle="bold" />
-
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
             <TextView
                 android:id="@+id/textviewPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="24dp" />
+                android:textSize="24dp"
+                android:textColor="@color/black"/>
+
 
 
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:layout_margin="16dp"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date:"
-                android:textColor="@color/black"
                 android:textSize="24dp"
-                android:textStyle="bold" />
-
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
             <TextView
                 android:id="@+id/dateviewPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="24dp" />
+                android:textSize="24dp"
+                android:textColor="@color/black"/>
         </LinearLayout>
 
         <Button
-            android:id="@+id/button11"
+            android:id="@+id/decline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#E60909"
-            android:text="delete" />
+            android:layout_below="@id/ClientnPhone"
+            android:backgroundTint="#F30F3C"
+            android:text="Delete" />
 
     </LinearLayout>
+
+
 
 </androidx.cardview.widget.CardView>
