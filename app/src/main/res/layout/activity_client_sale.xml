@@ -5,6 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="350dp">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageViewPic"
+        android:layout_width="107dp"
+        android:layout_height="96dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/shope" />
+
+
     <TextView
         android:id="@+id/BusinessName"
         android:layout_width="wrap_content"
@@ -83,16 +94,18 @@
         android:layout_height="98dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="3dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="129dp"
         app:srcCompat="@drawable/salaepic" />
+
     <Button
         android:id="@+id/button11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="300dp"
         android:backgroundTint="#4CAF50"
-        android:text="Making an appointment"
+        android:text="More details about the business"
         android:textAllCaps="false"
         android:textSize="20sp" />
 

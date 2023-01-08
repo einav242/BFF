@@ -33,10 +33,11 @@ public class clientSalesView extends AppCompatActivity {
         controller.SendControllerAdapter(lst);
 
     }
-    public void appointment(String id, String name){
-        Intent intent = new Intent(clientSalesView.this, make_appointmentView.class);
+    public void appointment(String id, String name, String image){
+        Intent intent = new Intent(clientSalesView.this, seeMoreView.class);
         intent.putExtra("key",id);
         intent.putExtra("name",name);
+        intent.putExtra("image",image);
         startActivity(intent);
     }
     public void setListView(ArrayList<sale> lst) {

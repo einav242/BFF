@@ -16,6 +16,8 @@ import com.example.bff.entities.sale;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class saleAdapter extends RecyclerView.Adapter<SaleVH> {
     Context context;
     ArrayList<sale> lst;
@@ -84,6 +86,7 @@ class SaleVH extends RecyclerView.ViewHolder{
     Button delete;
     sale s;
     private saleAdapter adp;
+
 
     public SaleVH(@NonNull View itemView) {
         super(itemView);

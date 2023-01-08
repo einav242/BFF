@@ -39,7 +39,7 @@ public class queueAdapter extends RecyclerView.Adapter<queueVH> {
         holder.date.setText(q.getDate());
         holder.time.setText(q.getTime());
         holder.status.setText(q.getStatus());
-        Glide.with(context).load(lst.get(position).getImage()).placeholder(R.drawable.shope).into(holder.profile);
+        Glide.with(context).load(lst.get(position).getBusiness_image()).placeholder(R.drawable.shope).into(holder.profile);
     }
 
     @Override

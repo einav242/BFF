@@ -9,10 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.bff.R;
 import com.example.bff.entities.sale;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class clientSaleAdapter extends RecyclerView.Adapter<clientSaleVH> {
     Context context;
@@ -40,10 +43,11 @@ public class clientSaleAdapter extends RecyclerView.Adapter<clientSaleVH> {
         holder.phone.setText(s.getBusinessPhone());
         holder.animal.setText(s.getAnimal());
         holder.description.setText(s.getDescription());
+        Glide.with(context).load(lst.get(position).getImage()).placeholder(R.drawable.shope).into(holder.profile);
         holder.appointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewSale.appointment(holder.s.getBusinessId(),holder.s.getBusinessName());
+                viewSale.appointment(holder.s.getBusinessId(),holder.s.getBusinessName(),holder.s.getImage());
             }
         });
 
@@ -61,6 +65,7 @@ class clientSaleVH extends RecyclerView.ViewHolder{
     Button appointment;
     sale s;
     private clientSaleAdapter adp;
+    CircleImageView profile;
 
     public clientSaleVH(@NonNull View itemView) {
         super(itemView);
@@ -69,6 +74,7 @@ class clientSaleVH extends RecyclerView.ViewHolder{
         animal = itemView.findViewById(R.id.f);
         description = itemView.findViewById(R.id.Description);
         appointment = itemView.findViewById(R.id.button11);
+        profile = itemView.findViewById(R.id.imageViewPic);
     }
     public clientSaleVH linkAdapter(clientSaleAdapter adp){
         this.adp=adp;

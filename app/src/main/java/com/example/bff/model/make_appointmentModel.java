@@ -30,7 +30,7 @@ public class make_appointmentModel {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                controller.setEmailController(user.getEmail());
+                controller.setEmailController(user);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -43,14 +43,14 @@ public class make_appointmentModel {
     }
 
 
-    public void sendModel(String email, String txt_date, String txt_time, String id, String businessID, String businessName, String image){
+    public void sendModel(String email, String txt_date, String txt_time, String id, String businessID, String businessName, String image, String userImage){
         FirebaseDatabase.getInstance().getReference().child("queue").child(businessID).child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 queue q = snapshot.getValue(queue.class);;
                 if(!snapshot.exists() || (snapshot.exists() && q.getStatus().equals("decline")))
                 {
-                    q = new queue(businessName,txt_date,txt_time, "waiting",email,image);
+                    q = new queue(businessName,txt_date,txt_time, "waiting",email,image,userImage);
                     FirebaseDatabase.getInstance().getReference().child("queue").child(businessID).child(id).setValue(q).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
