@@ -26,9 +26,7 @@ On the main screen, the user will be able to:
 - **View Queues–** Here you can see all the meetings you have had with the various business owners and the status of the request, whether it has been rejected or whether it is awaiting approval.
 - **Information–** Clicking on this button will open a dog and cat information website where you can find useful information about your animal , such as a guide on behavior problems and how to educate your dog and more ... 
 
-
-<img width="200" alt="Capture" src="https://user-images.githubusercontent.com/93201414/209475955-9e789b54-3e57-404c-a660-05f652bd368b.png">
-
+ <img width="200" src="https://user-images.githubusercontent.com/93201414/211199306-2c49063b-aaac-4ba8-a0a0-8b38242d03d9.png">
 
 ## Type User: Business owner
 On the main screen, the user will be able to:
@@ -36,7 +34,7 @@ On the main screen, the user will be able to:
 - **Add client–** Here you can see all the appointments waiting for your approval from the animals that have chosen to make an appointment with you
 - **View client–** Here you can see all the users you've approved the appointments for
 
-<img width="200" alt="Capture" src="https://user-images.githubusercontent.com/93201414/209476016-fd0c4f69-69e9-422d-b882-4e59ab681e07.png">
+<img width="200" alt="Capture" src="https://user-images.githubusercontent.com/93201414/211208592-51fb6834-41c7-4cf2-aff1-6f0a6cf32292.png">
 
 ## Architecture 🗼
 This app uses [MVC (Model View Controller)](https://towardsdatascience.com/everything-you-need-to-know-about-mvc-architecture-3c827930b4c1)

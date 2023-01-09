@@ -23,8 +23,7 @@ import com.example.bff.R;
 import com.example.bff.controller.businessActivityController;
 
 import com.example.bff.entities.Business;
-import com.example.bff.entities.Notfiaction;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.bff.entities.Notification;
 
 import com.squareup.picasso.Picasso;
 
@@ -65,8 +64,8 @@ public class businessActivityView extends AppCompatActivity {
         controller = new businessActivityController(this);
         controller.getUserNameController();
         controller.getImageProfile();
-        ArrayList<Notfiaction> lst=new ArrayList<>();
-        controller.GetNotfications(lst);
+        ArrayList<Notification> lst=new ArrayList<>();
+        controller.GetNotifications(lst);
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
             NotificationChannel channel=new NotificationChannel("Bussnies Chanel","Bussnies Chanel", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager manager= getSystemService(NotificationManager.class);
@@ -146,11 +145,11 @@ public class businessActivityView extends AppCompatActivity {
         Picasso.get().load(user.getImage()).placeholder(R.drawable.vetuser).into(profilePic);
     }
 
-    public void SetNews(ArrayList<Notfiaction> lst) {
+    public void SetNews(ArrayList<Notification> lst) {
         if (!lst.isEmpty()) {
             NotificationManagerCompat mange= NotificationManagerCompat.from(businessActivityView.this);
             int k=1;
-            for (Notfiaction s : lst) {
+            for (Notification s : lst) {
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(businessActivityView.this, "Bussnies Chanel");
                 builder.setContentTitle("New event");
                 builder.setContentText(s.GetString());
@@ -159,8 +158,8 @@ public class businessActivityView extends AppCompatActivity {
                 mange.notify(k,builder.build());
                 k++;
             }
-            controller.SetNewsToOld(lst);
         }
+        controller.setOld(lst);
 
     }
 
