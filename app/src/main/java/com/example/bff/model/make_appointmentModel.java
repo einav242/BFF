@@ -41,7 +41,7 @@ public class make_appointmentModel {
 
 
     public void setNotification(String email, String businessID, String id){
-        Notification note=new Notification("You got new appointment from "+email);
+        Notification note=new Notification("You got new appointment from "+email, id);
         FirebaseDatabase.getInstance().getReference().child("Business").child(businessID).child("news").child(id).setValue(note).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

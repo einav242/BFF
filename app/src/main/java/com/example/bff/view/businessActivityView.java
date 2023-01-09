@@ -65,7 +65,7 @@ public class businessActivityView extends AppCompatActivity {
         controller.getUserNameController();
         controller.getImageProfile();
         ArrayList<Notification> lst=new ArrayList<>();
-        controller.GetNotfications(lst);
+        controller.GetNotifications(lst);
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
             NotificationChannel channel=new NotificationChannel("Bussnies Chanel","Bussnies Chanel", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager manager= getSystemService(NotificationManager.class);
@@ -159,6 +159,7 @@ public class businessActivityView extends AppCompatActivity {
                 k++;
             }
         }
+        controller.setOld(lst);
 
     }
 

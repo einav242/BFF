@@ -50,7 +50,7 @@ public class businessActivityController {
         model.logout();
     }
 
-    public void GetNotfications(ArrayList<Notification> lst) {
+    public void GetNotifications(ArrayList<Notification> lst) {
         model.GetNews(lst);
     }
 
@@ -59,4 +59,7 @@ public class businessActivityController {
     }
 
 
+    public void setOld(ArrayList<Notification> lst) {
+        model.SetNewsToOld(lst);
+    }
 }

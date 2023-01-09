@@ -3,7 +3,11 @@ package com.example.bff.model;
 import androidx.annotation.NonNull;
 
 import com.example.bff.controller.addUserController;
+import com.example.bff.entities.Notification;
+import com.example.bff.entities.User;
 import com.example.bff.entities.queue;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,14 +22,12 @@ public class addUserModel {
     DatabaseReference mroot;
     FirebaseAuth mAuth;
 
-
-
-
     public addUserModel(addUserController controller) {
         this.controller = controller;
         mAuth = FirebaseAuth.getInstance();
         mroot = FirebaseDatabase.getInstance().getReference("queue");
     }
+
     public void getListModel(ArrayList<queue> lst){
         mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override

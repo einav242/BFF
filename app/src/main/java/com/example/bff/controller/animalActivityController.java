@@ -1,11 +1,13 @@
 package com.example.bff.controller;
 
 import android.net.Uri;
-import android.widget.ImageView;
 
+import com.example.bff.entities.Notification;
 import com.example.bff.entities.User;
 import com.example.bff.model.animalActivityModel;
 import com.example.bff.view.animalActivityView;
+
+import java.util.ArrayList;
 
 
 public class animalActivityController {
@@ -69,5 +71,17 @@ public class animalActivityController {
 
     public void setImage(User user) {
         view.setImage(user);
+    }
+
+    public void GetNotifications(ArrayList<Notification> lst) {
+        model.GetNews(lst);
+    }
+
+    public void SetNews(ArrayList<Notification> lst) {
+        view.SetNews(lst);
+    }
+
+    public void setOld(ArrayList<Notification> lst) {
+        model.SetNewsToOld(lst);
     }
 }

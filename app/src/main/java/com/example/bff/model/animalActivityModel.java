@@ -4,9 +4,11 @@ import android.net.Uri;
 
 
 import androidx.annotation.NonNull;
+import androidx.dynamicanimation.animation.SpringAnimation;
 
 import com.example.bff.R;
 import com.example.bff.controller.animalActivityController;
+import com.example.bff.entities.Notification;
 import com.example.bff.entities.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -26,6 +28,7 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
@@ -39,6 +42,8 @@ public class animalActivityModel {
     private FirebaseStorage storage;
     animalActivityController controller;
     private DatabaseReference reference;
+    DatabaseReference reff ;
+
 
     public animalActivityModel(animalActivityController controller) {
         this.mAuth = FirebaseAuth.getInstance().getCurrentUser();
@@ -47,9 +52,8 @@ public class animalActivityModel {
         this.fAuth = FirebaseAuth.getInstance();
         this.controller = controller;
         this.reference = FirebaseDatabase.getInstance().getReference("Users");
-
+        this.reff = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).child("news");
     }
-
 
     public void imageListener() {
         StorageReference riversRef = storageReference.child("Users").child(mAuth.getUid());
@@ -134,5 +138,44 @@ public class animalActivityModel {
 
             }
         });
+    }
+
+    public void GetNews(ArrayList<Notification> lst) {
+        this.reff.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot dataSnapshot: snapshot.getChildren())
+                    {
+                        Notification notification = dataSnapshot.getValue(Notification.class);
+                        if(notification.getStatus().equals("new")) {
+                            lst.add(notification);
+                        }
+
+                    }
+                    controller.SetNews(lst);
+                    reff.removeEventListener(this);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+
+    public void  SetNewsToOld(ArrayList<Notification> lst){
+        for(Notification n: lst){
+            n.setStatus("old");
+            FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("news").child(n.getId()).setValue(n).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                    }
+                }
+            });
+        }
     }
 }

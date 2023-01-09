@@ -1,27 +1,31 @@
 package com.example.bff.view;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
-import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bff.R;
 import com.example.bff.controller.animalActivityController;
+import com.example.bff.entities.Notification;
 import com.example.bff.entities.User;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -65,6 +69,13 @@ public class animalActivityView extends AppCompatActivity {
         pd = new ProgressDialog(this);
         controller.getUserNameController();
         controller.getImageProfile();
+        ArrayList<Notification> lst=new ArrayList<>();
+        controller.GetNotifications(lst);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            NotificationChannel channel=new NotificationChannel("animal Chanel","animal Chanel", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager= getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
 
         sale.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,6 +172,25 @@ public class animalActivityView extends AppCompatActivity {
 
     public void setImage(User user) {
         Picasso.get().load(user.getImage()).placeholder(R.drawable.profile).into(profilePic);
+    }
+
+    public void SetNews(ArrayList<Notification> lst) {
+        if (!lst.isEmpty()) {
+            NotificationManagerCompat mange= NotificationManagerCompat.from(animalActivityView.this);
+            int k=1;
+            for (Notification s : lst) {
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(animalActivityView.this, "animal Chanel");
+                builder.setContentTitle("New event");
+                builder.setContentText(s.GetString());
+                builder.setSmallIcon(R.drawable.ic_launcher_background);
+                builder.setAutoCancel(true);
+                mange.notify(k,builder.build());
+                k++;
+            }
+            controller.setOld(lst);
+        }
+
+
     }
 }
 

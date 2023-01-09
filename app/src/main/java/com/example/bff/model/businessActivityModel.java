@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -25,6 +26,7 @@ public class businessActivityModel {
     private StorageReference storageReference;
     private FirebaseUser mAuth;
     private FirebaseAuth fAuth;
+    DatabaseReference reff;
 
 
     public businessActivityModel(businessActivityController controller) {
@@ -33,6 +35,7 @@ public class businessActivityModel {
         storageReference = storage.getReference();
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         fAuth =  FirebaseAuth.getInstance();
+        reff =  FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).child("news");
     }
 
     public void getUserNameModel(){
@@ -69,8 +72,9 @@ public class businessActivityModel {
     public void logout() {
         FirebaseAuth.getInstance().signOut();
     }
+
     public void GetNews(ArrayList<Notification> lst) {
-        FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).child("news").addValueEventListener(new ValueEventListener() {
+       this.reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
@@ -79,11 +83,11 @@ public class businessActivityModel {
                         Notification notification = dataSnapshot.getValue(Notification.class);
                         if(notification.getStatus().equals("new")) {
                             lst.add(notification);
-                            SetNewsToOld(notification,dataSnapshot.getKey());
                         }
 
                     }
                     controller.SetNews(lst);
+                    reff.removeEventListener(this);
                 }
             }
 
@@ -96,15 +100,17 @@ public class businessActivityModel {
 
     }
 
-    public void SetNewsToOld(Notification notification,String id) {
-        notification.SetNotNew();
-        FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).child("news").child(id).setValue(notification).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
+    public void  SetNewsToOld(ArrayList<Notification> lst){
+        for(Notification n: lst){
+            n.setStatus("old");
+            FirebaseDatabase.getInstance().getReference().child("Business").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("news").child(n.getId()).setValue(n).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 }
 
