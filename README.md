@@ -26,6 +26,9 @@ On the main screen, the user will be able to:
 - **View Queues–** Here you can see all the meetings you have had with the various business owners and the status of the request, whether it has been rejected or whether it is awaiting approval.
 - **Information–** Clicking on this button will open a dog and cat information website where you can find useful information about your animal , such as a guide on behavior problems and how to educate your dog and more ... 
 
+- **Viewing Sales–** here the user will be able to keep up to date with existing promotions from different businesses, and make an appointment directly to that business.
+
+
  <img width="200" src="https://user-images.githubusercontent.com/93201414/211199306-2c49063b-aaac-4ba8-a0a0-8b38242d03d9.png">
 
 ## Type User: Business owner
@@ -33,6 +36,7 @@ On the main screen, the user will be able to:
 - **Edit business–** You can update your user information at any time
 - **Add client–** Here you can see all the appointments waiting for your approval from the animals that have chosen to make an appointment with you
 - **View client–** Here you can see all the users you've approved the appointments for
+- **Send Sales–** In this window, the merchant will be able to advertise various discounts for dogs / cats or for both with the details of the discount. The business owner will be able to see the discounts he created and delete them if they are no longer relevant to him and will be transferred to a viewing window in the history of the discounts.
 
 <img width="200" alt="Capture" src="https://user-images.githubusercontent.com/93201414/211208592-51fb6834-41c7-4cf2-aff1-6f0a6cf32292.png">
 
