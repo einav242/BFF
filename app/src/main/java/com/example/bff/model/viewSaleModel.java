@@ -56,7 +56,6 @@ public class viewSaleModel {
                 }
                 controller.setListController(lst);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
