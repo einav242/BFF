@@ -23,6 +23,7 @@ public class viewSaleView extends AppCompatActivity {
     ArrayList<sale> lst;
     saleAdapter myadapt;
     viewSaleController controller;
+    String type;
 
 
     @Override
@@ -38,13 +39,14 @@ public class viewSaleView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list);
+        controller.getType();
         recyclerView = findViewById(R.id.Recycleview);
         controller=new viewSaleController(this);
         lst=new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         myadapt = new saleAdapter(lst,this,0);
         recyclerView.setAdapter(myadapt);
-        controller.SendControllerAdapter(lst);
+        controller.SendControllerAdapter(lst, type);
     }
 
 
@@ -71,5 +73,9 @@ public class viewSaleView extends AppCompatActivity {
         });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    public void setTypeView(String type) {
+        this.type = type;
     }
 }

@@ -25,7 +25,6 @@ public class MainActivityModel {
     }
 
     public void login( String username, String  passwordE, String permit){
-        System.out.println("user!!!"+username);
         this.permit = permit;
         mAuth.signInWithEmailAndPassword(username, passwordE).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
