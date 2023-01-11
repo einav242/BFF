@@ -52,7 +52,7 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
             public void onClick(View view) {
                 if(search != null)
                 {
-                    search.onItemClick(holder.email);
+                    search.onItemClick(business.getId());
                 }
             }
         });
@@ -66,7 +66,6 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
 
     public static class BusinessVh extends RecyclerView.ViewHolder{
         TextView Business_name, type;
-
         String email;
         Button button;
         CircleImageView profile;

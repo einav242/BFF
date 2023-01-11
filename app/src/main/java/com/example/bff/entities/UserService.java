@@ -7,5 +7,8 @@ import retrofit2.http.POST;
 public interface UserService {
     @POST("login/")
     Call<loginResponse> loginUser(@Body loginRequest login);
+
+    @POST("AccessLevel/")
+    Call<Boolean> checker(@Body String type);
 }
 

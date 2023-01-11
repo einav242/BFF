@@ -12,8 +12,8 @@ public class seeMoreController {
         this.view = view;
         model = new seeMoreModel(this);
     }
-    public void data(String email){
-        model.setDataModel(email);
+    public void data(String id){
+        model.setDataModel(id);
     }
     public void setDataController(Business business){
         view.setDataView(business);

@@ -31,7 +31,7 @@ public class seeMoreView extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            email = extras.getString("key");
+            id = extras.getString("key");
         }
         controller = new seeMoreController(this);
         send = findViewById(R.id.button7);
@@ -43,7 +43,7 @@ public class seeMoreView extends AppCompatActivity {
         tv_streetHouse = findViewById(R.id.textView37);
         tv_ActivityTime = findViewById(R.id.textView39);
         profilePic = findViewById(R.id.imageView2);
-        controller.data(email);
+        controller.data(id);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

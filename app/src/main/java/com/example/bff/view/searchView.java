@@ -178,9 +178,9 @@ public class searchView extends AppCompatActivity{
         recyclerView.setAdapter(adpt);
     }
 
-    public void onItemClick(String email) {
+    public void onItemClick(String id) {
         Intent intent = new Intent(searchView.this, seeMoreView.class);
-        intent.putExtra("key",email);
+        intent.putExtra("key",id);
         startActivity(intent);
     }
     public void setlstView( ArrayList<Business> lst){

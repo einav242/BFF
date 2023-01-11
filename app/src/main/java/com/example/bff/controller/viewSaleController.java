@@ -15,8 +15,8 @@ public class viewSaleController {
         model = new viewSaleModel(this);
     }
 
-    public void SendControllerAdapter(ArrayList<sale> lst, String type) {
-        model.sendModelAdapter(lst, type);
+    public void SendControllerAdapter(ArrayList<sale> lst) {
+        model.sendModelAdapter(lst);
     }
 
     public void setListController(ArrayList<sale> lst) {
@@ -31,11 +31,5 @@ public class viewSaleController {
         view.setScreenView();
     }
 
-    public void setTypeController(String type) {
-        view.setTypeView(type);
-    }
 
-    public void getType() {
-        model.findType();
-    }
 }

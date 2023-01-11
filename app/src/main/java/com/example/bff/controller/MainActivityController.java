@@ -35,14 +35,16 @@ public class MainActivityController {
     public void  toast_controller(String msg){
         view.toast_view(msg);
     }
-        public void passActivity_controller(@Nullable User user){
-            if (this.permit == "animal") {
-                view.toast_view("User logged in successfully");
-                view.paasAnimalActivity(user);
-            } else if (permit == "business") {
-                view.toast_view("User logged in successfully");
-                view.passBusinessActivity();
-            }
+
+    public void passActivity_controller(@Nullable User user){
+        if (this.permit == "animal") {
+            view.toast_view("User logged in successfully");
+            view.paasAnimalActivity(user);
+        } else if (permit == "business") {
+            view.toast_view("User logged in successfully");
+            System.out.println("here!!!!");
+            view.passBusinessActivity();
+        }
 
     }
 

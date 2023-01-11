@@ -15,11 +15,19 @@ public class clientSaleController {
         model = new clientSaleModel(this);
     }
 
-    public void SendControllerAdapter(ArrayList<sale> lst) {
-        model.sendModelAdapter(lst);
+    public void SendControllerAdapter(ArrayList<sale> lst, String type) {
+        model.sendModelAdapter(lst, type);
     }
 
     public void setListController(ArrayList<sale> lst) {
         view.setListView(lst);
+    }
+
+    public void setTypeController(String type) {
+        view.setTypeView(type);
+    }
+
+    public void getType() {
+        model.findTypeModel();
     }
 }

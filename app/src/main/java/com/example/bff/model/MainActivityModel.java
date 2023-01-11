@@ -37,17 +37,17 @@ public class MainActivityModel {
         login.setEmail(username);
         login.setPassword(passwordE);
         loginUser(login);
-//        mAuth.signInWithEmailAndPassword(username, passwordE).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//                if (task.isSuccessful()) {
-//                    checkUserAccesLevel(task.getResult().getUser().getUid());
-//                } else {
-//                    controller.toast_controller("Log in Error: " + task.getException().getMessage());
-//                }
-//            }
-//
-//        });
+        mAuth.signInWithEmailAndPassword(username, passwordE).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    checkUserAccesLevel(task.getResult().getUser().getUid());
+                } else {
+                    controller.toast_controller("Log in Error: " + task.getException().getMessage());
+                }
+            }
+
+        });
     }
 
     public void loginUser(loginRequest login){

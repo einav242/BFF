@@ -28,28 +28,16 @@ public class viewSaleModel {
         mroot = FirebaseDatabase.getInstance().getReference("Sales");
     }
 
-    public void findType(){
-        FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                controller.setTypeController(user.getType());
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });    }
-
-    public void sendModelAdapter(ArrayList<sale> lst, String type) {
+    public void sendModelAdapter(ArrayList<sale> lst) {
         mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren())
                 {
                     sale s = dataSnapshot.getValue(sale.class);
-                    if (s.getStatus().equals("ok") && (s.getAnimal().toLowerCase(Locale.ROOT).equals(type.toLowerCase(Locale.ROOT)) || s.getAnimal().equals("dog and cat")))
+                    if (s.getStatus().equals("ok"))
                     {
                         lst.add(s);
                     }

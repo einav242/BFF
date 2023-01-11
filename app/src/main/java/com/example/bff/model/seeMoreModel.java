@@ -22,18 +22,12 @@ public class seeMoreModel {
         databaseReference = FirebaseDatabase.getInstance().getReference("Business");
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
     }
-    public void setDataModel(String email){
-        databaseReference.addValueEventListener(new ValueEventListener() {
+    public void setDataModel(String id){
+        databaseReference.child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Business business = dataSnapshot.getValue(Business.class);
-                    if(business.getEmail().equals(email))
-                    {
-                        controller.setDataController(business);
-                        break;
-                    }
-                }
+                Business business = snapshot.getValue(Business.class);
+                controller.setDataController(business);
             }
 
             @Override

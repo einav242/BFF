@@ -18,7 +18,7 @@ public class clientSalesView extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<sale> lst;
     clientSaleAdapter myadapt;
-
+    String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,22 +26,29 @@ public class clientSalesView extends AppCompatActivity {
         setContentView(R.layout.activity_view_list);
         recyclerView = findViewById(R.id.Recycleview);
         controller = new clientSaleController(this);
+        controller.getType();
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         lst = new ArrayList<>();
         myadapt = new clientSaleAdapter(lst,this);
         recyclerView.setAdapter(myadapt);
-        controller.SendControllerAdapter(lst);
-
     }
     public void appointment(String id, String name, String image){
         Intent intent = new Intent(clientSalesView.this, seeMoreView.class);
         intent.putExtra("key",id);
-        intent.putExtra("name",name);
-        intent.putExtra("image",image);
         startActivity(intent);
     }
     public void setListView(ArrayList<sale> lst) {
         this.lst = lst;
         myadapt.notifyDataSetChanged();
+    }
+
+    public void setTypeView(String type) {
+        this.type = type;
+        controller.SendControllerAdapter(lst, type);
     }
 }
