@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -98,6 +99,9 @@ public class make_appointmentView extends AppCompatActivity {
                 txt_date = date.getText().toString();
                 String id="date: "+txt_date.replace('/','-')+" hour: "+txt_time;
                 controller.sendController(email,txt_date,txt_time,id,businessID,businessName,businessImage, userImage);
+                Intent intent = new Intent(make_appointmentView.this, seeMoreView.class);
+                intent.putExtra("key",businessID);
+                startActivity(intent);
             }
         });
     }
