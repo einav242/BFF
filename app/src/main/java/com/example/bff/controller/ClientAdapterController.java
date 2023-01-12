@@ -9,9 +9,9 @@ public class ClientAdapterController {
     ClientAdapterModel model;
     ClientAdapter view;
 
-    public ClientAdapterController(ClientAdapter view) {
+    public ClientAdapterController(ClientAdapter view, String id) {
         this.view = view;
-        model=new ClientAdapterModel(this);
+        model=new ClientAdapterModel(this, id);
     }
 
     public void SendController(queue q, String id) {

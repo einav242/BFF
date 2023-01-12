@@ -13,9 +13,9 @@ public class businessActivityController {
     businessActivityView view;
     businessActivityModel model;
 
-    public businessActivityController(businessActivityView view) {
+    public businessActivityController(businessActivityView view, String id) {
         this.view = view;
-        model = new businessActivityModel(this);
+        model = new businessActivityModel(this,id);
     }
 
     public void getUserNameController(){

@@ -42,7 +42,7 @@ public class editBusinessView extends AppCompatActivity {
     ProgressDialog pd;
     CircleImageView profilePic;
     public Uri imageUri;
-
+    String userID;
     String[] language ={"veterinary medicine","hairdressing salon","dog walker"};
 
     @Override
@@ -50,8 +50,10 @@ public class editBusinessView extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_business);
-
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            userID = extras.getString("key");
+        }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this,android.R.layout.select_dialog_item,language);
         AutoCompleteTextView actv = findViewById(R.id.register_BO_TypeOfBusiness);
@@ -76,7 +78,7 @@ public class editBusinessView extends AppCompatActivity {
 
 
         pd = new ProgressDialog(this);
-        controller = new editBusinessController(this);
+        controller = new editBusinessController(this, userID);
         controller.getImageController();
         controller.getDataController();
 
@@ -97,7 +99,9 @@ public class editBusinessView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 controller.updateImageController(imageUri);
-                startActivity(new Intent(editBusinessView.this, businessActivityView.class));
+                Intent intent = new Intent(editBusinessView.this, businessActivityView.class);
+                intent.putExtra("key",userID);
+                startActivity(intent);
             }
         });
 
@@ -112,7 +116,9 @@ public class editBusinessView extends AppCompatActivity {
     }
 
     public void passPage(){
-        startActivity(new Intent(editBusinessView.this, businessActivityView.class));
+        Intent intent = new Intent(editBusinessView.this, businessActivityView.class);
+        intent.putExtra("key",userID);
+        startActivity(intent);
     }
 
     //for add Image

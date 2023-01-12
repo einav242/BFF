@@ -26,24 +26,21 @@ import com.google.firebase.storage.UploadTask;
 
 
 import java.util.Date;
-import java.util.EnumSet;
 import java.util.HashMap;
-import java.util.Objects;
-import java.util.UUID;
 
 public class editBusinessModel {
 
     private editBusinessController controller;
-    private FirebaseUser mAuth;
     private DatabaseReference reference; //for the database that save already
     private FirebaseAuth fAuth;
     private FirebaseStorage storage;
     private StorageReference storageReference;
     private FirebaseDatabase database;
+    private String id;
 
-    public editBusinessModel(editBusinessController controller) {
+    public editBusinessModel(editBusinessController controller, String userID) {
+        this.id = userID;
         this.controller = controller;
-        this.mAuth = FirebaseAuth.getInstance().getCurrentUser();
         this.fAuth =  FirebaseAuth.getInstance();
         this.reference = FirebaseDatabase.getInstance().getReference("Business");
         this.storage = FirebaseStorage.getInstance();
@@ -52,7 +49,7 @@ public class editBusinessModel {
 
     }
     public void getImageModel(){
-        StorageReference riversRef = storageReference.child("Business").child(mAuth.getUid());
+        StorageReference riversRef = storageReference.child("Business").child(id);
         riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -62,7 +59,7 @@ public class editBusinessModel {
     }
 
     public void getDataModel(){
-        FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Business").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Business user = dataSnapshot.getValue(Business.class);
@@ -78,7 +75,7 @@ public class editBusinessModel {
     }
 
     public void updateModel(String newName,String newBusinessName, String newId, String newPhone, String newCity, String newStreet, String newHouseNumber, String newType, String newTime) {
-        FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Business").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Business user = dataSnapshot.getValue(Business.class);
@@ -95,7 +92,7 @@ public class editBusinessModel {
                 hashMap.put("street",newStreet);
                 hashMap.put("type",newType);
                 hashMap.put("time",newTime);
-                reference.child(mAuth.getUid()).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
+                reference.child(id).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
                     @Override
                     public void onSuccess(Object o) {
                         controller.setToastController("your Data is successfully Update");
@@ -131,7 +128,7 @@ public class editBusinessModel {
                         String filePath = uri.toString();
                         HashMap<String, Object> obj = new HashMap<>();
                         obj.put("image", filePath);
-                        reference.child(fAuth.getCurrentUser().getUid()).updateChildren(obj).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        reference.child(id).updateChildren(obj).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 controller.setImageController(imageUri);
@@ -153,7 +150,7 @@ public class editBusinessModel {
 
     public void updateImageModel(Uri imageUri) {
         if(imageUri != null){
-            StorageReference reference = storageReference.child("Business").child(mAuth.getUid());
+            StorageReference reference = storageReference.child("Business").child(id);
             reference.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
@@ -162,7 +159,7 @@ public class editBusinessModel {
                             @Override
                             public void onSuccess(Uri uri) {
                                 String i = uri.toString();
-                                database.getReference().child("Business").child(mAuth.getUid()).child("image").setValue(i).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                database.getReference().child("Business").child(id).child("image").setValue(i).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
                                         controller.pdDismissController();

@@ -18,12 +18,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class gotLostModel {
     DatabaseReference mRootRef;
-    private FirebaseUser mAuth;
     gotLostController controller;
+    String id;
 
-
-    public gotLostModel(gotLostController controller) {
-        mAuth = FirebaseAuth.getInstance().getCurrentUser();
+    public gotLostModel(gotLostController controller, String id) {
+        this.id = id;
         mRootRef = FirebaseDatabase.getInstance().getReference();
         this.controller = controller;
     }
@@ -48,7 +47,7 @@ public class gotLostModel {
     }
 
     public void found() {
-        FirebaseDatabase.getInstance().getReference("Got Lost").child(mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("Got Lost").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists() == false){
@@ -72,7 +71,7 @@ public class gotLostModel {
     }
 
     public void addLost() {
-        FirebaseDatabase.getInstance().getReference().child("Got Lost").child(mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Got Lost").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists())
@@ -81,7 +80,7 @@ public class gotLostModel {
                 }
                 else
                 {
-                    FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+                    FirebaseDatabase.getInstance().getReference().child("Users").child(id).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             User user = dataSnapshot.getValue(User.class);

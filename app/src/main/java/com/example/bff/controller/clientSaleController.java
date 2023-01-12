@@ -10,9 +10,9 @@ public class clientSaleController {
     clientSalesView view;
     clientSaleModel model;
 
-    public clientSaleController(clientSalesView view) {
+    public clientSaleController(clientSalesView view, String id) {
         this.view = view;
-        model = new clientSaleModel(this);
+        model = new clientSaleModel(this, id);
     }
 
     public void SendControllerAdapter(ArrayList<sale> lst, String type) {

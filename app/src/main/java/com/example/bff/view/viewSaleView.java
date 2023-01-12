@@ -23,12 +23,14 @@ public class viewSaleView extends AppCompatActivity {
     ArrayList<sale> lst;
     saleAdapter myadapt;
     viewSaleController controller;
-
+    String id;
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(viewSaleView.this , saleView.class));
+        Intent intent = new Intent(viewSaleView.this , saleView.class);
+        intent.putExtra("key",id);
+        startActivity(intent);
         finish();
     }
 
@@ -38,8 +40,12 @@ public class viewSaleView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getString("key");
+        }
         recyclerView = findViewById(R.id.Recycleview);
-        controller=new viewSaleController(this);
+        controller=new viewSaleController(this, this.id);
         lst=new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         myadapt = new saleAdapter(lst,this,0);
@@ -50,6 +56,7 @@ public class viewSaleView extends AppCompatActivity {
 
     public void setScreenView(){
         Intent intent = new Intent(viewSaleView.this, viewSaleView.class);
+        intent.putExtra("key",id);
         startActivity(intent);
         finish();
     }

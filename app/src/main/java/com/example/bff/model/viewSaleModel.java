@@ -3,7 +3,6 @@ package com.example.bff.model;
 import androidx.annotation.NonNull;
 
 import com.example.bff.controller.viewSaleController;
-import com.example.bff.entities.User;
 import com.example.bff.entities.sale;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -15,23 +14,22 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class viewSaleModel {
     viewSaleController controller;
-    FirebaseAuth mAuth;
     DatabaseReference mroot;
+    String id;
 
-    public viewSaleModel(viewSaleController controller) {
+    public viewSaleModel(viewSaleController controller, String id) {
+        this.id = id;
         this.controller = controller;
-        mAuth = FirebaseAuth.getInstance();
         mroot = FirebaseDatabase.getInstance().getReference("Sales");
     }
 
 
 
     public void sendModelAdapter(ArrayList<sale> lst) {
-        mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+        mroot.child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren())
@@ -54,7 +52,7 @@ public class viewSaleModel {
 
     public void removeSaleModel(sale s) {
         s.setStatus("delete");
-        FirebaseDatabase.getInstance().getReference("Sales").child(mAuth.getCurrentUser().getUid()).child(s.getKey()).setValue(s).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference("Sales").child(this.id).child(s.getKey()).setValue(s).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){

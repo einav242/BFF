@@ -13,21 +13,22 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class clientSaleModel {
     clientSaleController controller;
     FirebaseAuth mAuth;
     DatabaseReference mroot;
+    String id;
 
-    public clientSaleModel(clientSaleController controller) {
+    public clientSaleModel(clientSaleController controller, String id) {
+        this.id = id;
         this.controller = controller;
         mAuth = FirebaseAuth.getInstance();
         mroot = FirebaseDatabase.getInstance().getReference("Sales");
 
     }
     public void findTypeModel(){
-        FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Users").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);

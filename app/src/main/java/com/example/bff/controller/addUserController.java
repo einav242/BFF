@@ -10,9 +10,9 @@ public class addUserController {
     addUserView view;
     addUserModel model;
 
-    public addUserController(addUserView view) {
+    public addUserController(addUserView view,String id) {
         this.view = view;
-        model = new addUserModel(this);
+        model = new addUserModel(this, id);
     }
 
     public void RunApdater(ArrayList<queue> lst) {

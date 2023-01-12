@@ -21,14 +21,18 @@ public class getLostView extends AppCompatActivity {
     private ImageButton found;
     ProgressDialog pd;
     private User user;
+    String id;
     private gotLostController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_lost);
-
-        controller = new gotLostController(this);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getString("key");
+        }
+        controller = new gotLostController(this,id);
 
         pd = new ProgressDialog(this);
         addLost = findViewById(R.id.get_lost_IgotLost);
@@ -48,7 +52,9 @@ public class getLostView extends AppCompatActivity {
         lostView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getLostView.this, list_gotLost_newView.class));
+                Intent intent = new Intent(getLostView.this, list_gotLost_newView.class);
+                intent.putExtra("key",id);
+                startActivity(intent);
             }
         });
 
@@ -67,6 +73,7 @@ public class getLostView extends AppCompatActivity {
 
     public void p() {
         Intent intent = new Intent(getLostView.this, animalActivityView.class);
+        intent.putExtra("key",id);
         startActivity(intent);
         finish();
     }

@@ -42,7 +42,7 @@ public class animalActivityView extends AppCompatActivity {
     private Button logOut;
     private animalActivityController controller;
     private String userName;
-
+    private String id;
 
     public Uri imageUri;
     CircleImageView profilePic;
@@ -53,9 +53,11 @@ public class animalActivityView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal_window);
-
-
-        controller = new animalActivityController(this);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getString("key");
+        }
+        controller = new animalActivityController(this, id);
         getlost = findViewById(R.id.imageButton2);
         information = findViewById(R.id.imageButton10);
         edit = findViewById(R.id.imageButton8);
@@ -80,7 +82,9 @@ public class animalActivityView extends AppCompatActivity {
         sale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(animalActivityView.this, clientSalesView.class));
+                Intent intent = new Intent(animalActivityView.this, clientSalesView.class);
+                intent.putExtra("key",id);
+                startActivity(intent);
 
             }
         });
@@ -89,7 +93,9 @@ public class animalActivityView extends AppCompatActivity {
         getlost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(animalActivityView.this, getLostView.class));
+                Intent intent = new Intent(animalActivityView.this, getLostView.class);
+                intent.putExtra("key",id);
+                startActivity(intent);
             }
         });
 
@@ -102,14 +108,18 @@ public class animalActivityView extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(animalActivityView.this, EditUserProfileView.class));
+                Intent intent = new Intent(animalActivityView.this, EditUserProfileView.class);
+                intent.putExtra("key",id);
+                startActivity(intent);
 
             }
         });
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(animalActivityView.this, searchView.class));
+                Intent intent = new Intent(animalActivityView.this, searchView.class);
+                intent.putExtra("key",id);
+                startActivity(intent);
 
             }
         });
@@ -140,6 +150,7 @@ public class animalActivityView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(animalActivityView.this, viewQueueView.class);
+                intent.putExtra("key",id);
                 startActivity(intent);
                 finish();
             }

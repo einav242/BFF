@@ -1,10 +1,7 @@
 package com.example.bff.controller;
 
-import android.net.Uri;
-
 import com.example.bff.entities.User;
 import com.example.bff.model.list_gotLostModel;
-import com.example.bff.view.AnimalAdapter;
 import com.example.bff.view.list_gotLost_newView;
 
 import java.util.ArrayList;

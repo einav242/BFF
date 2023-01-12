@@ -7,9 +7,9 @@ public class make_appointmentController {
     make_appointmentModel model;
     make_appointmentView view;
 
-    public make_appointmentController(make_appointmentView view) {
+    public make_appointmentController(make_appointmentView view, String id) {
         this.view = view;
-        model = new make_appointmentModel(this);
+        model = new make_appointmentModel(this, id);
     }
     public void getEmailController(){
         model.getEmailModel();

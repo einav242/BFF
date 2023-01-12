@@ -9,6 +9,9 @@ public interface UserService {
     Call<loginResponse> loginUser(@Body loginRequest login);
 
     @POST("AccessLevel/")
-    Call<Boolean> checker(@Body String type);
+    Call<String> checker(@Body AccessLevel level);
+
+    @POST("RegisterUser/")
+    Call<User> register(@Body RegisterUser user);
 }
 

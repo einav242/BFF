@@ -17,18 +17,18 @@ import java.util.ArrayList;
 
 public class historyModel {
     historyController controller;
-    FirebaseAuth mAuth;
     DatabaseReference mroot;
+    String id;
 
-    public historyModel(historyController controller) {
+    public historyModel(historyController controller, String id) {
+        this.id = id;
         this.controller = controller;
-        mAuth = FirebaseAuth.getInstance();
         mroot = FirebaseDatabase.getInstance().getReference("Sales");
 
     }
 
     public void sendModelAdapter(ArrayList<sale> lst) {
-        mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+        mroot.child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren())
@@ -51,7 +51,7 @@ public class historyModel {
 
     public void returnSaleModel(sale s) {
         s.setStatus("ok");
-        FirebaseDatabase.getInstance().getReference("Sales").child(mAuth.getCurrentUser().getUid()).child(s.getKey()).setValue(s).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference("Sales").child(id).child(s.getKey()).setValue(s).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){

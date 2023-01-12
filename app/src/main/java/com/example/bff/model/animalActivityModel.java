@@ -35,7 +35,6 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class animalActivityModel {
-    private FirebaseUser mAuth;
     public String userName;
     private FirebaseAuth fAuth;
     private StorageReference storageReference;
@@ -43,20 +42,21 @@ public class animalActivityModel {
     animalActivityController controller;
     private DatabaseReference reference;
     DatabaseReference reff ;
+    String id;
 
 
-    public animalActivityModel(animalActivityController controller) {
-        this.mAuth = FirebaseAuth.getInstance().getCurrentUser();
+    public animalActivityModel(animalActivityController controller, String id) {
+        this.id = id;
         this.storage = FirebaseStorage.getInstance();
         this.storageReference = storage.getReference();
         this.fAuth = FirebaseAuth.getInstance();
         this.controller = controller;
         this.reference = FirebaseDatabase.getInstance().getReference("Users");
-        this.reff = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).child("news");
+        this.reff = FirebaseDatabase.getInstance().getReference().child("Users").child(id).child("news");
     }
 
     public void imageListener() {
-        StorageReference riversRef = storageReference.child("Users").child(mAuth.getUid());
+        StorageReference riversRef = storageReference.child("Users").child(id);
         riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -89,7 +89,7 @@ public class animalActivityModel {
                         String filePath = uri.toString();
                         HashMap<String, Object> obj = new HashMap<>();
                         obj.put("image", filePath);
-                        reference.child(fAuth.getCurrentUser().getUid()).updateChildren(obj).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        reference.child(id).updateChildren(obj).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 controller.setImageController(imageUri);
@@ -110,7 +110,7 @@ public class animalActivityModel {
     }
 
     public void getUserNameModel() {
-        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Users").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
@@ -126,7 +126,7 @@ public class animalActivityModel {
 
 
     public void getImageProfileModel() {
-        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Users").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
@@ -169,7 +169,7 @@ public class animalActivityModel {
     public void  SetNewsToOld(ArrayList<Notification> lst){
         for(Notification n: lst){
             n.setStatus("old");
-            FirebaseDatabase.getInstance().getReference().child("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("news").child(n.getId()).setValue(n).addOnCompleteListener(new OnCompleteListener<Void>() {
+            FirebaseDatabase.getInstance().getReference().child("Users").child(id).child("news").child(n.getId()).setValue(n).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){

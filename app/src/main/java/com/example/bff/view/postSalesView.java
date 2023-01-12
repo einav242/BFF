@@ -20,11 +20,14 @@ public class postSalesView extends AppCompatActivity {
     postSalesController controller;
     String choice;
     ProgressDialog pd;
+    String id;
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(postSalesView.this , saleView.class));
+        Intent intent = new Intent(postSalesView.this , saleView.class);
+        intent.putExtra("key",id);
+        startActivity(intent);
         finish();
     }
 
@@ -33,7 +36,11 @@ public class postSalesView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_sales);
-        controller = new postSalesController(this);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getString("key");
+        }
+        controller = new postSalesController(this,id);
         pd = new ProgressDialog(this);
         send = findViewById(R.id.button12);
         description = findViewById(R.id.editTextTextPersonName6);
@@ -66,7 +73,10 @@ public class postSalesView extends AppCompatActivity {
 
     public void setToastView(String msg){
         Toast.makeText(postSalesView.this,msg,Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(postSalesView.this, saleView.class));
+        Intent intent = new Intent(postSalesView.this , saleView.class);
+        intent.putExtra("key",id);
+        startActivity(intent);
+        finish();
     }
     public void setPd(){
         pd.dismiss();

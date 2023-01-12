@@ -19,12 +19,14 @@ public class addUserView extends AppCompatActivity {
     ClientAdapter myadapt;
     addUserController controller;
     TextView empty;
-
+    String id;
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(addUserView.this , businessActivityView.class));
+        Intent intent = new Intent(addUserView.this , businessActivityView.class);
+        intent.putExtra("key",id);
+        startActivity(intent);
         finish();
     }
 
@@ -32,12 +34,16 @@ public class addUserView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getString("key");
+        }
         empty = findViewById(R.id.textView41);
-        controller = new addUserController(this);
+        controller = new addUserController(this, this.id);
         recyclerView = findViewById(R.id.Recycleview);
         lst=new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        myadapt = new ClientAdapter(lst,this,0);
+        myadapt = new ClientAdapter(lst,this,0, this.id);
         recyclerView.setAdapter(myadapt);
         controller.RunApdater(lst);
     }
@@ -52,6 +58,7 @@ public class addUserView extends AppCompatActivity {
 
     public void removeItem(){
         Intent intent = new Intent(addUserView.this, addUserView.class);
+        intent.putExtra("key",this.id);
         startActivity(intent);
         finish();
     }

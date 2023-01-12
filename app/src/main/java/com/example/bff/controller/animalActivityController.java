@@ -16,8 +16,8 @@ public class animalActivityController {
     animalActivityView view;
 
 
-    public animalActivityController(animalActivityView view) {
-        model = new animalActivityModel(this);
+    public animalActivityController(animalActivityView view,String id) {
+        model = new animalActivityModel(this, id);
         this.view = view;
     }
 

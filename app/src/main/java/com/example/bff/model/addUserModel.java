@@ -21,15 +21,17 @@ public class addUserModel {
     addUserController controller;
     DatabaseReference mroot;
     FirebaseAuth mAuth;
+    String id;
 
-    public addUserModel(addUserController controller) {
+    public addUserModel(addUserController controller, String id) {
+        this.id = id;
         this.controller = controller;
         mAuth = FirebaseAuth.getInstance();
         mroot = FirebaseDatabase.getInstance().getReference("queue");
     }
 
     public void getListModel(ArrayList<queue> lst){
-        mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+        mroot.child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren())

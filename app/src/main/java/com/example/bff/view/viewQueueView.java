@@ -23,11 +23,13 @@ public class viewQueueView extends AppCompatActivity{
     HashMap<String,String> names;
     viewQueueController controller;
     TextView empty;
+    String id;
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(viewQueueView.this, animalActivityView.class);
+        intent.putExtra("key",this.id);
         startActivity(intent);
     }
 
@@ -35,7 +37,10 @@ public class viewQueueView extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list);
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getString("key");
+        }
         controller = new viewQueueController(this);
         controller.getBusinessNameController();
         recyclerView = findViewById(R.id.Recycleview);

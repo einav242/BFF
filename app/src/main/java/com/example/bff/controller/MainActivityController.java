@@ -2,12 +2,8 @@ package com.example.bff.controller;
 
 import android.text.TextUtils;
 
-import com.example.bff.entities.User;
 import com.example.bff.model.MainActivityModel;
 import com.example.bff.view.MainActivityView;
-
-
-import javax.annotation.Nullable;
 
 public class MainActivityController {
 
@@ -36,14 +32,13 @@ public class MainActivityController {
         view.toast_view(msg);
     }
 
-    public void passActivity_controller(@Nullable User user){
+    public void passActivity_controller(String uid){
         if (this.permit == "animal") {
             view.toast_view("User logged in successfully");
-            view.paasAnimalActivity(user);
+            view.paasAnimalActivity(uid);
         } else if (permit == "business") {
             view.toast_view("User logged in successfully");
-            System.out.println("here!!!!");
-            view.passBusinessActivity();
+            view.passBusinessActivity(uid);
         }
 
     }

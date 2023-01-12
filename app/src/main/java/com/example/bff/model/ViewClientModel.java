@@ -18,16 +18,17 @@ public class ViewClientModel {
     ViewClientController controller;
     FirebaseAuth mAuth;
     DatabaseReference mroot;
+    String id;
 
-
-    public ViewClientModel(ViewClientController viewClientController) {
+    public ViewClientModel(ViewClientController viewClientController, String id) {
+        this.id = id;
         controller=viewClientController;
         mAuth = FirebaseAuth.getInstance();
         mroot = FirebaseDatabase.getInstance().getReference("queue");
     }
 
     public void SendModelAdpter(ArrayList<queue> lst) {
-        mroot.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+        mroot.child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren())
