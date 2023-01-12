@@ -19,13 +19,18 @@ public class clientSalesView extends AppCompatActivity {
     ArrayList<sale> lst;
     clientSaleAdapter myadapt;
     String type;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getString("key");
+        }
         recyclerView = findViewById(R.id.Recycleview);
-        controller = new clientSaleController(this);
+        controller = new clientSaleController(this, id);
         controller.getType();
         try {
             Thread.sleep(50);
@@ -40,6 +45,7 @@ public class clientSalesView extends AppCompatActivity {
     public void appointment(String id, String name, String image){
         Intent intent = new Intent(clientSalesView.this, seeMoreView.class);
         intent.putExtra("key",id);
+        intent.putExtra("userID",this.id);
         startActivity(intent);
     }
     public void setListView(ArrayList<sale> lst) {

@@ -7,9 +7,9 @@ public class postSalesController {
     postSalesModel model;
     postSalesView view;
 
-    public postSalesController(postSalesView view) {
+    public postSalesController(postSalesView view, String id) {
         this.view = view;
-        model = new postSalesModel(this);
+        model = new postSalesModel(this, id);
     }
 
     public void sendSalesController(String description, String choice) {

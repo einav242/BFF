@@ -1,6 +1,8 @@
 package com.example.bff.model;
 
 import androidx.annotation.NonNull;
+
+import com.example.bff.entities.AccessLevel;
 import com.example.bff.entities.User;
 import com.example.bff.controller.MainActivityController;
 import com.example.bff.entities.loginRequest;
@@ -16,17 +18,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.checkerframework.checker.units.qual.A;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivityModel {
-    FirebaseAuth mAuth;
-    private DatabaseReference mData;
     private MainActivityController controller;
     String permit;
     public MainActivityModel(MainActivityController controller) {
-        mAuth = FirebaseAuth.getInstance();
         this.controller = controller;
         permit = "empty";
     }
@@ -37,17 +38,6 @@ public class MainActivityModel {
         login.setEmail(username);
         login.setPassword(passwordE);
         loginUser(login);
-        mAuth.signInWithEmailAndPassword(username, passwordE).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    checkUserAccesLevel(task.getResult().getUser().getUid());
-                } else {
-                    controller.toast_controller("Log in Error: " + task.getException().getMessage());
-                }
-            }
-
-        });
     }
 
     public void loginUser(loginRequest login){
@@ -72,30 +62,38 @@ public class MainActivityModel {
 
     private void checkUserAccesLevel(String uid) {
         String permit = this.permit;
+        String type ="";
         if(permit=="animal") {
-            mData = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
+            type ="Users";
         }
         if(permit=="business"){
-            mData = FirebaseDatabase.getInstance().getReference().child("Business").child(uid);
+            type = "Business";
         }
-        mData.addListenerForSingleValueEvent(new ValueEventListener() {
+        AccessLevel level = new AccessLevel();
+        level.setType(type);
+        level.setUid(uid);
+        Call<String> booleanCall = serverAPI.getService().checker(level);
+        booleanCall.enqueue(new Callback<String>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    User user =  snapshot.getValue(User.class);
-                    controller.passActivity_controller(user);
+            public void onResponse(Call<String> call, Response<String> response) {
+                String res = response.body();
+                if(response.isSuccessful()){
+                    if(res.equals("true")){
+                        controller.passActivity_controller(uid);
+                    }
+                    else {
+                        controller.toast_controller("Log in Error: User Not Exist at that section");
+                    }
+                }else{
+                    controller.toast_controller("Log in Error on response");
                 }
-                else{
-                    controller.toast_controller("Log in Error: User Not Exist at that section");
-                }
-
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onFailure(Call<String> call, Throwable t) {
+                controller.toast_controller("Log in Error: AccessLevel");
             }
         });
+
     }
 
 }

@@ -12,9 +12,9 @@ public class editBusinessController {
     editBusinessView view;
 
 
-    public editBusinessController(editBusinessView view) {
+    public editBusinessController(editBusinessView view, String userID) {
         this.view = view;
-        model = new editBusinessModel(this);
+        model = new editBusinessModel(this, userID);
     }
 
     public void setDataController(String email ,String name, String businessName, String id ,String phone, String city,String street,

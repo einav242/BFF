@@ -37,13 +37,15 @@ public class searchView extends AppCompatActivity{
     private Button all;
     private String currentSearchTextCity = "";
     private String selectedFilter = "all";
-
+    private String id;
     TextView empty;
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(searchView.this, animalActivityView.class));
+        Intent intent = new Intent(searchView.this, animalActivityView.class);
+        intent.putExtra("key",this.id);
+        startActivity(intent);
         finish();
     }
 
@@ -52,7 +54,10 @@ public class searchView extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            this.id = extras.getString("key");
+        }
         controller = new searchController(this);
         recyclerView = findViewById(R.id.recyclebusiness);
         lst = new ArrayList<>();
@@ -181,6 +186,7 @@ public class searchView extends AppCompatActivity{
     public void onItemClick(String id) {
         Intent intent = new Intent(searchView.this, seeMoreView.class);
         intent.putExtra("key",id);
+        intent.putExtra("userID",this.id);
         startActivity(intent);
     }
     public void setlstView( ArrayList<Business> lst){

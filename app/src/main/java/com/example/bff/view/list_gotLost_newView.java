@@ -38,7 +38,7 @@ public class list_gotLost_newView extends AppCompatActivity {
     private ImageButton cat;
     private ImageButton dog;
     private Button all;
-
+    private String id;
     private String currentSearchTextColor = "";
     private String selectedFilter = "all";
 
@@ -48,7 +48,9 @@ public class list_gotLost_newView extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(list_gotLost_newView.this, animalActivityView.class));
+        Intent intent = new Intent(list_gotLost_newView.this, animalActivityView.class);
+        intent.putExtra("key",id);
+        startActivity(intent);
         finish();
     }
 
@@ -56,7 +58,10 @@ public class list_gotLost_newView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_got_lost_new);
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getString("key");
+        }
         controller = new list_gotLostController(this);
         recyclerView = findViewById(R.id.recycleView);
         empty = findViewById(R.id.textViewgotLost);

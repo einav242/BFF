@@ -38,7 +38,7 @@ public class EditUserProfileView extends AppCompatActivity {
     EditUserProfileController controller;
     ProgressDialog pd;
     CircleImageView profilePic;
-
+    String id;
 
 //    private ImageView profilePic;
     public Uri imageUri;
@@ -50,7 +50,10 @@ public class EditUserProfileView extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user_profile);
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getString("key");
+        }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this,android.R.layout.select_dialog_item,language);
         AutoCompleteTextView actv = findViewById(R.id.getlost_type);
@@ -72,7 +75,7 @@ public class EditUserProfileView extends AppCompatActivity {
 
 
         pd = new ProgressDialog(this);
-        controller = new EditUserProfileController(this);
+        controller = new EditUserProfileController(this, id);
         controller.getImageController();
         controller.getDataController();
 
@@ -93,7 +96,9 @@ public class EditUserProfileView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 controller.updateController(edFullName.getText().toString(), edAnimalName.getText().toString(), editPhone.getText().toString() , editBreed.getText().toString() , editColor.getText().toString() , editType.getText().toString());
-                startActivity(new Intent(EditUserProfileView.this, animalActivityView.class));
+                Intent intent = new Intent(EditUserProfileView.this, animalActivityView.class);
+                intent.putExtra("key",id);
+                startActivity(intent);
             }
         });
 
@@ -101,7 +106,9 @@ public class EditUserProfileView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 controller.updateImageController(imageUri);
-                startActivity(new Intent(EditUserProfileView.this, animalActivityView.class));
+                Intent intent = new Intent(EditUserProfileView.this, animalActivityView.class);
+                intent.putExtra("key",id);
+                startActivity(intent);
             }
         });
 

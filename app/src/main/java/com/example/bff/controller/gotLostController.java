@@ -7,9 +7,9 @@ public class gotLostController {
     gotLostModel model;
     getLostView view;
 
-    public gotLostController(getLostView view) {
+    public gotLostController(getLostView view, String id) {
         this.view = view;
-        model = new gotLostModel(this);
+        model = new gotLostModel(this, id);
     }
 
     public void found() {

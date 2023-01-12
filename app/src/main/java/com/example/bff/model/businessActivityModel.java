@@ -24,22 +24,21 @@ public class businessActivityModel {
     businessActivityController controller;
     private FirebaseStorage storage;
     private StorageReference storageReference;
-    private FirebaseUser mAuth;
     private FirebaseAuth fAuth;
     DatabaseReference reff;
+    String id;
 
-
-    public businessActivityModel(businessActivityController controller) {
+    public businessActivityModel(businessActivityController controller, String id) {
+        this.id = id;
         this.controller = controller;
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        mAuth = FirebaseAuth.getInstance().getCurrentUser();
         fAuth =  FirebaseAuth.getInstance();
-        reff =  FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).child("news");
+        reff =  FirebaseDatabase.getInstance().getReference().child("Business").child(id).child("news");
     }
 
     public void getUserNameModel(){
-        FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Business").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Business user = dataSnapshot.getValue(Business.class);
@@ -55,7 +54,7 @@ public class businessActivityModel {
 
 
     public void getImageProfileModel() {
-        FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Business").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Business user = dataSnapshot.getValue(Business.class);
@@ -103,7 +102,7 @@ public class businessActivityModel {
     public void  SetNewsToOld(ArrayList<Notification> lst){
         for(Notification n: lst){
             n.setStatus("old");
-            FirebaseDatabase.getInstance().getReference().child("Business").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("news").child(n.getId()).setValue(n).addOnCompleteListener(new OnCompleteListener<Void>() {
+            FirebaseDatabase.getInstance().getReference().child("Business").child(id).child("news").child(n.getId()).setValue(n).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){

@@ -21,12 +21,14 @@ public class historyView extends AppCompatActivity {
     ArrayList<sale> lst;
     saleAdapter myadapt;
     historyController controller;
-
+    String id;
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(historyView.this , saleView.class));
+        Intent intent = new Intent(historyView.this , saleView.class);
+        intent.putExtra("key",id);
+        startActivity(intent);
         finish();
     }
 
@@ -35,8 +37,12 @@ public class historyView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getString("key");
+        }
         recyclerView = findViewById(R.id.Recycleview);
-        controller=new historyController(this);
+        controller=new historyController(this, this.id);
         lst=new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         myadapt = new saleAdapter(lst,this,1);
@@ -47,6 +53,7 @@ public class historyView extends AppCompatActivity {
 
     public void setScreenView(){
         Intent intent = new Intent(historyView.this, historyView.class);
+        intent.putExtra("key",id);
         startActivity(intent);
         finish();
     }

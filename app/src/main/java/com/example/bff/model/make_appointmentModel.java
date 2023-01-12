@@ -17,16 +17,16 @@ import com.google.firebase.database.ValueEventListener;
 
 public class make_appointmentModel {
     make_appointmentController controller;
-    private FirebaseAuth mAuth;
     int count;
+    String id;
 
-    public make_appointmentModel(make_appointmentController controller) {
+    public make_appointmentModel(make_appointmentController controller, String id) {
+        this.id = id;
         this.controller = controller;
-        mAuth = FirebaseAuth.getInstance();
     }
 
     public void getEmailModel(){
-        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Users").child(this.id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);

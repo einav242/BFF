@@ -40,7 +40,7 @@ public class businessActivityView extends AppCompatActivity {
     private TextView title;
     private businessActivityController controller;
     private Button logOut;
-
+    private String id;
 
     private ProgressDialog pd;
     CircleImageView profilePic;
@@ -53,6 +53,10 @@ public class businessActivityView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_window);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getString("key");
+        }
         view = findViewById(R.id.imageButton5);
         insert = findViewById(R.id.imageButton3);
         edit = findViewById(R.id.imageButton8);
@@ -61,7 +65,7 @@ public class businessActivityView extends AppCompatActivity {
         logOut = findViewById(R.id.singUp_LogOut);
         sales = findViewById(R.id.imageButton6);
         pd = new ProgressDialog(this);
-        controller = new businessActivityController(this);
+        controller = new businessActivityController(this,id);
         controller.getUserNameController();
         controller.getImageProfile();
         ArrayList<Notification> lst=new ArrayList<>();
@@ -72,11 +76,12 @@ public class businessActivityView extends AppCompatActivity {
             manager.createNotificationChannel(channel);
         }
 
-
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(businessActivityView.this, viewClient.class));
+                Intent intent = new Intent(businessActivityView.this, viewClient.class);
+                intent.putExtra("key",id);
+                startActivity(intent);
                 finish();
             }
         });
@@ -84,20 +89,26 @@ public class businessActivityView extends AppCompatActivity {
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(businessActivityView.this, addUserView.class));
+                Intent intent = new Intent(businessActivityView.this, addUserView.class);
+                intent.putExtra("key",id);
+                startActivity(intent);
             }
         });
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(businessActivityView.this, editBusinessView.class));
+                Intent intent = new Intent(businessActivityView.this, editBusinessView.class);
+                intent.putExtra("key",id);
+                startActivity(intent);
             }
         });
         sales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(businessActivityView.this, saleView.class));
+                Intent intent = new Intent(businessActivityView.this, saleView.class);
+                intent.putExtra("key",id);
+                startActivity(intent);
             }
         });
 

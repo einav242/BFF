@@ -13,9 +13,9 @@ public class EditUserProfileController {
     EditUserProfileView view;
 
 
-    public EditUserProfileController(EditUserProfileView view) {
+    public EditUserProfileController(EditUserProfileView view, String id) {
         this.view = view;
-        model = new EditUserProfileModel(this);
+        model = new EditUserProfileModel(this, id);
     }
 
     public void setDataController(String name, String username, String email, String phone , String breed , String color , String type) {

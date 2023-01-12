@@ -13,30 +13,25 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.SQLOutput;
-
-import io.grpc.internal.JsonUtil;
-
 public class postSalesModel {
     postSalesController controller;
-    private FirebaseAuth mAuth;
     int count = 0;
+    String id;
 
-
-    public postSalesModel(postSalesController controller) {
+    public postSalesModel(postSalesController controller, String id) {
+        this.id = id;
         this.controller = controller;
-        mAuth = FirebaseAuth.getInstance();
     }
 
 
     public void sendSalesModel(String description, String choice) {
         count();
-        FirebaseDatabase.getInstance().getReference().child("Business").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Business").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Business user = dataSnapshot.getValue(Business.class);
-                sale s = new sale(description, user.getUsername(), choice, user.getPhone(),String.valueOf(count),"ok",mAuth.getUid(),user.getImage());
-                FirebaseDatabase.getInstance().getReference().child("Sales").child(mAuth.getUid()).child(String.valueOf(count)).setValue(s).addOnCompleteListener(new OnCompleteListener<Void>() {
+                sale s = new sale(description, user.getUsername(), choice, user.getPhone(),String.valueOf(count),"ok",id,user.getImage());
+                FirebaseDatabase.getInstance().getReference().child("Sales").child(id).child(String.valueOf(count)).setValue(s).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
@@ -54,7 +49,7 @@ public class postSalesModel {
 
 
     public void count(){
-        FirebaseDatabase.getInstance().getReference().child("Sales").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Sales").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {

@@ -10,9 +10,9 @@ public class ViewClientController {
     viewClient view;
     ViewClientModel model;
 
-    public ViewClientController(viewClient view) {
+    public ViewClientController(viewClient view,String id) {
         this.view = view;
-        model=new ViewClientModel(this);
+        model=new ViewClientModel(this, id);
     }
 
     public void SendControllerAdapter(ArrayList<queue> lst) {

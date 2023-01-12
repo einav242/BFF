@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bff.R;
-import com.example.bff.entities.User;
 import com.example.bff.controller.MainActivityController;
 
 
@@ -103,15 +102,16 @@ public class MainActivityView extends AppCompatActivity {
 
         Toast.makeText(MainActivityView.this,msg, Toast.LENGTH_SHORT).show();
     }
-    public void paasAnimalActivity(User user){
+    public void paasAnimalActivity(String uid){
         Intent intent=new Intent(MainActivityView.this, animalActivityView.class);
-        intent.putExtra("key", user);
+        intent.putExtra("key",uid);
         startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
         finish();
     }
-    public void passBusinessActivity(){
-        System.out.println("here");
-        startActivity(new Intent(MainActivityView.this, businessActivityView.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+    public void passBusinessActivity(String uid){
+        Intent intent = new Intent(MainActivityView.this, businessActivityView.class);
+        intent.putExtra("key",uid);
+        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
         finish();
     }
 }

@@ -10,9 +10,9 @@ public class historyController {
     historyView view;
     historyModel model;
 
-    public historyController(historyView view) {
+    public historyController(historyView view, String id) {
         this.view = view;
-        model = new historyModel(this);
+        model = new historyModel(this, id);
     }
 
     public void SendControllerAdapter(ArrayList<sale> lst) {

@@ -15,12 +15,11 @@ import com.google.firebase.database.ValueEventListener;
 public class seeMoreModel {
     seeMoreController controller;
     DatabaseReference databaseReference;
-    private FirebaseUser mAuth;
+    String id;
 
     public seeMoreModel(seeMoreController controller) {
         this.controller = controller;
         databaseReference = FirebaseDatabase.getInstance().getReference("Business");
-        mAuth = FirebaseAuth.getInstance().getCurrentUser();
     }
     public void setDataModel(String id){
         databaseReference.child(id).addValueEventListener(new ValueEventListener() {

@@ -28,6 +28,7 @@ public class make_appointmentView extends AppCompatActivity {
     Button send;
     ProgressDialog pd;
     String email;
+    String userID;
     make_appointmentController controller;
     int mYear, mMonth, mDay, mHour, mMinute;
 
@@ -40,8 +41,9 @@ public class make_appointmentView extends AppCompatActivity {
             businessID = extras.getString("key");
             businessName = extras.getString("name");
             businessImage = extras.getString("image");
+            userID = extras.getString("userID");
         }
-        controller = new make_appointmentController(this);
+        controller = new make_appointmentController(this,userID);
         pd = new ProgressDialog(this);
         date = findViewById(R.id.editTextDate);
         time = findViewById(R.id.editTextTime);

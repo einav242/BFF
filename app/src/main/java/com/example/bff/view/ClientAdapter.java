@@ -25,12 +25,14 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientVH> {
     ClientAdapterController controller;
     addUserView addUser;
     viewClient viewclient;
+    String id;
 
-    public ClientAdapter(ArrayList<queue> lst,Context context, int flag){
+    public ClientAdapter(ArrayList<queue> lst,Context context, int flag, String id){
+        this.id = id;
         this.lst=lst;
         this.context=context;
         this.flag = flag;
-        controller=new ClientAdapterController(this);
+        controller=new ClientAdapterController(this, id);
         if(flag ==0){
             this.addUser = (addUserView)context;
         }

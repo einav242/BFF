@@ -16,13 +16,13 @@ import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class seeMoreView extends AppCompatActivity {
-    String email;
     String id;
     TextView tv_name, tv_email, tv_phone, tv_city, tv_street, tv_streetHouse, tv_ActivityTime;
     Button send;
     seeMoreController controller;
     CircleImageView profilePic;
     String image;
+    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class seeMoreView extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             id = extras.getString("key");
+            userID = extras.getString("userID");
         }
         controller = new seeMoreController(this);
         send = findViewById(R.id.button7);
@@ -51,6 +52,7 @@ public class seeMoreView extends AppCompatActivity {
                 intent.putExtra("key",id);
                 intent.putExtra("name",tv_name.getText().toString());
                 intent.putExtra("image",image);
+                intent.putExtra("userID",userID);
                 startActivity(intent);
             }
         });
