@@ -23,14 +23,27 @@ public class seeMoreView extends AppCompatActivity {
     CircleImageView profilePic;
     String image;
     String userID;
+    String flag;
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(seeMoreView.this, searchView.class);
-        intent.putExtra("key",userID);
-        startActivity(intent);
-        finish();
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            flag = extras.getString("flag");
+            if(flag == "0"){
+                Intent intent = new Intent(seeMoreView.this, searchView.class);
+                intent.putExtra("key",id);
+                startActivity(intent);
+                finish();
+            }
+            else if (flag == "1"){
+                Intent intent = new Intent(seeMoreView.this, clientSalesView.class);
+                intent.putExtra("key",id);
+                startActivity(intent);
+                finish();
+            }
+        }
     }
 
     @Override
@@ -63,6 +76,7 @@ public class seeMoreView extends AppCompatActivity {
                 intent.putExtra("image",image);
                 intent.putExtra("userID",userID);
                 startActivity(intent);
+                finish();
             }
         });
     }

@@ -44,6 +44,16 @@ public class editBusinessView extends AppCompatActivity {
     public Uri imageUri;
     String userID;
     String[] language ={"veterinary medicine","hairdressing salon","dog walker"};
+    String idKey;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(editBusinessView.this , businessActivityView.class);
+        intent.putExtra("key", idKey);
+        startActivity(intent);
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

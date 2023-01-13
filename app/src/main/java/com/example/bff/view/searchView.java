@@ -187,6 +187,7 @@ public class searchView extends AppCompatActivity{
         Intent intent = new Intent(searchView.this, seeMoreView.class);
         intent.putExtra("key",id);
         intent.putExtra("userID",this.id);
+        intent.putExtra("flag","0");
         startActivity(intent);
     }
     public void setlstView( ArrayList<Business> lst){

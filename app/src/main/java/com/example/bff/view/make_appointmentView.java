@@ -30,8 +30,19 @@ public class make_appointmentView extends AppCompatActivity {
     ProgressDialog pd;
     String email;
     String userID;
+    String id;
     make_appointmentController controller;
     int mYear, mMonth, mDay, mHour, mMinute;
+    String flag;
+
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(make_appointmentView.this, seeMoreView.class);
+        intent.putExtra("key",businessID);
+        startActivity(intent);
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +54,7 @@ public class make_appointmentView extends AppCompatActivity {
             businessName = extras.getString("name");
             businessImage = extras.getString("image");
             userID = extras.getString("userID");
+            flag = extras.getString("flag");
         }
         controller = new make_appointmentController(this,userID);
         pd = new ProgressDialog(this);
@@ -104,7 +116,9 @@ public class make_appointmentView extends AppCompatActivity {
                 Intent intent = new Intent(make_appointmentView.this, seeMoreView.class);
                 intent.putExtra("key",businessID);
                 intent.putExtra("userID",userID);
+                intent.putExtra("flag",flag);
                 startActivity(intent);
+                finish();
             }
         });
     }

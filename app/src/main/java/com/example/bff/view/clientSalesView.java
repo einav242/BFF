@@ -21,6 +21,16 @@ public class clientSalesView extends AppCompatActivity {
     String type;
     String id;
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(clientSalesView.this, animalActivityView.class);
+        intent.putExtra("key",this.id);
+        startActivity(intent);
+        finish();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +56,7 @@ public class clientSalesView extends AppCompatActivity {
         Intent intent = new Intent(clientSalesView.this, seeMoreView.class);
         intent.putExtra("key",id);
         intent.putExtra("userID",this.id);
+        intent.putExtra("flag","1");
         startActivity(intent);
     }
     public void setListView(ArrayList<sale> lst) {
