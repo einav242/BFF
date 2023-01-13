@@ -41,7 +41,7 @@ public class viewQueueView extends AppCompatActivity{
         if (extras != null) {
             id = extras.getString("key");
         }
-        controller = new viewQueueController(this);
+        controller = new viewQueueController(this,id);
         controller.getBusinessNameController();
         recyclerView = findViewById(R.id.Recycleview);
         empty = findViewById(R.id.textView41);

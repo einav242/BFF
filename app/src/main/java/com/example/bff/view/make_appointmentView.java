@@ -103,6 +103,7 @@ public class make_appointmentView extends AppCompatActivity {
                 controller.sendController(email,txt_date,txt_time,id,businessID,businessName,businessImage, userImage);
                 Intent intent = new Intent(make_appointmentView.this, seeMoreView.class);
                 intent.putExtra("key",businessID);
+                intent.putExtra("userID",userID);
                 startActivity(intent);
             }
         });

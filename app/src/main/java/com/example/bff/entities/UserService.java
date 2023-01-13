@@ -12,6 +12,6 @@ public interface UserService {
     Call<String> checker(@Body AccessLevel level);
 
     @POST("RegisterUser/")
-    Call<User> register(@Body RegisterUser user);
+    Call<String> register(@Body RegisterUser user);
 }
 

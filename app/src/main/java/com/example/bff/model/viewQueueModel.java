@@ -21,17 +21,16 @@ public class viewQueueModel {
 
     viewQueueController controller;
     DatabaseReference databaseReference;
-    private FirebaseUser mAuth;
     String email;
+    String id;
 
-
-    public viewQueueModel(viewQueueController controller) {
+    public viewQueueModel(viewQueueController controller, String id) {
+        this.id = id;
         this.controller = controller;
         databaseReference = FirebaseDatabase.getInstance().getReference("queue");
-        mAuth = FirebaseAuth.getInstance().getCurrentUser();
     }
     public void getListModel(HashMap<String,String> names, ArrayList<queue> lst){
-        FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Users").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);

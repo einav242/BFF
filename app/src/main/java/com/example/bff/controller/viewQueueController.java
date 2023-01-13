@@ -11,9 +11,9 @@ public class viewQueueController {
     viewQueueModel model;
     viewQueueView view;
 
-    public viewQueueController(viewQueueView view) {
+    public viewQueueController(viewQueueView view, String id) {
         this.view = view;
-        model = new viewQueueModel(this);
+        model = new viewQueueModel(this,id);
     }
 
     public void getListController(HashMap<String, String> names, ArrayList<queue> lst) {

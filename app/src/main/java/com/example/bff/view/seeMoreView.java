@@ -27,7 +27,9 @@ public class seeMoreView extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(seeMoreView.this, searchView.class));
+        Intent intent = new Intent(seeMoreView.this, searchView.class);
+        intent.putExtra("key",userID);
+        startActivity(intent);
         finish();
     }
 
