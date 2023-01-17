@@ -40,6 +40,7 @@ public class make_appointmentView extends AppCompatActivity {
         super.onBackPressed();
         Intent intent = new Intent(make_appointmentView.this, seeMoreView.class);
         intent.putExtra("key",businessID);
+        intent.putExtra("userID",userID);
         startActivity(intent);
         finish();
     }
